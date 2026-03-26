@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIP | Mutual Fund</title>
+    <link rel="stylesheet" href="../SipCalculator/sip.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Fatcat Wealthy">
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="../../home/index.html" class="active">Home</a>
+                <a href="../../about/about.html">About Us</a>
+
+                <div class="dropdown">
+
+                    <a href="../../services/service.html" class="dropbtn" id="servicesLink">
+                        Services <span class="arrow">▾</span>
+                    </a>
+
+                    <div class="dropdown-content">
+
+                        <div class="submenu">
+                            <a href="#">Investment Broking ▸</a>
+
+                            <div class="submenu-content">
+                                <a href="../../services/mutual-fund.html">Mutual Fund</a>
+                                <a href="../../services/stock-broking.html">Stock Broking</a>
+                            </div>
+                        </div>
+
+                        <a href="../../services/insurance.html">Insurance</a>
+                        <a href="../../services/loans.html">Loans</a>
+                        <a href="../../academy/academy.html">Academy</a>
+
+                    </div>
+
+                </div>
+
+                <a href="../../academy/academy.html">Academy</a>
+                <a href="../../business/business.html">Business</a>
+                <a href="../../career/career.html">Career</a>
+
+                <a href="../contact.html" class="contact-btn">Contact Us</a>
+                <a href="../login/login.html" class="contact-btn">Login</a>
+
+
+            </nav>
+
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <section class="calc-hero">
+
+        <div class="calc-container">
+
+            <a href="../../services/mutual-fund.html" class="back-btn">
+                ← Back
+            </a>
+
+            <h1>SIP calculator</h1>
+
+            <p>
+                The SIP calculator helps estimate the potential growth of your Systematic
+                Investment Plan (SIP) investment over your chosen time frame.
+                SIP is a convenient method to save for your long-term financial goals.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="sip-section">
+
+        <div class="sip-container">
+
+            <h2 class="sip-title">SIP Investment Amount</h2>
+
+            <div class="sip-box">
+
+                <!-- LEFT SIDE -->
+
+                <div class="sip-left">
+
+                    <h3 class="estimator-title">
+                        <i class="fa-solid fa-calculator"></i> Returns Estimator
+                    </h3><br>
+
+                    <p class="estimator-sub">Estimation is based on the past performance</p><br>
+
+                    <div class="amount-box">
+
+                        <label>Enter Amount</label>
+
+                        <input type="number" id="investment" value="5000">
+
+                    </div><br>
+
+
+                    <div class="slider-group">
+
+                        <label>Select Duration <span id="yearValue">5</span> Yrs</label>
+
+                        <input type="range" id="years" min="1" max="30" value="5">
+
+                    </div>
+
+
+                    <div class="slider-group">
+
+                        <label>Expected Rate of Return <span id="rateValue">12</span> %</label>
+
+                        <input type="range" id="rate" min="1" max="30" value="12">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RIGHT SIDE -->
+
+                <div class="sip-right">
+
+                    <h3 class="total-text">
+                        The total value of your investment after
+                        <span id="resultYears">5</span> Years will be
+                    </h3>
+
+                    <h1 class="result-value">₹ <span id="totalValue">0</span></h1>
+
+                    <div class="chart-box">
+
+                        <canvas id="sipChart"></canvas>
+
+                        <div class="legend">
+
+                            <p><span class="color invested"></span> Invested Amount ₹ <span id="investedAmount"></span>
+                            </p>
+
+                            <p><span class="color returns"></span> Est. Returns ₹ <span id="returnsAmount"></span></p>
+
+                        </div>
+
+                    </div>
+
+                    <button class="invest-btn">Invest Now →</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="sip-info">
+
+        <div class="sip-info-container">
+
+            <h2>What is an SIP Calculator?</h2>
+
+            <p>
+                The Systematic Investment Plan Calculator, or a SIP calculator, is a free online financial
+                tool that helps you calculate your returns from SIP investments. You can use it to compare
+                the returns from various SIP investment strategies.
+            </p>
+
+            <p>
+                A Mutual Fund SIP calculator helps you estimate the future value of your SIP investments.
+                It takes into account various parameters including the investment amount (i.e., the regular
+                SIP contributions), the expected rate of return, and the investment tenure. By inputting
+                these details, you can get a sense of how your investments may grow over time.
+            </p>
+
+            <p>
+                While the final maturity amount of your SIP investment may differ due to various external
+                factors, you can get an approximate understanding of the expected returns.
+            </p>
+
+            <p>
+                Once you have a clear idea of the expected returns and commitment required, you can make
+                a more informed decision about which SIP strategy is most viable for you.
+            </p>
+
+            <h3>How does SIP Calculator Work?</h3>
+
+            <p>Our SIP calculator online takes three main factors into account:</p>
+
+            <ol>
+                <li>Amount of the initial investment (P)</li>
+                <li>Frequency of the investment (n)</li>
+                <li>Expected rate of return (r)</li>
+            </ol>
+
+            <p>
+                By inputting these values, the calculator determines the final invested amount
+                and the estimated returns at the end of a specific period of time.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- COMPANY INFO -->
+
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Fatcat Wealthy">
+                </div>
+
+                <p>
+                    We are dedicated to empowering investors through education,
+                    mentorship, and financial planning.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://facebook.com/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://wa.me/919876543210" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/company/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="">
+                    <span>+91 95666 79958</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
+                    <span>support@fatcatwealthy.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
+                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                </div>
+            </div>
+
+
+            <!-- SERVICES ROUTES -->
+
+            <div class="footer-col">
+                <h4>What We Do</h4>
+
+                <ul>
+                    <li><a href="../services/mutual-fund.html">Mutual Fund</a></li>
+                    <li><a href="../services/stock-broking.html">Investment Broking</a></li>
+                    <li><a href="../services/insurance.html">Insurance</a></li>
+                    <li><a href="../academy/academy.html">Academy</a></li>
+                </ul>
+
+            </div>
+
+
+            <!-- COMPANY ROUTES -->
+
+            <div class="footer-col">
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../services/service.html">Services</a></li>
+                    <li><a href="../business/business.html">Business</a></li>
+                    <li><a href="../career/career.html">Careers</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../SipCalculator/sip.js"></script>
+
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true
+        });
+    </script>
+
+</body>
+
+</html>

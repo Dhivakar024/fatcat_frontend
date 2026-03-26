@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance | Service</title>
+    <link rel="stylesheet" href="../services/css/insurance.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+                <img src="../services/assets/logo.png" alt="Fatcat Wealthy">
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="../home/index.html" class="active">Home</a>
+                <a href="../about/about.html">About Us</a>
+
+                <div class="dropdown">
+
+                    <a href="../services/service.html" class="dropbtn" id="servicesLink">
+                        Services <span class="arrow">▾</span>
+                    </a>
+
+                    <div class="dropdown-content">
+
+                        <div class="submenu">
+                            <a href="#">Investment Broking ▸</a>
+
+                            <div class="submenu-content">
+                                <a href="../services/mutual-fund.html">Mutual Fund</a>
+                                <a href="../services/stock-broking.html">Stock Broking</a>
+                            </div>
+                        </div>
+
+                        <a href="../services/insurance.html">Insurance</a>
+                        <a href="../services/loans.html">Loans</a>
+                        <a href="../academy/academy.html">Academy</a>
+
+                    </div>
+
+                </div>
+
+                <a href="../academy/academy.html">Academy</a>
+                <a href="../business/business.html">Business</a>
+                <a href="../career/career.html">Career</a>
+
+                <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
+                <a href="../login/login.html" class="contact-btn">Login</a>
+
+
+            </nav>
+
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+    <section class="insurance-hero">
+        <div class="hero-container">
+
+            <!-- Left Content -->
+            <div class="hero-left scroll-animate">
+
+                <h1>
+                    Secure Your Future <br>
+                    with <span>Smart Insurance</span> Solutions
+                </h1>
+
+                <p>
+                    Discover comprehensive insurance plans designed to protect what matters most.
+                    Get instant quotes, compare benefits, and choose the perfect coverage
+                    for your needs.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        → 2M+ Happy Customers
+                    </div>
+
+                    <div class="stat-box">
+                        → 98% Claim Settlement
+                    </div>
+
+                    <div class="stat-box">
+                        → 1000+ Crore Claims Paid
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Right Images -->
+            <div class="hero-right scroll-animate">
+
+                <img src="../services/assets/business.jpg" class="hero-img img1">
+                <img src="../assets/insuranc.jpg" class="hero-img img2">
+                <img src="../assets/insu2.jpg" class="hero-img img3">
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="insurance-simple">
+        <div class="container">
+
+            <h2 class="section-title scroll-animate">Insurance made simple</h2>
+
+            <div class="insurance-types">
+
+                <div class="type-card scroll-animate">
+                    <img src="../services/assets/car.png" alt="Car Insurance">
+                    <p>Car</p>
+                </div>
+
+                <div class="type-card scroll-animate">
+                    <img src="../services/assets/bike.png" alt="2 Wheeler">
+                    <p>2 Wheeler</p>
+                </div>
+
+                <div class="type-card scroll-animate">
+                    <img src="../services/assets/truck.png" alt="Truck">
+                    <p>Truck</p>
+                </div>
+
+                <div class="type-card scroll-animate">
+                    <img src="../services/assets/acc.png" alt="Accident">
+                    <p>Accident</p>
+                </div>
+
+                <div class="type-card scroll-animate">
+                    <img src="../services/assets/home.png" alt="Home">
+                    <p>Home</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="product-features">
+        <div class="container">
+
+            <h2 class="section-title scroll-animate">Product Features</h2>
+
+            <!-- Tabs -->
+            <div class="feature-tabs scroll-animate">
+                <button class="tab-btn active" data-tab="general">General Insurance</button>
+                <button class="tab-btn" data-tab="health">Health & Life</button>
+            </div>
+
+            <!-- GENERAL INSURANCE -->
+            <div class="features-grid active" id="general">
+
+                <div class="feature-card scroll-animate">
+                    <img src="../services/assets/car2.png">
+                    <h3>Car Insurance</h3>
+                    <p>
+                        Car insurance is a financial protection policy that helps cover the
+                        cost of damages or losses related to your vehicle.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <img src="../services/assets/bike1.png">
+                    <h3>Two wheeler Insurance</h3>
+                    <p>
+                        Two-Wheeler Insurance provides financial protection for motorcycles
+                        and scooters against accidents and damages.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <img src="../services/assets/truck2.png">
+                    <h3>Commercial vehicle</h3>
+                    <p>
+                        Commercial vehicle insurance protects vehicles used for business
+                        purposes against accidents and damages.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <img src="../services/assets/home3.png">
+                    <h3>House Insurance</h3>
+                    <p>
+                        House insurance protects your home and belongings against risks like
+                        fire, theft, and natural disasters.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <img src="../services/assets/home2.png">
+                    <h3>Building Insurance</h3>
+                    <p>
+                        Building insurance protects the physical structure of your home from
+                        risks such as storms or accidents.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <img src="../services/assets/accc2.png" height="150px">
+                    <h3>Accident Insurance</h3>
+                    <p>
+                        Accident insurance provides financial protection in case of injuries
+                        or disability caused by accidents.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- HEALTH INSURANCE -->
+            <div class="features-grid" id="health">
+
+                <div class="feature-card">
+                    <img src="../services/assets/hos2.png" height="150px">
+                    <h3>Health Insurance</h3>
+                    <p>
+                        Health insurance covers medical expenses including hospitalization,
+                        treatment, and surgeries.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="../services/assets/hos3.png" height="150px">
+                    <h3>Family Health Plan</h3>
+                    <p>
+                        A family health plan protects all members under one policy.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="view-plan-wrapper scroll-animate">
+            <a href="#plans" class="view-plan-btn" ">View Plan</a>
+        </div>
+    </section>
+
+
+
+
+    <section class="now-streaming">
+        <div class="container">
+
+            <h2 class="section-title scroll-animate">Now Streaming</h2>
+
+            <div class="stream-grid">
+
+                <!-- Video 1 -->
+                <div class="stream-card scroll-animate" data-video="https://www.youtube.com/embed/VIDEO_ID2">
+                    <img src="../services/assets/carr.jpg">
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="stream-card scroll-animate" data-video="https://www.youtube.com/embed/VIDEO_ID2">
+                    <img src="../services/assets/Life.jpg">
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="stream-card scroll-animate" data-video="https://www.youtube.com/embed/VIDEO_ID3">
+                    <img src="../services/assets/house.jpg">
+                    <div class="play-btn">▶</div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- VIDEO MODAL -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <span class="close-video">✕</span>
+            <iframe id="youtubeVideo" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+
+    <section class="join-us">
+        <div class="container">
+
+            <h2 class="section-title scroll-animate">Join Us</h2>
+
+            <div class="join-grid">
+
+                <!-- Card 1 -->
+                <div class="join-card scroll-animate">
+                    <img src="../services/assets/health.png" alt="Family Insurance">
+                    <h3>Slice of Health</h3>
+                    <p>
+                        A flexible health insurance plan that allows policyholders to choose and customize coverage
+                        based on their healthcare needs and budget.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="join-card scroll-animate">
+                    <img src="../services/assets/carrr.png" alt="Health Insurance">
+                    <h3>Life on Wheels</h3>
+                    <p>
+                        An insurance plan designed to provide financial protection for your vehicle against accidents,
+                        damages, theft, and unforeseen road risks.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="join-card scroll-animate">
+                    <img src="../services/assets/housee.png" alt="Property Insurance">
+                    <h3>Home Safe Home</h3>
+                    <p>
+                        An insurance plan that protects your home and belongings from risks such as fire, theft, natural
+                        disasters, and unexpected damages.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="protection-plan" id="plans">
+        <div class="container">
+
+            <h2 class="section-title scroll-animate">Choose Your Protection Plan</h2>
+            <p class="section-sub scroll-animate">
+                Comprehensive coverage options tailored to your lifestyle and needs
+            </p>
+
+            <div class="plan-grid">
+
+                <!-- CARD -->
+                <div class="plan-card scroll-animate">
+                    <div class="plan-title">Health Insurance</div>
+
+                    <p class="plan-desc">
+                        Invest primarily in stocks for long-term wealth creation
+                    </p>
+
+                    <div class="coverage-box">
+                        <p>Coverage:</p>
+                        <h4>₹5 Lakh – ₹5 Crore</h4>
+
+                        <p class="premium">Premium:</p>
+                        <h5>₹8,000 – ₹25,000/year</h5>
+                    </div>
+
+                    <ul class="plan-features ">
+                        <li>Independent advisory — no product affiliations</li>
+                        <li>Data-driven investment recommendations</li>
+                        <li>Robust digital infrastructure</li>
+                        <li>Custom asset allocation</li>
+                    </ul>
+
+                    <div class="plan-btn">
+                        Up to ₹50 Lakh coverage with tax benefits up to ₹1.5 Lakh
+                    </div>
+                </div>
+
+
+                <!-- CARD -->
+                <div class="plan-card scroll-animate">
+                    <div class="plan-title">Life Insurance</div>
+
+                    <p class="plan-desc">
+                        Invest primarily in stocks for long-term wealth creation
+                    </p>
+
+                    <div class="coverage-box">
+                        <p>Coverage:</p>
+                        <h4>₹5 Lakh – ₹5 Crore</h4>
+
+                        <p class="premium">Premium:</p>
+                        <h5>₹8,000 – ₹25,000/year</h5>
+                    </div>
+
+                    <ul class="plan-features">
+                        <li>Independent advisory — no product affiliations</li>
+                        <li>Data-driven investment recommendations</li>
+                        <li>Robust digital infrastructure</li>
+                        <li>Custom asset allocation</li>
+                    </ul>
+
+                    <div class="plan-btn">
+                        Up to ₹50 Lakh coverage with tax benefits up to ₹1.5 Lakh
+                    </div>
+                </div>
+
+
+                <!-- CARD -->
+                <div class="plan-card scroll-animate">
+                    <div class="plan-title">Auto Insurance</div>
+
+                    <p class="plan-desc">
+                        Invest primarily in stocks for long-term wealth creation
+                    </p>
+
+                    <div class="coverage-box">
+                        <p>Coverage:</p>
+                        <h4>₹5 Lakh – ₹1 Crore</h4>
+
+                        <p class="premium">Premium:</p>
+                        <h5>₹8,000 – ₹25,000/year</h5>
+                    </div>
+
+                    <ul class="plan-features">
+                        <li>Independent advisory — no product affiliations</li>
+                        <li>Data-driven investment recommendations</li>
+                        <li>Robust digital infrastructure</li>
+                        <li>Custom asset allocation</li>
+                    </ul>
+
+                    <div class="plan-btn">
+                        Up to ₹50 Lakh coverage with tax benefits up to ₹1.5 Lakh
+                    </div>
+                </div>
+
+
+                <!-- CARD -->
+                <div class="plan-card scroll-animate">
+                    <div class="plan-title">Home Insurance</div>
+
+                    <p class="plan-desc">
+                        Invest primarily in stocks for long-term wealth creation
+                    </p>
+
+                    <div class="coverage-box">
+                        <p>Coverage:</p>
+                        <h4>₹5 Lakh – ₹1 Crore</h4>
+
+                        <p class="premium">Premium:</p>
+                        <h5>₹8,000 – ₹25,000/year</h5>
+                    </div>
+
+                    <ul class="plan-features">
+                        <li>Independent advisory — no product affiliations</li>
+                        <li>Data-driven investment recommendations</li>
+                        <li>Robust digital infrastructure</li>
+                        <li>Custom asset allocation</li>
+                    </ul>
+
+                    <div class="plan-btn">
+                        Up to ₹50 Lakh coverage with tax benefits up to ₹1.5 Lakh
+                    </div>
+                </div>
+
+
+                <!-- CARD -->
+                <div class="plan-card scroll-animate">
+                    <div class="plan-title">Business Insurance</div>
+
+                    <p class="plan-desc">
+                        Invest primarily in stocks for long-term wealth creation
+                    </p>
+
+                    <div class="coverage-box">
+                        <p>Coverage:</p>
+                        <h4>₹5 Lakh – ₹1 Crore</h4>
+
+                        <p class="premium">Premium:</p>
+                        <h5>₹8,000 – ₹25,000/year</h5>
+                    </div>
+
+                    <ul class="plan-features">
+                        <li>Independent advisory — no product affiliations</li>
+                        <li>Data-driven investment recommendations</li>
+                        <li>Robust digital infrastructure</li>
+                        <li>Custom asset allocation</li>
+                    </ul>
+
+                    <div class="plan-btn">
+                        Up to ₹50 Lakh coverage with tax benefits up to ₹1.5 Lakh
+                    </div>
+                </div>
+
+
+
+                <!-- CARD -->
+                <div class="plan-card scroll-animate">
+                    <div class="plan-title">Vehicle Insurance</div>
+
+                    <p class="plan-desc">
+                        Protect your vehicle against accidents, theft, and damages with comprehensive coverage
+                    </p>
+
+                    <div class="coverage-box">
+                        <p>Coverage:</p>
+                        <h4>₹1 Lakh – ₹1 Crore</h4>
+
+                        <p class="premium">Premium:</p>
+                        <h5>₹3,000 – ₹15,000/year</h5>
+                    </div>
+
+                    <ul class="plan-features">
+                        <li>Comprehensive coverage for car and bike</li>
+                        <li>Cashless repairs at network garages</li>
+                        <li>Protection against theft, accidents & natural disasters</li>
+                        <li>24/7 roadside assistance support</li>
+                    </ul>
+
+                    <div class="plan-btn">
+                        Secure your vehicle with affordable premiums and hassle-free claims
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="why-insurance">
+        <div class="container">
+
+            <h2 class="section-title scroll-animate">Why Choose Our Insurance?</h2>
+
+            <p class="section-sub scroll-animate">
+                Comprehensive coverage options tailored to your lifestyle and needs
+            </p>
+
+            <div class="why-grid">
+
+                <!-- Trusted Protection -->
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3>Trusted Protection</h3>
+                    <p>25+ years of experience in providing reliable insurance solutions</p>
+                </div>
+
+                <!-- Best Returns -->
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3>Best Returns</h3>
+                    <p>Competitive premiums with maximum coverage and attractive returns</p>
+                </div>
+
+                <!-- 24/7 Support -->
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">
+                        <i data-lucide="headphones"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer service and quick claim settlement</p>
+                </div>
+
+                <!-- Easy Claims -->
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">
+                        <i data-lucide="file-check"></i>
+                    </div>
+                    <h3>Easy Claims</h3>
+                    <p>Fully digital policy management for seamless onboarding and tracking</p>
+                </div>
+
+                <!-- Customizable Plans -->
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">
+                        <i data-lucide="sliders"></i>
+                    </div>
+                    <h3>Customizable Plans</h3>
+                    <p>Flexible policy options tailored to individual and business needs</p>
+                </div>
+
+                <!-- Paperless Process -->
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">
+                        <i data-lucide="file-text"></i>
+                    </div>
+                    <h3>Paperless Process</h3>
+                    <p>Fully digital policy management for seamless onboarding and tracking</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- COMPANY INFO -->
+
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Fatcat Wealthy">
+                </div>
+
+                <p>
+                    We are dedicated to empowering investors through education,
+                    mentorship, and financial planning.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://facebook.com/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://wa.me/919876543210" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/company/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- CONTACT -->
+
+
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="">
+                    <span>+91 95666 79958</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
+                    <span>support@fatcatwealthy.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
+                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                </div>
+            </div>
+
+            <!-- SERVICES ROUTES -->
+
+            <div class="footer-col">
+                <h4>What We Do</h4>
+
+                <ul>
+                    <li><a href="../services/mutual-fund.html">Mutual Fund</a></li>
+                    <li><a href="../services/stock-broking.html">Investment Broking</a></li>
+                    <li><a href="../services/insurance.html">Insurance</a></li>
+                    <li><a href="../academy/academy.html">Academy</a></li>
+                </ul>
+
+            </div>
+
+
+            <!-- COMPANY ROUTES -->
+
+            <div class="footer-col">
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../services/service.html">Services</a></li>
+                    <li><a href="../business/business.html">Business</a></li>
+                    <li><a href="../career/career.html">Careers</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../services/js/insurance.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true
+        });
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career | Fatcat</title>
+    <link rel="stylesheet" href="../career/career.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+                <img src="../services/assets/logo.png" alt="Fatcat Wealthy">
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="../home/index.html" class="active">Home</a>
+                <a href="../about/about.html">About Us</a>
+
+                <div class="dropdown">
+
+                    <a href="../services/service.html" class="dropbtn" id="servicesLink">
+                        Services <span class="arrow">▾</span>
+                    </a>
+
+                    <div class="dropdown-content">
+
+                        <div class="submenu">
+                            <a href="#">Investment Broking ▸</a>
+
+                            <div class="submenu-content">
+                                <a href="../services/mutual-fund.html">Mutual Fund</a>
+                                <a href="../services/stock-broking.html">Stock Broking</a>
+                            </div>
+                        </div>
+
+                        <a href="../services/insurance.html">Insurance</a>
+                        <a href="../services/loans.html">Loans</a>
+                        <a href="../academy/academy.html">Academy</a>
+
+                    </div>
+
+                </div>
+
+                <a href="../academy/academy.html">Academy</a>
+                <a href="../business/business.html">Business</a>
+                <a href="../career/career.html">Career</a>
+
+                <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
+                <a href="../login/login.html" class="contact-btn">Login</a>
+
+
+            </nav>
+
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Career Hero Section -->
+    <section class="career-hero">
+
+        <div class="career-overlay"></div>
+
+        <div class="career-hero-content reveal">
+
+            <h1 class="career-title">Career</h1>
+
+            <div class="career-search">
+
+                <input type="text" id="jobSearch" placeholder="Search job title, keyword, skill and location">
+
+                <button class="career-search-btn" id="searchBtn">
+                    Search Jobs
+                </button>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- WHY JOIN TEAM -->
+    <section class="join-team-section">
+
+        <div class="join-team-container">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="join-left reveal-left">
+
+                <h2>Why you Should Join Our Team</h2>
+
+                <p>
+                    As we work together to redefine financial excellence, you'll be part of a supportive
+                    environment that encourages creativity, leadership, and meaningful impact.
+                    If you're passionate about making a difference and growing alongside a dynamic team,
+                    this is the place for you.
+                </p>
+
+                <img src="../services/assets/hero6 (1).jpg" alt="Join our team" class="join-image">
+
+            </div>
+
+            <!-- RIGHT FEATURES -->
+
+            <div class="join-right">
+
+                <div class="join-card reveal-zoom">
+
+                    <div class="join-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+
+                    <h4>Team work</h4>
+
+                    <p>
+                        We believe strong teamwork drives innovation. Our culture builds trust
+                        and shared goals into lasting success.
+                    </p>
+
+                </div>
+
+
+                <div class="join-card reveal-zoom">
+
+                    <div class="join-icon green">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+
+                    <h4>Secured Future</h4>
+
+                    <p>
+                        We help you build a secure future through smart planning,
+                        strategic investments and long-term financial protection.
+                    </p>
+
+                </div>
+
+
+                <div class="join-card reveal-zoom">
+
+                    <div class="join-icon blue">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+
+                    <h4>Learning Opportunity</h4>
+
+                    <p>
+                        We create continuous learning opportunities that empower you
+                        to grow, innovate and succeed.
+                    </p>
+
+                </div>
+
+
+                <div class="join-card reveal-zoom">
+
+                    <div class="join-icon orange">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+
+                    <h4>Upgrade Skills</h4>
+
+                    <p>
+                        We encourage continuous skill development to help you stay
+                        competitive and achieve greater success.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="job-filter-section reveal">
+
+        <div class="job-filter-container">
+
+            <input type="text" id="jobSearch" placeholder="Search for jobs..." class="job-search-input">
+
+            <div class="filter-row">
+
+                <select id="experienceFilter">
+                    <option value="all">All Experience Level</option>
+                    <option value="entry">Entry Level</option>
+                    <option value="mid">Mid Level</option>
+                    <option value="senior">Senior Level</option>
+                </select>
+
+                <select id="locationFilter">
+                    <option value="all">All Location</option>
+                    <option value="chennai">Chennai</option>
+                    <option value="madurai">Madurai</option>
+                    <option value="coimbatore">Coimbatore</option>
+                </select>
+
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="design">Design</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="management">Management</option>
+                    <option value="media">Media</option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CAREER OPENINGS -->
+    <section class="career-openings">
+        <div class="career-container">
+
+
+
+            <!-- LEFT SIDE JOB LIST -->
+            <div class="job-list reveal-left">
+
+                <div class="job-card active" data-title="MBA Department Manager" data-level="Mid-Level"
+                    data-location="Chennai, Madurai"
+                    data-description="Responsible for planning, managing department operations, handling teams and improving business performance."
+                    data-specs="MBA in Business Administration, leadership skills, 3+ years experience, good communication skills.">
+
+                    <h3>MBA Department Manager</h3>
+                    <p>Mid-Level Chennai Madurai</p>
+
+                </div>
+
+
+                <div class="job-card" data-title="UX/UI Designer" data-level="Mid-Level"
+                    data-location="Chennai, Madurai"
+                    data-description="Work with developers and stakeholders to design user-friendly interfaces and improve user experience through testing."
+                    data-specs="Figma, Adobe XD, Wireframing, Prototyping, usability testing.">
+
+                    <h3>UX/UI Designer</h3>
+                    <p>Mid-Level Chennai Madurai</p>
+
+                </div>
+
+
+                <div class="job-card" data-title="CAD Designer - Civil" data-level="Mid-Level"
+                    data-location="Chennai, Madurai"
+                    data-description="Create civil engineering drawings, construction layouts and structural designs using CAD tools."
+                    data-specs="AutoCAD, Civil 3D, drafting knowledge, construction documentation.">
+
+                    <h3>CAD Designer - Civil</h3>
+                    <p>Mid-Level Chennai Madurai</p>
+
+                </div>
+
+
+                <div class="job-card" data-title="Mechanical CAD Designer" data-level="Mid-Level"
+                    data-location="Chennai, Madurai"
+                    data-description="Design mechanical components, assemblies and engineering drawings using CAD software."
+                    data-specs="SolidWorks, AutoCAD, mechanical drafting, 3D modeling.">
+
+                    <h3>Mechanical CAD Designer</h3>
+                    <p>Mid-Level Chennai Madurai</p>
+
+                </div>
+
+
+                <div class="job-card" data-title="Multimedia Specialist" data-level="Mid-Level" data-location="Chennai"
+                    data-description="Create multimedia content such as graphics, videos, animations and digital marketing materials."
+                    data-specs="Adobe Premiere, After Effects, Photoshop, video editing.">
+
+                    <h3>Multimedia Specialist</h3>
+                    <p>Mid-Level Chennai</p>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- RIGHT SIDE DETAILS -->
+            <div class="job-details reveal-right">
+
+                <h2 id="jobTitle">MBA Department Manager</h2>
+
+                <div id="jobMeta">
+                    <span>Mid-Level</span>
+                    <span>Madurai</span>
+                </div>
+
+                <h4>Primary Responsibility:</h4>
+
+                <p id="jobDescription">
+                    The Department Manager will be responsible for developing and
+                    implementing strategic plans aligned with organizational objectives
+                    while overseeing the daily operations of the department to ensure
+                    efficiency and productivity.
+                </p>
+
+                <p>
+                    The role involves leading, mentoring, and evaluating team members to
+                    achieve performance targets, maintain high-quality standards, monitor
+                    budgets, analyze key performance indicators, prepare reports for
+                    senior leadership, and identify opportunities for business growth
+                    and process improvement.
+                </p>
+
+                <h4 id="jobSpecs">Job Specification:</h4>
+
+                <ul>
+                    <li>MBA in Business Administration / Finance / Marketing / Operations</li>
+                    <li>3–5 years of managerial or supervisory experience</li>
+                    <li>Strong leadership and decision-making abilities</li>
+                    <li>Excellent communication and interpersonal skills</li>
+                    <li>Knowledge of financial planning and business strategy</li>
+                    <li>Proficiency in MS Office and business tools</li>
+                    <li>Strong analytical and problem-solving mindset</li>
+                    <li>Ability to manage multiple tasks under pressure</li>
+                </ul>
+
+                <div class="job-meta">
+
+                    <p><strong>Employment Type:</strong> Full-time</p>
+                    <p><strong>Work place Type:</strong> Hybrid</p>
+                    <p><strong>Salary:</strong> Commensurate with experience and skills</p>
+                    <p><strong>Experience Required:</strong> Minimum 3 Years</p>
+                    <p><strong>Job Location:</strong> Chennai, Madurai, Coimbatore</p>
+
+                </div>
+
+                <button class="apply-btn">Apply Now</button>
+
+            </div>
+
+        </div>
+
+        <div id="noResults" style="display:none; text-align:center; color:red;">No jobs found</div>
+
+    </section>
+
+
+
+
+
+
+    <section class="work-together reveal">
+        <div class="work-container">
+
+            <div class="work-content">
+                <h2>Let's Work Together</h2>
+
+                <p>
+                    Whether you're a fresher or an experienced professional, explore
+                    Fatcat Wealthy careers for opportunities to grow, learn, and lead.
+                </p>
+
+                <a href="#" class="work-btn">Ask us any Questions</a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- COMPANY INFO -->
+
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="../services/assets/logo.png" alt="Fatcat Wealthy">
+                </div>
+
+                <p>
+                    We are dedicated to empowering investors through education,
+                    mentorship, and financial planning.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://facebook.com/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://wa.me/919876543210" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/company/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="">
+                    <span>+91 95666 79958</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
+                    <span>support@fatcatwealthy.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
+                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                </div>
+            </div>
+
+            <!-- SERVICES ROUTES -->
+
+            <div class="footer-col">
+                <h4>What We Do</h4>
+
+                <ul>
+                    <li><a href="../services/mutual-fund.html">Mutual Fund</a></li>
+                    <li><a href="../services/stock-broking.html">Investment Broking</a></li>
+                    <li><a href="../services/insurance.html">Insurance</a></li>
+                    <li><a href="../academy/academy.html">Academy</a></li>
+                </ul>
+
+            </div>
+
+
+            <!-- COMPANY ROUTES -->
+
+            <div class="footer-col">
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../services/service.html">Services</a></li>
+                    <li><a href="../business/business.html">Business</a></li>
+                    <li><a href="../career/career.html">Careers</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="../career/career.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true
+        });
+    </script>
+
+</body>
+
+</html>

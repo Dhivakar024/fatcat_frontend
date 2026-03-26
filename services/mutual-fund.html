@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MutualFund | Service</title>
+    <link rel="stylesheet" href="css/mutual-fund.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+                <img src="../services/assets/logo.png" alt="Fatcat Wealthy">
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="../home/index.html" class="active">Home</a>
+                <a href="../about/about.html">About Us</a>
+
+                <div class="dropdown">
+
+                    <a href="../services/service.html" class="dropbtn" id="servicesLink">
+                        Services <span class="arrow">▾</span>
+                    </a>
+
+                    <div class="dropdown-content">
+
+                        <div class="submenu">
+                            <a href="#">Investment Broking ▸</a>
+
+                            <div class="submenu-content">
+                                <a href="../services/mutual-fund.html">Mutual Fund</a>
+                                <a href="../services/stock-broking.html">Stock Broking</a>
+                            </div>
+                        </div>
+
+                        <a href="../services/insurance.html">Insurance</a>
+                        <a href="../services/loans.html">Loans</a>
+                        <a href="../services/service.html">Academy</a>
+
+                    </div>
+
+                </div>
+
+                <a href="../academy/academy.html">Academy</a>
+                <a href="../business/business.html">Business</a>
+                <a href="../career/career.html">Career</a>
+
+                <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
+                <a href="../login/login.html" class="contact-btn">Login</a>
+
+
+            </nav>
+
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="mf-hero">
+
+        <div class="mf-hero-container">
+
+            <div class="mf-hero-text reveal-left">
+
+                <h1>
+                    Grow Your Wealth with
+                    <span>Mutual Funds</span>
+                </h1>
+
+                <p>
+                    Start your investment journey with clarity and confidence.
+                    We simplify complex financial decisions and guide you
+                    toward consistent, sustainable wealth creation.
+                </p>
+
+                <div class="mf-buttons">
+
+                    <a href="../contact/contact.html" class="btn-primary">
+                        Invest Now →
+                    </a>
+
+                    <a href="#plans" class="btn-secondary">
+                        Know More →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="mf-hero-img reveal-right">
+
+                <img src="../services/assets/MFhero.png" alt="Mutual Fund">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="mf-intro">
+
+        <div class="mf-intro-container reveal">
+
+            <h2>Mutual Fund Investment</h2>
+
+            <p>
+                Mutual funds are a popular investment option that pools money from
+                multiple investors and invests it in a diversified portfolio of
+                stocks, bonds, or other assets. These funds are managed by
+                professional fund managers who make investment decisions based on
+                market analysis and economic trends.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="mf-trending">
+
+        <div class="mf-trending-header reveal">
+            <h2>Explore Trending Mutual Fund Schemes</h2>
+        </div>
+
+        <div class="mf-trending-container reveal">
+
+            <!-- Tabs -->
+            <div class="mf-tabs">
+
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="equity">Equity</button>
+                    <button class="tab-btn" data-tab="hybrid">Hybrid</button>
+                    <button class="tab-btn" data-tab="debt">Debt</button>
+                </div>
+
+                <a href="#plans" class="know-more-btn">Know More</a>
+
+            </div>
+
+
+
+            <!-- TAB CONTENT -->
+
+            <div class="tab-content active" id="equity">
+
+                <div class="fund-grid">
+
+                    <div class="fund-card">Large Cap</div>
+                    <div class="fund-card">Mid Cap</div>
+                    <div class="fund-card">Small Cap</div>
+                    <div class="fund-card">ELSS</div>
+                    <div class="fund-card">Flexi Cap</div>
+                    <div class="fund-card">Focused Fund</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="tab-content" id="hybrid">
+
+                <div class="fund-grid">
+
+                    <div class="fund-card">Balanced Fund</div>
+                    <div class="fund-card">Aggressive Hybrid</div>
+                    <div class="fund-card">Conservative Hybrid</div>
+                    <div class="fund-card">Multi Asset</div>
+                    <div class="fund-card">Equity Savings</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="tab-content" id="debt">
+
+                <div class="fund-grid">
+
+                    <div class="fund-card">Liquid</div>
+                    <div class="fund-card">Medium Duration</div>
+                    <div class="fund-card">Short Duration</div>
+                    <div class="fund-card">Floater</div>
+                    <div class="fund-card">Overnight</div>
+                    <div class="fund-card">Medium to Long</div>
+                    <div class="fund-card">Money Market</div>
+                    <div class="fund-card">Ultra Short</div>
+                    <div class="fund-card">Long Duration</div>
+                    <div class="fund-card">Corporate Bond</div>
+                    <div class="fund-card">Low Duration</div>
+                    <div class="fund-card">Credit Risk</div>
+                    <div class="fund-card">Dynamic Bond</div>
+                    <div class="fund-card">Gilt</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="explore-mf">
+
+        <div class="explore-title reveal">
+            <h2>Explore Mutual Funds</h2>
+        </div>
+
+        <div class="explore-container reveal">
+
+            <!-- LEFT SIDEBAR -->
+
+            <div class="mf-sidebar">
+
+                <h4>Categories</h4>
+
+                <div class="mf-category active" data-category="sip100">
+                    SIP with 100
+                </div>
+
+                <div class="mf-category" data-category="sip500">
+                    SIP with 500
+                </div>
+
+                <div class="mf-category" data-category="high">
+                    High Returns
+                </div>
+
+                <div class="mf-category" data-category="index">
+                    Index Funds
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table class="mf-table">
+
+                    <thead>
+                        <tr>
+                            <th>Fund Name</th>
+                            <th>Fund size</th>
+                            <th>1Y Returns</th>
+                            <th>3Y Returns</th>
+                            <th>5Y Returns</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="fundTableBody"></tbody>
+
+                    <tr>
+                        <td>Aditya Birla Sun Life PSU Equity Fund</td>
+                        <td>₹5,531.87</td>
+                        <td>31.88%</td>
+                        <td>36.33%</td>
+                        <td>0.00%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Aditya Birla Sun Life PSU Equity Fund Direct Payout of IDCW</td>
+                        <td>₹5,531.87</td>
+                        <td>31.88%</td>
+                        <td>36.33%</td>
+                        <td>0.00%</td>
+                    </tr>
+
+                    <tr>
+                        <td>ICICI Prudential Infrastructure Fund</td>
+                        <td>₹6,989.56</td>
+                        <td>40.77%</td>
+                        <td>35.45%</td>
+                        <td>32.74%</td>
+                    </tr>
+
+                    <tr>
+                        <td>ICICI Prudential Infrastructure Fund Direct Plan IDCW Payout</td>
+                        <td>₹5,531.87</td>
+                        <td>31.88%</td>
+                        <td>36.33%</td>
+                        <td>32.73%</td>
+                    </tr>
+
+                    <tr>
+                        <td>ICICI Prudential Infrastructure Fund Direct Plan IDCW Reinvestment</td>
+                        <td>₹5,531.87</td>
+                        <td>31.88%</td>
+                        <td>36.33%</td>
+                        <td>32.73%</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="mf-benefits">
+
+        <div class="mf-container">
+
+            <div class="mf-header scroll-animate">
+                <h2>Benefits of Investing in Mutual Funds with Fatcat Wealthy</h2>
+            </div>
+
+            <div class="mf-content">
+
+                <!-- LEFT SIDE CARDS -->
+                <div class="mf-cards">
+
+                    <div class="mf-card">
+                        <div class="icon">✔</div>
+                        <h3>0% Commission</h3>
+                        <p>Invest directly in company shares to participate in their growth and earn returns through
+                            price appreciation and dividends.</p>
+                    </div>
+
+                    <div class="mf-card">
+                        <div class="icon">🔒</div>
+                        <h3>Trust</h3>
+                        <p>Our platform ensures reliable investment opportunities backed by secure financial systems and
+                            transparent practices.</p>
+                    </div>
+
+                    <div class="mf-card">
+                        <div class="icon">⚡</div>
+                        <h3>Seamless Investing</h3>
+                        <p>Simple and quick investment process designed to make mutual fund investing effortless for
+                            everyone.</p>
+                    </div>
+
+                    <div class="mf-card">
+                        <div class="icon">📊</div>
+                        <h3>Research Backed Recommendations</h3>
+                        <p>Expert curated recommendations powered by deep market research and analytics.</p>
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDE IMAGE -->
+                <div class="mf-image scroll-animate">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a" alt="financial advisor">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="investment-section" id="plans">
+
+        <div class="investment-container">
+
+            <h2 class="investment-title">Choose Your Investment Strategy</h2>
+            <p class="investment-sub">
+                Explore our diverse range of mutual funds tailored to meet your financial objectives
+            </p>
+
+            <div class="investment-grid">
+
+                <!-- CARD -->
+
+                <div class="investment-card reveal">
+
+                    <h3>Mutual Funds</h3>
+                    <p>Invest primarily in stocks for long-term wealth creation</p>
+
+                    <div class="investment-info">
+                        <div>
+                            <span>Expected Returns</span>
+                            <h4>12-15% p.a.</h4>
+                        </div>
+
+                        <div>
+                            <span>Risk Level</span>
+                            <h4>High</h4>
+                        </div>
+
+                        <p class="min-invest">Min. Investment ₹500</p>
+                    </div>
+
+                    <ul>
+                        <li>✔ High growth potential</li>
+                        <li>✔ Long-term wealth creation</li>
+                        <li>✔ Tax benefits under ELSS</li>
+                        <li>✔ SIP Available (₹500+ per month)</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="investment-card reveal">
+
+                    <h3>Debt Funds</h3>
+                    <p>Invest in bonds and fixed-income securities for stable returns</p>
+
+                    <div class="investment-info">
+                        <div>
+                            <span>Expected Returns</span>
+                            <h4>7-9% p.a.</h4>
+                        </div>
+
+                        <div>
+                            <span>Risk Level</span>
+                            <h4>Low to Mod</h4>
+                        </div>
+
+                        <p class="min-invest">Min. Investment ₹1000</p>
+                    </div>
+
+                    <ul>
+                        <li>✔ Stable returns</li>
+                        <li>✔ Lower volatility</li>
+                        <li>✔ Regular income potential</li>
+                        <li>✔ SIP Available (₹1000+ per month)</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="investment-card reveal">
+
+                    <h3>Hybrid Funds</h3>
+                    <p>Balanced mix of equity and debt for moderate risk-return</p>
+
+                    <div class="investment-info">
+                        <div>
+                            <span>Expected Returns</span>
+                            <h4>10-12% p.a.</h4>
+                        </div>
+
+                        <div>
+                            <span>Risk Level</span>
+                            <h4>Moderate</h4>
+                        </div>
+
+                        <p class="min-invest">Min. Investment ₹500</p>
+                    </div>
+
+                    <ul>
+                        <li>✔ Balanced risk-return</li>
+                        <li>✔ Automatic rebalancing</li>
+                        <li>✔ SWP Available</li>
+                        <li>✔ SIP Available (₹500+)</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="investment-card reveal">
+
+                    <h3>Index Funds</h3>
+                    <p>Track market indices with low costs and passive management</p>
+
+                    <div class="investment-info">
+                        <div>
+                            <span>Expected Returns</span>
+                            <h4>10-11% p.a.</h4>
+                        </div>
+
+                        <div>
+                            <span>Risk Level</span>
+                            <h4>Moderate</h4>
+                        </div>
+
+                        <p class="min-invest">Min. Investment ₹500</p>
+                    </div>
+
+                    <ul>
+                        <li>✔ Market matching returns</li>
+                        <li>✔ Passive management</li>
+                        <li>✔ SIP Available</li>
+                        <li>✔ STP from liquid funds</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="investment-card reveal">
+
+                    <h3>ELSS Funds</h3>
+                    <p>Tax-saving equity funds with 3-year lock-in period</p>
+
+                    <div class="investment-info">
+                        <div>
+                            <span>Expected Returns</span>
+                            <h4>12-16% p.a.</h4>
+                        </div>
+
+                        <div>
+                            <span>Risk Level</span>
+                            <h4>High</h4>
+                        </div>
+
+                        <p class="min-invest">Min. Investment ₹500</p>
+                    </div>
+
+                    <ul>
+                        <li>✔ Tax deduction (Section 80C)</li>
+                        <li>✔ 3-year lock-in period</li>
+                        <li>✔ Equity growth potential</li>
+                        <li>✔ SIP Available</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="investment-card reveal">
+
+                    <h3>Liquid Funds</h3>
+                    <p>Ultra-short term funds for parking surplus money</p>
+
+                    <div class="investment-info">
+                        <div>
+                            <span>Expected Returns</span>
+                            <h4>4-6% p.a.</h4>
+                        </div>
+
+                        <div>
+                            <span>Risk Level</span>
+                            <h4>Very Low</h4>
+                        </div>
+
+                        <p class="min-invest">Min. Investment ₹1000</p>
+                    </div>
+
+                    <ul>
+                        <li>✔ High liquidity</li>
+                        <li>✔ Better than savings account</li>
+                        <li>✔ SIP Available</li>
+                        <li>✔ STP to equity funds</li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <section class="calculator-section">
+
+        <div class="calculator-container">
+
+            <h2 class="calculator-title scroll-animate">Mutual Fund Calculators</h2>
+
+            <div class="calculator-grid">
+
+                <a href="../calculators/SipCalculator/sip.html" class="calc-btn scroll-animate">🧮 SIP Calculator</a>
+                <a href="../calculators/lumpsum-calculator/lumpsum.html" class="calc-btn scroll-animate">🧮 Lumpsum
+                    Calculator</a>
+                <a href="../calculators/stepup-sip-calculator/stepup-sip.html" class="calc-btn scroll-animate">🧮 StepUp
+                    SIP Calculator</a>
+                <a href="../calculators/mf-returns-calci/mf-returns.html" class="calc-btn scroll-animate">🧮 Mutual Fund
+                    Returns Calculator</a>
+                <a href="../calculators/swp-calculator/swp.html" class="calc-btn scroll-animate">🧮 SWP Calculator</a>
+                <a href="../calculators/elss-calculator/elss.html" class="calc-btn scroll-animate">🧮 ELSS
+                    Calculator</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <section class="why-mf-section">
+
+        <div class="why-mf-container">
+
+            <h2 class="why-mf-title">Why Choose Our Mutual Funds?</h2>
+
+            <div class="why-mf-grid">
+
+                <div class="why-mf-card reveal">
+                    <div class="why-mf-icon">📊</div>
+                    <h4>Professional Management</h4>
+                    <p>Expert fund managers with proven track records manage your investments.</p>
+                </div>
+
+                <div class="why-mf-card reveal">
+                    <div class="why-mf-icon">📁</div>
+                    <h4>Diversified Portfolio</h4>
+                    <p>Spread risk across multiple assets and sectors for balanced growth.</p>
+                </div>
+
+                <div class="why-mf-card reveal">
+                    <div class="why-mf-icon">💰</div>
+                    <h4>Low Minimum Investment</h4>
+                    <p>Start investing with as little as ₹500 through SIP options.</p>
+                </div>
+
+                <div class="why-mf-card reveal">
+                    <div class="why-mf-icon">📈</div>
+                    <h4>Strong Performance</h4>
+                    <p>Consistent returns outperforming benchmarks over time.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- COMPANY INFO -->
+
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Fatcat Wealthy">
+                </div>
+
+                <p>
+                    We are dedicated to empowering investors through education,
+                    mentorship, and financial planning.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://facebook.com/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://wa.me/919876543210" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/company/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- CONTACT -->
+
+
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="">
+                    <span>+91 95666 79958</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
+                    <span>support@fatcatwealthy.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
+                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                </div>
+            </div>
+
+            <!-- SERVICES ROUTES -->
+
+            <div class="footer-col">
+                <h4>What We Do</h4>
+
+                <ul>
+                    <li><a href="../services/mutual-fund.html">Mutual Fund</a></li>
+                    <li><a href="../services/stock-broking.html">Investment Broking</a></li>
+                    <li><a href="../services/insurance.html">Insurance</a></li>
+                    <li><a href="../academy/academy.html">Academy</a></li>
+                </ul>
+
+            </div>
+
+
+            <!-- COMPANY ROUTES -->
+
+            <div class="footer-col">
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../services/service.html">Services</a></li>
+                    <li><a href="../business/business.html">Business</a></li>
+                    <li><a href="../career/career.html">Careers</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/mutual-fund.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true
+        });
+    </script>
+
+</body>
+
+</html>

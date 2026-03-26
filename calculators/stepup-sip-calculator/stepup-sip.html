@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StepUp SIP | Mutual Fund</title>
+    <link rel="stylesheet" href="../stepup-sip-calculator/stepup-sip.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Fatcat Wealthy">
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="../../home/index.html" class="active">Home</a>
+                <a href="../about/about.html">About Us</a>
+
+                <div class="dropdown">
+
+                    <a href="../../services/service.html" class="dropbtn" id="servicesLink">
+                        Services <span class="arrow">▾</span>
+                    </a>
+
+                    <div class="dropdown-content">
+
+                        <div class="submenu">
+                            <a href="#">Investment Broking ▸</a>
+
+                            <div class="submenu-content">
+                                <a href="../services/mutual-fund.html">Mutual Fund</a>
+                                <a href="../services/stock-broking.html">Stock Broking</a>
+                            </div>
+                        </div>
+
+                        <a href="../services/insurance.html">Insurance</a>
+                        <a href="../services/loans.html">Loans</a>
+                        <a href="academy.html">Academy</a>
+
+                    </div>
+
+                </div>
+
+                <a href="academy.html">Academy</a>
+                <a href="business.html">Business</a>
+                <a href="career.html">Career</a>
+
+                <a href="contact.html" class="contact-btn">Contact Us</a>
+                <a href="../login/login.html" class="contact-btn">Login</a>
+
+
+            </nav>
+
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="calc-hero">
+
+        <div class="calc-container">
+
+            <a href="../../services/mutual-fund.html" class="back-btn">
+                ← Back
+            </a>
+
+            <h1>StepUp SIP Calculator</h1>
+
+            <p>
+                A Step-Up SIP Calculator estimates the future value of investments where you increase your SIP amount
+                periodically (usually yearly).
+                It helps you understand how gradually increasing your investment boosts long-term wealth through
+                compounding.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="stepup-sip-section">
+
+        <div class="stepup-sip-container">
+
+            <h2 class="stepup-sip-title">Step-Up SIP Calculator</h2>
+
+            <div class="stepup-sip-box">
+
+                <!-- LEFT INPUT -->
+
+                <div class="stepup-sip-left">
+
+                    <h3 class="stepup-estimator-title">
+                        <i class="fa-solid fa-calculator"></i>
+                        Returns Estimator
+                    </h3>
+
+                    <p class="stepup-estimator-sub">
+                        Estimation is based on the past performance
+                    </p>
+
+                    <div class="stepup-amount-box">
+
+                        <label>Monthly SIP Amount</label>
+
+                        <input type="number" id="sipAmount" value="5000">
+
+                    </div>
+
+
+                    <div class="stepup-slider-group">
+
+                        <label>
+                            Investment Duration
+                            <span id="yearValue">10</span> Yrs
+                        </label>
+
+                        <input type="range" id="years" min="1" max="40" value="10">
+
+                    </div>
+
+
+                    <div class="stepup-slider-group">
+
+                        <label>
+                            Expected Rate of Return
+                            <span id="rateValue">12</span> %
+                        </label>
+
+                        <input type="range" id="rate" min="1" max="30" value="12">
+
+                    </div>
+
+
+                    <div class="stepup-slider-group">
+
+                        <label>
+                            Annual Step-Up
+                            <span id="stepupValue">10</span> %
+                        </label>
+
+                        <input type="range" id="stepup" min="0" max="20" value="10">
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT RESULT -->
+
+                <div class="stepup-sip-right">
+
+                    <h3>
+                        The total value of your investment after
+                        <span id="resultYears">10</span> Years will be
+                    </h3>
+
+                    <h1 class="stepup-result-value">
+                        ₹ <span id="totalValue">0</span>
+                    </h1>
+
+                    <div class="stepup-chart-box">
+
+                        <canvas id="stepupSipChart"></canvas>
+
+                        <div class="stepup-legend">
+
+                            <p>
+                                <span class="stepup-color invested"></span>
+                                Invested Amount ₹ <span id="investedAmount"></span>
+                            </p>
+
+                            <p>
+                                <span class="stepup-color returns"></span>
+                                Est. Returns ₹ <span id="returnsAmount"></span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button class="stepup-invest-btn">
+                        Invest Now →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <section class="sip-info">
+
+        <div class="sip-info-container">
+
+            <h2>What is an Stepup-SIP Calculator?</h2>
+
+            <p>
+                A Step-Up SIP Calculator (also called a Top-Up SIP Calculator) is a financial tool used to estimate the
+                future value of investments where the SIP amount increases periodically. Unlike a regular SIP where you
+                invest a fixed amount every month, a Step-Up SIP allows you to increase your investment amount annually
+                (or at regular intervals), usually in line with your income growth.
+            </p>
+
+            <p>
+                This calculator is especially beneficial for salaried individuals whose income increases every year.
+                Instead of keeping the SIP constant, investors can gradually increase their contributions, which
+                significantly boosts long-term wealth creation. The Step-Up SIP calculator helps visualize how small
+                annual increments can lead to a much larger corpus over time.
+            </p>
+
+            <p>
+                The core advantage of a Step-Up SIP is the power of compounding combined with increasing investment. As
+                your SIP amount increases, each new contribution also earns returns, and over time, the total investment
+                grows exponentially. This makes it more powerful than a regular SIP for long-term financial goals like
+                retirement or wealth accumulation.
+            </p>
+
+            <p>
+                A Step-Up SIP calculator considers multiple variables such as initial SIP amount, annual step-up
+                percentage, expected rate of return, and investment duration. Based on these inputs, it calculates how
+                your investment grows year by year, factoring in both compounding and incremental contributions.
+            </p>
+
+            <h3>How does Stepup-SIP Calculator Work?</h3>
+
+            <p>Our Stepup-SIP Calculator online takes five main factors into account:</p>
+
+            <ol>
+                <li>FV (Future Value) → Final investment value</li>
+                <li>P → Initial SIP amount</li>
+                <li>r → Rate of return per period (monthly)</li>
+                <li>g → Growth rate of SIP (step-up rate)</li>
+                <li>n → Total number of periods (months)</li>
+            </ol>
+
+            <p>
+                Overall, a Step-Up SIP calculator is a smart planning tool for disciplined investors. It helps you stay
+                aligned with your financial growth, maximize returns, and achieve your goals faster by simply increasing
+                your investments gradually instead of making large one-time commitments.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- COMPANY INFO -->
+
+            <div class="footer-col">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Fatcat Wealthy">
+                </div>
+
+                <p>
+                    We are dedicated to empowering investors through education,
+                    mentorship, and financial planning.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://facebook.com/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://wa.me/919876543210" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/company/fatcatwealthy" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- CONTACT -->
+
+
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="">
+                    <span>+91 95666 79958</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
+                    <span>support@fatcatwealthy.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
+                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                </div>
+            </div>
+
+
+            <!-- SERVICES ROUTES -->
+
+            <div class="footer-col">
+                <h4>What We Do</h4>
+
+                <ul>
+                    <li><a href="../services/mutual-fund.html">Mutual Fund</a></li>
+                    <li><a href="../services/stock-broking.html">Investment Broking</a></li>
+                    <li><a href="../services/insurance.html">Insurance</a></li>
+                    <li><a href="../academy/academy.html">Academy</a></li>
+                </ul>
+
+            </div>
+
+
+            <!-- COMPANY ROUTES -->
+
+            <div class="footer-col">
+                <h4>Company</h4>
+
+                <ul>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="../services/service.html">Services</a></li>
+                    <li><a href="../business/business.html">Business</a></li>
+                    <li><a href="../career/career.html">Careers</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../stepup-sip-calculator/stepup-sip.js"></script>
+
+
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: "ease-in-out",
+            once: true
+        });
+    </script>
+
+</body>
+
+</html>
