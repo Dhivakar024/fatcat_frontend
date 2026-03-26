@@ -1,7 +1,11 @@
 {
   "routes": [
     { "src": "/", "dest": "/home/index.html" },
-    { "src": "/about", "dest": "/about/about.html" },
-    { "src": "/services", "dest": "/services/service.html" }
+    { "src": "/about", "dest": "../about/about.html" },
+    { "src": "/services", "dest": "../services/service.html" },
+    { "src": "/academy", "dest": "../academy/academy.html" },
+    { "src": "/business", "dest": "../business/business.html" },
+    { "src": "/career", "dest": "../career/career.html" },
+    { "src": "/contact", "dest": "../contact/contact.html" }
   ]
 }
