@@ -499,7 +499,9 @@ text-align:center;
     position: relative;
     width: 100%;
     height: 70vh;
-    background: url("../services/assets/hero7.jpg") center/cover no-repeat;
+    background: url("../assets/cont5.jpg") center/cover no-repeat;
+        /* background: url("../services/assets/hero7.jpg") center/cover no-repeat; */
+
     display: flex;
     align-items: center;
     justify-content: center;
