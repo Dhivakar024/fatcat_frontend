@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../theme.js" defer></script>
     <title>Home| Fatcat</title>
-    <link rel="stylesheet" href="/home/home.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
 <body>
+    
+
+   
 
     <header class="navbar">
 
@@ -23,11 +27,11 @@
 
             <nav class="nav-menu" id="navMenu">
 
-                <a href="home.html" class="active">Home</a>
-                <a href="/about/about.html">About Us</a>
+                <a href="index.html" class="active">Home</a>
+                <a href="../about/about.html">About Us</a>
                 <div class="dropdown">
 
-                    <a href="/services/service.html" class="dropbtn" id="servicesLink">
+                    <a href="../services/service.html" class="dropbtn" id="servicesLink">
                         Services <span class="arrow">▾</span>
                     </a>
 
@@ -37,25 +41,25 @@
                             <a href="#">Investment Broking ▸</a>
 
                             <div class="submenu-content">
-                                <a href="/services/mutual-fund.html">Mutual Fund</a>
-                                <a href="/services/stock-broking.html">Stock Broking</a>
+                                <a href="../services/mutual-fund.html">Mutual Fund</a>
+                                <a href="../services/stock-broking.html">Stock Broking</a>
                             </div>
                         </div>
 
-                        <a href="/services/insurance.html">Insurance</a>
-                        <a href="/services/loans.html">Loans</a>
-                        <a href="/academy/academy.html">Academy</a>
+                        <a href="../services/insurance.html">Insurance</a>
+                        <a href="../services/loans.html">Loans</a>
+                        <a href="../academy/academy.html">Academy</a>
 
                     </div>
 
                 </div>
 
-                <a href="/academy/academy.html">Academy</a>
-                <a href="/business/business.html">Business</a>
-                <a href="/career/career.html">Career</a>
+                <a href="../academy/academy.html">Academy</a>
+                <a href="../business/business.html">Business</a>
+                <a href="../career/career.html">Career</a>
 
-                <a href="/contact/contact.html" class="contact-btn">Contact Us</a>
-                <a href="/login/login.html" class="contact-btn">Login</a>
+                <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
+                <a href="../login/login.html" class="login-btn">Login</a>
 
 
             </nav>
@@ -69,7 +73,9 @@
 
         </div>
 
-    </header> 
+    </header>
+
+    
 
 
 <div id="enquiryModal" class="modal">
@@ -78,6 +84,7 @@
 
         <button class="close-btn" id="closeModalBtn">&times;</button>
 
+       
         <center><h2>Enquiry Form</h2></center><br>
 
         <form>
@@ -96,7 +103,7 @@
             <label>Message</label>
             <textarea rows="3"></textarea>
 
-            <center><button type="submit" >Submit</button></center>
+            
         </form>
 
     </div>
@@ -107,8 +114,8 @@
         <section class="hero">
 
             <!-- Background Video -->
-            <video autoplay muted loop playsinline class="hero-video">
-                <source src="assets/hero.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline preload="auto" class="hero-video">
+                <source src="assets/finance.mp4" type="video/mp4">
             </video>
 
             <!-- Overlay -->
@@ -169,12 +176,12 @@
                 <div class="about-stats">
 
                     <div class="stat-card">
-                        <h3>500+</h3>
+                        <h3><span class="counter" data-target="50">0</span>+</h3>
                         <p>Clients Worldwide</p>
                     </div>
 
                     <div class="stat-card">
-                        <h3>50+</h3>
+                        <h3><span class="counter" data-target="500">0</span>+</h3>
                         <p>Team Members</p>
                     </div>
 
@@ -221,7 +228,7 @@
 
                     <h3>Mutual Funds</h3>
 
-                    <p>
+                    <p class="dance-text">
                         Invest in diversified portfolios with flexible options like
                         SIPs, SWPs, and STPs tailored to your financial goals.
                     </p>
@@ -249,7 +256,7 @@
 
                     <h3>Insurance Services</h3>
 
-                    <p>
+                    <p class="dance-text">
                         Protect yourself and your loved ones with our wide range of
                         insurance solutions designed for financial security.
                     </p>
@@ -277,7 +284,7 @@
 
                     <h3>Investment Broking</h3>
 
-                    <p>
+                    <p class="dance-text">
                         Access global markets and trade confidently with expert
                         guidance through platforms like Upstox and Binance.
                     </p>
@@ -305,7 +312,7 @@
 
                     <h3>Financial Academy</h3>
 
-                    <p>
+                    <p class="dance-text">Your paragraph text here...</p>
                         Learn investing, trading, and financial management through
                         structured courses and expert-led training.
                     </p>
@@ -447,23 +454,19 @@
                 <div class="brand-slider">
 
                     <div class="brand-track">
-
-                        <img src="assets/aditya.png" alt="Aditya Birla">
-                        <img src="assets/upstox.png" alt="Upstox">
-                        <img src="assets/nivesh.png" alt="Nivesh">
-                        <img src="assets/zap.png" alt="Zap Academy">
-                        <img src="assets/newIndia.png" alt="newIndia">
-
-
-                        <!-- duplicate logos for infinite scroll -->
-
-                        <img src="assets/aditya.png" alt="Aditya Birla">
-                        <img src="assets/upstox.png" alt="Upstox">
-                        <img src="assets/nivesh.png" alt="Nivesh">
-                        <img src="assets/zap.png" alt="Zap Academy">
-                        <img src="assets/newIndia.png" alt="newIndia">
-
-
+                        <div class="brand-logo-set">
+                            <img src="assets/aditya.jpeg" alt="Aditya Birla">
+                            <img src="assets/upstox.png" alt="Upstox">
+                            <img src="assets/nivesh.png" alt="Nivesh">
+                            <img src="assets/newindia.jpeg" alt="New India">
+                        </div>
+                        <!-- Matching copy keeps the loop continuous. -->
+                        <div class="brand-logo-set" aria-hidden="true">
+                            <img src="assets/aditya.jpeg" alt="">
+                            <img src="assets/upstox.png" alt="">
+                            <img src="assets/nivesh.png" alt="">
+                            <img src="assets/newindia.jpeg" alt="">
+                        </div>
                     </div>
 
                 </div>
@@ -583,6 +586,10 @@
 
     <section class="cta-section">
 
+        <video autoplay muted loop playsinline class="cta-video">
+            <source src="assets\nvgpktnj-c.mp4" type="video/mp4">
+        </video>
+
         <div class="cta-overlay"></div>
 
         <div class="cta-content">
@@ -614,25 +621,25 @@
 
                 <!-- CARD 1 -->
 
-                <div class="testimonial-card">
+                <article class="testimonial-card">
 
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
+                    <img src="https://randomuser.me/api/portraits/women/15.jpg" alt="Shree Priya">
 
                     <p>
                         "Fatcat Wealthy helped me understand stock market investing
                         with practical strategies and real market insights."
                     </p>
 
-                    <h4>Sarah Johnson</h4>
+                    <h4>Shree Priya</h4>
                     <span>Entrepreneur</span>
 
-                </div>
+                </article>
 
                 <!-- CARD 2 -->
 
-                <div class="testimonial-card">
+                <article class="testimonial-card">
 
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                    <img src="https://randomuser.me/api/portraits/men/69.jpg" alt="Michael Carter">
 
                     <p>
                         "The financial academy courses are structured perfectly
@@ -642,74 +649,90 @@
                     <h4>Michael Carter</h4>
                     <span>Investor</span>
 
-                </div>
+                </article>
 
                 <!-- CARD 3 -->
 
-                <div class="testimonial-card">
+                <article class="testimonial-card">
 
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
+                    <img src="https://randomuser.me/api/portraits/women/88.jpg" alt="Dhivya Devi">
 
                     <p>
                         "Learning about mutual funds and portfolio planning
                         has completely changed my financial future."
                     </p>
 
-                    <h4>Emily Watson</h4>
+                    <h4>Dhivya Devi</h4>
                     <span>Financial Analyst</span>
 
-                </div>
+                </article>
 
+                 <!-- CARD  -->
+
+                <article class="testimonial-card">
+
+                    <img src="https://randomuser.me/api/portraits/women/13.jpg" alt="Mayura">
+
+                    <p>
+                        “Analyzing market trends and investment opportunities has
+                         completely changed the way I see my financial future.”
+                    </p>
+
+                    <h4>Mayura</h4>
+                    <span>Investment Analyst</span>
+
+                </article>
+                <!-- Card -->
+                 <article class="testimonial-card">
+ 
+                    <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="Pallavi">
+ 
+                    <p>
+                       “Improving processes and turning complex operations into smarter workflows has 
+                       completely changed the way I see my career future.”
+                    </p>
+ 
+                    <h4>Pallavi</h4>
+                    <span>Operations Analyst</span>
+
+                </article>
+ 
             </div>
-
+ 
         </div>
-
     </section>
 
 
     <section class="contact-section" data-aos="fade-up">
-        <section class="contact-section">
 
-            <div class="contact-container">
+    <div class="contact-container">
 
-                <!-- GOOGLE MAP -->
+        <!-- GOOGLE MAP -->
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps?q=salem&output=embed" width="100%" height="100%"
+                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
 
-                <div class="map-box">
+        <!-- ENQUIRY FORM -->
+        <div class="form-box">
+            <h3>Enquiry Form</h3>
 
-                    <iframe src="https://www.google.com/maps?q=salem&output=embed" width="100%" height="100%"
-                        style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
+            <form>
+                <input type="text" placeholder="Full name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Mobile" required>
+                <textarea placeholder="Message"></textarea>
 
+                <div class="form-actions">
+                    <button type="submit">Send</button>
+                    <button type="reset" class="form-cancel-btn">Cancel</button>
                 </div>
+            </form>
+        </div>
 
+    </div>
 
-                <!-- ENQUIRY FORM -->
-
-                <div class="form-box">
-
-                    <h3>Enquiry Form</h3>
-
-                    <form>
-
-                        <input type="text" placeholder="Full name" required>
-
-                        <input type="email" placeholder="Email" required>
-
-                        <input type="tel" placeholder="Mobile" required>
-
-                        <textarea placeholder="Message"></textarea>
-
-                        <button type="submit">Submit</button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </section>
+</section>
 
     <footer class="footer">
 
@@ -737,7 +760,7 @@
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
 
-                    <a href="https://wa.me/919876543210" target="_blank">
+                    <a href="https://wa.me/919566679958" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                     
@@ -810,24 +833,20 @@
 
     </footer>
 
-
-
-
-
-
-
-
+    <a href="https://wa.me/919566679958" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
         AOS.init({
             duration: 1000,
-            easing: "ease-in-out",
+            
             once: true
         });
     </script>
-    <script src="/home/home.js"></script>
+    <script src="home.js"></script>
 </body>
 
 </html>

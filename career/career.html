@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../theme.js" defer></script>
     <title>Career | Fatcat</title>
     <link rel="stylesheet" href="../career/career.css">
 
@@ -197,7 +198,17 @@
 
         <div class="job-filter-container">
 
-            <input type="text" id="jobSearch" placeholder="Search for jobs..." class="job-search-input">
+            <div class="job-search-wrapper">
+
+                <input type="text" id="jobSearch" placeholder="Search jobs, skills or keywords..."
+                    class="job-search-input">
+
+                <button class="job-search-btn" type="button">
+                    Search
+                </button>
+
+            </div>
+
 
             <div class="filter-row">
 
@@ -229,17 +240,10 @@
 
     </section>
 
-
-
     <!-- CAREER OPENINGS -->
     <section class="career-openings">
         <div class="career-container">
-
-
-
-            <!-- LEFT SIDE JOB LIST -->
             <div class="job-list reveal-left">
-
                 <div class="job-card active" data-title="MBA Department Manager" data-level="Mid-Level"
                     data-location="Chennai, Madurai"
                     data-description="Responsible for planning, managing department operations, handling teams and improving business performance."
@@ -247,9 +251,7 @@
 
                     <h3>MBA Department Manager</h3>
                     <p>Mid-Level Chennai Madurai</p>
-
                 </div>
-
 
                 <div class="job-card" data-title="UX/UI Designer" data-level="Mid-Level"
                     data-location="Chennai, Madurai"
@@ -293,13 +295,7 @@
 
                 </div>
 
-
             </div>
-
-
-
-
-
 
             <!-- RIGHT SIDE DETAILS -->
             <div class="job-details reveal-right">
@@ -351,8 +347,9 @@
 
                 </div>
 
-                <button class="apply-btn">Apply Now</button>
-
+                <button class="apply-btn" onclick="applyForJob()">
+                    Apply Now
+                </button>
             </div>
 
         </div>
@@ -360,11 +357,6 @@
         <div id="noResults" style="display:none; text-align:center; color:red;">No jobs found</div>
 
     </section>
-
-
-
-
-
 
     <section class="work-together reveal">
         <div class="work-container">
@@ -382,8 +374,6 @@
 
         </div>
     </section>
-
-
 
 
 
@@ -415,7 +405,7 @@
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
 
-                    <a href="https://wa.me/919876543210" target="_blank">
+                    <a href="https://wa.me/919566679958" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
 
@@ -479,13 +469,11 @@
 
         </div>
 
-
         <div class="footer-bottom">
             <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
         </div>
 
     </footer>
-
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -499,7 +487,7 @@
             once: true
         });
     </script>
-
+    <script src="careers.js"></script>
 </body>
 
 </html>

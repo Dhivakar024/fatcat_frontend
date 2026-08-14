@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../theme.js" defer></script>
     <title>Business | Fatcat</title>
     <link rel="stylesheet" href="../business/business.css">
 
@@ -76,6 +77,10 @@
 
     <section class="business-hero">
 
+        <video autoplay muted loop playsinline class="business-video" preload="metadata" poster="../assets/hero-poster.jpg">
+            <source src="../calculators/assets/newbuilding.mp4" type="video/mp4">
+        </video>
+
         <div class="hero-overlay"></div>
 
         <div class="hero-content scroll-animate">
@@ -93,15 +98,15 @@
 
             <h2 class="section-title scroll-animate">Our Own Brands</h2>
 
-            <div class="brand-row">
+            <div class="brand-row" data-aos="fade-up">
 
                 <!-- Image -->
-                <div class="brand-image scroll-animate">
+                <div class="brand-image scroll-animate" data-aos="zoom-in">
                     <img src="../services/assets/lax1.jpg" alt="Lax360">
                 </div>
 
                 <!-- Content -->
-                <div class="brand-content scroll-animate">
+                <div class="brand-content scroll-animate" data-aos="fade-left">
 
                     <h3 class="brand-title">Lax360 Pvt Ltd</h3>
 
@@ -121,14 +126,14 @@
 
                     <!-- Stats -->
                     <div class="brand-stats">
-                        <p><strong>Projects:</strong> 60</p>
-                        <p><strong>Clients:</strong> 40</p>
+                        <p><strong>Projects:</strong> <span class="counter" data-target="60">0</span></p>
+                        <p><strong>Clients:</strong> <span class="counter" data-target="40">0</span></p>
                     </div>
 
-                    <!-- Button -->
-                    <a href="https://lax360.in/" class="brand-btn">
-                        Visit Website →
-                    </a>
+                    <div class="brand-actions">
+                        <a href="https://lax360.in/" class="brand-btn" target="_blank" rel="noopener">Visit Website →</a>
+                        <button class="brand-btn secondary open-details" data-brand="lax360">Learn More</button>
+                    </div>
 
                 </div>
 
@@ -137,18 +142,18 @@
         </div>
     </section>
 
-    <section class="brands-section cadpoint-section">
+    <section class="cadpoint-section">
         <div class="container">
 
-            <div class="brand-row reverse">
+            <div class="brand-row reverse" data-aos="fade-up">
 
                 <!-- Image -->
-                <div class="brand-image scroll-animate">
+                <div class="brand-image scroll-animate" data-aos="zoom-in">
                     <img src="../assets/mep.jpg" alt="CadPoint">
                 </div>
 
                 <!-- Content -->
-                <div class="brand-content scroll-animate">
+                <div class="brand-content scroll-animate" data-aos="fade-right">
 
                     <h3 class="brand-title cadpoint-title">CadPoint</h3>
 
@@ -170,14 +175,14 @@
 
                     <!-- Stats -->
                     <div class="brand-stats">
-                        <p><strong>Projects:</strong> 60</p>
-                        <p><strong>Clients:</strong> 40</p>
+                        <p><strong>Projects:</strong> <span class="counter" data-target="60">0</span></p>
+                        <p><strong>Clients:</strong> <span class="counter" data-target="40">0</span></p>
                     </div>
 
-                    <!-- Button -->
-                    <a href="https://cadpoint.co.in/" class="brand-btn cadpoint-btn">
-                        See Projects →
-                    </a>
+                    <div class="brand-actions">
+                        <a href="https://cadpoint.co.in/" class="brand-btn cadpoint-btn" target="_blank" rel="noopener">See Projects →</a>
+                        <button class="brand-btn secondary cadpoint-details open-details" data-brand="cadpoint">Details</button>
+                    </div>
 
                 </div>
 
@@ -194,15 +199,15 @@
         <div class="container">
 <h2 class="section-title scroll-animate">Franchise Companies</h2>
 
-            <div class="brand-row">
+            <div class="brand-row" data-aos="fade-up">
 
                 <!-- Image -->
-                <div class="brand-image scroll-animate">
+                <div class="brand-image scroll-animate" data-aos="zoom-in">
                     <img src="../assets/inp.jpg" alt="Lax360">
                 </div>
 
                 <!-- Content -->
-                <div class="brand-content scroll-animate">
+                <div class="brand-content scroll-animate" data-aos="fade-left">
 
                     <h3 class="brand-title">InPAT pro</h3>
 
@@ -226,10 +231,10 @@
                         <p><strong>Clients:</strong> 40</p>
                     </div> -->
 
-                    <!-- Button -->
-                    <a href="https://inpatpro.com/" class="brand-btn">
-                        Visit Website →
-                    </a>
+                    <div class="brand-actions">
+                        <a href="https://inpatpro.com/" class="brand-btn" target="_blank" rel="noopener">Visit Website →</a>
+                        <button class="brand-btn secondary open-details" data-brand="inpat">Learn More</button>
+                    </div>
 
                 </div>
 
@@ -269,7 +274,7 @@
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
 
-                    <a href="https://wa.me/919876543210" target="_blank">
+                    <a href="https://wa.me/919566679958" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
 
@@ -355,6 +360,17 @@
             once: true
         });
     </script>
+
+    <!-- Modal for brand details -->
+    <div class="modal-backdrop" id="brandModal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true">
+            <button class="close" id="modalClose" aria-label="Close">×</button>
+            <div id="modalContent">
+                <h3 id="modalTitle"></h3>
+                <p id="modalBody"></p>
+            </div>
+        </div>
+    </div>
 
 </body>
 

@@ -1,0 +1,296 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f7f8;
+    color:#102f38;
+}
+
+
+/* ===============================
+   PAGE
+================================ */
+
+.application-page{
+    min-height:100vh;
+    padding:70px 20px;
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(31,155,180,.08),
+            transparent 35%
+        ),
+        #f5f7f8;
+}
+
+
+.application-container{
+    max-width:1000px;
+    margin:auto;
+}
+
+
+/* ===============================
+   HEADER
+================================ */
+
+.application-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+
+.application-tag{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:30px;
+    background:#e7f5f7;
+    color:#148a9a;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:15px;
+}
+
+
+.application-header h1{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+
+.application-header p{
+    max-width:620px;
+    margin:auto;
+    color:#68777c;
+    line-height:1.7;
+    font-size:15px;
+}
+
+
+/* ===============================
+   CARD
+================================ */
+
+.application-card{
+    background:#fff;
+    border-radius:18px;
+    padding:40px;
+    box-shadow:
+        0 20px 60px rgba(15,40,48,.10);
+}
+
+
+/* ===============================
+   SELECTED JOB
+================================ */
+
+.selected-job{
+    background:#f2f8f9;
+    border-left:4px solid #1a9aaa;
+    padding:20px 22px;
+    border-radius:10px;
+    margin-bottom:35px;
+}
+
+
+.selected-job span{
+    display:block;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:#718086;
+    margin-bottom:6px;
+}
+
+
+.selected-job h2{
+    font-size:22px;
+    color:#126c7a;
+}
+
+
+/* ===============================
+   FORM SECTION
+================================ */
+
+.form-section{
+    margin-bottom:38px;
+}
+
+
+.form-section h3{
+    font-size:20px;
+    margin-bottom:22px;
+    padding-bottom:12px;
+    border-bottom:1px solid #e7ecee;
+}
+
+
+/* ===============================
+   GRID
+================================ */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+
+.form-group.full{
+    width:100%;
+}
+
+
+.form-group label{
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:#344b52;
+}
+
+
+.form-group label span{
+    color:#d9363e;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    border:1px solid #d9e2e5;
+    border-radius:9px;
+    padding:13px 14px;
+    font-size:14px;
+    font-family:inherit;
+    outline:none;
+    background:#fff;
+    transition:.25s;
+}
+
+
+.form-group textarea{
+    resize:vertical;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#1a9aaa;
+    box-shadow:0 0 0 3px rgba(26,154,170,.10);
+}
+
+
+.form-group small{
+    margin-top:7px;
+    font-size:11px;
+    color:#89969a;
+}
+
+
+/* ===============================
+   FILE
+================================ */
+
+input[type="file"]{
+    padding:11px;
+    background:#fafcfc;
+}
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.application-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:14px;
+    padding-top:25px;
+    border-top:1px solid #e7ecee;
+}
+
+
+.cancel-btn,
+.submit-btn{
+    padding:13px 28px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+
+.cancel-btn{
+    background:#fff;
+    border:1px solid #ccd7da;
+    color:#52656b;
+}
+
+
+.cancel-btn:hover{
+    background:#f3f5f5;
+}
+
+
+.submit-btn{
+    border:none;
+    background:#168e9e;
+    color:#fff;
+    box-shadow:0 8px 20px rgba(22,142,158,.22);
+}
+
+
+.submit-btn:hover{
+    background:#117582;
+    transform:translateY(-2px);
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:700px){
+
+    .application-page{
+        padding:40px 15px;
+    }
+
+    .application-header h1{
+        font-size:32px;
+    }
+
+    .application-card{
+        padding:25px 20px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .application-actions{
+        flex-direction:column-reverse;
+    }
+
+    .cancel-btn,
+    .submit-btn{
+        width:100%;
+    }
+
+}

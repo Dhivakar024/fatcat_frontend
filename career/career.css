@@ -804,71 +804,143 @@ transform:scale(1);
 
 /* JOB FILTER */
 
-.job-filter-section{
-padding:40px 8%;
+.job-filter-section {
+    padding: 70px 8% 50px;
+    background: #f7f8f6;
 }
 
-.job-filter-container{
-background:#eee;
-padding:30px;
-border-radius:8px;
+.job-filter-container {
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 38px;
+    border-radius: 18px;
+    border: 1px solid rgba(20, 138, 154, 0.10);
+    box-shadow: 0 18px 45px rgba(11, 32, 39, 0.08);
 }
 
-
-.job-search-wrapper{
-position:relative;
-width:100%;
+.job-search-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
 }
 
-.job-search-input{
-width:100%;
-padding:16px 130px 16px 20px;
-border-radius:8px;
-border:2px solid #333;
-font-size:16px;
+.job-search-input {
+    width: 100%;
+    height: 56px;
+    padding: 0 135px 0 20px;
+    border: 1px solid #dfe5e7;
+    border-radius: 10px;
+    background: #fafcfc;
+    color: #1f343a;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
 }
 
-.job-search-btn{
-position:absolute;
-right:6px;
-top:50%;
-transform:translateY(-50%);
-padding:10px 25px;
-border:none;
-background:#2f9fb3;
-color:white;
-border-radius:6px;
-cursor:pointer;
-font-size:15px;
+.job-search-input::placeholder {
+    color: #89979b;
 }
 
-.job-search-btn:hover{
-background:#23879a;
+.job-search-input:focus {
+    background: #ffffff;
+    border-color: #2f9fb3;
+    box-shadow: 0 0 0 4px rgba(47, 159, 179, 0.10);
 }
 
-/* search */
-
-.job-search-input{
-width:100%;
-padding:14px;
-margin-bottom:20px;
-border:none;
-border-radius:5px;
-font-size:15px;
+.job-search-btn {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 44px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 8px;
+    background: #2f9fb3;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* filters */
-
-.filter-row{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
+.job-search-btn:hover {
+    background: #23879a;
+    transform: translateY(-50%) translateY(-1px);
 }
 
-.filter-row select{
-padding:10px 14px;
-border:none;
-border-radius:5px;
+.filter-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.filter-row select {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    border: 1px solid #e0e6e8;
+    border-radius: 9px;
+    background: #f8faf9;
+    color: #33484e;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-row select:hover {
+    border-color: #b9d7dc;
+    background: #ffffff;
+}
+
+.filter-row select:focus {
+    border-color: #2f9fb3;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(47, 159, 179, 0.08);
+}
+
+@media (max-width: 850px) {
+    .job-filter-section {
+        padding: 55px 5% 40px;
+    }
+    .job-filter-container {
+        padding: 28px;
+    }
+    .filter-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .job-filter-section {
+        padding: 40px 20px;
+    }
+    .job-filter-container {
+        padding: 22px;
+        border-radius: 14px;
+    }
+    .job-search-input {
+        height: 52px;
+        padding: 0 15px;
+    }
+    .job-search-btn {
+        position: static;
+        transform: none;
+        width: 100%;
+        height: 48px;
+        margin-top: 12px;
+    }
+    .job-search-btn:hover {
+        transform: none;
+    }
+    .filter-row {
+        gap: 12px;
+    }
+    .filter-row select {
+        height: 48px;
+    }
 }
 
 /* job cards */
@@ -1265,3 +1337,688 @@ font-size:14px;
 
 }
 
+/* =====================================================
+   CANDIDATE APPLICATION
+===================================================== */
+
+.application-section {
+    display: none;
+
+    padding: 90px 8%;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(47, 159, 179, 0.06),
+            transparent 35%
+        ),
+        #f7f8f6;
+}
+
+
+.application-section.active {
+    display: block;
+}
+
+
+.application-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.application-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+
+.application-label {
+    display: inline-block;
+
+    font-family: 'IBM Plex Mono', monospace;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    color: #2f9fb3;
+
+    margin-bottom: 12px;
+}
+
+
+.application-header h2 {
+    margin: 0 0 14px;
+
+    font-family: 'Fraunces', serif;
+
+    font-size: 42px;
+
+    color: #17343b;
+}
+
+
+.application-header p {
+    margin: 0;
+
+    color: #68777b;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   APPLICATION CARD
+===================================================== */
+
+.application-card {
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 45px;
+
+    border: 1px solid #e3e9ea;
+
+    box-shadow:
+        0 25px 60px rgba(11, 32, 39, 0.09);
+}
+
+
+/* =====================================================
+   SELECTED JOB
+===================================================== */
+
+.selected-job {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    margin-bottom: 40px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #f0f8f9,
+        #f8fbfb
+    );
+
+    border-left: 4px solid #2f9fb3;
+}
+
+
+.selected-job span:first-child {
+    display: block;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.2px;
+
+    color: #7b898d;
+
+    margin-bottom: 5px;
+}
+
+
+.selected-job h3 {
+    margin: 0;
+
+    color: #173e46;
+
+    font-size: 21px;
+}
+
+
+.job-badge {
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    background: #e1f3f5;
+
+    color: #227c8b;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   FORM SECTION
+===================================================== */
+
+.form-section {
+    padding-bottom: 38px;
+
+    margin-bottom: 38px;
+
+    border-bottom: 1px solid #edf0f1;
+}
+
+
+.form-section-title {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.form-section-title > span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #e8f5f6;
+
+    color: #258798;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.form-section-title h3 {
+    margin: 0 0 4px;
+
+    font-size: 19px;
+
+    color: #203b41;
+}
+
+
+.form-section-title p {
+    margin: 0;
+
+    color: #849094;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.form-group.full-width {
+    width: 100%;
+}
+
+
+.form-group label {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #344a50;
+}
+
+
+.form-group label span {
+    color: #d35f5f;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #dce4e6;
+
+    background: #fbfcfc;
+
+    border-radius: 9px;
+
+    padding: 13px 15px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    color: #263f45;
+
+    outline: none;
+
+    transition: .25s;
+}
+
+
+.form-group input,
+.form-group select {
+    height: 48px;
+}
+
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 140px;
+
+    line-height: 1.6;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9aa6a9;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    background: #ffffff;
+
+    border-color: #2f9fb3;
+
+    box-shadow:
+        0 0 0 4px rgba(47, 159, 179, 0.09);
+}
+
+
+/* =====================================================
+   RESUME UPLOAD
+===================================================== */
+
+.resume-upload {
+
+    position: relative;
+
+    border: 1.5px dashed #b9d3d7;
+
+    border-radius: 12px;
+
+    background: #f8fbfb;
+
+    transition: .3s;
+
+    overflow: hidden;
+}
+
+
+.resume-upload:hover {
+
+    border-color: #2f9fb3;
+
+    background: #f3fafb;
+}
+
+
+.resume-upload input[type="file"] {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+
+.upload-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 20px;
+}
+
+
+.upload-icon {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 10px;
+
+    background: #e4f4f6;
+
+    color: #27899a;
+
+    font-size: 22px;
+}
+
+
+.upload-content strong {
+
+    display: block;
+
+    color: #355158;
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+
+.upload-content p {
+
+    margin: 0;
+
+    color: #89979b;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   CONSENT
+===================================================== */
+
+.application-consent {
+
+    margin-bottom: 28px;
+
+    padding: 15px 18px;
+
+    border-radius: 9px;
+
+    background: #f8faf9;
+}
+
+
+.application-consent label {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+    color: #68777b;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.application-consent input {
+
+    margin-top: 3px;
+
+    accent-color: #2f9fb3;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.application-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+
+.cancel-application-btn,
+.submit-application-btn {
+
+    height: 48px;
+
+    padding: 0 25px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+/* Cancel */
+
+.cancel-application-btn {
+
+    background: #ffffff;
+
+    color: #596b70;
+
+    border: 1px solid #d7e0e2;
+}
+
+
+.cancel-application-btn:hover {
+
+    background: #f3f5f5;
+
+    border-color: #c4ced0;
+}
+
+
+/* Submit */
+
+.submit-application-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: none;
+
+    background: #2f9fb3;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(47, 159, 179, 0.22);
+}
+
+
+.submit-application-btn span {
+
+    font-size: 18px;
+
+    transition: .25s;
+}
+
+
+.submit-application-btn:hover {
+
+    background: #23879a;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(47, 159, 179, 0.28);
+}
+
+
+.submit-application-btn:hover span {
+
+    transform: translateX(3px);
+}
+
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.application-note {
+
+    margin: 18px 0 0;
+
+    text-align: center;
+
+    color: #9aa5a8;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .application-section {
+
+        padding: 60px 5%;
+    }
+
+
+    .application-card {
+
+        padding: 30px 24px;
+
+        border-radius: 16px;
+    }
+
+
+    .application-header h2 {
+
+        font-size: 34px;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .selected-job {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .application-actions {
+
+        flex-direction: column-reverse;
+    }
+
+
+    .cancel-application-btn,
+    .submit-application-btn {
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .application-section {
+
+        padding: 45px 18px;
+    }
+
+
+    .application-card {
+
+        padding: 22px 17px;
+    }
+
+
+    .application-header h2 {
+
+        font-size: 29px;
+    }
+
+
+    .application-header p {
+
+        font-size: 14px;
+    }
+
+
+    .selected-job {
+
+        padding: 18px;
+    }
+
+}

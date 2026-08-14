@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../theme.js" defer></script>
 
     <title>About Us | Fatcat Wealthy</title>
 
     <link rel="stylesheet" href="about.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,500;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -17,6 +19,8 @@
 </head>
 
 <body>
+
+    <div class="scroll-progress"></div>
 
 
 
@@ -64,6 +68,7 @@
 
                 <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
                 <a href="../login/login.html" class="contact-btn">Login</a>
+                <button id="themeBtn"></button>
 
 
             </nav>
@@ -79,13 +84,13 @@
 
     </header>
 
-
-
-
-
     <!-- HERO SECTION -->
 
-    <section class="hero">
+    <section class="hero" id="hero">
+
+        <div class="hero-spotlight"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
 
         <div class="hero-overlay">
 
@@ -103,142 +108,261 @@
 
     </section>
 
+    <!-- MARQUEE TICKER -->
+
+    <div class="marquee">
+        <div class="marquee-track">
+            <span>Independent Advisory</span><span class="dot">•</span>
+            <span>Data-Driven Strategies</span><span class="dot">•</span>
+            <span>Robust Digital Infrastructure</span><span class="dot">•</span>
+            <span>Custom Asset Allocation</span><span class="dot">•</span>
+            <span>Independent Advisory</span><span class="dot">•</span>
+            <span>Data-Driven Strategies</span><span class="dot">•</span>
+            <span>Robust Digital Infrastructure</span><span class="dot">•</span>
+            <span>Custom Asset Allocation</span><span class="dot">•</span>
+        </div>
+    </div>
+
     <!-- ABOUT INTRO -->
 
     <section class="about-intro reveal">
 
-        <h3>
-            Best-In-Class Wealth Management & Financial Advisory
-        </h3>
+        <div class="about-intro-inner">
 
-        <p>
-            Empowering clients with over two decades of experience in
-            financial growth and asset protection
-            <br>
-            Who We
-        </p>
+            <div class="eyebrow">ABOUT US</div>
+
+            <h3>
+                Best-In-Class Wealth Management
+                <span>& Financial Advisory</span>
+            </h3>
+
+            <p>
+                Empowering clients with over two decades of experience
+                in financial growth, wealth preservation, and asset protection.
+            </p>
 
     </section>
 
 
     <!-- WHO WE ARE -->
 
-    <section class="who-section reveal">
+    <section class="who-section">
 
-        <h2>Who We Are</h2>
+        <div class="who-inner">
 
-        <div class="who-image">
+            <!-- IMAGE -->
+            <div class="who-image reveal-left">
 
-            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800" alt="team meeting">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200"
+                    alt="Professional financial advisory team meeting">
+
+                <div class="stat-badge">
+
+                    <strong>20+</strong>
+
+                    <span>
+                        Years of<br>
+                        Experience
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT -->
+            <div class="who-content reveal-right">
+
+                <div class="eyebrow">
+                    OUR STORY
+                </div>
+
+                <h2>
+                    Who We Are
+                </h2>
+
+                <div class="heading-line"></div>
+
+                <p class="who-text">
+                    We are a purpose-driven wealth advisory firm,
+                    empowering clients with over two decades of experience
+                    in financial growth and asset protection.
+                </p>
+
+                <p class="who-text">
+                    At the heart of our services lies a commitment to
+                    personalized financial care, built on trust,
+                    transparency, and a long-term vision.
+                </p>
+
+
+                <!-- FEATURES -->
+
+                <div class="who-features">
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <h4>Personalized Strategies</h4>
+                            <p>
+                                Financial solutions designed around
+                                your individual goals.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <h4>Long-Term Vision</h4>
+                            <p>
+                                Building sustainable wealth for
+                                today and future generations.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <a href="#contact" class="who-button">
+                    Discover Our Approach
+                    <span>→</span>
+                </a>
+
+            </div>
 
         </div>
 
-        <p class="who-text">
+    </section>
 
-            We are a purpose-driven wealth advisory firm, empowering clients with over two decades of experience in
-            financial growth and asset protection. At the heart of our services lies a commitment to personalized
-            financial care, built on trust, transparency, and long-term vision.
+    <!-- STATS STRIP -->
 
-        </p>
+    <section class="stats-strip reveal-up">
+
+        <div class="stats-container">
+
+            <div class="stat-item">
+                <span class="stat-num">20+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Independent Advice</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+                <span class="stat-num">0</span>
+                <span class="stat-label">Product Bias</span>
+            </div>
+
+        </div>
 
     </section>
 
     <section class="features">
 
-        <div class="features-container">
+    <div class="features-container">
 
-            <!-- CARD 1 -->
+        <div class="feature-card left reveal tilt-target">
 
-            <div class="feature-card left reveal">
+            <img src="../assets/abt1.png" alt="Independent Advisory">
 
-                <!-- <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png"> -->
-                <img src="../assets/abt1.png" alt="" height="180px">
+            <div class="feature-text">
+                <h3>Independent Advisory</h3>
 
-                <div class="feature-text">
-                    <h3>Independent Advisory</h3>
-                    <div class="line"></div>
+                <div class="line"></div>
 
-                    <p>
-                        We operate with complete independence and zero product affiliations.Our advice is unbiased and
-                        focused purely on your financial well-being.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- CARD 2 -->
-
-            <div class="feature-card right reveal">
-
-                <!-- <img src="https://cdn-icons-png.flaticon.com/512/4149/4149650.png"> -->
-                <img src="../assets/abt2.png" alt="" height="180px">
-
-                <div class="feature-text">
-                    <h3>Data-Driven Investment Strategies</h3>
-                    <div class="line"></div>
-
-                    <p>
-                        Our strategies are backed by in-depth research and real-time market analysis.Every
-                        recommendation is guided by data, not speculation.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- CARD 3 -->
-
-            <div class="feature-card left reveal">
-
-                <!-- <img src="https://cdn-icons-png.flaticon.com/512/1041/1041880.png"> -->
-                <img src="../assets/abt3.png" alt="" height="180px">
-
-                <div class="feature-text">
-                    <h3>Robust Digital Infrastructure</h3>
-                    <div class="line"></div>
-
-                    <p>
-                        We leverage secure and advanced digital platforms for seamless portfolio management.Track
-                        performance, insights, and reports anytime with full transparency.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- CARD 4 -->
-
-            <div class="feature-card right reveal">
-
-                <!-- <img src="https://cdn-icons-png.flaticon.com/512/3021/3021819.png"> -->
-                <img src="../assets/abt4.png" alt="" height="180px">
-
-                <div class="feature-text">
-                    <h3>Custom Asset Allocation</h3>
-                    <div class="line"></div>
-
-                    <p>
-                        We design investment strategies tailored to your goals and risk profile.Your portfolio is
-                        structured to align with your long-term financial vision.
-                    </p>
-
-                </div>
-
+                <p>
+                    We operate with complete independence and zero product affiliations.
+                    Our advice is unbiased and focused purely on your financial well-being.
+                </p>
             </div>
 
         </div>
 
-    </section>
+
+        <div class="feature-card right reveal tilt-target">
+
+            <img src="../assets/abt2.png" alt="Data-Driven Investment Strategies">
+
+            <div class="feature-text">
+                <h3>Data-Driven Investment Strategies</h3>
+
+                <div class="line"></div>
+
+                <p>
+                    Our strategies are backed by in-depth research and real-time market
+                    analysis. Every recommendation is guided by data, not speculation.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="feature-card left reveal tilt-target">
+
+            <img src="../assets/abt3.png" alt="Robust Digital Infrastructure">
+
+            <div class="feature-text">
+                <h3>Robust Digital Infrastructure</h3>
+
+                <div class="line"></div>
+
+                <p>
+                    We leverage secure and advanced digital platforms for seamless
+                    portfolio management. Track performance, insights, and reports
+                    anytime with full transparency.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="feature-card right reveal tilt-target">
+
+            <img src="../assets/abt4.png" alt="Custom Asset Allocation">
+
+            <div class="feature-text">
+                <h3>Custom Asset Allocation</h3>
+
+                <div class="line"></div>
+
+                <p>
+                    We design investment strategies tailored to your goals and risk
+                    profile. Your portfolio is structured to align with your
+                    long-term financial vision.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
     <section class="why-section">
 
-        <div class="why-header">
+        <div class="why-header center">
 
+            <div class="eyebrow">Our Edge</div>
             <h2>Why Choose Us</h2>
 
             <p>
@@ -246,7 +370,7 @@
                 Delivering clarity, confidence, and long-term value.
             </p>
 
-            <a href="../services/service.html" class="explore-btn">Explore</a>
+            <a href="../services/service.html" class="explore-btn magnetic">Explore</a>
 
         </div>
 
@@ -262,7 +386,7 @@
 
             <div class="why-content">
 
-                <h3>“Your Success Is<br>Our Commitment”</h3>
+                <h3>“Your Success Is Our Commitment”</h3>
 
                 <div class="why-item">
 
@@ -294,7 +418,7 @@
 
                 </div>
 
-                <a href="../contact/contact.html" class="read-btn">know More</a>
+                <a href="../contact/contact.html" class="read-btn magnetic">know More</a>
 
             </div>
 
@@ -309,6 +433,7 @@
 
             <div class="mission-text reveal-left">
 
+                <div class="eyebrow">Purpose</div>
                 <h2>Our Mission</h2>
 
                 <p>
@@ -334,7 +459,6 @@
 
             </div>
 
-
             <div class="mission-images reveal-right">
 
                 <img src="../assets/money.jpg">
@@ -352,8 +476,6 @@
 
         <div class="vision-container">
 
-
-
             <div class="mission-images reveal-right">
 
                 <img src="../assets/vision2.png">
@@ -362,11 +484,9 @@
 
             </div>
 
-
-
-
             <div class="vision-text reveal-right">
 
+                <div class="eyebrow">Direction</div>
                 <h2>Our Vision</h2>
 
                 <p>
@@ -376,7 +496,7 @@
                 </p>
 
                 <p><b>“Grow Smart. Live Wealthy.”</b></p>
-<!-- 
+                <!-- 
                 <p>
                     By combining technology, expertise, and a client-first approach, we strive to build a platform where
                     financial services are simple, transparent, and reliable.
@@ -412,7 +532,7 @@
                 Join thousands of satisfied clients who trust us with their wealth management
             </p>
 
-            <a href="../contact/contact.html" class="cta-btn">Get Started →</a>
+            <a href="../contact/contact.html" class="cta-btn magnetic">Get Started →</a>
 
         </div>
 
@@ -446,7 +566,7 @@
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
 
-                    <a href="https://wa.me/919876543210" target="_blank">
+                    <a href="https://wa.me/919566679958" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
 
@@ -518,12 +638,6 @@
         </div>
 
     </footer>
-
-
-
-
-
-
 
     <script src="about.js"></script>
 

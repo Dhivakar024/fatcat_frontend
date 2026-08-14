@@ -7,8 +7,22 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hamburger && navMenu) {
     hamburger.addEventListener("click", () => {
       navMenu.classList.toggle("active");
+      hamburger.classList.toggle("active");
+
     });
   }
+  //counter
+  const counters = document.querySelectorAll(".counter");
+  counters.forEach(counter => {
+    const target = +counter.getAttribute("data-target");
+    setInterval( ()=> {
+      let current = +counter.innerText;
+      if(current < target) {
+        counter.innerText = current + 1;
+      
+      }
+    },30);
+  });
 
   /* ================= MOBILE DROPDOWN ================= */
   const dropdown = document.querySelector(".dropdown");
@@ -44,6 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     
+  /* ================= WHATSAPP FLOATING BUTTON ================= */
+  const whatsappFloat = document.querySelector(".whatsapp-float");
+
+  if (whatsappFloat) {
+    const updateWhatsappFloat = () => {
+      whatsappFloat.classList.toggle("scrolled", window.scrollY > 120);
+    };
+
+    updateWhatsappFloat();
+    window.addEventListener("scroll", updateWhatsappFloat, { passive: true });
+  }
+
   /* ================= HERO ANIMATION ================= */
   const heroText = document.querySelector(".hero-content");
 
@@ -136,6 +162,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================= CTA SECTION ================= */
+  /* Start the brand logos at the right edge when this section is first seen. */
+  const brandSection = document.querySelector(".brand-section");
+
+  if (brandSection && "IntersectionObserver" in window) {
+    const brandObserver = new IntersectionObserver((entries, observer) => {
+      if (entries[0].isIntersecting) {
+        brandSection.classList.add("brand-scroll-started");
+        observer.unobserve(brandSection);
+      }
+    }, { threshold: 0.2 });
+
+    brandObserver.observe(brandSection);
+  } else if (brandSection) {
+    brandSection.classList.add("brand-scroll-started");
+  }
+
   const cta = document.querySelector(".cta-content");
 
   if (cta) {
@@ -148,25 +190,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ================= SWIPER ================= */
-  if (typeof Swiper !== "undefined") {
-    new Swiper(".testimonial-slider", {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      loop: true,
-      centeredSlides: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      breakpoints: {
-        0: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-      }
+  /* ================= TESTIMONIAL MARQUEE ================= */
+  const testimonialTrack = document.querySelector(".testimonial-track");
+
+  if (testimonialTrack) {
+    const cards = Array.from(testimonialTrack.children);
+
+    cards.forEach((card) => {
+      const duplicate = card.cloneNode(true);
+      duplicate.setAttribute("aria-hidden", "true");
+
+      duplicate.querySelectorAll("img").forEach((image) => {
+        image.alt = "";
+      });
+
+      testimonialTrack.appendChild(duplicate);
     });
-  } else {
-    console.log("Swiper not loaded");
   }
 
 });

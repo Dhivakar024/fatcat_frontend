@@ -273,4 +273,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+function applyForJob() {
 
+    const jobTitle =
+        document.getElementById("jobTitle").innerText.trim();
+
+    localStorage.setItem("selectedJob", jobTitle);
+
+    window.location.href = "career-application.html";
+}
