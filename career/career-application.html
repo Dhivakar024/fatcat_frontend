@@ -5,296 +5,299 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Career Application | FatCat Wealthy</title>
 
     <link rel="stylesheet" href="career-application.css">
+    <link rel="stylesheet" href="../career/career.css">
 
 </head>
 
 <body>
+    <header class="navbar">
 
-<section class="application-page">
+        <div class="nav-container">
 
-    <div class="application-container">
+            <div class="logo">
+                <img src="../services/assets/logo.png" alt="Fatcat Wealthy">
+            </div>
 
-        <!-- HEADER -->
+            <nav class="nav-menu" id="navMenu">
 
-        <div class="application-header">
+                <a href="../home/index.html" class="active">Home</a>
+                <a href="../about/about.html">About Us</a>
 
-            <span class="application-tag">
-                CAREER OPPORTUNITY
-            </span>
+                <div class="dropdown">
 
-            <h1>Join Our Team</h1>
+                    <a href="../services/service.html" class="dropbtn" id="servicesLink">
+                        Services <span class="arrow">▾</span>
+                    </a>
 
-            <p>
-                Take the next step in your career with FatCat Wealthy.
-                Please provide your details below to apply for this position.
-            </p>
+                    <div class="dropdown-content">
+
+                        <div class="submenu">
+                            <a href="#">Investment Broking ▸</a>
+
+                            <div class="submenu-content">
+                                <a href="../services/mutual-fund.html">Mutual Fund</a>
+                                <a href="../services/stock-broking.html">Stock Broking</a>
+                            </div>
+                        </div>
+
+                        <a href="../services/insurance.html">Insurance</a>
+                        <a href="../services/loans.html">Loans</a>
+                        <a href="../academy/academy.html">Academy</a>
+
+                    </div>
+
+                </div>
+
+                <a href="../academy/academy.html">Academy</a>
+                <a href="../business/business.html">Business</a>
+                <a href="../career/career.html">Career</a>
+                <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
+                <a href="../login/login.html" class="contact-btn">Login</a>
+
+
+            </nav>
+
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
         </div>
 
+    </header>
 
-        <!-- APPLICATION CARD -->
 
-        <div class="application-card">
+    <section class="application-page">
 
-            <div class="selected-job">
+        <div class="application-container">
 
-                <span>Applying For</span>
+            <div class="application-header">
 
-                <h2 id="selectedJob">
-                    Position
-                </h2>
+                <span class="application-tag">
+                    CAREER OPPORTUNITY
+                </span>
+
+                <h1>Join Our Team</h1>
+
+                <p>
+                    Take the next step in your career with FatCat Wealthy.
+                    Please provide your details below to apply for this position.
+                </p>
 
             </div>
 
+            <div class="application-card">
 
-            <form id="careerForm">
+                <div class="selected-job">
 
-                <!-- PERSONAL DETAILS -->
+                    <span>Applying For</span>
 
-                <div class="form-section">
+                    <h2 id="selectedJob">
+                        Position
+                    </h2>
 
-                    <h3>Personal Information</h3>
-
-                    <div class="form-grid">
-
-                        <div class="form-group">
-
-                            <label>
-                                Full Name <span>*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="fullName"
-                                placeholder="Enter your full name"
-                                required>
-
-                        </div>
+                </div>
 
 
-                        <div class="form-group">
+                <form id="careerForm">
 
-                            <label>
-                                Email Address <span>*</span>
-                            </label>
+                    <div class="form-section">
 
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="Enter your email"
-                                required>
+                        <h3>Personal Information</h3>
 
-                        </div>
+                        <div class="form-grid">
 
+                            <div class="form-group">
 
-                        <div class="form-group">
+                                <label>
+                                    Full Name <span>*</span>
+                                </label>
 
-                            <label>
-                                Phone Number <span>*</span>
-                            </label>
+                                <input type="text" id="fullName" placeholder="Enter your full name" required>
 
-                            <input
-                                type="tel"
-                                id="phone"
-                                placeholder="Enter your phone number"
-                                maxlength="10"
-                                required>
-
-                        </div>
+                            </div>
 
 
-                        <div class="form-group">
+                            <div class="form-group">
 
-                            <label>
-                                Location <span>*</span>
-                            </label>
+                                <label>
+                                    Email Address <span>*</span>
+                                </label>
 
-                            <input
-                                type="text"
-                                id="location"
-                                placeholder="City / Location"
-                                required>
+                                <input type="email" id="email" placeholder="Enter your email" required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Phone Number <span>*</span>
+                                </label>
+
+                                <input type="tel" id="phone" placeholder="Enter your phone number" maxlength="10"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Location <span>*</span>
+                                </label>
+
+                                <input type="text" id="location" placeholder="City / Location" required>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="form-section">
+
+                        <h3>Professional Information</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Highest Qualification <span>*</span>
+                                </label>
+
+                                <input type="text" id="qualification" placeholder="Example: MBA, B.E, B.Sc" required>
+
+                            </div>
 
 
-                <!-- PROFESSIONAL DETAILS -->
+                            <div class="form-group">
 
-                <div class="form-section">
+                                <label>
+                                    Total Experience <span>*</span>
+                                </label>
 
-                    <h3>Professional Information</h3>
+                                <select id="experience" required>
 
-                    <div class="form-grid">
+                                    <option value="">
+                                        Select Experience
+                                    </option>
 
-                        <div class="form-group">
+                                    <option value="Fresher">
+                                        Fresher
+                                    </option>
 
-                            <label>
-                                Highest Qualification <span>*</span>
-                            </label>
+                                    <option value="1-2 Years">
+                                        1–2 Years
+                                    </option>
 
-                            <input
-                                type="text"
-                                id="qualification"
-                                placeholder="Example: MBA, B.E, B.Sc"
-                                required>
+                                    <option value="3-5 Years">
+                                        3–5 Years
+                                    </option>
 
-                        </div>
+                                    <option value="5-10 Years">
+                                        5–10 Years
+                                    </option>
 
+                                    <option value="10+ Years">
+                                        10+ Years
+                                    </option>
 
-                        <div class="form-group">
+                                </select>
 
-                            <label>
-                                Total Experience <span>*</span>
-                            </label>
-
-                            <select id="experience" required>
-
-                                <option value="">
-                                    Select Experience
-                                </option>
-
-                                <option value="Fresher">
-                                    Fresher
-                                </option>
-
-                                <option value="1-2 Years">
-                                    1–2 Years
-                                </option>
-
-                                <option value="3-5 Years">
-                                    3–5 Years
-                                </option>
-
-                                <option value="5-10 Years">
-                                    5–10 Years
-                                </option>
-
-                                <option value="10+ Years">
-                                    10+ Years
-                                </option>
-
-                            </select>
-
-                        </div>
+                            </div>
 
 
-                        <div class="form-group">
+                            <div class="form-group">
 
-                            <label>
-                                Current Company
-                            </label>
+                                <label>
+                                    Current Company
+                                </label>
 
-                            <input
-                                type="text"
-                                id="company"
-                                placeholder="Current company">
+                                <input type="text" id="company" placeholder="Current company">
 
-                        </div>
+                            </div>
 
 
-                        <div class="form-group">
+                            <div class="form-group">
 
-                            <label>
-                                Current Designation
-                            </label>
+                                <label>
+                                    Current Designation
+                                </label>
 
-                            <input
-                                type="text"
-                                id="designation"
-                                placeholder="Current designation">
+                                <input type="text" id="designation" placeholder="Current designation">
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
+                    <!-- ADDITIONAL DETAILS -->
+
+                    <div class="form-section">
+
+                        <h3>Additional Information</h3>
+
+                        <div class="form-group full">
+
+                            <label>
+                                Why should we hire you?
+                            </label>
+
+                            <textarea id="message" rows="5"
+                                placeholder="Tell us briefly about yourself, your skills and experience..."></textarea>
+
+                        </div>
 
 
-                <!-- ADDITIONAL DETAILS -->
+                        <div class="form-group full">
 
-                <div class="form-section">
+                            <label>
+                                Resume / CV <span>*</span>
+                            </label>
 
-                    <h3>Additional Information</h3>
+                            <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
 
-                    <div class="form-group full">
+                            <small>
+                                Accepted formats: PDF, DOC, DOCX
+                            </small>
 
-                        <label>
-                            Why should we hire you?
-                        </label>
-
-                        <textarea
-                            id="message"
-                            rows="5"
-                            placeholder="Tell us briefly about yourself, your skills and experience..."></textarea>
-
-                    </div>
-
-
-                    <div class="form-group full">
-
-                        <label>
-                            Resume / CV <span>*</span>
-                        </label>
-
-                        <input
-                            type="file"
-                            id="resume"
-                            accept=".pdf,.doc,.docx"
-                            required>
-
-                        <small>
-                            Accepted formats: PDF, DOC, DOCX
-                        </small>
+                        </div>
 
                     </div>
 
-                </div>
+                    <div class="application-actions">
+
+                        <button type="button" class="cancel-btn" onclick="cancelApplication()">
+                            Cancel
+                        </button>
 
 
-                <!-- ACTIONS -->
+                        <button type="submit" class="submit-btn">
+                            Submit Application
+                        </button>
 
-                <div class="application-actions">
+                    </div>
 
-                    <button
-                        type="button"
-                        class="cancel-btn"
-                        onclick="cancelApplication()">
+                </form>
 
-                        Cancel
-
-                    </button>
-
-
-                    <button
-                        type="submit"
-                        class="submit-btn">
-
-                        Submit Application
-
-                    </button>
-
-                </div>
-
-            </form>
+            </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<script src="career-application.js"></script>
+    <script src="career-application.js"></script>
 
 </body>
 
