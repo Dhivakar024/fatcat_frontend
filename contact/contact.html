@@ -105,30 +105,42 @@
                     We aim to respond quickly and ensure a smooth support experience.
                     Your input helps us improve and serve you better every day.
                 </p>
+                  <form class="contact-form" action="https://formspree.io/f/xxxxxxx" method="POST">
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-circle-user"></i> Name</label>
+                                <input type="text" name="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                                <input type="email" name="email" placeholder="Enter Your Email">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                                <input type="tel" name="phone" placeholder="Enter your Phone Number" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-location-dot"></i> Location</label>
+                                <input type="text" name="location" placeholder="Enter your location" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-pen-to-square"></i> Message</label>
+                                <textarea rows="4" name="message" placeholder="Enter your message or questions here..."></textarea>
+                            </div>
+                            <button type="submit" class="contact-btn">SEND</button>
+                        </form>
 
-                <form class="contact-form">
+                
 
-                    <input type="text" placeholder="Name *" required>
-
-                    <input type="email" placeholder="Email" required>
-
-                    <input type="tel" placeholder="Phone number *" required>
-
-                    <input type="text" placeholder="Location *" required>
-
-                    <textarea rows="5" placeholder="Message..."></textarea>
-
-                    <button type="submit" class="contact-btn">
-                        SEND
-                    </button>
-
-                </form>
-
+    
             </div>
 
 
             <!-- RIGHT : MAP -->
             <div class="contact-right">
+                 <div class="map-label">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Location</span>
+                 </div>
 
                 <iframe src="https://maps.google.com/maps?q=salem%20tamilnadu&t=&z=13&ie=UTF8&iwloc=&output=embed"
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade">
@@ -140,38 +152,7 @@
 
     </section>
 
-    <!-- Contact Info Strip -->
-    <section class="contact-info-section reveal">
-
-        <div class="contact-info-container">
-
-            <!-- Phone -->
-            <div class="contact-info-box">
-                <div class="contact-icon">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <p>+9195666 79958</p>
-            </div>
-
-            <!-- Location -->
-            <div class="contact-info-box">
-                <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <p>Salem, Chennai</p>
-            </div>
-
-            <!-- Email -->
-            <div class="contact-info-box">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <p>support@fatcatwealthy.com</p>
-            </div>
-
-        </div>
-
-    </section>
+   
 
 
 
