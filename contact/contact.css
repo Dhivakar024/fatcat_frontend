@@ -12,7 +12,7 @@ font-family: 'Poppins', sans-serif;
 
 .navbar{
 width:100%;
-background:#1e9bb4;
+background:#0b1b66;
 padding:12px 6%;
 position:sticky;
 top:0;
@@ -30,6 +30,14 @@ align-items:center;
 .logo img{
 height:45px;
 }
+.logo{
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  margin-left:-65px;
+}
 
 /* MENU */
 
@@ -42,13 +50,29 @@ gap:30px;
 .nav-menu a{
 text-decoration:none;
 color:white;
-font-size:15px;
+font-size:20px;
 transition:0.3s;
 }
 
 .nav-menu a:hover{
 color:#38bdf8;
 }
+
+/* login btn */
+.login-btn{
+background:#2563eb;
+padding:8px 18px;
+border-radius:6px;
+color:white;
+text-decoration:none;
+font-size:16px;
+transition:0.3s;
+}
+
+.login-btn:hover{
+background:#1d4ed8;
+}
+
 /* contact-form */
 .contact-form {
     max-width: 440px;
@@ -121,28 +145,7 @@ color:#38bdf8;
     min-height: 90px;
 }
 
-.contact-btn {
-    margin-top: 8px;
-    background: linear-gradient(135deg, #14919B, #0d6e77);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 14px;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
 
-.contact-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(20, 145, 155, 0.3);
-}
-
-.contact-btn:active {
-    transform: translateY(0);
-}
 
  
 /* RIGHT SIDE */
@@ -429,7 +432,7 @@ display:block;
 /* FOOTER */
 
 .footer{
-background:#1e9bb4;
+background:#0b1b66;
 color:white;
 padding:60px 8% 20px;
 }

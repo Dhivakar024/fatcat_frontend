@@ -21,7 +21,7 @@ body {
 
 .navbar {
   width: 100%;
-  background: var(--primary);
+  background:#0b1b66;
   padding: 12px 6%;
   position: sticky;
   top: 0;
@@ -41,6 +41,14 @@ body {
 .logo img {
   height: 45px;
 }
+.logo{
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  margin-left:-65px;
+}
 
 /* MENU */
 
@@ -53,7 +61,7 @@ body {
 .nav-menu a {
   text-decoration: none;
   color: #fff;
-  font-size: 15px;
+  font-size: 20px;
   transition: 0.3s;
 }
 
@@ -61,13 +69,22 @@ body {
   color: #38bdf8;
 }
 
-/* CONTACT BUTTON */
-
-.contact-btn {
-  background: linear-gradient(135deg, #2563eb 0%, #1e9bb4 100%);
-  padding: 8px 18px;
-  border-radius: 6px;
+/* login btn */
+.login-btn{
+background:#2563eb;
+padding:8px 18px;
+border-radius:6px;
+color:white;
+text-decoration:none;
+font-size:16px;
+transition:0.3s;
 }
+
+.login-btn:hover{
+background:#1d4ed8;
+}
+
+
 
 /* Focus styles for accessibility */
 a:focus,
@@ -334,10 +351,10 @@ button:focus,
 
 /* FOOTER */
 
-.footer {
-  background: #1e9bb4;
-  color: white;
-  padding: 60px 8% 20px;
+.footer{
+background:#0b1b66;
+color:white;
+padding:60px 8% 20px;
 }
 
 /* GRID LAYOUT */

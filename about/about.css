@@ -96,7 +96,7 @@ button:focus-visible {
 
 .navbar {
    width: 100%;
-   background: #1e9bb4;
+   background: #0B1B66;
    padding: 12px 6%;
    position: sticky;
    top: 0;
@@ -112,6 +112,14 @@ button:focus-visible {
 .logo img {
    height: 45px;
 }
+.logo{
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  margin-left:-65px;
+}
 
 .nav-menu {
    display: flex;
@@ -122,26 +130,19 @@ button:focus-visible {
 .nav-menu a {
    text-decoration: none;
    color: white;
-   font-size: 15px;
+   font-size: 20px;
    font-weight: 400;
    transition: 0.3s;
 }
+
 
 .nav-menu a:hover {
    color: #eecf9a;
 }
 
-.contact-btn {
-   background: var(--ink);
-   padding: 8px 18px;
-   border-radius: 6px;
-   transition: .3s;
-}
 
-.contact-btn:hover {
-   background: var(--gold);
-   color: var(--ink) !important;
-}
+
+
 
 .dropdown {
    position: relative;
@@ -1401,10 +1402,10 @@ veal,
    FOOTER (unchanged brand color)
 ================================================ */
 
-.footer {
-   background: #1e9bb4;
-   color: white;
-   padding: 60px 8% 20px;
+.footer{
+background:#0b1b66;
+color:white;
+padding:60px 8% 20px;
 }
 
 .footer-container {
