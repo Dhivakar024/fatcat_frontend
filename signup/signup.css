@@ -453,3 +453,99 @@ scroll-behavior:smooth;
     font-size: 13px;
   }
 }
+/* ================================
+   SIGNUP PAGE
+================================ */
+
+.signup-body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f5f7fb;
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+.signup-main {
+    width: 100%;
+    min-height: 850px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 35px 20px 50px;
+    box-sizing: border-box;
+}
+
+
+/* =========INPAT SIGNUP====== */
+
+.inpat-signup-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.inpat-signup-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 800px;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 1024px) {
+
+    .signup-main {
+        padding: 25px 15px 40px;
+    }
+
+    .inpat-signup-wrapper iframe {
+        height: 800px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .signup-main {
+        padding: 15px 10px 30px;
+    }
+
+    .inpat-signup-wrapper {
+        border-radius: 10px;
+    }
+
+    .inpat-signup-wrapper iframe {
+        height: 850px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .signup-main {
+        padding: 10px 5px 25px;
+    }
+
+    .inpat-signup-wrapper {
+        border-radius: 8px;
+    }
+
+    .inpat-signup-wrapper iframe {
+        height: 900px;
+    }
+}
