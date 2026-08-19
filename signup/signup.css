@@ -1,0 +1,455 @@
+/* ===== PAGE LAYOUT (scrolls normally now that a full footer is present) =====
+   login.css sets `body { height: 100vh; }` which forces the ENTIRE page
+   (navbar + main + footer) into exactly one screen height. Since that's a
+   different property than min-height, it wasn't being overridden below,
+   so .signup-main was being squeezed and the form scrolled internally
+   instead of the page scrolling normally. Overriding `height: auto` here
+   (higher specificity than login.css's element selector) fixes it. */
+.signup-body {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100%;
+}
+
+/* ===== FIX: force the video to sit BEHIND everything =====
+   login.css gives .bg-video z-index:0 and position:fixed. An element with
+   an explicit z-index (even 0) paints above any plain/non-positioned
+   content, so the form (which had no position/z-index of its own) was
+   being rendered UNDER the video. Overriding to z-index:-1 puts it back
+   on the true background layer, below the body's own background and
+   below all normal in-flow content. */
+.signup-body .bg-video {
+    z-index: -1;
+}
+/* logo */
+.logo img{
+height:45px;
+
+}
+.logo{
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  margin-left:-65px;
+}
+/* navbar */
+.navbar{
+width:100%;
+background:#0b1b66;
+padding:12px 6%;
+position:sticky;
+top:0; /* push below top bar */
+z-index:1500;
+ margin-top:0px; /* keep initial flow below fixed top bar */
+}
+
+
+.nav-container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+/* MENU */
+
+.nav-menu{
+display:flex;
+align-items:center;
+gap:15px;
+
+
+}
+
+.nav-menu a{
+text-decoration:none;
+color:white;
+font-size:20px;
+transition:0.3s;
+margin-left:10px;
+
+}
+
+.nav-menu a:hover{
+color:#38f8c2;
+}
+
+/* CONTACT BUTTON */
+
+.contact-btn{
+color:white;
+text-decoration:none;
+font-size:20px;
+
+}
+/* login btn */
+.login-btn{
+background:#2563eb;
+padding:8px 18px;
+border-radius:6px;
+color:white;
+text-decoration:none;
+font-size:16px;
+transition:0.3s;
+}
+
+.login-btn:hover{
+background:#1d4ed8;
+}
+
+/* DROPDOWN */
+
+.dropdown{
+position:relative;
+}
+
+.dropbtn{
+background:none;
+border:none;
+color:white;
+font-size:15px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+.dropdown-content{
+display:none;
+position:absolute;
+top:35px;
+background:white;
+min-width:180px;
+border-radius:6px;
+top:100%;
+left:0;
+z-index:999;    
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.dropdown-content a{
+display:block;
+padding:10px 15px;
+color:#333;
+}
+
+.dropdown-content a:hover{
+background:#f3f4f6;
+}
+
+.dropdown:hover .dropdown-content{
+display:block;
+}
+
+
+/* Submenu */
+
+.submenu{
+position:relative;
+}
+
+.submenu-content{
+display:none;
+position:absolute;
+left:100%;
+top:0;
+background:#ffffff;
+min-width:180px;
+border-radius: 5px;
+}
+
+.submenu:hover .submenu-content{
+display:block;
+}
+
+/* Hover effect */
+
+.dropdown-content a:hover{
+background:#f1f5f8;
+color: #1537f7;
+}
+
+/* HAMBURGER */
+
+/* HAMBURGER */
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content: space-between;
+  cursor:pointer;
+  width: 26px;
+  height: 20px;
+  z-index: 1001;
+}
+
+.hamburger span{
+  display: block;
+  width:100%;
+  height:3px;
+  background:linear-gradient(black,darkblue);
+  border-radius: 2px;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+/* X animation when menu open */
+.hamburger.active span:nth-child(1){
+  transform: translateY(8.5px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2){
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3){
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+
+/* navbar keeps its own height, main takes the rest */
+.signup-main {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(10px, 2vh, 30px) 20px;
+    min-height: 0; /* allow flex child to shrink instead of overflowing */
+    position: relative;
+    z-index: 1; /* explicit stacking context, guaranteed above the video */
+}
+
+/* theme.js forces `body.dark-mode main { background-color: #000 !important; }`
+   which paints an opaque black block over the video here in dark mode.
+   This selector is more specific (2 classes vs 1 class + 1 element), so it
+   wins regardless of stylesheet order and keeps the video visible. */
+body.dark-mode .signup-main {
+    background-color: transparent !important;
+}
+
+.signup-body .navbar {
+    position: relative; /* sticky already works, this just reinforces stacking */
+    z-index: 2;
+}
+
+/* ===== SIGNUP BOX ===== */
+.signup-box {
+    width: 100%;
+    max-width: 600px;
+    padding: clamp(16px, 3vh, 30px) clamp(20px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-box h2 {
+    margin-bottom: clamp(10px, 2vh, 20px);
+}
+
+.signup-box .input-group {
+    margin-bottom: clamp(10px, 1.8vh, 18px);
+}
+
+.signup-box .input-group label {
+    margin-bottom: 4px;
+}
+
+.signup-box .input-group input {
+    padding: clamp(9px, 1.6vh, 12px);
+    border: 1.5px solid #000000;
+    font-weight: 400;
+}
+.signup-body .footer-container {
+    max-width: 100%;
+}
+
+/* ===== 2-COLUMN GRID (name row, password row) ===== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 14px;
+}
+
+/* ===== CANCEL / SEND BUTTON ROW ===== */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: clamp(8px, 1.5vh, 20px);
+}
+
+.btn-row .btn {
+    width: 45%;
+    margin-top: 0;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 2px solid #0072ff;
+    color: #0072ff;
+}
+
+.btn-cancel:hover {
+    background: rgba(0, 114, 255, 0.08);
+    transform: scale(1.05);
+}
+
+.btn-send {
+    background: #00c6ff;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: #fff;
+    border: none;
+}
+
+.signup-box .extra {
+    margin-top: clamp(8px, 1.5vh, 15px);
+}
+
+/* input error state */
+.input-group input.invalid {
+    outline: 2px solid #ff6b6b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 560px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .btn-row .btn {
+        width: 48%;
+        font-size: 13px;
+        padding: 10px 6px;
+    }
+}
+
+@media (max-height: 620px) {
+    .signup-box h2 {
+        font-size: 18px;
+    }
+
+    .signup-box .input-group {
+        margin-bottom: 8px;
+    }
+
+    .signup-box .input-group label {
+        font-size: 12px;
+    }
+}
+ /* footer */
+ /* FOOTER */
+
+.footer{
+background:#0b1b66;
+color:white;
+padding:60px 8% 20px;
+}
+
+/* GRID LAYOUT */
+
+.footer-container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:150px;
+
+}
+
+/* COLUMN */
+
+.footer-col h3,
+.footer-col h4{
+margin-bottom:15px;
+}
+
+.footer-col p{
+font-size:14px;
+line-height:1.6;
+}
+
+/* LINKS */
+
+.footer-col ul{
+list-style:none;
+padding:0;
+}
+
+.footer-col ul li{
+margin-bottom:10px;
+}
+
+.footer-col ul li a{
+text-decoration:none;
+color:white;
+font-size:14px;
+transition:0.3s;
+}
+
+.footer-col ul li a:hover{
+color:#1537f7;
+padding-left:4px;
+font-weight: 600;
+}
+
+/* FOOTER BOTTOM */
+
+.footer-bottom{
+text-align:center;
+margin-top:40px;
+border-top:1px solid rgba(255,255,255,0.2);
+padding-top:15px;
+font-size:14px;
+}
+html{
+scroll-behavior:smooth;
+} 
+
+/* CONTACT ITEM */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: nowrap; /* keep icon + text in one line */
+}
+
+/* ICON */
+.contact-item img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0; /* prevent shrinking */
+}
+
+/* TEXT */
+.contact-item span {
+  font-size: 14px;
+  width: 180px;
+  word-break: break-word; /* prevent overflow */
+}
+
+/* TABLET */
+@media (max-width: 992px) {
+  .contact-item span {
+    font-size: 13px;
+  }
+}
+
+/* MOBILE (IMPORTANT) */
+@media (max-width: 600px) {
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .contact-item {
+    justify-content: center; /* center align */
+  }
+
+  .contact-item img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .contact-item span {
+    font-size: 13px;
+  }
+}

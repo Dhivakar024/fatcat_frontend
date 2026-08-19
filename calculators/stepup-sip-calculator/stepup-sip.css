@@ -30,6 +30,14 @@ align-items:center;
 .logo img{
 height:45px;
 }
+.logo{
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  margin-left:-65px;
+}
 
 /* MENU */
 
@@ -278,7 +286,7 @@ display:block;
 /* FOOTER */
 
 .footer{
-background:#1e9bb4;
+background:#0b1b66;
 color:white;
 padding:60px 8% 20px;
 }

@@ -17,7 +17,7 @@ body{font-family:'Poppins',system-ui,Arial,sans-serif;background:var(--bg);color
 .container{max-width:1200px;margin:0 auto;padding:0 4%}
 
 /* NAVBAR */
-.navbar{position:sticky;top:0;z-index:1200;background:linear-gradient(180deg,rgba(3,10,23,0.6),rgba(3,10,23,0.85));backdrop-filter:blur(6px);padding:18px 0}
+.navbar{position:sticky;top:0;z-index:1200;background:#0b1b66;backdrop-filter:blur(6px);padding:18px 0}
 .nav-container{display:flex;align-items:center;justify-content:space-between}
 .logo img{height:56px;filter:brightness(1.05)}
 .nav-menu{display:flex;gap:26px;align-items:center}
