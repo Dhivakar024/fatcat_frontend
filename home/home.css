@@ -13,6 +13,9 @@ font-family: 'Poppins', sans-serif;
 
 
 
+
+
+
 /*  */
 
 body.dark-mode .navbar{
@@ -37,9 +40,9 @@ width:100%;
 background:#0b1b66;
 padding:12px 6%;
 position:sticky;
-top:0; /* push below top bar */
+top:0;
 z-index:1500;
- margin-top:0px; /* keep initial flow below fixed top bar */
+margin-top:0px;
 }
 
 .nav-container{
@@ -242,6 +245,10 @@ display:none;
 .nav-menu.active{
 display:flex;
 }
+
+
+
+
 
 /* dropdown mobile */
 
@@ -1342,6 +1349,10 @@ transform:translateY(-2px);
 
 
 
+
+
+
+
 /* FOOTER */
 
 .footer{
@@ -1410,13 +1421,16 @@ html{
 scroll-behavior:smooth;
 } 
 
+
+
+
 /* CONTACT ITEM */
 .contact-item {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
-  flex-wrap: nowrap; /* keep icon + text in one line */
+  flex-wrap: nowrap;
 }
 
 /* ICON */
