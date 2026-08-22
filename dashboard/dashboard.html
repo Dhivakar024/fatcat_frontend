@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Fatcat Wealthy</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+
+<body>
+    <!-- ===== SIDEBAR ======= -->
+
+    <aside class="sidebar">
+
+        <div class="dashboard-logo">
+            <img src="../services/assets/logo.png" alt="Fatcat Wealthy">
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="#" class="sidebar-link active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#myCourses" class="sidebar-link">
+                <i class="fa-solid fa-book-open"></i>
+                <span>My Courses</span>
+            </a>
+
+            <a href="#recommended" class="sidebar-link">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Explore Courses</span>
+            </a>
+
+            <a href="#liveSessions" class="sidebar-link">
+                <i class="fa-solid fa-video"></i>
+                <span>Live Sessions</span>
+            </a>
+
+            <a href="#achievements" class="sidebar-link">
+                <i class="fa-solid fa-trophy"></i>
+                <span>Achievements</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+            <a href="#" class="sidebar-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+            <button class="sidebar-link logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- ====== MAIN ======= -->
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-topbar">
+
+            <div class="mobile-menu">
+                <button id="menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+
+            <div class="topbar-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="courseSearch" placeholder="Search courses...">
+            </div>
+
+
+            <div class="topbar-right">
+                <button class="notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">
+                        <span id="profileInitial">P</span>
+                    </div>
+
+                    <div class="profile-info">
+                        <strong id="profileName"> Student </strong>
+                        <span> Student </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ===  CONTENT=== -->
+        <section class="dashboard-content">
+            <div class="welcome-section">
+
+                <div>
+                    <span class="welcome-small"> Student Dashboard </span>
+                    <h1>
+                        Welcome back, <span id="welcomeName"> Student </span>👋
+                    </h1>
+
+                    <p>
+                        Continue your learning journey and
+                        build your financial knowledge.
+                    </p>
+                </div>
+
+
+                <div class="learning-date">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="currentDate"> Today </span>
+                </div>
+
+            </div>
+
+            <!-- ==== STAT CARDS==== -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <span> Courses Enrolled </span>
+                        <strong id="enrolledCount"> 0 </strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span> Courses Completed </span>
+                        <strong id="completedCount"> 0 </strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+                        <span> In Progress </span>
+                        <strong id="progressCount"> 0 </strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <span> Learning Hours </span>
+                        <strong> 12.5 </strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- == CONTINUE LEARNING== -->
+
+            <section class="dashboard-section">
+                <div class="section-heading">
+                    <div>
+                        <h2> Continue Learning </h2>
+                        <p> Pick up where you left off </p>
+                    </div>
+
+                    <a href="#myCourses"> View All </a>
+                </div>
+
+                <div class="continue-card" id="continueLearning">
+                </div>
+
+            </section>
+
+            <!-- ======= MY COURSES======= -->
+
+            <section class="dashboard-section" id="myCourses">
+
+                <div class="section-heading">
+                    <div>
+                        <h2> My Courses </h2>
+                        <p> Courses you are currently learning </p>
+                    </div>
+
+                    <a href="#recommended"> Explore More </a>
+                </div>
+
+                <div class="course-grid" id="myCoursesGrid">
+                </div>
+
+            </section>
+
+            <!-- ====== RECOMMENDED====== -->
+
+            <section class="dashboard-section" id="recommended">
+                <div class="section-heading">
+                    <div>
+                        <h2> Recommended For You</h2>
+                        <p> Courses you can start learning today </p>
+                    </div>
+                </div>
+                <div class="course-grid" id="recommendedGrid"> </div>
+            </section>
+
+            <!-- ====== EXTRA SECTION ====== -->
+            <div class="bottom-grid">
+                <div class="extra-card">
+                    <div class="extra-icon streak"> 🔥 </div>
+
+                    <div>
+                        <span> Learning Streak </span>
+                        <h3> 5 Days</h3>
+                        <p> Keep learning every day! </p>
+                    </div>
+                </div>
+
+                <!-- LIVE SESSION -->
+                <div class="extra-card" id="liveSessions">
+                    <div class="extra-icon live">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+
+                    <div>
+                        <span> Upcoming Live Session </span>
+                        <h3> Stock Market Basics </h3>
+                        <p> Tomorrow · 6:00 PM </p>
+                    </div>
+
+                    <button> Join </button>
+                </div>
+
+                <!-- ACHIEVEMENT -->
+                <div class="extra-card" id="achievements">
+                    <div class="extra-icon trophy">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <div>
+                        <span> Latest Achievement </span>
+                        <h3> First Course Started </h3>
+                        <p> Keep going! </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
