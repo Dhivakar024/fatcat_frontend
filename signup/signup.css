@@ -204,143 +204,281 @@ color: #1537f7;
   transform: translateY(-8.5px) rotate(-45deg);
 }
 
+/* ======= SIGNUP PAGE ====== */
 
-/* navbar keeps its own height, main takes the rest */
+.signup-body {
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
 .signup-main {
-    flex: 1 1 auto;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(10px, 2vh, 30px) 20px;
-    min-height: 0; /* allow flex child to shrink instead of overflowing */
+    min-height: 600px;
+    padding: 35px 20px;
+    box-sizing: border-box;
     position: relative;
-    z-index: 1; /* explicit stacking context, guaranteed above the video */
-}
-
-/* theme.js forces `body.dark-mode main { background-color: #000 !important; }`
-   which paints an opaque black block over the video here in dark mode.
-   This selector is more specific (2 classes vs 1 class + 1 element), so it
-   wins regardless of stylesheet order and keeps the video visible. */
-body.dark-mode .signup-main {
-    background-color: transparent !important;
-}
-
-.signup-body .navbar {
-    position: relative; /* sticky already works, this just reinforces stacking */
     z-index: 2;
 }
 
-/* ===== SIGNUP BOX ===== */
-.signup-box {
+.signup-wrapper {
     width: 100%;
-    max-width: 600px;
-    padding: clamp(16px, 3vh, 30px) clamp(20px, 3vw, 36px);
-    display: flex;
-    flex-direction: column;
-}
-
-.signup-box h2 {
-    margin-bottom: clamp(10px, 2vh, 20px);
-}
-
-.signup-box .input-group {
-    margin-bottom: clamp(10px, 1.8vh, 18px);
-}
-
-.signup-box .input-group label {
-    margin-bottom: 4px;
-}
-
-.signup-box .input-group input {
-    padding: clamp(9px, 1.6vh, 12px);
-    border: 1.5px solid #000000;
-    font-weight: 400;
-}
-.signup-body .footer-container {
-    max-width: 100%;
-}
-
-/* ===== 2-COLUMN GRID (name row, password row) ===== */
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 14px;
-}
-
-/* ===== CANCEL / SEND BUTTON ROW ===== */
-.btn-row {
+    max-width: 760px;
     display: flex;
     justify-content: center;
-    gap: 16px;
-    margin-top: clamp(8px, 1.5vh, 20px);
 }
 
-.btn-row .btn {
-    width: 45%;
-    margin-top: 0;
+.signup-box {
+    width: 100%;
+    padding: 32px 38px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:0 20px 50px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(15px);
+    box-sizing: border-box;
+}
+
+.signup-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.signup-header h2 {
+    margin: 0 0 7px;
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+}
+
+.signup-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.input-group {
+    margin-bottom: 17px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrapper > i:first-child {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #8b95a7;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.input-wrapper input {
+    width: 100%;
+    height: 44px;
+    padding: 0 42px 0 40px;
+    border: 1px solid #d8dee8;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #202938;
+    font-size: 18px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease,  box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: #a0a8b5;
+}
+
+.input-wrapper input:focus {
+    border-color: #168ca3;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(22, 140, 163, 0.10);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 5px;
+    cursor: pointer;
+    color: #8b95a7;
+    font-size: 14px;
+}
+
+.password-toggle:hover {
+    color: #168ca3;
+}
+
+.error {
+    min-height: 16px;
+    margin-top: 4px;
+    padding-left: 2px;
+    font-size: 11px;
+    color: #dc3545;
+}
+
+.btn-row {
+    display: flex;
+    gap: 14px;
+    margin-top: 5px;
+}
+
+.btn {
+    flex: 1;
+    width: 50%;
+    height: 44px;
+    border-radius: 9px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .btn-cancel {
-    background: transparent;
-    border: 2px solid #0072ff;
-    color: #0072ff;
+    border: 1px solid #d5dbe5;
+    background: #ffffff;
+    color: black;
 }
 
 .btn-cancel:hover {
-    background: rgba(0, 114, 255, 0.08);
-    transform: scale(1.05);
+    background: #f5f7fa;
+    border-color: #c5ccd7;
 }
 
 .btn-send {
-    background: #00c6ff;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
-    color: #fff;
     border: none;
+    color: #ffffff;
+    background: linear-gradient( 135deg, #0b879f, #6675d8 );
+    box-shadow: 0 7px 18px rgba(28, 126, 157, 0.22);
 }
 
-.signup-box .extra {
-    margin-top: clamp(8px, 1.5vh, 15px);
+.btn-send:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(28, 126, 157, 0.30);
 }
 
-/* input error state */
-.input-group input.invalid {
-    outline: 2px solid #ff6b6b;
+.extra {
+    text-align: center;
+    margin-top: 18px;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 560px) {
-    .grid-2 {
+.extra p {
+    margin: 0;
+    font-size: 16px;
+    color: #737d8d;
+}
+
+.extra a {
+    color: #168ca3;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.extra a:hover {
+    text-decoration: underline;
+}
+
+.input-wrapper input.error-input {
+    border-color: #dc3545;
+}
+
+.input-wrapper input.success-input {
+    border-color: #198754;
+}
+
+@media (max-width: 850px) {
+
+    .signup-main {
+        min-height: auto;
+        padding: 35px 20px;
+    }
+    .signup-box {
+        max-width: 680px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .signup-main {
+        padding: 25px 15px;
+    }
+    .signup-box {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+    .signup-header {
+        margin-bottom: 20px;
+    }
+    .signup-header h2 {
+        font-size: 25px;
+    }
+    .signup-header p {
+        font-size: 13px;
+    }
+    .form-row {
         grid-template-columns: 1fr;
         gap: 0;
     }
-
-    .btn-row .btn {
-        width: 48%;
-        font-size: 13px;
-        padding: 10px 6px;
+    .input-group {
+        margin-bottom: 14px;
+    }
+    .input-wrapper input {
+        height: 45px;
+    }
+    .btn-row {
+        flex-direction: column;
+    }
+    .btn-cancel,
+    .btn-send {
+        width: 100%;
+        flex: none;
     }
 }
 
-@media (max-height: 620px) {
-    .signup-box h2 {
-        font-size: 18px;
+@media (max-width: 400px) {
+    .signup-main {
+        padding: 20px 10px;
     }
-
-    .signup-box .input-group {
-        margin-bottom: 8px;
+    .signup-box {
+        padding: 22px 16px;
     }
-
-    .signup-box .input-group label {
-        font-size: 12px;
+    .signup-header h2 {
+        font-size: 23px;
     }
 }
- /* footer */
- /* FOOTER */
 
 .footer{
 background:#0b1b66;
 color:white;
-padding:60px 8% 20px;
+width: 100%;
 }
 
 /* GRID LAYOUT */
@@ -478,74 +616,4 @@ scroll-behavior:smooth;
 
     padding: 35px 20px 50px;
     box-sizing: border-box;
-}
-
-
-/* =========INPAT SIGNUP====== */
-
-.inpat-signup-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    background: #ffffff;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.08);
-}
-
-.inpat-signup-wrapper iframe {
-    display: block;
-    width: 100%;
-    height: 800px;
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
-.footer {
-    position: relative;
-    z-index: 2;
-}
-
-@media (max-width: 1024px) {
-
-    .signup-main {
-        padding: 25px 15px 40px;
-    }
-
-    .inpat-signup-wrapper iframe {
-        height: 800px;
-    }
-}
-
-
-@media (max-width: 768px) {
-
-    .signup-main {
-        padding: 15px 10px 30px;
-    }
-
-    .inpat-signup-wrapper {
-        border-radius: 10px;
-    }
-
-    .inpat-signup-wrapper iframe {
-        height: 850px;
-    }
-}
-
-
-@media (max-width: 480px) {
-
-    .signup-main {
-        padding: 10px 5px 25px;
-    }
-
-    .inpat-signup-wrapper {
-        border-radius: 8px;
-    }
-
-    .inpat-signup-wrapper iframe {
-        height: 900px;
-    }
 }
