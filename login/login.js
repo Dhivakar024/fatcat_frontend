@@ -7,7 +7,6 @@ navMenu.classList.toggle("active");
 
 });
 
-
 const serviceDropdownLink = document.getElementById("servicesLink");
 
 if(serviceDropdownLink){
@@ -57,42 +56,204 @@ el.classList.add("reveal-active");
 
 }
 
- const form = document.getElementById("loginForm");
+const form = document.getElementById("loginForm");
 
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
+if (form) {
 
-      let email = document.getElementById("email").value.trim();
-      let password = document.getElementById("password").value.trim();
+    form.addEventListener("submit", function (e) {
 
-      let emailError = document.getElementById("emailError");
-      let passwordError = document.getElementById("passwordError");
+        e.preventDefault();
 
-      emailError.textContent = "";
-      passwordError.textContent = "";
+        const email = document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
 
-      let valid = true;
+        const password = document
+            .getElementById("password")
+            .value;
 
-      // Email validation
-      if (email === "") {
-        emailError.textContent = "Email is required";
-        valid = false;
-      } else if (!/\S+@\S+\.\S+/.test(email)) {
-        emailError.textContent = "Invalid email format";
-        valid = false;
-      }
+        const emailError =
+            document.getElementById("emailError");
 
-      // Password validation
-      if (password === "") {
-        passwordError.textContent = "Password is required";
-        valid = false;
-      } else if (password.length < 6) {
-        passwordError.textContent = "Minimum 6 characters required";
-        valid = false;
-      }
+        const passwordError =
+            document.getElementById("passwordError");
 
-      if (valid) {
+
+        // Clear previous errors
+
+        emailError.textContent = "";
+        passwordError.textContent = "";
+
+        document
+            .getElementById("email")
+            .classList.remove("invalid");
+
+        document
+            .getElementById("password")
+            .classList.remove("invalid");
+
+
+        let valid = true;
+
+
+        // =========================
+        // EMAIL VALIDATION
+        // =========================
+
+        const EMAIL_REGEX =
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+
+        if (email === "") {
+
+            emailError.textContent =
+                "Email is required.";
+
+            document
+                .getElementById("email")
+                .classList.add("invalid");
+
+            valid = false;
+
+        } else if (!EMAIL_REGEX.test(email)) {
+
+            emailError.textContent =
+                "Enter a valid email address.";
+
+            document
+                .getElementById("email")
+                .classList.add("invalid");
+
+            valid = false;
+        }
+
+
+        // =========================
+        // PASSWORD VALIDATION
+        // =========================
+
+        if (password === "") {
+
+            passwordError.textContent =
+                "Password is required.";
+
+            document
+                .getElementById("password")
+                .classList.add("invalid");
+
+            valid = false;
+
+        } else if (password.length < 8) {
+
+            passwordError.textContent =
+                "Password must be at least 8 characters.";
+
+            document
+                .getElementById("password")
+                .classList.add("invalid");
+
+            valid = false;
+        }
+
+
+        // Stop here if basic validation failed
+
+        if (!valid) {
+            return;
+        }
+
+
+        // =========================
+        // GET SIGNUP USER
+        // =========================
+
+        const savedUser =
+            localStorage.getItem("fatcatUser");
+
+
+        if (!savedUser) {
+
+            emailError.textContent =
+                "No account found. Please sign up first.";
+
+            document
+                .getElementById("email")
+                .classList.add("invalid");
+
+            return;
+        }
+
+
+        // Convert saved JSON to object
+
+        const user = JSON.parse(savedUser);
+
+
+        // =========================
+        // CHECK EMAIL
+        // =========================
+
+        if (email !== user.email) {
+
+            emailError.textContent =
+                "Email address is incorrect.";
+
+            document
+                .getElementById("email")
+                .classList.add("invalid");
+
+            return;
+        }
+
+
+        // =========================
+        // CHECK PASSWORD
+        // =========================
+
+        if (password !== user.password) {
+
+            passwordError.textContent =
+                "Incorrect password.";
+
+            document
+                .getElementById("password")
+                .classList.add("invalid");
+
+            return;
+        }
+
+
+        // =========================
+        // LOGIN SUCCESS
+        // =========================
+
+        localStorage.setItem(
+            "isLoggedIn",
+            "true"
+        );
+
+
+        localStorage.setItem(
+            "loggedInUser",
+            JSON.stringify({
+                firstName: user.firstName,
+                fullName: user.fullName,
+                email: user.email,
+                phone: user.phone
+            })
+        );
+
+
         alert("Login Successful!");
-        // You can connect backend here
-      }
+
+
+        // Go to home page
+
+        window.location.href =
+            "../home/index.html";
+
     });
+
+}

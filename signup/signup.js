@@ -9,16 +9,15 @@ if (hamburger && navMenu) {
 }
 
 // ===== REGEX PATTERNS =====
-const NAME_REGEX = /^[A-Za-z]{2,30}$/; // letters only, 2-30 chars
-const FULL_NAME_REGEX = /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/; // words separated by space/'/-
+const NAME_REGEX = /^[A-Za-z]{2,30}$/;
+const PHONE_REGEX = /^[6-9][0-9]{9}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-// min 8 chars, at least 1 lowercase, 1 uppercase, 1 digit, 1 special char
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
 
 // ===== FIELDS =====
 const form = document.getElementById("signupForm");
 const firstName = document.getElementById("firstName");
-const fullName = document.getElementById("fullName");
+const phone = document.getElementById("phone");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
@@ -40,13 +39,15 @@ function validateFirstName() {
     return setError(firstName, el, "");
 }
 
-function validateFullName() {
-    const el = document.getElementById("fullNameError");
-    if (!fullName.value.trim()) return setError(fullName, el, "Full name is required.");
-    if (!FULL_NAME_REGEX.test(fullName.value.trim())) {
-        return setError(fullName, el, "Enter a valid full name.");
+function validatePhone() {
+    const el = document.getElementById("phoneError");
+    if (!phone.value.trim()) {
+        return setError( phone, el, "Phone number is required." );
     }
-    return setError(fullName, el, "");
+    if (!PHONE_REGEX.test(phone.value.trim())) {
+        return setError( phone, el, "Enter a valid 10-digit phone number." );
+    }
+    return setError(phone, el, "");
 }
 
 function validateEmail() {
@@ -82,7 +83,7 @@ function validateConfirmPassword() {
 
 // ===== LIVE VALIDATION =====
 firstName.addEventListener("input", validateFirstName);
-fullName.addEventListener("input", validateFullName);
+phone.addEventListener("input", () => { phone.value = phone.value .replace(/\D/g, "") .slice(0, 10); validatePhone();});
 email.addEventListener("input", validateEmail);
 password.addEventListener("input", () => {
     validatePassword();
@@ -96,19 +97,26 @@ form.addEventListener("submit", (e) => {
 
     const validations = [
         validateFirstName(),
-        validateFullName(),
+        validatePhone(),
         validateEmail(),
         validatePassword(),
-        validateConfirmPassword(),
+        validateConfirmPassword()
     ];
 
     const isValid = validations.every(Boolean);
-
-    if (isValid) {
-        // Replace with real signup logic (API call etc.)
-        alert("Account created successfully!");
-        form.reset();
+    if (!isValid) {
+        return;
     }
+    const userData = {
+        firstName: firstName.value.trim(),
+        phone: phone.value.trim(),
+        email: email.value .trim() .toLowerCase(),
+        password: password.value
+    };
+
+    localStorage.setItem( "fatcatUser",JSON.stringify(userData) );
+    window.location.href = "../login/login.html";
+
 });
 
 // ===== CANCEL =====

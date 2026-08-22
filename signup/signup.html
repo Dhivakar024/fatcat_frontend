@@ -60,15 +60,93 @@
     </header>
 
     <main class="signup-main">
+        <div class="signup-wrapper">
+            <div class="signup-box">
+                <div class="signup-header">
+                    <h2>Sign Up</h2>
+                    <p>Join Fatcat Wealthy and start your financial journey.</p>
+                </div>
 
-        <div class="inpat-signup-wrapper">
+                <form id="signupForm" novalidate>
 
-            <iframe src="https://inpatpro.com/student/signup.html?branch=FCTSLM" title="InPAT Student Signup"
-                referrerpolicy="unsafe-url" allow="fullscreen; geolocation;">
-            </iframe>
+                    <div class="form-row">
 
+                        <div class="input-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-wrapper">
+                                <i class="fa-regular fa-user"></i>
+                                <input type="text" id="firstName" placeholder="First name">
+                            </div>
+                            <div class="error" id="firstNameError"></div>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="phone">Phone number</label>
+                            <div class="input-wrapper">
+                                 <i class="fa-solid fa-phone"></i>
+                                <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10" >
+                            </div>
+                            <div class="error" id="phoneError"></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="error" id="emailError"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="password" placeholder="Create password">
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePassword('password', this)">
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error" id="passwordError"></div>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" id="confirmPassword" placeholder="Confirm password">
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePassword('confirmPassword', this)">
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error" id="confirmPasswordError"></div>
+                        </div>
+                    </div>
+
+                    <div class="btn-row">
+                        <button type="button" class="btn btn-cancel" id="cancelBtn">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-send">
+                            Create Account
+                        </button>
+                    </div>
+
+                    <div class="extra">
+                        <p>
+                            Already have an account?
+                            <a href="../login/login.html">Login</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </main>
 
     <footer class="footer">
@@ -170,6 +248,8 @@
 
     </footer>
 
+
+    <script src="signup.js"></script>
 </body>
 
 </html>
