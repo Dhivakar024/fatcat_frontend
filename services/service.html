@@ -4,12 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="../theme.js" defer></script>
     <title>Service| Fatcat</title>
     <link rel="stylesheet" href="service.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/site-chrome.css">
+    <style>
+        /* Keep this page's Services submenu aligned with the home-page header. */
+        header .dropdown-content {
+            overflow: visible;
+        }
+
+        header .submenu > a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        header .submenu-content {
+            top: 0;
+            left: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,12 +47,12 @@
 
             <nav class="nav-menu" id="navMenu">
 
-                <a href="../home/index.html" class="active">Home</a>
+                <a href="../home/index.html">Home</a>
                 <a href="../about/about.html">About Us</a>
 
                 <div class="dropdown">
 
-                    <a href="../services/service.html" class="dropbtn" id="servicesLink">
+                    <a href="../services/service.html" class="dropbtn active" id="servicesLink">
                         Services <span class="arrow">▾</span>
                     </a>
 
@@ -46,7 +69,6 @@
 
                         <a href="../services/insurance.html">Insurance</a>
                         <a href="../services/loans.html">Loans</a>
-                        <a href="../academy/academy.html">Academy</a>
 
                     </div>
 
@@ -57,7 +79,7 @@
                 <a href="../career/career.html">Career</a>
 
                 <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
-                <a href="../login/login.html" class="contact-btn">Login</a>
+                <a href="../login/login.html" class="login-btn">Login</a>
 
 
             </nav>
@@ -75,22 +97,7 @@
 
         <main>
 
-        <section class="services-hero">
-
-        <div class="hero-overlay"></div>
-
-        <div class="container">
-        <div class="hero-content">
-
-            <h1>Services</h1>
-
-            <p>Strategic Financial Solutions Designed for Your Success</p>
-
-
-        </div>
-        </div>
-
-    </section>
+        
 
     <section class="financial-section">
 
@@ -127,9 +134,7 @@
                     <img src="../assets/insurance1.jpg">
                 </div>
 
-                <div class="img-card card3">
-                    <img src="../assets/academy1.jpg">
-                </div>
+               
 
                 <div class="img-card card4">
                     <img src="../assets/loan1.jpg">
@@ -148,17 +153,12 @@
         <div class="stats-container">
 
             <div class="stat-card">
-                <h2 class="counter" data-target="500">0</h2>
+                <h2 class="counter" data-target="50">0</h2>
                 <p>Projects Completed</p>
             </div>
 
             <div class="stat-card">
-                <h2>₹<span class="counter" data-target="500">0</span>Cr+</h2>
-                <p>Assets Under Management</p>
-            </div>
-
-            <div class="stat-card">
-                <h2 class="counter" data-target="10">0</h2>
+                <h2 class="counter" data-target="3">0</h2>
                 <p>Years of Experience</p>
             </div>
 
@@ -172,148 +172,7 @@
 
     </section>
 
-    <section class="services-section">
-
-        <div class="container">
-        <div class="services-container">
-
-
-
-            <!-- Service Card -->
-            <div class="service-card">
-
-                <div class="service-img">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f" alt="">
-                </div>
-
-                <div class="service-content">
-
-                    <div class="service-title">
-                        <span class="icon">💰</span>
-                        <h3>Investment Broking</h3>
-                    </div>
-
-                    <div class="service-details">
-                        <p>
-                            Professional investment broking services helping
-                            clients maximize returns with strategic planning.
-                        </p>
-
-                        <ul>
-                            <li>✔ Portfolio Planning</li>
-                            <li>✔ Stock Market Investment</li>
-                            <li>✔ Expert Advisory</li>
-                            <li>✔ Risk Management</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-
-            <!-- Service Card -->
-            <div class="service-card">
-
-                <div class="service-img">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" alt="">
-                </div>
-
-                <div class="service-content">
-
-                    <div class="service-title">
-                        <span class="icon">🛡</span>
-                        <h3>Insurance Services</h3>
-                    </div>
-
-                    <div class="service-details">
-                        <p>
-                            Protect your financial future with customized
-                            insurance solutions designed for security and growth.
-                        </p>
-
-                        <ul>
-                            <li>✔ Life Insurance</li>
-                            <li>✔ Health Insurance</li>
-                            <li>✔ Retirement Planning</li>
-                            <li>✔ Family Protection</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- Service Card -->
-            <div class="service-card">
-
-                <div class="service-img">
-                    <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d" alt="">
-                </div>
-
-                <div class="service-content">
-                    <div class="service-title">
-                        <span class="icon">📈</span>
-                        <h3>Loans </h3>
-                    </div>
-
-                    <div class="service-details">
-                        <p>
-                            Access the right financial support at the right time with simple, fast, and transparent loan
-                            solutions tailored to your needs.
-                        </p>
-
-                        <ul>
-                            <li>✔ Personal & Home Loans</li>
-                            <li>✔ Business & Startup Funding</li>
-                            <li>✔ Low Interest Options</li>
-                            <li>✔ Quick & Easy Processing</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-
-            <!-- Service Card -->
-            <div class="service-card">
-
-                <div class="service-img">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644" alt="">
-                </div>
-
-                <div class="service-content">
-
-                    <div class="service-title">
-                        <span class="icon">🎓</span>
-                        <h3>Academy</h3>
-                    </div>
-
-                    <div class="service-details">
-                        <p>
-                            Learn wealth creation, investment strategies,
-                            and financial planning through our professional academy.
-                        </p>
-
-                        <ul>
-                            <li>✔ Financial Education</li>
-                            <li>✔ Investment Workshops</li>
-                            <li>✔ Wealth Building</li>
-                            <li>✔ Market Insights</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-        </div>
-
-    </section>
-
+   
 
     <section class="consultancy">
 
@@ -491,7 +350,6 @@
                 We combine expert advisory, disciplined investing and personalised planning to grow and protect wealth.
             </p>
 
-            <button class="explore-btn">Explore</button>
         </div>
 
 
@@ -622,12 +480,12 @@
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
-                    <span>support@fatcatwealthy.com</span>
+                    <span class="contact-email">support@fatcatwealthy.com</span>
                 </div>
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
-                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                    <span class="contact-address"><span class="address-line">1st Floor, CPS Tower, Advaitha Ashram Rd,</span><span class="address-line">Fairlands - Salem, Chennai</span></span>
                 </div>
             </div>
 
@@ -640,7 +498,6 @@
                     <li><a href="../services/mutual-fund.html">Mutual Fund</a></li>
                     <li><a href="../services/stock-broking.html">Investment Broking</a></li>
                     <li><a href="../services/insurance.html">Insurance</a></li>
-                    <li><a href="../academy/academy.html">Academy</a></li>
                 </ul>
 
             </div>

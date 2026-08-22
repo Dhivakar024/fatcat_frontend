@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/site-chrome.css">
 </head>
 
 <body>
@@ -47,7 +48,7 @@
 
                         <a href="../services/insurance.html">Insurance</a>
                         <a href="../services/loans.html">Loans</a>
-                        <a href="../academy/academy.html">Academy</a>
+                        
 
                     </div>
 
@@ -74,6 +75,10 @@
 
     </header>
     <section class="insurance-hero">
+        <video class="insurance-hero-video" autoplay muted loop playsinline aria-hidden="true">
+            <source src="assets/stockmarket(video).mp4" type="video/mp4">
+        </video>
+
         <div class="hero-container">
 
             <!-- Left Content -->
@@ -261,44 +266,10 @@
 
 
 
-    <section class="now-streaming">
-        <div class="container">
-
-            <h2 class="section-title scroll-animate">Now Streaming</h2>
-
-            <div class="stream-grid">
-
-                <!-- Video 1 -->
-                <div class="stream-card scroll-animate" data-video="https://www.youtube.com/embed/VIDEO_ID2">
-                    <img src="../services/assets/carr.jpg">
-                    <div class="play-btn">▶</div>
-                </div>
-
-                <!-- Video 2 -->
-                <div class="stream-card scroll-animate" data-video="https://www.youtube.com/embed/VIDEO_ID2">
-                    <img src="../services/assets/Life.jpg">
-                    <div class="play-btn">▶</div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="stream-card scroll-animate" data-video="https://www.youtube.com/embed/VIDEO_ID3">
-                    <img src="../services/assets/house.jpg">
-                    <div class="play-btn">▶</div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
+   
 
 
-    <!-- VIDEO MODAL -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-container">
-            <span class="close-video">✕</span>
-            <iframe id="youtubeVideo" src="" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
+   
 
 
 
@@ -660,12 +631,12 @@
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
-                    <span>support@fatcatwealthy.com</span>
+                    <span class="contact-email">support@fatcatwealthy.com</span>
                 </div>
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
-                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                    <span class="contact-address"><span class="address-line">1st Floor, CPS Tower, Advaitha Ashram Rd,</span><span class="address-line">Fairlands - Salem, Chennai</span></span>
                 </div>
             </div>
 

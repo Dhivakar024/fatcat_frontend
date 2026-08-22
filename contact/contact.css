@@ -173,17 +173,17 @@ background:#1d4ed8;
   display: block;
 }
 .map-label{
-  margin-bottom: 20px;
+  margin-bottom: 38px;
 }
 
 .map-label i {
     color: #e63946;
-    font-size: 29px;
+    font-size: 38px;
 }
 
 .map-label span{
     font-family: 'Poppins', sans-serif;
-    font-size: 22px;
+    font-size: 38px;
     font-weight: 600;
 }
 
@@ -814,6 +814,39 @@ text-align:center;
 
 .contact-btn:hover{
     background:#147282;
+}
+
+/* Home-page navigation treatment (scoped to avoid affecting the contact form button). */
+header.navbar{z-index:1500}
+header .nav-container{display:flex;align-items:center;justify-content:space-between}
+header .nav-menu{display:flex;align-items:center;gap:15px}
+header .nav-menu > a,
+header .nav-menu > .dropdown > .dropbtn{margin-left:10px;color:#fff;text-decoration:none;font-size:20px;transition:.3s}
+header .nav-menu > a:hover,
+header .nav-menu > .dropdown > .dropbtn:hover{color:#38f8c2;background:transparent;transform:none}
+header .nav-menu .contact-btn{padding:0;background:transparent;border-radius:0;font-weight:normal}
+header .dropdown{position:relative}
+header .dropbtn{padding:0;border:0;gap:5px}
+header .dropdown-content{top:100%;left:0;z-index:999;min-width:180px;background:#fff;border-radius:6px;box-shadow:0 5px 20px rgba(0,0,0,.15)}
+header .dropdown-content a{display:block;margin:0;padding:10px 15px;color:#333;font-size:15px}
+header .dropdown-content a:hover{color:#1537f7;background:#f1f5f8}
+header .submenu-content{background:#fff}
+header .hamburger{justify-content:space-between;width:26px;height:20px;gap:0}
+header .hamburger span{width:100%;background:linear-gradient(#000,darkblue);border-radius:2px;transition:transform .35s ease,opacity .25s ease}
+header .hamburger.active span:nth-child(1){transform:translateY(8.5px) rotate(45deg)}
+header .hamburger.active span:nth-child(2){opacity:0}
+header .hamburger.active span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg)}
+
+@media(max-width:900px){
+  header .logo{margin-left:0}
+  header .nav-menu{top:108px;gap:18px;background:linear-gradient(160deg,#0a1418,#0f2b30 60%,#123c42)}
+  header .dropdown{position:relative}
+  header .dropdown-content{padding:0;background:transparent}
+  header .dropdown:hover .dropdown-content{display:none}
+  header .dropdown.open .dropdown-content{display:block}
+  header .dropdown-content a{width:100%;margin:0 0 12px;padding:12px 16px;color:#fff;border-radius:12px;background:linear-gradient(135deg,rgba(255,99,71,.95),rgba(255,175,64,.95))}
+  header .submenu-content{position:static;margin-left:16px}
+  header .submenu:hover .submenu-content{display:none}
 }
 
 

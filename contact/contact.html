@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/site-chrome.css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
 
             <nav class="nav-menu" id="navMenu">
 
-                <a href="../home/index.html" class="active">Home</a>
+                <a href="../home/index.html">Home</a>
                 <a href="../about/about.html">About Us</a>
 
                 <div class="dropdown">
@@ -47,7 +48,7 @@
 
                         <a href="../services/insurance.html">Insurance</a>
                         <a href="../services/loans.html">Loans</a>
-                        <a href="../academy/academy.html">Academy</a>
+                        
 
                     </div>
 
@@ -57,8 +58,8 @@
                 <a href="../business/business.html">Business</a>
                 <a href="../career/career.html">Career</a>
 
-                <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
-                <a href="../login/login.html" class="contact-btn">Login</a>
+                <a href="../contact/contact.html" class="contact-btn nav-current" aria-current="page">Contact Us</a>
+                <a href="../login/login.html" class="login-btn">Login</a>
 
 
             </nav>
@@ -105,7 +106,7 @@
                     We aim to respond quickly and ensure a smooth support experience.
                     Your input helps us improve and serve you better every day.
                 </p>
-                  <form class="contact-form" action="https://formspree.io/f/xxxxxxx" method="POST">
+                  <form id="contact-form" class="contact-form" action="https://formspree.io/f/xxxxxxx" method="POST">
                             <div class="form-group">
                                 <label><i class="fa-solid fa-circle-user"></i> Name</label>
                                 <input type="text" name="name" placeholder="Enter your name" required>
@@ -216,12 +217,12 @@
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
-                    <span>support@fatcatwealthy.com</span>
+                    <span class="contact-email">support@fatcatwealthy.com</span>
                 </div>
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
-                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                    <span class="contact-address"><span class="address-line">1st Floor, CPS Tower, Advaitha Ashram Rd,</span><span class="address-line">Fairlands - Salem, Chennai</span></span>
                 </div>
             </div>
 

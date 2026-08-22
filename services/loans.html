@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/site-chrome.css">
 </head>
 
 <body>
@@ -47,7 +48,7 @@
 
                         <a href="../services/insurance.html">Insurance</a>
                         <a href="../services/loans.html">Loans</a>
-                        <a href="../services/service.html">Academy</a>
+                       
 
                     </div>
 
@@ -78,6 +79,9 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
+        <video class="hero-bg-video" autoplay muted loop playsinline>
+             <source src="../services/assets/loan-video.mp4" type="video/mp4">
+        </video>
         <div class="hero-container">
 
             <!-- LEFT CONTENT -->
@@ -229,12 +233,11 @@
                         <div>
                             <h4>Receive funds</h4>
                             <p>Get funds directly in your bank account within hours.</p>
+                            <a href="../contact/contact.html" class="apply-btn">Apply →</a>
                         </div>
                     </div>
 
                 </div>
-
-                <a href="../contact/contact.html" class="apply-btn">Apply →</a>
             </div>
 
             <!-- RIGHT IMAGE -->
@@ -247,64 +250,82 @@
 
 
     <!-- LOAN AMOUNT SECTION -->
-    <section class="loan-amount">
-        <h2 class="section-title fade-up">
-            Get a Loan for Different Amounts
-        </h2>
+   <!-- LOAN AMOUNT SECTION -->
+<section class="loan-amount">
+    <h2 class="section-title fade-up">
+        Get a Loan for Different Amounts
+    </h2>
 
-        <div class="slider-container fade-up">
+    <div class="amount-slider-wrap fade-up">
+        <div class="amount-track">
 
-            <!-- LEFT ARROW -->
-
-            <button class="nav-btn left" onclick="slideLeft()">&#10094;</button>
-
-            <!-- SLIDER -->
-            <div class="amount-slider" id="slider">
-
-                <div class="amount-card">
-                    <img src="../services/assets/money.png">
-                    <p>₹ 1 Lakh</p>
-                    <span>Personal Loan</span>
-                </div>
-
-                <div class="amount-card">
-                    <img src="../services/assets/money.png">
-                    <p>₹ 10 Lakhs</p>
-                    <span>Personal Loan</span>
-                </div>
-
-                <div class="amount-card">
-                    <img src="../services/assets/money.png">
-                    <p>₹ 50 Lakhs</p>
-                    <span>Personal Loan</span>
-                </div>
-
-                <div class="amount-card">
-                    <img src="../services/assets/money.png">
-                    <p>₹ 75 Lakhs</p>
-                    <span>Personal Loan</span>
-                </div>
-
-                <!-- HIDDEN INITIALLY -->
-                <div class="amount-card">
-                    <img src="../services/assets/money.png">
-                    <p>₹ 1 Crore</p>
-                    <span>Personal Loan</span>
-                </div>
-
-                <div class="amount-card">
-                    <img src="../services/assets/money.png">
-                    <p>₹ 5 Crores</p>
-                    <span>Personal Loan</span>
-                </div>
-
+            <!-- SET 1 -->
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 1 Lakh</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 10 Lakhs</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 50 Lakhs</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 75 Lakhs</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 1 Crore</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 5 Crores</p>
+                <span>Personal Loan</span>
             </div>
 
-            <!-- RIGHT ARROW -->
-            <button class="nav-btn right" onclick="slideRight()">&#10095;</button>
+            <!-- SET 2 (duplicate — makes the loop seamless) -->
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 1 Lakh</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 10 Lakhs</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 50 Lakhs</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 75 Lakhs</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 1 Crore</p>
+                <span>Personal Loan</span>
+            </div>
+            <div class="amount-card">
+                <img src="../services/assets/money.png">
+                <p>₹ 5 Crores</p>
+                <span>Personal Loan</span>
+            </div>
 
         </div>
-    </section>
+    </div>
+</section>
 
 
 
@@ -373,16 +394,16 @@
 
 
     <!-- CTA SECTION -->
-    <section class="cta">
-        <div class="cta-content fade-up">
-            <h2>Ready to get started?</h2>
-            <p>
-                Join thousands of satisfied customers who have chosen Fatcat Wealthy
-                for their loan needs. Apply now and get funds in your account quickly.
-            </p>
-            <a href="../contact/contact.html" class="cta-btn">Apply for Loan</a>
-        </div>
-    </section>
+    <section class="cta-section">
+    <div class="cta-container fade-up">
+        <h2>Ready to get <span>started?</span></h2>
+        <p>
+            Join thousands of satisfied customers who have chosen Fatcat Wealthy
+            for their loan needs. Apply now and get funds in your account quickly.
+        </p>
+        <a href="../contact/contact.html" class="cta-btn">Apply for Loan</a>
+    </div>
+</section>
 
 
     <footer class="footer">
@@ -436,12 +457,12 @@
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
-                    <span>support@fatcatwealthy.com</span>
+                    <span class="contact-email">support@fatcatwealthy.com</span>
                 </div>
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
-                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                    <span class="contact-address"><span class="address-line">1st Floor, CPS Tower, Advaitha Ashram Rd,</span><span class="address-line">Fairlands - Salem, Chennai</span></span>
                 </div>
             </div>
 

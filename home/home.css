@@ -88,6 +88,7 @@ margin-left:10px;
 
 }
 
+
 .nav-menu a:hover{
 color:#38f8c2;
 }
@@ -229,22 +230,7 @@ color: #1537f7;
 display:flex;
 }
 
-.nav-menu{
-position:absolute;
-  top:108px;
-left:0;
-width:100%;
-background:linear-gradient(135deg, #1e9bb4, #7f5af0, #f793);
-flex-direction:column;
-align-items:flex-start;
-padding:20px;
-gap:18px;
-display:none;
-}
 
-.nav-menu.active{
-display:flex;
-}
 
 
 
