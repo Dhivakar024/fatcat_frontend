@@ -4,35 +4,22 @@ const navMenu = document.getElementById("navMenu");
 hamburger.addEventListener("click", () => {
 
 navMenu.classList.toggle("active");
+hamburger.classList.toggle("active");
 
 });
 
-
-const serviceDropdownLink = document.getElementById("servicesLink");
-
-if(serviceDropdownLink){
-
-    const serviceDropdown = serviceDropdownLink.closest(".dropdown");
-
-    serviceDropdownLink.addEventListener("click", function(e){
-
-        if(window.innerWidth <= 900){
-            e.preventDefault(); // stop routing
-            serviceDropdown.classList.toggle("active");
-        }
-
-    });
-
-}
 
 /* MOBILE DROPDOWN */
 
 const dropdown = document.querySelector(".dropdown");
 const dropbtn = document.querySelector(".dropbtn");
 
-dropbtn.addEventListener("click", () => {
+dropbtn.addEventListener("click", (event) => {
 
-dropdown.classList.toggle("open");
+if (window.innerWidth <= 900) {
+    event.preventDefault();
+    dropdown.classList.toggle("open");
+}
 
 });
 

@@ -1262,56 +1262,72 @@ color:white;
 
 
 .work-together{
-padding:70px 8%;
-background:linear-gradient(135deg,#6fa8b3,#7fb9c3);
-border-radius:10px;
+padding:40px 8%;
+background:#fff;
+border-radius:0;
 position:relative;
 overflow:hidden;
 margin:80px auto;
-max-width:1200px;
+max-width:none;
+box-shadow:none;
+display:flex;
+justify-content:center;
 }
 
 .work-container{
 text-align:center;
 position:relative;
 z-index:2;
+background:linear-gradient(135deg,#0b2027,#075e6e);
+padding:60px 50px;
+border-radius:20px;
+max-width:900px;
+width:100%;
+color:#fff;
+box-shadow:0 20px 45px rgba(11,32,39,0.18);
 }
 
 .work-content h2{
-font-size:32px;
+font-size:36px;
 font-weight:700;
 margin-bottom:15px;
-color:#000;
+color:#fff;
+font-family:Georgia, "Times New Roman", serif;
+}
+.work-content h2 span{
+    color:#f2c469;
 }
 
 .work-content p{
 max-width:600px;
 margin:0 auto 25px;
 font-size:15px;
-color:#1f1f1f;
-line-height:1.6;
+color:#cfe4e8;
+line-height:1.7;
 }
 
 .work-btn{
 display:inline-block;
 padding:10px 22px;
-background:#ffffff;
-color:#2d8fa1;
-border-radius:6px;
+background:transparent;
+color:#fff;
+border-radius:8px;
+border:1px solid #d8aa43;
 font-size:14px;
 text-decoration:none;
 transition:0.3s;
 }
 
 .work-btn:hover{
-background:#e9f4f6;
+background:#d8aa43;
+color:#0b2027;
 }
 
 
 /* left circle decoration */
 
 .work-together::before{
-content:"";
+content:none;
 position:absolute;
 width:160px;
 height:160px;
@@ -1325,7 +1341,7 @@ top:-40px;
 /* right line decoration */
 
 .work-together::after{
-content:"";
+content:none;
 position:absolute;
 width:160px;
 height:120px;
@@ -1348,6 +1364,22 @@ font-size:26px;
 
 .work-content p{
 font-size:14px;
+}
+
+}
+
+@media(max-width:600px){
+
+.work-together{
+padding:32px 20px;
+}
+
+.work-container{
+padding:44px 24px;
+}
+
+.work-content h2{
+font-size:28px;
 }
 
 }
@@ -2036,4 +2068,16 @@ font-size:14px;
         padding: 18px;
     }
 
+}
+
+/* Keep the Careers contact CTA readable in dark mode. */
+body.dark-mode .work-btn {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border: 1px solid #60a5fa;
+}
+
+body.dark-mode .work-btn:hover {
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
 }

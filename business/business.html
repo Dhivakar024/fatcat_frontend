@@ -11,6 +11,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/site-chrome.css">
+    <style>
+        /* Keep footer columns inside the viewport without clipping their text. */
+        footer .footer-container {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        footer .footer-col,
+        footer .contact-item,
+        footer .contact-item span {
+            min-width: 0;
+        }
+
+        footer .contact-item span {
+            width: auto;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 900px) {
+            footer .footer-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            footer .footer-container {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -47,7 +78,7 @@
 
                         <a href="../services/insurance.html">Insurance</a>
                         <a href="../services/loans.html">Loans</a>
-                        <a href="../academy/academy.html">Academy</a>
+                        
 
                     </div>
 
@@ -299,12 +330,12 @@
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
-                    <span>support@fatcatwealthy.com</span>
+                    <span class="contact-email">support@fatcatwealthy.com</span>
                 </div>
 
                 <div class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
-                    <span>1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai</span>
+                    <span class="contact-address"><span class="address-line">1st Floor, CPS Tower, Advaitha Ashram Rd,</span><span class="address-line">Fairlands - Salem, Chennai</span></span>
                 </div>
             </div>
 

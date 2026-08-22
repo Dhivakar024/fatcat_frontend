@@ -1,0 +1,159 @@
+/* Shar header and footerr: mirrors the home page without changing page content. */
+/* The theme script adds account controls to the nav. Keep the header hidden until
+   that synchronous setup completes, preventing a visible layout shift on load. */
+
+html:not(.site-chrome-ready) header.navbar { opacity: 0.001; }
+header.navbar { opacity: 1; transition: opacity .15s ease; }
+body{font-size:1rem;}
+h1{font-size:2.2rem;}
+h2{font-size:1.6rem;}
+h3{font-size:1.3rem;}
+
+header.navbar {
+  width: 100%;
+  background: #0b1b66;
+  padding: 12px 6%;
+  position: sticky;
+  top: 0;
+  z-index: 1500;
+  font-family: 'Poppins', sans-serif;
+}
+
+header .nav-container { display: flex; align-items: center; justify-content: space-between; }
+header .logo { display: inline-flex; align-items: center; margin-left: -65px; padding: 8px 16px; background: #fff; border-radius: 12px; }
+header .logo img { height: 45px; width: auto; }
+header .nav-menu { display: flex; align-items: center; gap: 15px; }
+header .nav-menu > a,
+header .nav-menu > .dropdown > .dropbtn {
+  margin-left: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color .3s;
+}
+header .nav-menu > a:hover,
+header .nav-menu > .dropdown > .dropbtn:hover { color: #38f8c2; background: transparent; transform: none; }
+header .nav-menu .contact-btn { background: transparent; box-shadow: none; }
+header .nav-menu .login-btn,
+header .nav-menu a[href*="login"] { padding: 8px 18px; border-radius: 6px; background: #2563eb; color: #fff; font-size: 16px; }
+header .nav-menu .login-btn:hover,
+header .nav-menu a[href*="login"]:hover { background: #1d4ed8; color: #fff; }
+header .dropdown { position: relative; }
+header .dropbtn { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+header .dropdown-content { display: none; position: absolute; top: 100%; left: 0; z-index: 1600; min-width: 180px; padding: 0; background: #fff; border-radius: 6px; box-shadow: 0 5px 20px rgba(0, 0, 0, .15); }
+header .dropdown-content a { display: block; margin: 0; padding: 10px 15px; border-radius: 0; color: #333; font-size: 15px; line-height: 1.5; text-decoration: none; }
+header .dropdown-content a:hover { background: #f1f5f8; color: #1537f7; transform: none; }
+header .dropdown:hover > .dropdown-content { display: block; }
+header .submenu { position: relative; }
+header .submenu-content { display: none; position: absolute; top: 0; left: 100%; min-width: 180px; padding: 0; background: #fff; border-radius: 5px; }
+header .submenu:hover > .submenu-content { display: block; }
+header .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 20px; cursor: pointer; }
+header .hamburger span { display: block; width: 100%; height: 3px; border-radius: 2px; background: linear-gradient(#000, darkblue); transition: transform .35s ease, opacity .25s ease; }
+header .hamburger.active span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+header .hamburger.active span:nth-child(2) { opacity: 0; }
+header .hamburger.active span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+footer.footer { padding: 60px 8% 20px; background: #0b1b66; color: #fff; font-family: 'Poppins', sans-serif; }
+footer .footer-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1200px; margin: auto; }
+footer .footer-col h3, footer .footer-col h4 { margin-bottom: 15px; color: #fff; }
+footer .footer-col p { font-size: 18px; line-height: 1.6; }
+footer .footer-col ul { padding: 0; list-style: none; }
+footer .footer-col li { margin-bottom: 10px; }
+footer .footer-col ul a { color: #fff; font-size: 16px; text-decoration: none; transition: .3s; }
+footer .footer-col ul a:hover { padding-left: 4px; color: #38f8c2; }
+footer .logo { display: inline-flex; align-items: center; margin: 0 0 15px; padding: 8px 16px; background: #fff; border-radius: 12px; }
+footer .logo img { height: 45px; width: auto; }
+footer .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+footer .contact-item img { width: 18px; height: 18px; flex: 0 0 18px; }
+footer .contact-item span { font-size: 16px; overflow-wrap: anywhere; }
+footer .social-icons { display: flex; gap: 15px; margin-top: 15px; }
+footer .social-icons a { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #0f4c5c; color: #fff; text-decoration: none; transition: .3s; }
+footer .social-icons a:hover { background: #1e9bb4; transform: translateY(-3px); }
+footer .footer-bottom { margin-top: 40px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.2); text-align: center; font-size: 14px; }
+
+/*
+   Let shared page sections and footer columns shrink to the viewport instead
+   of enlarging the document width.  Text wraps inside its column, so this
+   removes horizontal page scrolling without hiding any content.
+*/
+body > header,
+body > main,
+body > section,
+body > footer { min-width: 0; max-width: 100%; }
+
+footer .footer-container { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+footer .footer-col,
+footer .contact-item,
+footer .contact-item span { min-width: 0; }
+footer .contact-item span { width: auto; max-width: 100%; overflow-wrap: anywhere; }
+
+@media (max-width: 900px) {
+  header .logo { margin-left: 0; }
+  header .hamburger { display: flex; }
+  header .nav-menu { position: absolute; top: 108px; left: 0; display: none; width: 100%; padding: 20px; flex-direction: column; align-items: flex-start; gap: 18px; background: linear-gradient(160deg, #0a1418, #0f2b30 60%, #123c42); }
+  header .nav-menu.active { display: flex; }
+  header .dropdown { width: 100%; }
+  header .dropdown-content { position: static; width: 100%; background: transparent; box-shadow: none; }
+  header .dropdown:hover > .dropdown-content { display: none; }
+  header .dropdown.open > .dropdown-content, header .dropdown.active > .dropdown-content { display: block; }
+  header .dropdown-content a { width: 100%; margin: 0 0 12px; padding: 12px 16px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,99,71,.95), rgba(255,175,64,.95)); color: #fff; }
+  header .submenu-content { position: static; margin-left: 16px; }
+  header .submenu:hover > .submenu-content { display: none; }
+  footer .footer-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+}
+
+@media (max-width: 600px) {
+  footer.footer { padding: 50px 20px; }
+  footer .footer-container { grid-template-columns: 1fr; gap: 25px; text-align: center; }
+  footer .logo, footer .social-icons { justify-content: center; }
+  footer .contact-item { justify-content: center; }
+}
+
+/* Standard footer treatment for every page except the Academy page. */
+footer.footer.standard-footer .footer-container { max-width: 1280px; grid-template-columns: 1.2fr 1.9fr 1fr 1fr; gap: 96px; }
+footer.footer.standard-footer .footer-col { min-width: 0; padding: 6px 28px 14px; }
+footer.footer.standard-footer .footer-col:first-child { margin-left: -60px; }
+footer.footer.standard-footer .footer-col:last-child { margin-right: -70px; }
+footer.footer.standard-footer .footer-col + .footer-col { border-left: 1px solid rgba(255, 255, 255, .18); }
+footer.footer.standard-footer .footer-col p { max-width: 265px; line-height: 1.8; }
+footer.footer.standard-footer .footer-col h4 { position: relative; margin: 0 0 24px; padding-bottom: 14px;  font-size:20px;}
+footer.footer.standard-footer .footer-col h4::after { position: absolute; bottom: 0; left: 0; width: 34px; height: 2px; background: #f4b63f; content: ""; }
+footer.footer.standard-footer .contact-item { align-items: flex-start; gap: 12px; width: auto; margin-bottom: 45px; }
+footer.footer.standard-footer .contact-item span { width: auto; line-height: 1.65; }
+/* Keep the contact details compact and consistent across every shared footer. */
+footer .contact-email { overflow-wrap: normal; white-space: nowrap; }
+footer.footer .contact-item .contact-address { display: inline-flex; flex-direction: column; gap: 10px; line-height: 1.45; white-space: nowrap; }
+footer.footer .contact-item .contact-address .address-line { display: block; line-height: 1.35; }
+footer.footer.standard-footer .footer-col ul li { margin-bottom: 14px; }
+footer.footer.standard-footer .footer-col ul li a { display: inline-flex; align-items: center; gap: 10px; line-height: 1.5; }
+footer.footer.standard-footer .footer-col ul li a::before { color: #f4b63f; content: ">"; font-size: 16px; font-weight: 700; }
+footer.footer.standard-footer .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; text-align: left; }
+footer.footer.standard-footer .footer-bottom p { margin: 0; }
+footer.footer.standard-footer .footer-legal { display: flex; align-items: center; justify-content: flex-end; margin-left: auto; }
+footer.footer.standard-footer .footer-legal a { padding: 0 16px; color: inherit; font-size: 14px; line-height: 1; text-decoration: none; white-space: nowrap; }
+footer.footer.standard-footer .footer-legal a + a { border-left: 1px solid rgba(255, 255, 255, .45); }
+footer.footer.standard-footer .footer-legal a:hover { color: #38f8c2; }
+
+@media (max-width: 900px) {
+  footer.footer.standard-footer .footer-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 0; }
+}
+
+@media (max-width: 600px) {
+  footer.footer.standard-footer .footer-container { grid-template-columns: 1fr; }
+  footer.footer.standard-footer .footer-col,
+  footer.footer.standard-footer .footer-col:first-child { margin-left: 0; padding: 6px 0 18px; }
+  footer.footer.standard-footer .footer-col + .footer-col { border-top: 1px solid rgba(255, 255, 255, .18); border-left: 0; padding-top: 28px; }
+  footer.footer.standard-footer .footer-col p { max-width: none; }
+  footer.footer.standard-footer .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+  footer.footer.standard-footer .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  footer.footer.standard-footer .footer-legal { flex-wrap: wrap; justify-content: center; margin-left: 0; }
+  footer.footer.standard-footer .footer-legal a { padding: 0 10px; }
+  footer.footer .contact-item .contact-address { font-size: 13px; }
+}

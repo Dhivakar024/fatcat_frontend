@@ -7,6 +7,7 @@ font-family:'Poppins',sans-serif;
 
 body{
 font-family: 'Poppins', sans-serif;
+
 }
 /* NAVBAR */
 
@@ -507,6 +508,25 @@ text-align:center;
   background:linear-gradient(135deg,#1f9db5,#7a77d9);
   color:white;
   overflow:hidden;
+  position:relative;
+  isolation:isolate;
+}
+
+.insurance-hero-video{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.insurance-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg,rgba(5,24,59,.87),rgba(5,24,59,.55));
 }
 .hero-container{
   max-width:1200px;
@@ -515,6 +535,8 @@ text-align:center;
   align-items:center;
   justify-content:space-between;
   gap:60px;
+  position:relative;
+  z-index:2;
 }
 
 /* Left */
@@ -799,8 +821,9 @@ transform:translateY(0);
 
 
 .insurance-simple{
-  padding:80px 20px;
-  background:#f5f6f7;
+  padding-top:40px;
+  padding-bottom:40px;
+  background:#f7f7f7;
 }
 
 .container{
@@ -813,6 +836,8 @@ transform:translateY(0);
   font-size:30px;
   font-weight:700;
   margin-bottom:50px;
+  padding-top:20px;
+  padding-bottom:40px;
 }
 
 .insurance-types{
@@ -823,8 +848,8 @@ transform:translateY(0);
 }
 
 .type-card{
-  width:120px;
-  height:120px;
+  width:200px;
+  height:200px;
   background:white;
   border-radius:12px;
   display:flex;
@@ -887,14 +912,17 @@ transform:translateY(0);
 
 
 .product-features{
-  padding:80px 20px;
-  background:#f5f6f7;
+  padding-top:10px;
+  padding-bottom:30px;
+  background:#f7f7f7;
 }
 
 .section-title{
   text-align:center;
   font-size:30px;
   margin-bottom:30px;
+  padding-top:5px;
+  padding-bottom:30px;
 }
 
 /* Tabs */
@@ -907,7 +935,7 @@ transform:translateY(0);
 }
 
 .tab-btn{
-  padding:10px 22px;
+  padding:10px 24px;
   border:none;
   border-radius:20px;
   background:#e5edf0;
@@ -953,7 +981,7 @@ transform:translateY(0);
 }
 
 .feature-card p{
-  font-size:14px;
+  font-size:18px;
   color:#555;
   line-height:1.6;
 }
@@ -1016,118 +1044,12 @@ font-size:13px;
 }   
 
 
-.now-streaming{
-  padding:80px 20px;
-  background:#f5f6f7;
-}
-
-.stream-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:30px;
-}
-
-.stream-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:14px;
-  cursor:pointer;
-  transition:all .4s ease;
-}
-
-.stream-card img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  border-radius:14px;
-}
-
-/* Play Button */
-
-.play-btn{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.25);
-}
-
-/* Hover */
-
-.stream-card:hover{
-  transform:translateY(-6px);
-}
-
-.stream-card:hover img{
-  transform:scale(1.05);
-}
-
-
-@media(max-width:992px){
-
-.stream-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:600px){
-
-.stream-grid{
-grid-template-columns:1fr;
-}
-
-.stream-card img{
-height:220px;
-}
-
-}
-
-.video-modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:999;
-}
-
-.video-container{
-position:relative;
-width:80%;
-max-width:800px;
-}
-
-.video-container iframe{
-width:100%;
-height:450px;
-border-radius:10px;
-}
-
-.close-video{
-position:absolute;
-top:-35px;
-right:0;
-font-size:28px;
-color:white;
-cursor:pointer;
-}
 
 .join-us{
-  padding:80px 20px;
+  padding-top:10px;
+  padding-bottom:20px;
   background:#ffffff;
+
 }
 
 .join-grid{
@@ -1156,7 +1078,7 @@ cursor:pointer;
 }
 
 .join-card p{
-  font-size:14px;
+  font-size:18px;
   color:#555;
   line-height:1.6;
 }
@@ -1226,13 +1148,14 @@ transform:translateY(0);
 }
 
 .protection-plan{
-padding:90px 20px;
+padding-top:30px;
+padding-bottom:40px;
 background:#f5f6f7;
 }
 
 .section-title{
 text-align:center;
-font-size:32px;
+font-size:40px;
 font-weight:700;
 margin-bottom:10px;
 }
@@ -1247,9 +1170,10 @@ margin-bottom:60px;
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:40px;
-max-width:1000px;
+max-width:1200px;
 height: auto;
-margin:auto;
+transform: translateX(-30px);
+
 }
 
 .plan-card{
@@ -1258,6 +1182,8 @@ padding:30px;
 border-radius:14px;
 box-shadow:0 8px 20px rgba(0,0,0,0.08);
 transition:0.3s;
+width: 400px;
+
 }
 
 .plan-card:hover{
@@ -1272,7 +1198,7 @@ margin-bottom:10px;
 
 .plan-desc{
 color:#666;
-font-size:14px;
+font-size:15px;
 margin-bottom:20px;
 }
 
@@ -1294,7 +1220,7 @@ margin-top:5px;
 }
 
 .plan-features{
-font-size:14px;
+font-size:18px;
 color:#555;
 margin-bottom:20px;
 }
@@ -1330,7 +1256,8 @@ transform:translateY(0);
 }
 
 .why-insurance{
-padding:90px 20px;
+padding-top:20px;
+padding-bottom:20px;
 background:#ffffff;
 }
 
@@ -1376,7 +1303,7 @@ height:22px;
 
 
 .why-card h3{
-font-size:16px;
+font-size:18px;
 margin-bottom:8px;
 }
 
