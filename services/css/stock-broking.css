@@ -289,7 +289,7 @@ display:block;
 .footer{
 background:#0B1B66;
 color:white;
-padding:60px 8% 20px;
+padding:40px 8% 15px;
 }
 
 /* GRID LAYOUT */
@@ -299,7 +299,7 @@ max-width:1200px;
 margin:auto;
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:150px;
+gap:40px;
 
 }
 
@@ -323,7 +323,7 @@ padding:0;
 }
 
 .footer-col ul li{
-margin-bottom:10px;
+margin-bottom:6px;
 }
 
 .footer-col ul li a{
@@ -357,7 +357,7 @@ scroll-behavior:smooth;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   flex-wrap: nowrap; /* keep icon + text in one line */
 }
 

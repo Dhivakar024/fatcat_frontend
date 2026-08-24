@@ -1266,12 +1266,15 @@ display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:30px;
 max-width:1000px;
-margin:auto;
+margin-bottom:40px;
+
+
 }
 
 .why-card{
 background:#e4eef3;
 padding:30px;
+padding-right:50px;
 border-radius:12px;
 text-align:center;
 transition:0.3s;
