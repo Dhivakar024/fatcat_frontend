@@ -9,6 +9,7 @@ h1{font-size:2.2rem;}
 h2{font-size:1.6rem;}
 h3{font-size:1.3rem;}
 
+
 header.navbar {
   width: 100%;
   background: #0b1b66;
@@ -70,7 +71,7 @@ footer .footer-col ul a { color: #fff; font-size: 16px; text-decoration: none; t
 footer .footer-col ul a:hover { padding-left: 4px; color: #38f8c2; }
 footer .logo { display: inline-flex; align-items: center; margin: 0 0 15px; padding: 8px 16px; background: #fff; border-radius: 12px; }
 footer .logo img { height: 45px; width: auto; }
-footer .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+footer .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
 footer .contact-item img { width: 18px; height: 18px; flex: 0 0 18px; }
 footer .contact-item span { font-size: 16px; overflow-wrap: anywhere; }
 footer .social-icons { display: flex; gap: 15px; margin-top: 15px; }
@@ -78,6 +79,15 @@ footer .social-icons a { display: flex; align-items: center; justify-content: ce
 footer .social-icons a:hover { background: #1e9bb4; transform: translateY(-3px); }
 footer .footer-bottom { margin-top: 40px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.2); text-align: center; font-size: 14px; }
 
+.nav-menu > a.active,
+.nav-menu .dropbtn.active {
+    color: #38f8c2;
+}
+
+body.dark-mode .nav-menu > a.active,
+body.dark-mode .nav-menu .dropbtn.active {
+    color: #38f8c2 !important;
+}
 /*
    Let shared page sections and footer columns shrink to the viewport instead
    of enlarging the document width.  Text wraps inside its column, so this
@@ -125,8 +135,8 @@ footer.footer.standard-footer .footer-col + .footer-col { border-left: 1px solid
 footer.footer.standard-footer .footer-col p { max-width: 265px; line-height: 1.8; }
 footer.footer.standard-footer .footer-col h4 { position: relative; margin: 0 0 24px; padding-bottom: 14px;  font-size:20px;}
 footer.footer.standard-footer .footer-col h4::after { position: absolute; bottom: 0; left: 0; width: 34px; height: 2px; background: #f4b63f; content: ""; }
-footer.footer.standard-footer .contact-item { align-items: flex-start; gap: 12px; width: auto; margin-bottom: 45px; }
-footer.footer.standard-footer .contact-item span { width: auto; line-height: 1.65; }
+footer.footer.standard-footer .contact-item { align-items: flex-start; gap: 5px; width: auto; margin-bottom: 38px; }
+footer.footer.standard-footer .contact-item span { width: auto; line-height: 1.35; }
 /* Keep the contact details compact and consistent across every shared footer. */
 footer .contact-email { overflow-wrap: normal; white-space: nowrap; }
 footer.footer .contact-item .contact-address { display: inline-flex; flex-direction: column; gap: 10px; line-height: 1.45; white-space: nowrap; }

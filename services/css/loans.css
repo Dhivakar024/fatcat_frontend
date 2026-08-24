@@ -5,6 +5,8 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+
+
 body{
 font-family: 'Poppins', sans-serif;
 }
@@ -520,6 +522,11 @@ text-align:center;
   object-fit: cover;
   z-index: -2;          
 }
+.hero-container,
+.hero-content,
+.hero-image {
+  min-width: 0;
+}
 
 .hero::before {
   content: "";
@@ -646,6 +653,7 @@ text-align:center;
 .section-title {
   font-size: 40px;
   margin-bottom: 50px;
+  margin-top:-60px;
 }
 
 .section-title span {
@@ -777,7 +785,9 @@ text-align:center;
 /* TITLE */
 .apply-content h2 {
   font-size: 35px;
-  margin-bottom: 40px;
+  margin-bottom:40px;
+  
+  margin-top:-90px;
 }
 
 .apply-content h2 span {
@@ -1014,7 +1024,8 @@ text-align:center;
 /* LOAN AMOUNT - AUTO SCROLL MARQUEE */
 .amount-slider-wrap {
   overflow: hidden;
-  width: 100vw;
+  width: 100%;
+  margin-left:0;
   margin-left: calc(-50vw + 50%);
   margin-top: 40px;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
@@ -1324,7 +1335,7 @@ text-align:center;
 
 .eligibility-image img {
   display: block;
-  width: min(100%, 480px);
+  width: min(100%, 560px);
   height: auto;
   margin: 0 auto;
 }
@@ -1351,7 +1362,9 @@ text-align:center;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   grid-auto-rows: 240px;
-  
+  width:100%;
+  width:750px;
+   transform: translateX(-30px);
 }
 
 /* CARD */
@@ -1365,6 +1378,8 @@ text-align:center;
   transition: 0.3s;
   text-align: left;
   height: 100%;
+ 
+  
 }
 
 .eligibility-card:hover {
@@ -1373,8 +1388,8 @@ text-align:center;
 
 /* ICON TOP LEFT */
 .eligibility-card .icon {
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 10px;
 }
 
@@ -1430,7 +1445,7 @@ text-align:center;
 .cta-section{
   padding:40px 8%;
   background:#fff;
-  margin:80px auto;
+  margin-top:-30px;
   display:flex;
   justify-content:center;
 }
