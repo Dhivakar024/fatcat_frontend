@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= NAVBAR ================= */
+
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("navMenu");
 
@@ -8,21 +9,50 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", () => {
       navMenu.classList.toggle("active");
       hamburger.classList.toggle("active");
-
     });
   }
+
+  /* ================= ZOHO PARTNER ================= */
+
+  const zohoNav = document.getElementById("navMenu");
+
+  if (zohoNav && !zohoNav.querySelector(".zoho-partner-link")) {
+
+    const zohoLink = document.createElement("a");
+
+    zohoLink.href = "../zoho/zoho.html";
+    zohoLink.className = "zoho-partner-link";
+    zohoLink.textContent = "Zoho Partner";
+
+    const contactLink = zohoNav.querySelector(".contact-btn");
+
+    if (contactLink) {
+      zohoNav.insertBefore(zohoLink, contactLink);
+    } else {
+      zohoNav.appendChild(zohoLink);
+    }
+
+  }
+
   //counter
   const counters = document.querySelectorAll(".counter");
+
   counters.forEach(counter => {
     const target = +counter.getAttribute("data-target");
-    setInterval( ()=> {
+
+    setInterval(() => {
+
       let current = +counter.innerText;
-      if(current < target) {
+
+      if (current < target) {
         counter.innerText = current + 1;
-      
       }
-    },30);
+
+    }, 30);
+
   });
+
+  /* REST OF YOUR EXISTING CODE... */
 
   /* ================= MOBILE DROPDOWN ================= */
   const dropdown = document.querySelector(".dropdown");
@@ -35,29 +65,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
- const modal = document.getElementById("enquiryModal");
-    const closeBtn = document.getElementById("closeModalBtn");
+  const modal = document.getElementById("enquiryModal");
+  const closeBtn = document.getElementById("closeModalBtn");
 
-    // Show modal after page load
-    window.addEventListener("load", () => {
-        setTimeout(() => {
-            modal.style.display = "flex";
-        }, 1000); // delay for better UX
-    });
+  // Show modal after page load
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      modal.style.display = "flex";
+    }, 1000); // delay for better UX
+  });
 
-    // Close button
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+  // Close button
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 
-    // Close when clicking outside
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.style.display = "none";
-        }
-    });
+  // Close when clicking outside
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 
-    
+
   /* ================= WHATSAPP FLOATING BUTTON ================= */
   const whatsappFloat = document.querySelector(".whatsapp-float");
 
