@@ -512,18 +512,16 @@
                         ₹
                     </div>
 
-                    <h3>
-                        Finance
-                    </h3>
+                    <h3>Finance</h3>
 
                     <p>
-                        Streamline invoicing, accounting,
-                        expenses and financial operations.
+                        Streamline invoicing, accounting, expenses and
+                        financial operations.
                     </p>
 
-                    <a href="#contact">
+                    <button type="button" class="explore-btn" onclick="openFinanceModal()">
                         Explore Solution →
-                    </a>
+                    </button>
 
                 </div>
 
@@ -815,7 +813,326 @@
         </div>
 
     </section>
+    <!-- FINANCE SOLUTIONS MODAL -->
+    <div class="finance-modal" id="financeModal">
 
+        <div class="finance-overlay" onclick="closeFinanceModal()"></div>
+
+        <div class="finance-modal-content">
+            <button class="finance-close" onclick="closeFinanceModal()" aria-label="Close">
+                ×
+            </button>
+
+            <div class="finance-header">
+                <span class="finance-label">
+                    FINANCE SOLUTIONS
+                </span>
+                <h2> Explore Our<strong>Finance Solutions</strong></h2>
+                <p>
+                    Powerful tools to simplify your financial operations,
+                    automate workflows and drive your business forward.
+                </p>
+            </div>
+
+            <!-- PRODUCTS -->
+            <div class="finance-products">
+
+                <div class="finance-product">
+
+                    <div class="finance-icon blue">
+                        <span>▤</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Books</h3>
+                        <p>
+                            Powerful accounting platform for
+                            growing businesses.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- EXPENSE -->
+                <div class="finance-product">
+                    <div class="finance-icon red">
+                        <span>≋</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Expense</h3>
+                        <p>
+                            Effortless expense reporting
+                            platform.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PAYROLL -->
+                <div class="finance-product">
+                    <div class="finance-icon red">
+                        <span>▣</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Payroll</h3>
+                        <p>
+                            Effortless payroll processing
+                            software for businesses.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SIGN -->
+                <div class="finance-product">
+
+                    <div class="finance-icon blue">
+                        <span>✓</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Sign</h3>
+                        <p>
+                            Digital signature app for
+                            businesses.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- INVENTORY -->
+                <div class="finance-product">
+
+                    <div class="finance-icon red">
+                        <span>▱</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Inventory</h3>
+                        <p>
+                            Powerful stock management and
+                            inventory control software.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- ERP -->
+                <div class="finance-product">
+                    <span class="finance-badge new">
+                        NEW
+                    </span>
+                    <div class="finance-icon blue">
+                        <span>◎</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>ERP</h3>
+                        <p>
+                            ERP software built for businesses
+                            to run faster and smarter operations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BILLING -->
+
+                <div class="finance-product">
+
+                    <div class="finance-icon green">
+                        <span>◈</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Billing</h3>
+                        <p>
+                            End-to-end billing solution
+                            for your business.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- COMMERCE -->
+                <div class="finance-product">
+
+                    <div class="finance-icon green">
+                        <span>▢</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Commerce</h3>
+                        <p>
+                            eCommerce platform to manage
+                            and market your online store.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PROCUREMENT -->
+
+                <div class="finance-product">
+                    <span class="finance-badge new">
+                        NEW
+                    </span>
+                    <div class="finance-icon red">
+                        <span>P</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Procurement</h3>
+                        <p>
+                            Complete source-to-pay platform
+                            to transform procurement into growth.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- SPEND -->
+
+                <div class="finance-product">
+                    <span class="finance-badge new">
+                        NEW
+                    </span>
+                    <div class="finance-icon red">
+                        <span>ϟ</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Spend</h3>
+                        <p>
+                            Manage and control every business
+                            spend from a single unified platform.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- INVOICE -->
+
+                <div class="finance-product">
+
+                    <span class="finance-badge free">
+                        FREE
+                    </span>
+                    <div class="finance-icon blue">
+                        <span>▤</span>
+                    </div>
+                    <div class="finance-product-info">
+                        <h3>Invoice</h3>
+                        <p>
+                            100% free invoicing solution
+                            for your business.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- PRACTICE -->
+
+                <div class="finance-product">
+
+                    <div class="finance-icon green">
+                        <span>◇</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Practice</h3>
+                        <p>
+                            Practice management software
+                            for accounting firms.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- CHECKOUT -->
+
+                <div class="finance-product">
+
+                    <div class="finance-icon blue">
+                        <span>✓</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Checkout</h3>
+                        <p>
+                            Collect payments online with
+                            custom branded pages.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- PAYMENTS -->
+
+                <div class="finance-product">
+
+                    <div class="finance-icon blue">
+                        <span>▱</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Payments</h3>
+                        <p>
+                            Unified payment solution built
+                            for all businesses.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- FINANCE PLUS -->
+
+                <div class="finance-product finance-plus-card">
+                    <span class="finance-suite">
+                        SUITE
+                    </span>
+
+                    <div class="finance-icon green">
+                        <span>◇</span>
+                    </div>
+
+                    <div class="finance-product-info">
+                        <h3>Finance Plus</h3>
+                        <p>
+                            All-in-one suite to manage your
+                            operations and finances.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- HELP SECTION -->
+
+            <div class="finance-help">
+
+                <div class="finance-help-icon">
+                    ♧
+                </div>
+
+                <div class="finance-help-text">
+                    <h3>
+                        Need Help Choosing the Right Solution?
+                    </h3>
+                    <p>
+                        Our experts are here to help you find
+                        the perfect finance solution for your business.
+                    </p>
+
+                </div>
+
+                <a href="../contact/contact.html" class="finance-help-btn">
+                    Talk to Our Experts →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- FOOTER -->
 
@@ -857,7 +1174,7 @@
         });
 
     </script>
-
+    <script src="zoho.js"></script>
 </body>
 
 </html>
