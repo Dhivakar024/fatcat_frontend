@@ -1,11 +1,15 @@
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("navMenu");
 
-hamburger.addEventListener("click", () => {
+if(hamburger && navMenu){
 
-navMenu.classList.toggle("active");
+    hamburger.addEventListener("click", () => {
 
-});
+    navMenu.classList.toggle("active");
+
+    });
+
+}
 
 
 const serviceDropdownLink = document.getElementById("servicesLink");
@@ -30,11 +34,15 @@ if(serviceDropdownLink){
 const dropdown = document.querySelector(".dropdown");
 const dropbtn = document.querySelector(".dropbtn");
 
-dropbtn.addEventListener("click", () => {
+if(dropdown && dropbtn){
 
-dropdown.classList.toggle("open");
+    dropbtn.addEventListener("click", () => {
 
-});
+    dropdown.classList.toggle("open");
+
+    });
+
+}
 
 
 const reveals = document.querySelectorAll(".reveal-left, .reveal-right");
@@ -56,6 +64,9 @@ el.classList.add("reveal-active");
 });
 
 }
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
 
 
 const reveals1 = document.querySelectorAll(".reveal");

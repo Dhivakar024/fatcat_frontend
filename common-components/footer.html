@@ -2,6 +2,7 @@
 
     <div class="footer-container">
 
+        <!-- Col 1: Logo + About -->
         <div class="footer-col">
 
             <div class="logo">
@@ -13,21 +14,22 @@
                 mentorship, and financial planning.
             </p>
 
-            <div class="social-icons">
+            <!-- Desktop Social Icons (under paragraph in Col 1) -->
+            <div class="footer-social-icons footer-social-desktop">
 
-                <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank">
+                <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
 
-                <a href="https://facebook.com/fatcatwealthy" target="_blank">
+                <a href="https://facebook.com/fatcatwealthy" target="_blank" aria-label="Facebook">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
 
-                <a href="https://wa.me/919566679958" target="_blank">
+                <a href="https://wa.me/919566679958" target="_blank" aria-label="WhatsApp">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
 
-                <a href="https://linkedin.com/company/fatcatwealthy" target="_blank">
+                <a href="https://linkedin.com/company/fatcatwealthy" target="_blank" aria-label="LinkedIn">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
 
@@ -35,6 +37,7 @@
 
         </div>
 
+        <!-- Col 2: Get In Touch (always visible) -->
         <div class="footer-col">
 
             <h4>Get In Touch</h4>
@@ -59,36 +62,71 @@
 
         </div>
 
-        <div class="footer-col">
+        <!-- Col 3: Our Services (accordion on mobile) -->
+        <div class="footer-col footer-accordion" data-accordion>
 
-            <h4>What We Do</h4>
+            <h4 class="footer-accordion-heading">
+                Our Services
+                <i class="fa-solid fa-chevron-down footer-accordion-icon"></i>
+            </h4>
 
-            <ul>
-                <li><a href="/services/mutual-fund.html">Mutual Fund</a></li>
-                <li><a href="/services/stock-broking.html">Investment Broking</a></li>
-                <li><a href="/services/insurance.html">Insurance</a></li>
-                <li><a href="/academy/academy.html">Academy</a></li>
-            </ul>
-
-        </div>
-
-        <div class="footer-col">
-
-            <h4>Company</h4>
-
-            <ul>
-                <li><a href="/about/about.html">About Us</a></li>
-                <li><a href="/services/service.html">Services</a></li>
-                <li><a href="/business/business.html">Business</a></li>
-                <li><a href="/career/career.html">Careers</a></li>
-            </ul>
+            <div class="footer-accordion-body">
+                <ul>
+                    <li><a href="/services/mutual-fund.html">Mutual Fund</a></li>
+                    <li><a href="/services/stock-broking.html">Investment Broking</a></li>
+                    <li><a href="/services/insurance.html">Insurance</a></li>
+                    <li><a href="/academy/academy.html">Academy</a></li>
+                </ul>
+            </div>
 
         </div>
 
+        <!-- Col 4: Useful Links (accordion on mobile) -->
+        <div class="footer-col footer-accordion" data-accordion>
+
+            <h4 class="footer-accordion-heading">
+                Useful Links
+                <i class="fa-solid fa-chevron-down footer-accordion-icon"></i>
+            </h4>
+
+            <div class="footer-accordion-body">
+                <ul>
+                    <li><a href="/about/about.html">About Us</a></li>
+                    <li><a href="/services/service.html">Services</a></li>
+                    <li><a href="/business/business.html">Business</a></li>
+                    <li><a href="/career/career.html">Careers</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Mobile Social Icons: Centered below Useful Links (Mobile only) -->
+    <div class="footer-social-wrapper footer-social-mobile">
+        <div class="footer-social-icons">
+            <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com/fatcatwealthy" target="_blank" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/919566679958" target="_blank" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://linkedin.com/company/fatcatwealthy" target="_blank" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+        </div>
     </div>
 
     <div class="footer-bottom">
         <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
-    </div>
+        <div class="footer-legal">
+                <a href="/legal/privacy-policy.html">Privacy Policy</a>
+                <a href="/legal/terms-of-use.html">Terms of Use</a>
+                <a href="/legal/disclaimer.html">Disclaimer</a>
+         </div>
+     </div>
 
-</footer>
+</footer>

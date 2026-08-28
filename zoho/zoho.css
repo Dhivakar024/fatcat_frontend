@@ -759,78 +759,11 @@ a {
 }
 
 
-/* FOOTER */
-
-.footer {
-    background: #101923;
-    color: white;
-}
-
-.footer-container {
-    width: 88%;
-    max-width: 1250px;
-    margin: auto;
-    padding: 65px 0;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-    gap: 50px;
-}
-
-.footer-brand img {
-    width: 160px;
-    margin-bottom: 20px;
-    filter: brightness(0) invert(1);
-}
-
-.footer-brand p {
-    max-width: 320px;
-    color: #aebbc4;
-    line-height: 1.7;
-    font-size: 14px;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.footer-links h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.footer-links a,
-.footer-links p {
-    color: #aebbc4;
-    font-size: 14px;
-}
-
-.footer-links a:hover {
-    color: white;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, .08);
-    padding: 20px;
-    text-align: center;
-    color: #84919b;
-    font-size: 13px;
-}
-
 
 /* TABLET */
 
 @media(max-width:1100px) {
 
-    .nav-menu {
-        gap: 17px;
-    }
-
-    .nav-menu>a,
-    .dropbtn {
-        font-size: 13px;
-    }
 
     .zoho-hero-content h1 {
         font-size: 48px;
@@ -851,87 +784,7 @@ a {
 
 @media(max-width:850px) {
 
-    .nav-container {
-        height: 72px;
-    }
-
-    .logo img {
-        width: 145px;
-    }
-
-    .hamburger {
-        display: block;
-        z-index: 1001;
-    }
-
-    .nav-menu {
-        position: absolute;
-        top: 72px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
-        transform: translateY(-20px);
-        opacity: 0;
-        visibility: hidden;
-        transition: .3s;
-    }
-
-    .nav-menu.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .nav-menu>a,
-    .dropbtn {
-        width: 100%;
-        padding: 13px 5px;
-    }
-
-    .contact-btn,
-    .login-btn {
-        text-align: center;
-        margin-top: 8px;
-    }
-
-    .dropdown {
-        width: 100%;
-    }
-
-    .dropdown-content {
-        position: static;
-        display: none;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        padding: 0;
-        width: 100%;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    .submenu-content {
-        position: static;
-        display: none;
-        opacity: 1;
-        visibility: visible;
-        box-shadow: none;
-        padding-left: 15px;
-    }
-
-    .submenu:hover .submenu-content {
-        display: block;
-    }
-
+   
     .zoho-hero {
         padding: 75px 6%;
     }
@@ -966,9 +819,7 @@ a {
         align-items: flex-start;
     }
 
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
-    }
+    
 
 }
 
@@ -1034,10 +885,7 @@ a {
         min-height: 240px;
     }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
+   
 
     .cta-container h2 {
         font-size: 31px;

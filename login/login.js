@@ -1,11 +1,11 @@
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("navMenu");
 
-hamburger.addEventListener("click", () => {
-
-    navMenu.classList.toggle("active");
-
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
+}
 
 const serviceDropdownLink = document.getElementById("servicesLink");
 
@@ -17,7 +17,7 @@ if (serviceDropdownLink) {
 
         if (window.innerWidth <= 900) {
             e.preventDefault(); // stop routing
-            serviceDropdown.classList.toggle("active");
+            if (serviceDropdown) serviceDropdown.classList.toggle("active");
         }
 
     });
@@ -26,10 +26,12 @@ if (serviceDropdownLink) {
 
 const dropdown = document.querySelector(".dropdown");
 const dropbtn = document.querySelector(".dropbtn");
-dropbtn.addEventListener("click", () => {
-    dropdown.classList.toggle("open");
-});
 
+if (dropdown && dropbtn) {
+    dropbtn.addEventListener("click", () => {
+        dropdown.classList.toggle("open");
+    });
+}
 
 const reveals = document.querySelectorAll(".reveal-left, .reveal-right");
 function revealOnScroll() {
@@ -41,73 +43,50 @@ function revealOnScroll() {
         }
     });
 }
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
 
 const form = document.getElementById("loginForm");
 if (form) {
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-        const email = document
-            .getElementById("email")
-            .value
-            .trim()
-            .toLowerCase();
 
-        const password = document
-            .getElementById("password")
-            .value;
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
 
-        const emailError =
-            document.getElementById("emailError");
-
-        const passwordError =
-            document.getElementById("passwordError");
+        const email = emailInput.value.trim().toLowerCase();
+        const password = passwordInput.value;
 
         emailError.textContent = "";
         passwordError.textContent = "";
-
-        document
-            .getElementById("email")
-            .classList.remove("invalid");
-
-        document
-            .getElementById("password")
-            .classList.remove("invalid");
-
+        emailInput.classList.remove("invalid");
+        passwordInput.classList.remove("invalid");
 
         let valid = true;
 
         const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
         if (email === "") {
-
             emailError.textContent = "Email is required.";
-            document
-                .getElementById("email")
-                .classList.add("invalid");
+            emailInput.classList.add("invalid");
             valid = false;
-
         } else if (!EMAIL_REGEX.test(email)) {
-
             emailError.textContent = "Enter a valid email address.";
-            document
-                .getElementById("email")
-                .classList.add("invalid");
+            emailInput.classList.add("invalid");
             valid = false;
         }
 
         if (password === "") {
             passwordError.textContent = "Password is required.";
-            document
-                .getElementById("password")
-                .classList.add("invalid");
+            passwordInput.classList.add("invalid");
             valid = false;
-
         } else if (password.length < 8) {
             passwordError.textContent = "Password must be at least 8 characters.";
-            document
-                .getElementById("password")
-                .classList.add("invalid");
+            passwordInput.classList.add("invalid");
             valid = false;
         }
 
@@ -118,9 +97,7 @@ if (form) {
         const savedUser = localStorage.getItem("fatcatUser");
         if (!savedUser) {
             emailError.textContent = "No account found. Please sign up first.";
-            document
-                .getElementById("email")
-                .classList.add("invalid");
+            emailInput.classList.add("invalid");
             return;
         }
 
@@ -128,25 +105,17 @@ if (form) {
 
         if (email !== user.email) {
             emailError.textContent = "Email address is incorrect.";
-            document
-                .getElementById("email")
-                .classList.add("invalid");
+            emailInput.classList.add("invalid");
             return;
         }
 
         if (password !== user.password) {
             passwordError.textContent = "Incorrect password.";
-            document
-                .getElementById("password")
-                .classList.add("invalid");
+            passwordInput.classList.add("invalid");
             return;
         }
 
-        localStorage.setItem(
-            "isLoggedIn",
-            "true"
-        );
-
+        localStorage.setItem("isLoggedIn", "true");
 
         localStorage.setItem(
             "loggedInUser",
