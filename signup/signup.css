@@ -1,245 +1,75 @@
-/* ===== PAGE LAYOUT (scrolls normally now that a full footer is present) =====
-   login.css sets `body { height: 100vh; }` which forces the ENTIRE page
-   (navbar + main + footer) into exactly one screen height. Since that's a
-   different property than min-height, it wasn't being overridden below,
-   so .signup-main was being squeezed and the form scrolled internally
-   instead of the page scrolling normally. Overriding `height: auto` here
-   (higher specificity than login.css's element selector) fixes it. */
-.signup-body {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    min-height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* ===== FIX: force the video to sit BEHIND everything =====
-   login.css gives .bg-video z-index:0 and position:fixed. An element with
-   an explicit z-index (even 0) paints above any plain/non-positioned
-   content, so the form (which had no position/z-index of its own) was
-   being rendered UNDER the video. Overriding to z-index:-1 puts it back
-   on the true background layer, below the body's own background and
-   below all normal in-flow content. */
-.signup-body .bg-video {
-    z-index: -1;
+html {
+    scroll-behavior: smooth;
 }
-/* logo */
-.logo img{
-height:45px;
-
-}
-.logo{
-  background: #fff;
-  padding: 8px 16px;
-  border-radius: 12px;
-  display: inline-flex;
-  align-items: center;
-  margin-left:-65px;
-}
-/* navbar */
-.navbar{
-width:100%;
-background:#0b1b66;
-padding:12px 6%;
-position:sticky;
-top:0; /* push below top bar */
-z-index:1500;
- margin-top:0px; /* keep initial flow below fixed top bar */
-}
-
-
-.nav-container {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-}
-/* MENU */
-
-.nav-menu{
-display:flex;
-align-items:center;
-gap:15px;
-
-
-}
-
-.nav-menu a{
-text-decoration:none;
-color:white;
-font-size:20px;
-transition:0.3s;
-margin-left:10px;
-
-}
-
-.nav-menu a:hover{
-color:#38f8c2;
-}
-
-/* CONTACT BUTTON */
-
-.contact-btn{
-color:white;
-text-decoration:none;
-font-size:20px;
-
-}
-/* login btn */
-.login-btn{
-background:#2563eb;
-padding:8px 18px;
-border-radius:6px;
-color:white;
-text-decoration:none;
-font-size:16px;
-transition:0.3s;
-}
-
-.login-btn:hover{
-background:#1d4ed8;
-}
-
-/* DROPDOWN */
-
-.dropdown{
-position:relative;
-}
-
-.dropbtn{
-background:none;
-border:none;
-color:white;
-font-size:15px;
-cursor:pointer;
-display:flex;
-align-items:center;
-gap:5px;
-}
-
-.dropdown-content{
-display:none;
-position:absolute;
-top:35px;
-background:white;
-min-width:180px;
-border-radius:6px;
-top:100%;
-left:0;
-z-index:999;    
-box-shadow:0 5px 20px rgba(0,0,0,0.15);
-}
-
-.dropdown-content a{
-display:block;
-padding:10px 15px;
-color:#333;
-}
-
-.dropdown-content a:hover{
-background:#f3f4f6;
-}
-
-.dropdown:hover .dropdown-content{
-display:block;
-}
-
-
-/* Submenu */
-
-.submenu{
-position:relative;
-}
-
-.submenu-content{
-display:none;
-position:absolute;
-left:100%;
-top:0;
-background:#ffffff;
-min-width:180px;
-border-radius: 5px;
-}
-
-.submenu:hover .submenu-content{
-display:block;
-}
-
-/* Hover effect */
-
-.dropdown-content a:hover{
-background:#f1f5f8;
-color: #1537f7;
-}
-
-/* HAMBURGER */
-
-/* HAMBURGER */
-
-.hamburger{
-  display:none;
-  flex-direction:column;
-  justify-content: space-between;
-  cursor:pointer;
-  width: 26px;
-  height: 20px;
-  z-index: 1001;
-}
-
-.hamburger span{
-  display: block;
-  width:100%;
-  height:3px;
-  background:linear-gradient(black,darkblue);
-  border-radius: 2px;
-  transition: transform 0.35s ease, opacity 0.25s ease;
-}
-
-/* X animation when menu open */
-.hamburger.active span:nth-child(1){
-  transform: translateY(8.5px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2){
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3){
-  transform: translateY(-8.5px) rotate(-45deg);
-}
-
-/* ======= SIGNUP PAGE ====== */
 
 .signup-body {
     min-height: 100vh;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
+    background-color: #0b1b66;
+    position: relative;
 }
 
-.signup-main {
+#footer {
+    margin-top: auto;
     width: 100%;
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* ======= SIGNUP MAIN ====== */
+
+.signup-main {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - 82px);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 600px;
-    padding: 35px 20px;
+    padding: 110px 20px 60px;
     box-sizing: border-box;
     position: relative;
     z-index: 2;
+    margin-top: 0;
+    background: transparent !important;
 }
 
 .signup-wrapper {
     width: 100%;
-    max-width: 760px;
+    max-width: 680px;
     display: flex;
     justify-content: center;
 }
 
 .signup-box {
     width: 100%;
-    padding: 32px 38px;
-    border-radius: 20px;
+    padding: 36px 40px;
+    border-radius: 18px;
     background: rgba(255, 255, 255, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow:0 20px 50px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(15px);
     box-sizing: border-box;
+    position: relative;
+    z-index: 5;
 }
 
 .signup-header {
@@ -428,7 +258,7 @@ color: #1537f7;
 @media (max-width: 650px) {
 
     .signup-main {
-        padding: 25px 15px;
+        padding: 95px 15px 40px;
     }
     .signup-box {
         padding: 25px 20px;
@@ -473,147 +303,4 @@ color: #1537f7;
     .signup-header h2 {
         font-size: 23px;
     }
-}
-
-.footer{
-background:#0b1b66;
-color:white;
-width: 100%;
-}
-
-/* GRID LAYOUT */
-
-.footer-container{
-max-width:1200px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:150px;
-
-}
-
-/* COLUMN */
-
-.footer-col h3,
-.footer-col h4{
-margin-bottom:15px;
-}
-
-.footer-col p{
-font-size:14px;
-line-height:1.6;
-}
-
-/* LINKS */
-
-.footer-col ul{
-list-style:none;
-padding:0;
-}
-
-.footer-col ul li{
-margin-bottom:10px;
-}
-
-.footer-col ul li a{
-text-decoration:none;
-color:white;
-font-size:14px;
-transition:0.3s;
-}
-
-.footer-col ul li a:hover{
-color:#1537f7;
-padding-left:4px;
-font-weight: 600;
-}
-
-/* FOOTER BOTTOM */
-
-.footer-bottom{
-text-align:center;
-margin-top:40px;
-border-top:1px solid rgba(255,255,255,0.2);
-padding-top:15px;
-font-size:14px;
-}
-html{
-scroll-behavior:smooth;
-} 
-
-/* CONTACT ITEM */
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  flex-wrap: nowrap; /* keep icon + text in one line */
-}
-
-/* ICON */
-.contact-item img {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0; /* prevent shrinking */
-}
-
-/* TEXT */
-.contact-item span {
-  font-size: 14px;
-  width: 180px;
-  word-break: break-word; /* prevent overflow */
-}
-
-/* TABLET */
-@media (max-width: 992px) {
-  .contact-item span {
-    font-size: 13px;
-  }
-}
-
-/* MOBILE (IMPORTANT) */
-@media (max-width: 600px) {
-
-  .footer-col {
-    text-align: center;
-  }
-
-  .contact-item {
-    justify-content: center; /* center align */
-  }
-
-  .contact-item img {
-    width: 16px;
-    height: 16px;
-  }
-
-  .contact-item span {
-    font-size: 13px;
-  }
-}
-/* ================================
-   SIGNUP PAGE
-================================ */
-
-.signup-body {
-    margin: 0;
-    min-height: 100vh;
-    background: #f5f7fb;
-}
-
-
-/* ================================
-   MAIN
-================================ */
-
-.signup-main {
-    width: 100%;
-    min-height: 850px;
-
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
-    padding: 35px 20px 50px;
-    box-sizing: border-box;
 }

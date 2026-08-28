@@ -67,25 +67,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const modal = document.getElementById("enquiryModal");
   const closeBtn = document.getElementById("closeModalBtn");
+  const cancelBtn = modal ? modal.querySelector(".btn-cancel") : null;
 
-  // Show modal after page load
-  window.addEventListener("load", () => {
-    setTimeout(() => {
+  if (modal) {
+
+    function openModal() {
       modal.style.display = "flex";
-    }, 1000); // delay for better UX
-  });
+    }
 
-  // Close button
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  // Close when clicking outside
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    function closeModal() {
       modal.style.display = "none";
     }
-  });
+    // ─────────────────────────────────────────────────────
+
+    // Show modal 1 s after page finishes loading
+    window.addEventListener("load", () => {
+      setTimeout(openModal, 1000);
+    });
+
+    // Close via ✕ button
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
+    
+
+    // Close via Cancel button (it's type="reset" — also close the modal)
+    if (cancelBtn) {
+      cancelBtn.addEventListener("click", closeModal);
+    }
+
+    // Close when clicking the dark backdrop (outside the form box)
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Close with Escape key
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.style.display === "flex") closeModal();
+    });
+  }
 
 
   /* ================= WHATSAPP FLOATING BUTTON ================= */

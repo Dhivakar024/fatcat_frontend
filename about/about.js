@@ -1,11 +1,11 @@
-/* NAVBAR TOGGLE */
-
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("navMenu");
 
-hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
-});
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
 
 
 /* MOBILE DROPDOWN */
@@ -13,12 +13,14 @@ hamburger.addEventListener("click", () => {
 const dropdown = document.querySelector(".dropdown");
 const dropbtn = document.querySelector(".dropbtn");
 
-dropbtn.addEventListener("click", (e) => {
-  if (window.innerWidth <= 900) {
-    e.preventDefault();
-    dropdown.classList.toggle("open");
-  }
-});
+if (dropdown && dropbtn) {
+  dropbtn.addEventListener("click", (e) => {
+    if (window.innerWidth <= 900) {
+      e.preventDefault();
+      dropdown.classList.toggle("open");
+    }
+  });
+}
 
 
 /* SCROLL REVEAL — replaces the old scroll-listener approach with
