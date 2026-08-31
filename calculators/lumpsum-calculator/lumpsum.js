@@ -1,64 +1,3 @@
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-
-hamburger.addEventListener("click", () => {
-
-navMenu.classList.toggle("active");
-
-});
-
-
-const serviceDropdownLink = document.getElementById("servicesLink");
-
-if(serviceDropdownLink){
-
-    const serviceDropdown = serviceDropdownLink.closest(".dropdown");
-
-    serviceDropdownLink.addEventListener("click", function(e){
-
-        if(window.innerWidth <= 900){
-            e.preventDefault(); // stop routing
-            serviceDropdown.classList.toggle("active");
-        }
-
-    });
-
-}
-
-/* MOBILE DROPDOWN */
-
-const dropdown = document.querySelector(".dropdown");
-const dropbtn = document.querySelector(".dropbtn");
-
-dropbtn.addEventListener("click", () => {
-
-dropdown.classList.toggle("open");
-
-});
-
-
-const reveals = document.querySelectorAll(".reveal-left, .reveal-right");
-
-function revealOnScroll(){
-
-const trigger = window.innerHeight * 0.85;
-
-reveals.forEach(el=>{
-
-const top = el.getBoundingClientRect().top;
-
-if(top < trigger){
-
-el.classList.add("reveal-active");
-
-}
-
-});
-
-}
-
-
-
 const investmentInput = document.getElementById("investment");
 const yearsSlider = document.getElementById("years");
 const rateSlider = document.getElementById("rate");
@@ -71,73 +10,64 @@ const totalValue = document.getElementById("totalValue");
 const investedAmount = document.getElementById("investedAmount");
 const returnsAmount = document.getElementById("returnsAmount");
 
-const ctx = document.getElementById("lumpsumChart").getContext("2d");
-
 let chart;
 
-function calculateLumpsum(){
+function calculateLumpsum() {
+  if (!investmentInput || !yearsSlider || !rateSlider) return;
 
-const principal = Number(investmentInput.value);
-const years = Number(yearsSlider.value);
-const rate = Number(rateSlider.value) / 100;
+  const principal = Number(investmentInput.value) || 0;
+  const years = Number(yearsSlider.value) || 0;
+  const rate = (Number(rateSlider.value) || 0) / 100;
 
-/* FUTURE VALUE FORMULA */
+  /* FUTURE VALUE FORMULA */
+  const futureValue = principal * Math.pow((1 + rate), years);
+  const returns = futureValue - principal;
 
-const futureValue = principal * Math.pow((1 + rate), years);
+  /* UPDATE UI */
+  if (yearValue) yearValue.innerText = years;
+  if (rateValue) rateValue.innerText = rateSlider.value;
+  if (resultYears) resultYears.innerText = years;
 
-const returns = futureValue - principal;
+  if (totalValue) totalValue.innerText = Math.round(futureValue).toLocaleString("en-IN");
+  if (investedAmount) investedAmount.innerText = Math.round(principal).toLocaleString("en-IN");
+  if (returnsAmount) returnsAmount.innerText = Math.round(returns).toLocaleString("en-IN");
 
-/* UPDATE UI */
-
-yearValue.innerText = years;
-rateValue.innerText = rateSlider.value;
-resultYears.innerText = years;
-
-totalValue.innerText = Math.round(futureValue).toLocaleString();
-
-investedAmount.innerText = principal.toLocaleString();
-returnsAmount.innerText = Math.round(returns).toLocaleString();
-
-/* UPDATE CHART */
-
-updateChart(principal, returns);
-
+  /* UPDATE CHART */
+  updateChart(principal, returns);
 }
 
-function updateChart(invested, returns){
+function updateChart(invested, returns) {
+  const chartCanvas = document.getElementById("lumpsumChart");
+  if (!chartCanvas) return;
+  const ctx = chartCanvas.getContext("2d");
 
-if(chart) chart.destroy();
+  if (chart) chart.destroy();
 
-chart = new Chart(ctx,{
-
-type:"doughnut",
-
-data:{
-labels:["Invested Amount","Estimated Returns"],
-datasets:[{
-data:[invested, returns],
-backgroundColor:["#1e8aa0","#555"],
-borderWidth:0
-}]
-},
-
-options:{
-cutout:"70%",
-plugins:{legend:{display:false}},
-animation:{
-duration:900
-}
-
-}
-
-});
-
+  chart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Invested Amount", "Estimated Returns"],
+      datasets: [{
+        data: [invested, returns],
+        backgroundColor: ["#1e8aa0", "#555"],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: "70%",
+      plugins: { legend: { display: false } },
+      animation: {
+        duration: 900
+      }
+    }
+  });
 }
 
 /* EVENTS */
+if (investmentInput) investmentInput.addEventListener("input", calculateLumpsum);
+if (yearsSlider) yearsSlider.addEventListener("input", calculateLumpsum);
+if (rateSlider) rateSlider.addEventListener("input", calculateLumpsum);
 
-investmentInput.addEventListener("input", calculateLumpsum);
-yearsSlider.addEventListener("input", calculateLumpsum);
-rateSlider.addEventListener("input", calculateLumpsum);
-
+document.addEventListener("DOMContentLoaded", calculateLumpsum);
 calculateLumpsum();

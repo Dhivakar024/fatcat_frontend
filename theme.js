@@ -194,15 +194,15 @@
   };
   const style = document.createElement("style");
   style.textContent = `
-    html { margin: 0; padding: 0; overscroll-behavior-y: none; scrollbar-width: thin; scrollbar-color: #64748b #f1f5f9; }
-    html::-webkit-scrollbar { width: 8px; }
-    html::-webkit-scrollbar-track { background: #f1f5f9; }
-    html::-webkit-scrollbar-thumb { background: #64748b; border: 2px solid #f1f5f9; border-radius: 8px; }
-    html::-webkit-scrollbar-thumb:hover { background: #475569; }
-    html.dark-mode { scrollbar-color: #94a3b8 #111827; }
-    html.dark-mode::-webkit-scrollbar-track { background: #111827; }
-    html.dark-mode::-webkit-scrollbar-thumb { background: #64748b; border-color: #111827; }
-    html.dark-mode::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    html { margin: 0; padding: 0; overscroll-behavior-y: none; scrollbar-width: thin; scrollbar-color: #94a3b8 transparent; }
+    html::-webkit-scrollbar { width: 5px; height: 5px; }
+    html::-webkit-scrollbar-track { background: transparent; }
+    html::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
+    html::-webkit-scrollbar-thumb:hover { background: #64748b; }
+    html.dark-mode { scrollbar-color: #475569 transparent; }
+    html.dark-mode::-webkit-scrollbar-track { background: transparent; }
+    html.dark-mode::-webkit-scrollbar-thumb { background: #475569; }
+    html.dark-mode::-webkit-scrollbar-thumb:hover { background: #64748b; }
     body { margin: 0; padding: 0 !important; overscroll-behavior-y: none; }
     footer:last-of-type { margin-bottom: 0 !important; }
     .nav-account-controls { display: inline-flex; align-items: center; gap: 8px; }

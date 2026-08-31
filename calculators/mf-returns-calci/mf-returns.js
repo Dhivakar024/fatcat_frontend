@@ -1,130 +1,67 @@
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-
-hamburger.addEventListener("click", () => {
-
-navMenu.classList.toggle("active");
-
-});
-
-
-const serviceDropdownLink = document.getElementById("servicesLink");
-
-if(serviceDropdownLink){
-
-    const serviceDropdown = serviceDropdownLink.closest(".dropdown");
-
-    serviceDropdownLink.addEventListener("click", function(e){
-
-        if(window.innerWidth <= 900){
-            e.preventDefault(); // stop routing
-            serviceDropdown.classList.toggle("active");
-        }
-
-    });
-
-}
-
-/* MOBILE DROPDOWN */
-
-const dropdown = document.querySelector(".dropdown");
-const dropbtn = document.querySelector(".dropbtn");
-
-dropbtn.addEventListener("click", () => {
-
-dropdown.classList.toggle("open");
-
-});
-
-
-const reveals = document.querySelectorAll(".reveal-left, .reveal-right");
-
-function revealOnScroll(){
-
-const trigger = window.innerHeight * 0.85;
-
-reveals.forEach(el=>{
-
-const top = el.getBoundingClientRect().top;
-
-if(top < trigger){
-
-el.classList.add("reveal-active");
-
-}
-
-});
-
-}
 const investmentInput = document.getElementById("investment");
 const yearsSlider = document.getElementById("years");
 const rateSlider = document.getElementById("rate");
 
 const yearValue = document.getElementById("yearValue");
 const rateValue = document.getElementById("rateValue");
+const resultYears = document.getElementById("resultYears");
 
 const totalValue = document.getElementById("totalValue");
 const investedAmount = document.getElementById("investedAmount");
 const returnsAmount = document.getElementById("returnsAmount");
 
-const resultYears = document.getElementById("resultYears");
-
 let chart;
 
-function calculateMF(){
+function calculateMF() {
+  if (!investmentInput || !yearsSlider || !rateSlider) return;
 
-let P = parseFloat(investmentInput.value);
-let r = parseFloat(rateSlider.value)/100;
-let n = parseFloat(yearsSlider.value);
+  let P = parseFloat(investmentInput.value) || 0;
+  let r = (parseFloat(rateSlider.value) || 0) / 100;
+  let n = parseFloat(yearsSlider.value) || 0;
 
-let FV = P * Math.pow((1+r), n);
-let returns = FV - P;
+  let FV = P * Math.pow((1 + r), n);
+  let returns = FV - P;
 
-totalValue.innerText = Math.round(FV).toLocaleString();
-investedAmount.innerText = P.toLocaleString();
-returnsAmount.innerText = Math.round(returns).toLocaleString();
+  if (yearValue) yearValue.innerText = yearsSlider.value;
+  if (rateValue) rateValue.innerText = rateSlider.value;
+  if (resultYears) resultYears.innerText = yearsSlider.value;
 
-updateChart(P,returns);
+  if (totalValue) totalValue.innerText = Math.round(FV).toLocaleString("en-IN");
+  if (investedAmount) investedAmount.innerText = Math.round(P).toLocaleString("en-IN");
+  if (returnsAmount) returnsAmount.innerText = Math.round(returns).toLocaleString("en-IN");
 
+  updateChart(P, returns);
 }
 
-function updateChart(invested,returns){
+function updateChart(invested, returns) {
+  const chartCanvas = document.getElementById("mfChart");
+  if (!chartCanvas) return;
+  const ctx = chartCanvas.getContext("2d");
 
-const ctx=document.getElementById("mfChart");
+  if (chart) chart.destroy();
 
-if(chart) chart.destroy();
-
-chart=new Chart(ctx,{
-type:"doughnut",
-data:{
-labels:["Invested","Returns"],
-datasets:[{
-data:[invested,returns],
-backgroundColor:["#1e8a98","#555"]
-}]
-},
-options:{
-responsive:true,
-cutout:"70%",
-plugins:{
-legend:{display:false}
+  chart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Invested", "Returns"],
+      datasets: [{
+        data: [invested, returns],
+        backgroundColor: ["#1e8a98", "#555"]
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: "70%",
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
 }
-}
-});
 
-}
+if (yearsSlider) yearsSlider.addEventListener("input", calculateMF);
+if (rateSlider) rateSlider.addEventListener("input", calculateMF);
+if (investmentInput) investmentInput.addEventListener("input", calculateMF);
 
-yearsSlider.oninput=()=>{
-yearValue.innerText=yearsSlider.value;
-resultYears.innerText=yearsSlider.value;
-calculateMF();
-};
-
-rateSlider.oninput=()=>{
-rateValue.innerText=rateSlider.value;
-calculateMF();
-};
-
-investmentInput.oninput=calculateMF;
-
+document.addEventListener("DOMContentLoaded", calculateMF);
 calculateMF();

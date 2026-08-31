@@ -89,7 +89,9 @@ html {
 
 /* =========== Business hero ==========*/
 .business-hero {
-  height: 460px;
+  min-height: 480px;
+  padding-top: 90px;
+  padding-bottom: 20px;
   position: relative;
   display: flex;
   align-items: center;
@@ -148,7 +150,9 @@ html {
 
 @media(max-width:600px) {
   .business-hero {
-    height: 340px;
+    min-height: 360px;
+    padding-top: 85px;
+    padding-bottom: 15px;
   }
 
   .hero-content h1 {

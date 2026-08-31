@@ -30,7 +30,6 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Poppins', sans-serif;
 }
 
 h1,
@@ -43,20 +42,16 @@ h4 {
    color: var(--text);
 }
 
-html,
-body {
-   overflow-x: hidden;
-   width: 100%;
-   height: 100%;
-}
-
 html {
    scroll-behavior: smooth;
 }
 
 body {
+   font-family: 'Poppins', sans-serif;
    background: var(--white);
    color: var(--text);
+   overflow-x: hidden;
+   width: 100%;
 }
 
 a:focus-visible,
@@ -108,7 +103,7 @@ button:focus-visible {
 
 .hero {
    background: url("assets/Digital Marketing (1).jpg") center/cover no-repeat;
-   height: 420px;
+   min-height: 440px;
    position: relative;
    display: flex;
    align-items: center;
@@ -117,11 +112,17 @@ button:focus-visible {
 }
 
 .hero-overlay {
-   background: linear-gradient(180deg, rgba(11, 32, 39, 0.55) 0%, rgba(11, 32, 39, 0.82) 100%);
+   position: absolute;
+   inset: 0;
    width: 100%;
    height: 100%;
+   background: linear-gradient(180deg, rgba(11, 32, 39, 0.70) 0%, rgba(11, 32, 39, 0.88) 100%);
    display: flex;
    align-items: center;
+   justify-content: center;
+   padding-top: 90px;
+   padding-bottom: 20px;
+   z-index: 1;
 }
 
 .hero-content {
@@ -129,6 +130,7 @@ button:focus-visible {
    color: white;
    position: relative;
    z-index: 2;
+   width: 100%;
 }
 
 .hero-content h1 {
@@ -150,7 +152,12 @@ button:focus-visible {
 
 @media(max-width:768px) {
    .hero {
-      height: 320px;
+      min-height: 340px;
+   }
+
+   .hero-overlay {
+      padding-top: 85px;
+      padding-bottom: 15px;
    }
 
    .hero-content h1 {
