@@ -4,7 +4,7 @@ font-family: 'Poppins', sans-serif;
 
 .calc-hero{
     background:#f5f5f5;
-    padding:115px 20px 50px;
+    padding:100px 20px 24px;
 }
 
 .calc-container{
@@ -17,7 +17,7 @@ font-family: 'Poppins', sans-serif;
     display:inline-flex;
     align-items:center;
     gap:8px;
-    margin-bottom:20px;
+    margin-bottom:14px;
     padding:8px 16px;
     background:#ffffff;
     border:1px solid #d1d5db;
@@ -41,13 +41,14 @@ font-family: 'Poppins', sans-serif;
 .calc-container h1{
     font-size:36px;
     font-weight:700;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 .calc-container p{
     max-width:1300px;
     line-height:1.6;
     color:#555;
+    margin-bottom:0;
 }
 
 
@@ -66,7 +67,7 @@ font-size:14px;
 @media(max-width:480px){
 
 .calc-hero{
-padding:105px 16px 35px;
+padding:90px 16px 20px;
 }
 
 .calc-container h1{
@@ -75,8 +76,48 @@ font-size:24px;
 
 }
 
+.sip-info{
+padding:28px 20px;
+background:#f7f9fb;
+}
+
+.sip-info-container{
+max-width:1300px;
+margin:auto;
+line-height:1.7;
+color:#333;
+}
+
+.sip-info h2{
+font-size:28px;
+margin-bottom:14px;
+font-weight:600;
+}
+
+.sip-info h3{
+margin-top:20px;
+margin-bottom:12px;
+font-size:22px;
+font-weight:600;
+}
+
+.sip-info p{
+margin-bottom:12px;
+font-size:15px;
+color:#444;
+}
+
+.sip-info ol{
+padding-left:20px;
+margin-bottom:14px;
+}
+
+.sip-info li{
+margin-bottom:6px;
+}
+
 .sip-section{
-padding:60px 20px;
+padding:28px 20px 50px;
 background:#f4f7f9;
 }
 
@@ -88,7 +129,7 @@ margin:auto;
 .sip-title{
 font-size:28px;
 font-weight:600;
-margin-bottom:30px;
+margin-bottom:20px;
 color:#007b8f;
 max-width:1400px;
 }
@@ -96,20 +137,39 @@ max-width:1400px;
 .sip-box{
 background:#cfdde3;
 border-radius:10px;
-padding:40px;
+padding:32px;
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:40px;
+gap:32px;
 }
 
 /* LEFT */
 
+.estimator-title{
+font-size:20px;
+font-weight:600;
+margin-bottom:6px;
+}
+
+.estimator-sub{
+font-size:14px;
+color:#444;
+margin-bottom:14px;
+}
+
 .amount-box{
 border:2px solid #2a8fa1;
 border-radius:10px;
-padding:15px;
-margin:20px 0;
+padding:12px 15px;
+margin-bottom:18px;
 text-align:center;
+}
+
+.amount-box label{
+display:block;
+font-size:14px;
+margin-bottom:4px;
+color:#333;
 }
 
 .amount-box input{
@@ -123,12 +183,19 @@ outline:none;
 }
 
 .slider-group{
-margin-top:20px;
+margin-top:16px;
+}
+
+.slider-group label{
+display:block;
+font-size:14px;
+margin-bottom:6px;
+color:#333;
 }
 
 .slider-group input{
 width:100%;
-margin-top:8px;
+margin-top:4px;
 }
 
 /* RIGHT */
@@ -137,26 +204,38 @@ margin-top:8px;
 text-align:center;
 }
 
+.total-text{
+font-size:16px;
+margin-bottom:6px;
+}
+
 .result-value{
 font-size:36px;
-margin:15px 0;
+margin:10px 0 16px;
 }
 
 .chart-box{
 width:220px;
-margin:20px auto;
+margin:14px auto;
 }
 
 .legend{
-margin-top:15px;
+margin-top:14px;
 text-align:left;
+}
+
+.legend p{
+font-size:14px;
+margin:6px 0;
+display:flex;
+align-items:center;
+gap:6px;
 }
 
 .color{
 display:inline-block;
 width:12px;
 height:12px;
-margin-right:6px;
 border-radius:2px;
 }
 
@@ -169,7 +248,7 @@ background:#555;
 }
 
 .invest-btn{
-margin-top:20px;
+margin-top:18px;
 background:#1e8aa0;
 color:white;
 border:none;
@@ -189,6 +268,7 @@ transform:translateY(-2px);
 
 .sip-box{
 grid-template-columns:1fr;
+padding:24px;
 }
 
 .chart-box{
@@ -200,51 +280,11 @@ width:200px;
 @media(max-width:500px){
 
 .sip-box{
-padding:25px;
+padding:20px;
 }
 
 .result-value{
 font-size:28px;
 }
 
-}
-
-.sip-info{
-padding:60px 20px;
-background:#f7f9fb;
-}
-
-.sip-info-container{
-max-width:1300px;
-margin:auto;
-line-height:1.7;
-color:#333;
-}
-
-.sip-info h2{
-font-size:28px;
-margin-bottom:20px;
-font-weight:600;
-}
-
-.sip-info h3{
-margin-top:30px;
-margin-bottom:15px;
-font-size:22px;
-font-weight:600;
-}
-
-.sip-info p{
-margin-bottom:16px;
-font-size:15px;
-color:#444;
-}
-
-.sip-info ol{
-padding-left:20px;
-margin-bottom:20px;
-}
-
-.sip-info li{
-margin-bottom:8px;
 }

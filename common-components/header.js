@@ -142,6 +142,137 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         }
+
+        // ── Active Page Navigation Highlighting ──
+        highlightActiveNav();
+
+        function highlightActiveNav() {
+            const currentPath = window.location.pathname.toLowerCase().replace(/\\/g, "/");
+
+            function matchesPath(href) {
+                if (!href || href === "#" || href.startsWith("javascript:")) return false;
+                try {
+                    const url = new URL(href, window.location.origin);
+                    const linkPath = url.pathname.toLowerCase();
+
+                    if (currentPath === linkPath) return true;
+
+                    // Home matching
+                    if ((currentPath === "/" || currentPath === "" || currentPath.endsWith("/index.html") || currentPath.endsWith("/home/")) &&
+                        (linkPath === "/home/index.html" || linkPath === "/index.html" || linkPath === "/")) {
+                        return true;
+                    }
+
+                    // Calculators matching under Mutual Fund / Services
+                    if (currentPath.includes("/calculators/")) {
+                        if (linkPath.includes("mutual-fund.html")) return true;
+                    }
+
+                    // Career application matching Career
+                    if (currentPath.includes("career-application.html") && linkPath.includes("career.html")) {
+                        return true;
+                    }
+
+                    return false;
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            // Desktop Nav Links
+            let isServicesActive = false;
+            const desktopLinks = document.querySelectorAll(".nav-menu a:not(.contact-btn):not(.login-btn)");
+            desktopLinks.forEach(link => {
+                if (matchesPath(link.getAttribute("href"))) {
+                    link.classList.add("active");
+                    if (link.closest(".dropdown")) {
+                        isServicesActive = true;
+                    }
+                }
+            });
+
+            if (isServicesActive || currentPath.includes("/services/") || currentPath.includes("/calculators/")) {
+                const servicesDropBtn = document.querySelector("#servicesDropBtn");
+                if (servicesDropBtn) servicesDropBtn.classList.add("active");
+            }
+
+            // Mobile Drawer Links
+            const drawerLinks = document.querySelectorAll(".drawer-nav a");
+            drawerLinks.forEach(link => {
+                if (matchesPath(link.getAttribute("href"))) {
+                    link.classList.add("active");
+
+                    // Expand parent drawer panels if the active link is inside an accordion
+                    const sub2 = link.closest(".drawer-has-sub2");
+                    if (sub2) {
+                        sub2.classList.add("sub2-open");
+                    }
+                    const sub1 = link.closest(".drawer-has-sub");
+                    if (sub1) {
+                        sub1.classList.add("sub-open");
+                        const toggleRow = sub1.querySelector(".drawer-toggle-row");
+                        if (toggleRow) toggleRow.classList.add("active");
+                    }
+                }
+            });
+
+            // 3. Set Tablet Center Page Title
+            const tabletPageTitle = document.getElementById("tabletPageTitle");
+            if (tabletPageTitle) {
+                let pageName = "";
+
+                if (currentPath.includes("sipcalculator") || currentPath.includes("sip.html")) {
+                    pageName = "SIP Calculator";
+                } else if (currentPath.includes("elss-calculator") || currentPath.includes("elss.html")) {
+                    pageName = "ELSS Calculator";
+                } else if (currentPath.includes("lumpsum-calculator") || currentPath.includes("lumpsum.html")) {
+                    pageName = "Lumpsum Calculator";
+                } else if (currentPath.includes("mf-returns-calci") || currentPath.includes("mf-returns.html")) {
+                    pageName = "MF Returns Calculator";
+                } else if (currentPath.includes("stepup-sip-calculator") || currentPath.includes("stepup-sip.html")) {
+                    pageName = "StepUp SIP Calculator";
+                } else if (currentPath.includes("swp-calculator") || currentPath.includes("swp.html")) {
+                    pageName = "SWP Calculator";
+                } else if (currentPath.includes("mutual-fund.html")) {
+                    pageName = "Mutual Funds";
+                } else if (currentPath.includes("stock-broking.html")) {
+                    pageName = "Stock Broking";
+                } else if (currentPath.includes("insurance.html")) {
+                    pageName = "Insurance";
+                } else if (currentPath.includes("loans.html")) {
+                    pageName = "Loans";
+                } else if (currentPath.includes("service.html")) {
+                    pageName = "Our Services";
+                } else if (currentPath.includes("about.html")) {
+                    pageName = "About Us";
+                } else if (currentPath.includes("academy.html")) {
+                    pageName = "Academy";
+                } else if (currentPath.includes("business.html")) {
+                    pageName = "Business";
+                } else if (currentPath.includes("career-application.html") || currentPath.includes("career.html")) {
+                    pageName = "Career";
+                } else if (currentPath.includes("zoho.html")) {
+                    pageName = "Zoho Partner";
+                } else if (currentPath.includes("contact.html")) {
+                    pageName = "Contact Us";
+                } else if (currentPath.includes("login.html")) {
+                    pageName = "Login";
+                } else if (currentPath.includes("signup.html")) {
+                    pageName = "Sign Up";
+                } else if (currentPath === "/" || currentPath.endsWith("/index.html") || currentPath.endsWith("/home/")) {
+                    pageName = "Home";
+                } else {
+                    const activeLink = document.querySelector(".nav-menu a.active") || document.querySelector(".drawer-nav a.active");
+                    if (activeLink) {
+                        pageName = activeLink.textContent.trim();
+                    } else {
+                        pageName = document.title.split("|")[0].trim();
+                    }
+                }
+
+                tabletPageTitle.textContent = pageName;
+            }
+        }
     }
 });
 

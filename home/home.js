@@ -34,22 +34,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  //counter
+  // Counter animation with cleanup
   const counters = document.querySelectorAll(".counter");
 
   counters.forEach(counter => {
     const target = +counter.getAttribute("data-target");
+    if (!target) return;
 
-    setInterval(() => {
-
-      let current = +counter.innerText;
-
-      if (current < target) {
-        counter.innerText = current + 1;
+    let current = 0;
+    const increment = Math.max(1, Math.ceil(target / 40));
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        counter.innerText = target;
+        clearInterval(timer);
+      } else {
+        counter.innerText = current;
       }
-
     }, 30);
-
   });
 
   /* REST OF YOUR EXISTING CODE... */

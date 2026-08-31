@@ -1,61 +1,3 @@
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-
-hamburger.addEventListener("click", () => {
-
-navMenu.classList.toggle("active");
-
-});
-
-
-const serviceDropdownLink = document.getElementById("servicesLink");
-
-if(serviceDropdownLink){
-
-    const serviceDropdown = serviceDropdownLink.closest(".dropdown");
-
-    serviceDropdownLink.addEventListener("click", function(e){
-
-        if(window.innerWidth <= 700){
-            e.preventDefault(); // stop routing
-            serviceDropdown.classList.toggle("active");
-        }
-
-    });
-
-}
-
-/* MOBILE DROPDOWN */
-
-const dropdown = document.querySelector(".dropdown");
-const dropbtn = document.querySelector(".dropbtn");
-
-dropbtn.addEventListener("click", () => {
-
-dropdown.classList.toggle("open");
-
-});
-
-
-const reveals = document.querySelectorAll(".reveal-left, .reveal-right");
-
-function revealOnScroll(){
-
-const trigger = window.innerHeight * 0.85;
-
-reveals.forEach(el=>{
-
-const top = el.getBoundingClientRect().top;
-
-if(top < trigger){
-
-el.classList.add("reveal-active");
-
-}
-
-});
-
-}
 const sipInput = document.getElementById("sipAmount");
 const yearsSlider = document.getElementById("years");
 const rateSlider = document.getElementById("rate");
@@ -73,81 +15,78 @@ const returnsAmount = document.getElementById("returnsAmount");
 
 let chart;
 
-function calculateStepUp(){
+function calculateStepUp() {
+  if (!sipInput || !yearsSlider || !rateSlider || !stepupSlider) return;
 
-let sip = parseFloat(sipInput.value);
-let years = parseInt(yearsSlider.value);
-let rate = parseFloat(rateSlider.value);
-let stepup = parseFloat(stepupSlider.value);
+  let sip = parseFloat(sipInput.value) || 0;
+  let years = parseInt(yearsSlider.value) || 0;
+  let rate = parseFloat(rateSlider.value) || 0;
+  let stepup = parseFloat(stepupSlider.value) || 0;
 
-let monthlyRate = rate / 12 / 100;
+  let monthlyRate = rate / 12 / 100;
 
-let totalValueCalc = 0;
-let totalInvested = 0;
+  let totalValueCalc = 0;
+  let totalInvested = 0;
 
-for(let y=0; y<years; y++){
+  for (let y = 0; y < years; y++) {
+    let yearlyMonthlySip = sip * Math.pow(1 + stepup / 100, y);
+    let futureValue = 0;
 
-let yearlySip = sip * Math.pow((1 + stepup/100), y);
+    if (monthlyRate === 0) {
+      futureValue = yearlyMonthlySip * 12;
+    } else {
+      let fv1Year = yearlyMonthlySip * ((Math.pow(1 + monthlyRate, 12) - 1) / monthlyRate) * (1 + monthlyRate);
+      futureValue = fv1Year * Math.pow(1 + monthlyRate, (years - 1 - y) * 12);
+    }
 
-let futureValue = yearlySip * ((Math.pow(1+monthlyRate,12)-1)/monthlyRate)*(1+monthlyRate);
+    totalValueCalc += futureValue;
+    totalInvested += yearlyMonthlySip * 12;
+  }
 
-totalValueCalc += futureValue;
+  let returns = totalValueCalc - totalInvested;
 
-totalInvested += yearlySip * 12;
+  if (yearValue) yearValue.innerText = yearsSlider.value;
+  if (rateValue) rateValue.innerText = rateSlider.value;
+  if (stepupValue) stepupValue.innerText = stepupSlider.value;
+  if (resultYears) resultYears.innerText = yearsSlider.value;
 
+  if (totalValue) totalValue.innerText = Math.round(totalValueCalc).toLocaleString("en-IN");
+  if (investedAmount) investedAmount.innerText = Math.round(totalInvested).toLocaleString("en-IN");
+  if (returnsAmount) returnsAmount.innerText = Math.round(returns).toLocaleString("en-IN");
+
+  updateChart(totalInvested, returns);
 }
 
-let returns = totalValueCalc-totalInvested;
+function updateChart(invested, returns) {
+  const chartCanvas = document.getElementById("stepupSipChart");
+  if (!chartCanvas) return;
+  const ctx = chartCanvas.getContext("2d");
 
-totalValue.innerText = Math.round(totalValueCalc).toLocaleString();
-investedAmount.innerText = Math.round(totalInvested).toLocaleString();
-returnsAmount.innerText = Math.round(returns).toLocaleString();
+  if (chart) chart.destroy();
 
-updateChart(totalInvested,returns);
-
+  chart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Invested Amount", "Returns"],
+      datasets: [{
+        data: [invested, returns],
+        backgroundColor: ["#1e8aa0", "#555"]
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: "70%",
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
 }
 
-function updateChart(invested,returns){
+if (yearsSlider) yearsSlider.addEventListener("input", calculateStepUp);
+if (rateSlider) rateSlider.addEventListener("input", calculateStepUp);
+if (stepupSlider) stepupSlider.addEventListener("input", calculateStepUp);
+if (sipInput) sipInput.addEventListener("input", calculateStepUp);
 
-if(chart) chart.destroy();
-
-const ctx=document.getElementById("stepupSipChart");
-
-chart=new Chart(ctx,{
-type:"doughnut",
-data:{
-labels:["Invested Amount","Returns"],
-datasets:[{
-data:[invested,returns],
-backgroundColor:["#1e8aa0","#555"]
-}]
-},
-options:{
-responsive:true,
-plugins:{
-legend:{display:false}
-}
-}
-});
-
-}
-
-yearsSlider.oninput=()=>{
-yearValue.innerText=yearsSlider.value;
-resultYears.innerText=yearsSlider.value;
-calculateStepUp();
-};
-
-rateSlider.oninput=()=>{
-rateValue.innerText=rateSlider.value;
-calculateStepUp();
-};
-
-stepupSlider.oninput=()=>{
-stepupValue.innerText=stepupSlider.value;
-calculateStepUp();
-};
-
-sipInput.oninput=calculateStepUp;
-
+document.addEventListener("DOMContentLoaded", calculateStepUp);
 calculateStepUp();
