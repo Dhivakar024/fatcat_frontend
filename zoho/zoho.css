@@ -1,0 +1,1318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* HERO */
+
+.zoho-hero {
+    min-height: 690px;
+    padding: 100px 6%;
+    background: linear-gradient(135deg, #071f31, #084d65, #087f9b);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    background-color: red;
+}
+
+.zoho-hero:before {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .06);
+    top: -250px;
+    right: -150px;
+}
+
+.zoho-hero:after {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .04);
+    bottom: -220px;
+    left: -150px;
+}
+
+.zoho-hero-container {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 70px;
+    position: relative;
+    z-index: 2;
+}
+
+.partner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 16px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background: rgba(255, 255, 255, .08);
+    border-radius: 30px;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.partner-badge span {
+    color: #56e0bc;
+}
+
+.zoho-hero-content h1 {
+    font-size: 58px;
+    line-height: 1.08;
+    max-width: 700px;
+    margin-bottom: 25px;
+    letter-spacing: -1.5px;
+}
+
+.zoho-hero-content h1 span {
+    color: #64d8bd;
+}
+
+.zoho-hero-content>p {
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #dceef3;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.primary-btn {
+    background: #ffffff;
+    color: #08758d;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .18);
+}
+
+.secondary-btn {
+    border: 1px solid rgba(255, 255, 255, .5);
+    color: #ffffff;
+}
+
+.secondary-btn:hover {
+    background: #ffffff;
+    color: #08758d;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 55px;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hero-stat strong {
+    font-size: 28px;
+}
+
+.hero-stat span {
+    font-size: 12px;
+    color: #c5e0e6;
+}
+
+
+/* HERO VISUAL */
+
+.zoho-hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: rgba(70, 216, 190, .16);
+    filter: blur(50px);
+}
+
+.zoho-main-card {
+    width: 100%;
+    max-width: 470px;
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(18px);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .25);
+}
+
+.zoho-card-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+}
+
+.zoho-logo-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: #087f9b;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.zoho-card-top h3 {
+    font-size: 20px;
+}
+
+.zoho-card-top p {
+    color: #c7e1e7;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+    margin: 25px 0;
+}
+
+.app-card {
+    padding: 18px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, .09);
+    border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.app-card span {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.app-card small {
+    color: #b9dce4;
+}
+
+.automation-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #cce5e9;
+}
+
+.automation-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #56e0bc;
+}
+
+.automation-progress {
+    flex: 1;
+    height: 4px;
+    background: linear-gradient(90deg, #56e0bc, transparent);
+    border-radius: 5px;
+}
+
+
+/* COMMON */
+
+.section-container {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.section-heading {
+    max-width: 750px;
+    margin-bottom: 55px;
+}
+
+.section-heading.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-label {
+    color: #087f9b;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin: 15px 0;
+    color: #172033;
+}
+
+.section-heading h2 span {
+    color: #087f9b;
+}
+
+.section-heading p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #687385;
+}
+
+
+/* PARTNERSHIP */
+
+.partnership-section {
+    padding: 100px 0;
+    background: #f7fafb;
+}
+
+.partnership-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.partnership-card {
+    padding: 30px 24px;
+    background: white;
+    border-radius: 15px;
+    border: 1px solid #e7eef1;
+    transition: .3s;
+}
+
+.partnership-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 40px rgba(12, 77, 100, .1);
+}
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: #eaf7f8;
+    color: #087f9b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.partnership-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.partnership-card p {
+    color: #687385;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+
+/* CREATOR */
+
+.creator-section {
+    padding: 110px 0;
+    background: white;
+}
+
+.creator-container {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.creator-content h2 {
+    font-size: 44px;
+    line-height: 1.2;
+    margin: 15px 0 20px;
+}
+
+.creator-content h2 span {
+    color: #087f9b;
+}
+
+.creator-content>p {
+    color: #687385;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.creator-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin: 30px 0;
+}
+
+.creator-feature {
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.creator-feature span {
+    color: #087f9b;
+    font-weight: 900;
+}
+
+
+/* CREATOR DASHBOARD */
+
+.creator-window {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, .13);
+    border: 1px solid #e4ebef;
+}
+
+.window-header {
+    height: 55px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #f4f7f8;
+    border-bottom: 1px solid #e5ebee;
+    color: #4e5968;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.window-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.window-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #bdc7ce;
+}
+
+.creator-dashboard {
+    display: flex;
+    min-height: 370px;
+}
+
+.dashboard-sidebar {
+    width: 145px;
+    background: #f8fafb;
+    padding: 20px 10px;
+    border-right: 1px solid #e7edef;
+}
+
+.sidebar-item {
+    padding: 11px 10px;
+    border-radius: 7px;
+    font-size: 11px;
+    margin-bottom: 5px;
+    color: #66717f;
+}
+
+.sidebar-item.active {
+    background: #e4f5f6;
+    color: #087f9b;
+    font-weight: 700;
+}
+
+.dashboard-main {
+    flex: 1;
+    padding: 25px;
+}
+
+.dashboard-main h3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.dashboard-cards div {
+    padding: 15px;
+    border-radius: 9px;
+    background: #f7fafb;
+}
+
+.dashboard-cards small {
+    display: block;
+    color: #7d8794;
+    font-size: 9px;
+    margin-bottom: 7px;
+}
+
+.dashboard-cards strong {
+    font-size: 18px;
+    color: #087f9b;
+}
+
+.chart-box {
+    margin-top: 20px;
+    border: 1px solid #edf0f2;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.chart-title {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.fake-chart {
+    height: 130px;
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    margin-top: 15px;
+    border-bottom: 1px solid #e8edef;
+}
+
+.fake-chart span {
+    flex: 1;
+    background: linear-gradient(to top, #087f9b, #61d8c0);
+    border-radius: 4px 4px 0 0;
+}
+
+
+/* SOLUTIONS */
+
+.zoho-services {
+    padding: 110px 0;
+    background: #f7fafb;
+}
+
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.solution-card {
+    background: #ffffff;
+    border: 1px solid #e5ecef;
+    border-radius: 15px;
+    padding: 32px;
+    transition: .3s;
+}
+
+.solution-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
+}
+
+.solution-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #eaf7f8;
+    color: #087f9b;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.solution-card h3 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.solution-card p {
+    color: #687385;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.solution-card a {
+    color: #087f9b;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* VIDEO */
+
+.video-section {
+    padding: 100px 0;
+    background: #062231;
+    color: white;
+}
+
+.video-container {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.video-content h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin: 15px 0 20px;
+}
+
+.video-content h2 span {
+    color: #63d8bd;
+}
+
+.video-content p {
+    color: #c3d8de;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.video-wrapper {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0c3c4c;
+    min-height: 340px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .35);
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
+    display: block;
+}
+
+.video-overlay-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    background: rgba(0, 30, 40, .25);
+}
+
+.play-symbol {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: white;
+    color: #087f9b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.video-overlay-text strong {
+    font-size: 18px;
+}
+
+
+/* WHY */
+
+.why-zoho {
+    padding: 110px 0;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.why-card {
+    padding: 30px;
+    border-left: 3px solid #087f9b;
+    background: #f8fafb;
+}
+
+.why-number {
+    font-size: 13px;
+    color: #087f9b;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.why-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.why-card p {
+    color: #687385;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+
+/* CTA */
+
+.zoho-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #087f9b, #07566c);
+    color: white;
+}
+
+.cta-container {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.cta-container h2 {
+    font-size: 40px;
+    margin: 15px 0;
+}
+
+.cta-container p {
+    max-width: 650px;
+    color: #d4e8ec;
+    line-height: 1.7;
+}
+
+.cta-btn {
+    white-space: nowrap;
+    padding: 15px 25px;
+    border-radius: 7px;
+    background: white;
+    color: #087f9b;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+
+/* TABLET */
+
+@media(max-width:1100px) {
+
+
+    .zoho-hero-content h1 {
+        font-size: 48px;
+    }
+
+    .partnership-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px) {
+
+   
+    .zoho-hero {
+        padding: 75px 6%;
+    }
+
+    .zoho-hero-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .zoho-hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-stats {
+        gap: 25px;
+    }
+
+    .creator-container {
+        grid-template-columns: 1fr;
+    }
+
+    .video-container {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    
+
+}
+
+
+/* SMALL MOBILE */
+
+@media(max-width:600px) {
+
+    .zoho-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .zoho-hero-content>p {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+    }
+
+    .section-heading h2,
+    .creator-content h2,
+    .video-content h2 {
+        font-size: 32px;
+    }
+
+    .partnership-grid,
+    .solution-grid,
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .creator-features {
+        grid-template-columns: 1fr;
+    }
+
+    .creator-dashboard {
+        min-height: 300px;
+    }
+
+    .dashboard-sidebar {
+        width: 95px;
+    }
+
+    .dashboard-main {
+        padding: 15px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .fake-chart {
+        height: 100px;
+    }
+
+    .video-wrapper,
+    .video-wrapper video {
+        min-height: 240px;
+    }
+
+   
+
+    .cta-container h2 {
+        font-size: 31px;
+    }
+
+}
+
+.explore-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-top: 14px;
+    color: #087ea4;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.explore-btn:hover {
+    color: #075985;
+    transform: translateX(3px);
+}
+
+.finance-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+}
+
+.finance-modal.active {
+    display: flex;
+}
+
+.finance-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 18, 35, 0.72);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.finance-modal-content {
+    position: relative;
+    width: 94%;
+    max-width: 1360px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 45px 50px 35px;
+    z-index: 1;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.3);
+    animation: financeModalShow 0.35s ease;
+}
+
+@keyframes financeModalShow {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.finance-modal-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+.finance-modal-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.finance-modal-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.finance-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.finance-close {
+    position: absolute;
+    top: 22px;
+    right: 25px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.25s ease;
+}
+
+.finance-close:hover {
+    background: #0b1b66;
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.finance-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 38px;
+}
+
+.finance-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #0783a6;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.finance-header h2 {
+    margin: 0;
+    color: #0f1d36;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.finance-header h2 strong {
+    color: #147fa1;
+}
+
+.finance-header p {
+    margin: 14px auto 0;
+    max-width: 700px;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.finance-products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.finance-product {
+    position: relative;
+    min-height: 185px;
+    padding: 23px 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.finance-product:hover {
+    transform: translateY(-5px);
+    border-color: #c7ddea;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
+}
+
+.finance-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 17px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.finance-icon.blue {
+    background: #eff8fc;
+    color: #1976b8;
+}
+
+.finance-icon.red {
+    background: #fff2f3;
+    color: #df2d3e;
+}
+
+.finance-icon.green {
+    background: #effaf5;
+    color: #08a66a;
+}
+
+.finance-product-info h3 {
+    margin: 0 0 8px;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 650;
+}
+
+.finance-product-info p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.finance-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.finance-badge.new {
+    background: #18a866;
+}
+
+.finance-badge.free {
+    background: #ef4444;
+}
+
+.finance-plus-card {
+    background: linear-gradient(135deg, #effcf6, #e4f8f0);
+    border-color: #ccefe0;
+}
+
+.finance-plus-card:hover {
+    border-color: #8eddbd;
+}
+
+.finance-plus-card .finance-product-info h3 {
+    color: #102b22;
+}
+
+.finance-plus-card .finance-product-info p {
+    color: #35705d;
+}
+
+.finance-suite {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #08794f;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.finance-help {
+    margin-top: 25px;
+    padding: 22px 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #ffffff;
+}
+
+.finance-help-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.finance-help-text {
+    flex: 1;
+}
+
+.finance-help-text h3 {
+    margin: 0 0 5px;
+    color: #111827;
+    font-size: 17px;
+}
+
+.finance-help-text p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.finance-help-btn {
+    flex-shrink: 0;
+    padding: 13px 22px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.finance-help-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1150px) {
+    .finance-products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .finance-modal-content {
+        width: 95%;
+        padding: 38px 30px 30px;
+    }
+    .finance-products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .finance-header h2 {
+        font-size: 32px;
+    }
+    .finance-help {
+        flex-wrap: wrap;
+    }
+    .finance-help-btn {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 700px) {
+    .finance-modal-content {
+        width: 96%;
+        padding: 35px 20px 25px;
+        border-radius: 18px;
+    }
+    .finance-products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .finance-product {
+        min-height: 175px;
+        padding: 18px;
+    }
+    .finance-header h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 520px) {
+    .finance-modal {
+        align-items: stretch;
+    }
+    .finance-modal-content {
+        width: 100%;
+        max-width: none;
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+        padding: 75px 16px 25px;
+    }
+    .finance-close {
+        top: 18px;
+        right: 18px;
+    }
+    .finance-header {
+        text-align: left;
+        margin-bottom: 25px;
+    }
+    .finance-header h2 {
+        font-size: 27px;
+        line-height: 1.25;
+    }
+    .finance-header p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    .finance-products {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .finance-product {
+        min-height: auto;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 16px;
+    }
+    .finance-icon {
+        width: 43px;
+        height: 43px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+        font-size: 19px;
+    }
+    .finance-product-info h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .finance-product-info p {
+        font-size: 12px;
+    }
+    .finance-help {
+        align-items: flex-start;
+        padding: 18px;
+    }
+    .finance-help-text h3 {
+        font-size: 15px;
+    }
+    .finance-help-text p {
+        font-size: 12px;
+    }
+    .finance-help-btn {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+
+}

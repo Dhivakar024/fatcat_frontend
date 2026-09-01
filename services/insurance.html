@@ -4,76 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../theme.js" defer></script>
-    <title>Insurance | Service</title>
-    <link rel="stylesheet" href="../services/css/insurance.css">
+    <script src="/theme.js" defer></script>
+    <title>Insurance | Fatcat Wealthy</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../services/css/insurance.css">
+    <link rel="stylesheet" href="/common-components/header.css">
+    <link rel="stylesheet" href="/common-components/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../components/site-chrome.css">
+
+    <script src="/common-components/header.js" defer></script>
+    <script src="/common-components/footer.js" defer></script>
 </head>
 
 <body>
+    <div id="header"></div>
 
-    <header class="navbar">
-
-        <div class="nav-container">
-
-            <div class="logo">
-                <img src="../services/assets/logo.png" alt="Fatcat Wealthy">
-            </div>
-
-            <nav class="nav-menu" id="navMenu">
-
-                <a href="../home/index.html" class="active">Home</a>
-                <a href="../about/about.html">About Us</a>
-
-                <div class="dropdown">
-
-                    <a href="../services/service.html" class="dropbtn" id="servicesLink">
-                        Services <span class="arrow">▾</span>
-                    </a>
-
-                    <div class="dropdown-content">
-
-                        <div class="submenu">
-                            <a href="#">Investment Broking ▸</a>
-
-                            <div class="submenu-content">
-                                <a href="../services/mutual-fund.html">Mutual Fund</a>
-                                <a href="../services/stock-broking.html">Stock Broking</a>
-                            </div>
-                        </div>
-
-                        <a href="../services/insurance.html">Insurance</a>
-                        <a href="../services/loans.html">Loans</a>
-                        
-
-                    </div>
-
-                </div>
-
-                <a href="../academy/academy.html">Academy</a>
-                <a href="../business/business.html">Business</a>
-                <a href="../career/career.html">Career</a>
-
-                <a href="../contact/contact.html" class="contact-btn">Contact Us</a>
-                <a href="../login/login.html" class="contact-btn">Login</a>
-
-
-            </nav>
-
-
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-        </div>
-
-    </header>
+    
     <section class="insurance-hero">
         <video class="insurance-hero-video" autoplay muted loop playsinline aria-hidden="true">
             <source src="assets/stockmarket(video).mp4" type="video/mp4">
@@ -170,12 +117,34 @@
 
             <!-- Tabs -->
             <div class="feature-tabs scroll-animate">
-                <button class="tab-btn active" data-tab="general">General Insurance</button>
-                <button class="tab-btn" data-tab="health">Health & Life</button>
+                <button class="tab-btn active" data-tab="health">Health & Life</button>
+                <button class="tab-btn" data-tab="general">General Insurance</button>
+                
+            </div>
+             <!-- HEALTH INSURANCE -->
+            <div class="features-grid active" id="health">
+
+                <div class="feature-card">
+                    <img src="../services/assets/hos2.png" height="150px">
+                    <h3>Health Insurance</h3>
+                    <p>
+                        Health insurance covers medical expenses including hospitalization,
+                        treatment, and surgeries.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="../services/assets/hos3.png" height="150px">
+                    <h3>Family Health Plan</h3>
+                    <p>
+                        A family health plan protects all members under one policy.
+                    </p>
+                </div>
+
             </div>
 
             <!-- GENERAL INSURANCE -->
-            <div class="features-grid active" id="general">
+            <div class="features-grid " id="general">
 
                 <div class="feature-card scroll-animate">
                     <img src="../services/assets/car2.png">
@@ -234,27 +203,7 @@
             </div>
 
 
-            <!-- HEALTH INSURANCE -->
-            <div class="features-grid" id="health">
-
-                <div class="feature-card">
-                    <img src="../services/assets/hos2.png" height="150px">
-                    <h3>Health Insurance</h3>
-                    <p>
-                        Health insurance covers medical expenses including hospitalization,
-                        treatment, and surgeries.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="../services/assets/hos3.png" height="150px">
-                    <h3>Family Health Plan</h3>
-                    <p>
-                        A family health plan protects all members under one policy.
-                    </p>
-                </div>
-
-            </div>
+           
 
         </div>
 
@@ -383,33 +332,7 @@
                 </div>
 
 
-                <!-- CARD -->
-                <div class="plan-card scroll-animate">
-                    <div class="plan-title">Auto Insurance</div>
-
-                    <p class="plan-desc">
-                        Invest primarily in stocks for long-term wealth creation
-                    </p>
-
-                    <div class="coverage-box">
-                        <p>Coverage:</p>
-                        <h4>₹5 Lakh – ₹1 Crore</h4>
-
-                        <p class="premium">Premium:</p>
-                        <h5>₹8,000 – ₹25,000/year</h5>
-                    </div>
-
-                    <ul class="plan-features">
-                        <li>Independent advisory — no product affiliations</li>
-                        <li>Data-driven investment recommendations</li>
-                        <li>Robust digital infrastructure</li>
-                        <li>Custom asset allocation</li>
-                    </ul>
-
-                    <div class="plan-btn">
-                        Up to ₹50 Lakh coverage with tax benefits up to ₹1.5 Lakh
-                    </div>
-                </div>
+               
 
 
                 <!-- CARD -->
@@ -580,104 +503,7 @@
 
 
 
-    <footer class="footer">
-
-        <div class="footer-container">
-
-            <!-- COMPANY INFO -->
-
-            <div class="footer-col">
-                <div class="logo">
-                    <img src="assets/logo.png" alt="Fatcat Wealthy">
-                </div>
-
-                <p>
-                    We are dedicated to empowering investors through education,
-                    mentorship, and financial planning.
-                </p>
-
-                <div class="social-icons">
-
-                    <a href="https://www.instagram.com/fatcatwealthy?igsh=bHYxa3h4ZG9qYTly" target="_blank">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a href="https://facebook.com/fatcatwealthy" target="_blank">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-
-                    <a href="https://wa.me/919566679958" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-
-                    <a href="https://linkedin.com/company/fatcatwealthy" target="_blank">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-
-                </div>
-            </div>
-
-
-            <!-- CONTACT -->
-
-
-            <div class="footer-col">
-                <h4>Get In Touch</h4>
-
-                <div class="contact-item">
-                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="">
-                    <span>+91 95666 79958</span>
-                </div>
-
-                <div class="contact-item">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="">
-                    <span class="contact-email">support@fatcatwealthy.com</span>
-                </div>
-
-                <div class="contact-item">
-                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="">
-                    <span class="contact-address"><span class="address-line">1st Floor, CPS Tower, Advaitha Ashram Rd,</span><span class="address-line">Fairlands - Salem, Chennai</span></span>
-                </div>
-            </div>
-
-            <!-- SERVICES ROUTES -->
-
-            <div class="footer-col">
-                <h4>What We Do</h4>
-
-                <ul>
-                    <li><a href="../services/mutual-fund.html">Mutual Fund</a></li>
-                    <li><a href="../services/stock-broking.html">Investment Broking</a></li>
-                    <li><a href="../services/insurance.html">Insurance</a></li>
-                    <li><a href="../academy/academy.html">Academy</a></li>
-                </ul>
-
-            </div>
-
-
-            <!-- COMPANY ROUTES -->
-
-            <div class="footer-col">
-                <h4>Company</h4>
-
-                <ul>
-                    <li><a href="../about/about.html">About Us</a></li>
-                    <li><a href="../services/service.html">Services</a></li>
-                    <li><a href="../business/business.html">Business</a></li>
-                    <li><a href="../career/career.html">Careers</a></li>
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-            <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
-        </div>
-
-    </footer>
-
+    <div id="footer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../services/js/insurance.js"></script>

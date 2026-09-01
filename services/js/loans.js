@@ -1,11 +1,15 @@
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("navMenu");
 
-hamburger.addEventListener("click", () => {
+if(hamburger && navMenu){
 
-navMenu.classList.toggle("active");
+    hamburger.addEventListener("click", () => {
 
-});
+    navMenu.classList.toggle("active");
+
+    });
+
+}
 
 
 const serviceDropdownLink = document.getElementById("servicesLink");
@@ -30,11 +34,15 @@ if(serviceDropdownLink){
 const dropdown = document.querySelector(".dropdown");
 const dropbtn = document.querySelector(".dropbtn");
 
-dropbtn.addEventListener("click", () => {
+if(dropdown && dropbtn){
 
-dropdown.classList.toggle("open");
+    dropbtn.addEventListener("click", () => {
 
-});
+    dropdown.classList.toggle("open");
+
+    });
+
+}
 
 
 const reveals = document.querySelectorAll(".reveal-left, .reveal-right");
@@ -57,6 +65,9 @@ el.classList.add("reveal-active");
 
 }
 
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
 
 // SCROLL ANIMATION (REUSABLE)
 const observer = new IntersectionObserver((entries) => {
@@ -74,6 +85,7 @@ document.querySelectorAll(".fade-up").forEach((el) => {
 const slider = document.getElementById("slider");
 
 function slideLeft() {
+  if(!slider) return;
   const cardWidth = document.querySelector(".amount-card").offsetWidth + 20;
   slider.scrollBy({
     left: -cardWidth,
@@ -82,6 +94,7 @@ function slideLeft() {
 }
 
 function slideRight() {
+  if(!slider) return;
   const cardWidth = document.querySelector(".amount-card").offsetWidth + 20;
   slider.scrollBy({
     left: cardWidth,

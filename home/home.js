@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= NAVBAR ================= */
+
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("navMenu");
 
@@ -8,21 +9,52 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", () => {
       navMenu.classList.toggle("active");
       hamburger.classList.toggle("active");
-
     });
   }
-  //counter
+
+  /* ================= ZOHO PARTNER ================= */
+
+  const zohoNav = document.getElementById("navMenu");
+
+  if (zohoNav && !zohoNav.querySelector(".zoho-partner-link")) {
+
+    const zohoLink = document.createElement("a");
+
+    zohoLink.href = "../zoho/zoho.html";
+    zohoLink.className = "zoho-partner-link";
+    zohoLink.textContent = "Zoho Partner";
+
+    const contactLink = zohoNav.querySelector(".contact-btn");
+
+    if (contactLink) {
+      zohoNav.insertBefore(zohoLink, contactLink);
+    } else {
+      zohoNav.appendChild(zohoLink);
+    }
+
+  }
+
+  // Counter animation with cleanup
   const counters = document.querySelectorAll(".counter");
+
   counters.forEach(counter => {
     const target = +counter.getAttribute("data-target");
-    setInterval( ()=> {
-      let current = +counter.innerText;
-      if(current < target) {
-        counter.innerText = current + 1;
-      
+    if (!target) return;
+
+    let current = 0;
+    const increment = Math.max(1, Math.ceil(target / 40));
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        counter.innerText = target;
+        clearInterval(timer);
+      } else {
+        counter.innerText = current;
       }
-    },30);
+    }, 30);
   });
+
+  /* REST OF YOUR EXISTING CODE... */
 
   /* ================= MOBILE DROPDOWN ================= */
   const dropdown = document.querySelector(".dropdown");
@@ -35,29 +67,49 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
- const modal = document.getElementById("enquiryModal");
-    const closeBtn = document.getElementById("closeModalBtn");
+  const modal = document.getElementById("enquiryModal");
+  const closeBtn = document.getElementById("closeModalBtn");
+  const cancelBtn = modal ? modal.querySelector(".btn-cancel") : null;
 
-    // Show modal after page load
+  if (modal) {
+
+    function openModal() {
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+    // ─────────────────────────────────────────────────────
+
+    // Show modal 1 s after page finishes loading
     window.addEventListener("load", () => {
-        setTimeout(() => {
-            modal.style.display = "flex";
-        }, 1000); // delay for better UX
+      setTimeout(openModal, 1000);
     });
 
-    // Close button
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-
-    // Close when clicking outside
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-
+    // Close via ✕ button
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
     
+
+    // Close via Cancel button (it's type="reset" — also close the modal)
+    if (cancelBtn) {
+      cancelBtn.addEventListener("click", closeModal);
+    }
+
+    // Close when clicking the dark backdrop (outside the form box)
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Close with Escape key
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.style.display === "flex") closeModal();
+    });
+  }
+
+
   /* ================= WHATSAPP FLOATING BUTTON ================= */
   const whatsappFloat = document.querySelector(".whatsapp-float");
 
