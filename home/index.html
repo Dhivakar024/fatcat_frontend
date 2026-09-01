@@ -44,6 +44,11 @@
                 <label>Message</label>
                 <textarea rows="3" placeholder="Tell us how we can help you"></textarea>
 
+                <div class="modal-terms">
+                    <input type="checkbox" id="modalTerms" class="terms-checkbox" disabled required>
+                    <label for="modalTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms & Conditions</a></label>
+                </div>
+
                 <div class="form-actions">
                     <button type="reset" class="btn-cancel">Cancel</button>
                     <button type="submit" class="btn-send">Send</button>
@@ -446,6 +451,11 @@
                     <input type="email" placeholder="Email" required>
                     <input type="tel" placeholder="Mobile number" required>
                     <textarea placeholder="Your message or enquiry"></textarea>
+
+                    <div class="modal-terms inpage-terms">
+                        <input type="checkbox" id="homeEnquiryTerms" class="terms-checkbox" disabled required>
+                        <label for="homeEnquiryTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms & Conditions</a></label>
+                    </div>
 
                     <div class="form-actions">
                         <button type="submit">Send</button>

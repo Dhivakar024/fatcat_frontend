@@ -123,10 +123,162 @@
     <div class="footer-bottom">
         <p>© 2026 Fatcat Wealthy. All rights reserved.</p>
         <div class="footer-legal">
-                <a href="/legal/privacy-policy.html">Privacy Policy</a>
-                <a href="/legal/terms-of-use.html">Terms of Use</a>
-                <a href="/legal/disclaimer.html">Disclaimer</a>
-         </div>
-     </div>
+            <a href="javascript:void(0)" class="open-legal-tab" data-legal="privacy">Privacy Policy</a>
+            <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms of Use</a>
+            <a href="javascript:void(0)" class="open-legal-tab" data-legal="disclaimer">Disclaimer</a>
+            <a href="javascript:void(0)" id="footerCookieSettingsLink" class="open-cookie-settings">Cookie Settings</a>
+        </div>
+    </div>
 
+    <!-- Legal Popup Modal (Terms, Privacy, Disclaimer) -->
+    <div id="legalModal" class="legal-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+        <div class="legal-modal">
+            <div class="legal-modal-header">
+                <h3 id="legalModalTitle"><i class="fa-solid fa-shield-halved"></i> Legal & Compliance</h3>
+                <button class="legal-modal-close" id="closeLegalModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+            
+            <div class="legal-modal-tabs">
+                <button type="button" class="legal-tab-btn active" data-tab="terms">Terms of Use</button>
+                <button type="button" class="legal-tab-btn" data-tab="privacy">Privacy Policy</button>
+                <button type="button" class="legal-tab-btn" data-tab="disclaimer">Disclaimer</button>
+            </div>
+
+            <div class="legal-modal-body">
+                <!-- Terms of Use -->
+                <div id="legal-terms" class="legal-tab-content active">
+                    <span class="legal-badge">Terms of Use & Agreement</span>
+                    <h4>1. Acceptance of Terms</h4>
+                    <p>By accessing or utilizing Fatcat Wealthy's website, financial academy, or advisory services, you agree to comply with and be bound by these Terms of Use.</p>
+                    
+                    <h4>2. Scope of Services</h4>
+                    <p>Our platform provides investment education, mutual fund guidance, stock broking insights, insurance consultation, and loan advisory. All recommendations are designed to assist user decision-making.</p>
+                    
+                    <h4>3. User Responsibility</h4>
+                    <p>Users agree to provide accurate information when submitting inquiries or registering for services and maintain confidentiality of their account details.</p>
+                    
+                    <h4>4. Intellectual Property</h4>
+                    <p>All educational materials, calculators, brand assets, and website content are the proprietary property of Fatcat Wealthy and may not be reproduced without written consent.</p>
+                    
+                    <h4>5. Policy Updates</h4>
+                    <p>Fatcat Wealthy reserves the right to revise or update these terms periodically to reflect industry regulations and operational enhancements.</p>
+                </div>
+
+                <!-- Privacy Policy -->
+                <div id="legal-privacy" class="legal-tab-content">
+                    <span class="legal-badge">Privacy & Data Protection</span>
+                    <h4>1. Information Collection</h4>
+                    <p>We collect essential personal information (including full name, email address, phone number, and inquiry message) provided voluntarily via our forms.</p>
+                    
+                    <h4>2. Use of Information</h4>
+                    <p>Collected details are utilized exclusively to address inquiries, provide customized wealth consultation, deliver course materials, and communicate service updates.</p>
+                    
+                    <h4>3. Data Security & Confidentiality</h4>
+                    <p>We adhere to strict industry data security standards to safeguard your personal information against unauthorized access, loss, misuse, or alteration.</p>
+                    
+                    <h4>4. Third-Party Sharing</h4>
+                    <p>Fatcat Wealthy does not sell, rent, or trade your personal data to external third parties. Information is only shared when mandated by applicable law or regulatory requirements.</p>
+                    
+                    <h4>5. Contact Us Regarding Privacy</h4>
+                    <p>For any inquiries, data corrections, or removal requests, please contact our privacy desk at <strong>support@fatcatwealthy.com</strong>.</p>
+                </div>
+
+                <!-- Disclaimer -->
+                <div id="legal-disclaimer" class="legal-tab-content">
+                    <span class="legal-badge">Risk Disclosure & Disclaimer</span>
+                    <h4>1. Market Risks</h4>
+                    <p>Investments in securities, mutual funds, equities, and financial markets are subject to market risks. Please read all scheme-related and offer documents carefully before investing.</p>
+                    
+                    <h4>2. Educational & Advisory Scope</h4>
+                    <p>Content published by the Fatcat Wealthy Academy and website is intended for educational and guidance purposes. Past performance metrics do not guarantee future returns.</p>
+                    
+                    <h4>3. Independent Financial Assessment</h4>
+                    <p>Users should evaluate their individual risk tolerance, investment horizons, and financial goals, or consult with certified wealth advisors before executing transactions.</p>
+                    
+                    <h4>4. Limitation of Liability</h4>
+                    <p>Fatcat Wealthy and its associates shall not be liable for any direct, indirect, or incidental losses resulting from reliance on market information or individual trading decisions.</p>
+                </div>
+            </div>
+
+            <div class="legal-modal-footer">
+                <button type="button" class="legal-btn-accept" id="acceptLegalBtn">Understood & Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-Width Floating Cookie Consent Banner (Edge-to-Edge) -->
+    <div id="cookieConsent" class="cookie-consent" role="dialog" aria-label="Cookie Consent Banner" aria-live="polite">
+        <div class="cookie-consent-inner">
+            <!-- Left Info Area: Icon, Title & Description -->
+            <div class="cookie-consent-info">
+                <div class="cookie-consent-heading">
+                    <i class="fa-solid fa-cookie-bite cookie-title-icon" aria-hidden="true"></i>
+                    <h3>We use cookies</h3>
+                </div>
+                <p class="cookie-consent-text">
+                    We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content and targeted ads, to analyze our website traffic, and to understand where our visitors are coming from. Read our <a href="javascript:void(0)" class="open-legal-tab" data-legal="privacy">Privacy Policy</a>.
+                </p>
+            </div>
+
+            <!-- Right Actions Area: Agree, Decline, Preferences -->
+            <div class="cookie-consent-actions">
+                <button type="button" id="cookieAcceptBtn" class="cookie-btn cookie-btn-agree">I agree</button>
+                <button type="button" id="cookieDeclineBtn" class="cookie-btn cookie-btn-decline">I decline</button>
+                <button type="button" id="cookiePreferencesBtn" class="cookie-btn cookie-btn-preferences">Change my preferences</button>
+            </div>
+        </div>
+
+        <!-- Collapsible Preferences Drawer -->
+        <div id="cookiePreferencesPanel" class="cookie-preferences-panel">
+            <div class="cookie-preferences-content">
+                <div class="cookie-preferences-header">
+                    <h4><i class="fa-solid fa-sliders"></i> Cookie Preferences</h4>
+                    <p>Manage which cookies you allow our website to use. You can change these settings at any time.</p>
+                </div>
+
+                <div class="cookie-options-list">
+                    <div class="cookie-option-card">
+                        <div class="cookie-option-top">
+                            <label class="cookie-switch-label">
+                                <input type="checkbox" checked disabled>
+                                <span class="cookie-switch-slider locked"></span>
+                                <span class="cookie-option-name">Essential / Necessary Cookies</span>
+                            </label>
+                            <span class="cookie-status-badge">Always Active</span>
+                        </div>
+                        <p class="cookie-option-desc">These cookies are required for basic site navigation, security features, and ensuring services load properly.</p>
+                    </div>
+
+                    <div class="cookie-option-card">
+                        <div class="cookie-option-top">
+                            <label class="cookie-switch-label">
+                                <input type="checkbox" id="prefAnalytics" checked>
+                                <span class="cookie-switch-slider"></span>
+                                <span class="cookie-option-name">Analytics & Performance</span>
+                            </label>
+                            <span class="cookie-status-badge optional">Optional</span>
+                        </div>
+                        <p class="cookie-option-desc">Help us measure website traffic, understand page performance, and continuously optimize user experience.</p>
+                    </div>
+
+                    <div class="cookie-option-card">
+                        <div class="cookie-option-top">
+                            <label class="cookie-switch-label">
+                                <input type="checkbox" id="prefMarketing" checked>
+                                <span class="cookie-switch-slider"></span>
+                                <span class="cookie-option-name">Marketing & Personalized Content</span>
+                            </label>
+                            <span class="cookie-status-badge optional">Optional</span>
+                        </div>
+                        <p class="cookie-option-desc">Used to provide relevant financial insights, market updates, and tailored recommendations.</p>
+                    </div>
+                </div>
+
+                <div class="cookie-preferences-actions">
+                    <button type="button" id="cookieSavePrefBtn" class="cookie-btn cookie-btn-save">Save My Preferences</button>
+                    <button type="button" id="cookieCancelPrefBtn" class="cookie-btn cookie-btn-cancel">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
