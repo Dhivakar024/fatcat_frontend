@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/theme.js" defer></script>
+    <title>Privacy Centre | Fatcat Wealthy</title>
+
+    <link rel="stylesheet" href="/common-components/header.css">
+    <link rel="stylesheet" href="/common-components/footer.css">
+    <link rel="stylesheet" href="privacy-center.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,500;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script src="/common-components/header.js" defer></script>
+    <script src="/common-components/footer.js" defer></script>
+</head>
+
+<body class="privacy-centre-page">
+
+    <!-- Header Navigation -->
+    <div id="header"></div>
+
+    <!-- Main Container -->
+    <main class="privacy-main">
+        <div class="privacy-container">
+
+            <!-- Hero Header Section -->
+            <div class="privacy-hero">
+                <div class="dpdp-badge">
+                    <span class="badge-dot"></span>
+                    <span>DPDP ACT 2023 COMPLIANCE PORTAL</span>
+                </div>
+                <h1 class="privacy-title">Privacy Centre</h1>
+                <p class="privacy-subtitle">
+                    Manage your personal data and exercise your rights as a Data Principal under the Digital Personal Data Protection (DPDP) Act.
+                </p>
+            </div>
+
+            <!-- Cookie Preferences Banner Card -->
+            <div class="cookie-banner-card">
+                <div class="cookie-banner-left">
+                    <div class="icon-box purple-box">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="cookie-banner-text">
+                        <h3>Cookie Preferences &amp; Tracking</h3>
+                        <p>Customize which cookie categories you permit during your visit.</p>
+                    </div>
+                </div>
+                <div class="cookie-banner-right">
+                    <button type="button" class="btn-cookie-action" id="openCookieSettingsBtn">
+                        <span>Manage Cookie Settings</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DPDP Rights Cards Grid -->
+            <div class="rights-grid">
+
+                <!-- Card 1: View My Data -->
+                <div class="rights-card">
+                    <div class="card-icon-wrap cyan-box">
+                        <i class="fa-regular fa-eye"></i>
+                    </div>
+                    <h3 class="card-title">View My Data</h3>
+                    <div class="card-tagline">Request information about your data</div>
+                    <p class="card-desc">
+                        Get a summary of the personal data processed by FatCat, categories of data collected, and third-party processors.
+                    </p>
+                    <button type="button" class="btn-request" data-request-type="View My Data" data-request-tagline="Request information about your data">
+                        <span>Request</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Card 2: Correct My Data -->
+                <div class="rights-card">
+                    <div class="card-icon-wrap purple-box">
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+                    <h3 class="card-title">Correct My Data</h3>
+                    <div class="card-tagline">Request correction of inaccurate data</div>
+                    <p class="card-desc">
+                        Request rectification of outdated, inaccurate, or incomplete personal data held in our systems.
+                    </p>
+                    <button type="button" class="btn-request" data-request-type="Correct My Data" data-request-tagline="Request correction of inaccurate data">
+                        <span>Request</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Card 3: Request Erasure -->
+                <div class="rights-card">
+                    <div class="card-icon-wrap red-box">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <h3 class="card-title">Request Erasure</h3>
+                    <div class="card-tagline">Request deletion where applicable</div>
+                    <p class="card-desc">
+                        Request the erasure of your personal data when it is no longer necessary for the purpose for which it was collected.
+                    </p>
+                    <button type="button" class="btn-request" data-request-type="Request Erasure" data-request-tagline="Request deletion where applicable">
+                        <span>Request</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Card 4: Withdraw Consent -->
+                <div class="rights-card">
+                    <div class="card-icon-wrap yellow-box">
+                        <i class="fa-solid fa-user-xmark"></i>
+                    </div>
+                    <h3 class="card-title">Withdraw Consent</h3>
+                    <div class="card-tagline">Withdraw consent where processing is based on consent</div>
+                    <p class="card-desc">
+                        Revoke your consent previously given for marketing communications, cookies, or specific data processing activities.
+                    </p>
+                    <button type="button" class="btn-request" data-request-type="Withdraw Consent" data-request-tagline="Withdraw consent where processing is based on consent">
+                        <span>Manage / Request</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Card 5: Privacy Grievance -->
+                <div class="rights-card">
+                    <div class="card-icon-wrap green-box">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
+                    <h3 class="card-title">Privacy Grievance</h3>
+                    <div class="card-tagline">Raise a privacy-related complaint</div>
+                    <p class="card-desc">
+                        Submit a formal grievance directly to our designated Grievance Officer regarding any data protection concerns.
+                    </p>
+                    <button type="button" class="btn-request" data-request-type="Privacy Grievance" data-request-tagline="Raise a privacy-related complaint">
+                        <span>Submit Request</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Designated Data Protection Grievance Officer Section -->
+            <div class="grievance-officer-banner">
+                <div class="officer-icon-wrap">
+                    <i class="fa-regular fa-circle-question"></i>
+                </div>
+                <div class="officer-info">
+                    <h3 class="officer-title">Designated Data Protection Grievance Officer</h3>
+                    <p class="officer-desc">
+                        If you have any questions, unresolved grievances, or complaints regarding how FatCat processes your personal data, you may reach our designated Grievance Officer.
+                    </p>
+                    <div class="officer-contact-row">
+                        <a href="mailto:support@fatcatwealthy.com" class="contact-link">
+                            <i class="fa-regular fa-envelope"></i>
+                            <span>support@fatcatwealthy.com</span>
+                        </a>
+                        <a href="tel:+919566679958" class="contact-link">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+91 95666 79958</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="officer-actions">
+                    <button type="button" class="btn-officer-action btn-notice open-legal-tab" data-legal="privacy">
+                        Read Privacy Notice
+                    </button>
+                    <button type="button" class="btn-officer-action btn-terms open-legal-tab" data-legal="terms">
+                        Terms &amp; Conditions
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- DPDP Request Submission Modal (Matching Image 1 Exactly) -->
+    <div id="dpdpRequestModal" class="dpdp-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="dpdpModalTitle">
+        <div class="dpdp-modal">
+            <div class="dpdp-modal-header">
+                <div class="dpdp-modal-title-wrap">
+                    <div class="modal-purple-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 id="dpdpModalTitle">Correct My Data</h3>
+                        <p id="dpdpModalSub">Request correction of inaccurate data</p>
+                    </div>
+                </div>
+                <button type="button" class="dpdp-modal-close" id="closeDpdpModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+
+            <!-- Submission Form (Matching Image 1) -->
+            <form id="dpdpRequestForm" class="dpdp-modal-form">
+                <div class="dpdp-form-group">
+                    <label for="principalName">YOUR FULL NAME <span class="req">*</span></label>
+                    <input type="text" id="principalName" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <div class="dpdp-form-row">
+                    <div class="dpdp-form-group">
+                        <label for="principalEmail">EMAIL ADDRESS <span class="req">*</span></label>
+                        <input type="email" id="principalEmail" placeholder="name@example.com" required>
+                    </div>
+                    <div class="dpdp-form-group">
+                        <label for="principalPhone">PHONE NUMBER</label>
+                        <input type="tel" id="principalPhone" placeholder="+91 98765 43210">
+                    </div>
+                </div>
+
+                <div class="dpdp-form-group">
+                    <label for="principalDetails">REQUEST DETAILS / SPECIFICATION <span class="req">*</span></label>
+                    <textarea id="principalDetails" rows="4" placeholder="Please specify the details of your request or grievance..." required></textarea>
+                </div>
+
+                <div class="dpdp-checkbox-group">
+                    <label class="dpdp-checkbox-label">
+                        <input type="checkbox" id="principalDeclaration" required>
+                        <span class="dpdp-checkbox-text">
+                            I agree to the processing of my personal data for the purpose described in the <a href="javascript:void(0)" class="open-legal-tab" data-legal="privacy">Privacy Notice</a>.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="dpdp-modal-actions">
+                    <button type="button" class="btn-dpdp-cancel" id="cancelDpdpModalBtn">Cancel</button>
+                    <button type="submit" class="btn-dpdp-submit" id="submitDpdpBtn">
+                        Submit Request
+                    </button>
+                </div>
+            </form>
+
+            <!-- Success Screen -->
+            <div id="dpdpSuccessScreen" class="dpdp-success-screen" style="display: none;">
+                <div class="dpdp-success-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3>Request Submitted Successfully!</h3>
+                <p>Your Data Principal request has been logged and forwarded to our Grievance desk.</p>
+                
+                <div class="dpdp-tracking-box">
+                    <span class="tracking-label">Tracking Reference Number</span>
+                    <div class="tracking-code" id="dpdpTrackingCode">DPDP-2026-XXXX</div>
+                    <p class="tracking-note">Our Grievance Officer will review and fulfill this request within statutory timeframes.</p>
+                </div>
+
+                <div class="dpdp-modal-actions" style="justify-content: center;">
+                    <button type="button" class="btn-dpdp-submit" id="doneDpdpModalBtn">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="privacy-center.js"></script>
+</body>
+
+</html>
