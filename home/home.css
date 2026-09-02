@@ -942,11 +942,9 @@ body.dark-mode .form-box .inpage-terms label {
 }
 
 .map-box {
-    flex: 1.4;
-    min-height: 500px;
-    width:500px;
-
-    height: 500px;
+    flex: 1.3;
+    min-height: 440px;
+    height: 480px;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 14px 35px rgba(15, 75, 135, 0.12);
@@ -963,10 +961,10 @@ body.dark-mode .form-box .inpage-terms label {
 
 .form-box {
     flex: 1;
-    max-width: 460px;
+    max-width: 440px;
     width: 100%;
     background: #ffffff;
-    padding: 26px 26px;
+    padding: 24px 26px;
     border-radius: 18px;
     border: 1px solid rgba(148, 199, 255, 0.7);
     box-shadow: 0 14px 35px rgba(14, 86, 145, 0.08);
@@ -995,7 +993,7 @@ body.dark-mode .form-box .inpage-terms label {
 }
 
 .form-box textarea {
-    height: 85px;
+    height: 80px;
     resize: vertical;
 }
 
@@ -1004,11 +1002,6 @@ body.dark-mode .form-box .inpage-terms label {
     border-color: #1d4ed8;
     background: #ffffff;
     box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
-}
-
-.form-box textarea {
-    height: 110px;
-    resize: vertical;
 }
 
 .form-actions {
@@ -1286,16 +1279,13 @@ body.dark-mode .form-cancel-btn {
         padding: 70px 5%;
     }
 
-    .service-box,
-    .service-box.reverse {
-        flex-direction: column;
-        text-align: center;
-        gap: 24px;
-        margin-bottom: 50px;
+    .service-box {
+        gap: 32px;
+        align-items: center;
     }
 
     .service-image img {
-        height: 220px;
+        height: 250px;
     }
 
     .service-content ul {
@@ -1303,6 +1293,36 @@ body.dark-mode .form-cancel-btn {
         flex-direction: column !important;
         align-items: flex-start !important;
         text-align: left !important;
+    }
+
+    .contact-container {
+        gap: 24px;
+    }
+
+    .map-box {
+        min-height: 380px;
+        height: 420px;
+    }
+
+    .form-box {
+        max-width: 410px;
+        padding: 20px 22px;
+    }
+
+    .form-box h3 {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .form-box input,
+    .form-box textarea {
+        padding: 9px 12px;
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+
+    .form-box textarea {
+        height: 75px;
     }
 
     .academy-section {
@@ -1366,6 +1386,13 @@ body.dark-mode .form-cancel-btn {
 
 /* --- Mobile / Phablet (768px ↓) --- */
 @media (max-width: 768px) {
+    .service-box,
+    .service-box.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        margin-bottom: 40px;
+    }
     .hero {
         min-height: 480px;
         padding: 40px 16px;
