@@ -535,13 +535,32 @@ body.dark-mode .form-box .inpage-terms label {
 }
 
 .service-content ul {
-    padding-left: 20px;
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 16px 0 0 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: flex-start !important;
 }
 
 .service-content li {
-    margin-bottom: 8px;
-    color: #f1f5f9;
-    font-size: 15px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+    color: #f1f5f9 !important;
+    font-size: 15px !important;
+    text-align: left !important;
+}
+
+.service-content li::before {
+    content: "•";
+    color: #05d5ff;
+    font-size: 22px;
+    line-height: 1;
+    display: inline-block;
+    flex-shrink: 0;
 }
 
 /*  ACADEMY SECTION */
@@ -916,16 +935,18 @@ body.dark-mode .form-box .inpage-terms label {
 .contact-container {
     display: flex;
     gap: 32px;
-    max-width: 1150px;
+    max-width: 1200px;
     margin: 0 auto;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
 }
 
 .map-box {
-    flex: 1;
-    min-height: 420px;
-    height: 430px;
+    flex: 1.4;
+    min-height: 500px;
+    width:500px;
+
+    height: 500px;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 14px 35px rgba(15, 75, 135, 0.12);
@@ -1278,8 +1299,10 @@ body.dark-mode .form-cancel-btn {
     }
 
     .service-content ul {
-        display: inline-block;
-        text-align: left;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
     }
 
     .academy-section {
