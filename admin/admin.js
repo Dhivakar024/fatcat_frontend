@@ -126,6 +126,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Dark / Light Theme Toggle Logic
+    const themeToggleBtn = document.getElementById("adminThemeToggleBtn");
+    const themeToggleIcon = document.getElementById("adminThemeToggleIcon");
+
+    function applyAdminTheme(isDark) {
+        if (isDark) {
+            document.body.classList.add("dark-mode");
+            if (themeToggleIcon) {
+                themeToggleIcon.classList.remove("fa-moon");
+                themeToggleIcon.classList.add("fa-sun");
+            }
+        } else {
+            document.body.classList.remove("dark-mode");
+            if (themeToggleIcon) {
+                themeToggleIcon.classList.remove("fa-sun");
+                themeToggleIcon.classList.add("fa-moon");
+            }
+        }
+    }
+
+    const savedTheme = localStorage.getItem("fatcat-theme");
+    if (savedTheme === "dark") {
+        applyAdminTheme(true);
+    } else {
+        applyAdminTheme(false);
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", function () {
+            const isCurrentlyDark = document.body.classList.contains("dark-mode");
+            const newDarkState = !isCurrentlyDark;
+            localStorage.setItem("fatcat-theme", newDarkState ? "dark" : "light");
+            applyAdminTheme(newDarkState);
+        });
+    }
+
     // Toggle Password Visibility
     if (togglePasswordBtn && loginPasswordInput) {
         togglePasswordBtn.addEventListener("click", function () {
@@ -832,11 +868,20 @@ startxref
     attachRefreshHandler(refreshCandidatesBtn, loadCandidateApplications);
 
 
-    // Real-time Storage Listener across tabs
+    // Real-time Storage & Focus Listeners across tabs & window switches
+    function reloadAllAdminData() {
+        loadJobs();
+        loadCandidateApplications();
+        loadPrivacyRequests();
+    }
+
     window.addEventListener("storage", function (e) {
-        if (e.key === "fatcat_dpdp_requests") loadPrivacyRequests();
-        if (e.key === "fatcat_jobs_list") loadJobs();
-        if (e.key === "fatcat_candidate_applications") loadCandidateApplications();
+        reloadAllAdminData();
+    });
+
+    window.addEventListener("focus", reloadAllAdminData);
+    document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) reloadAllAdminData();
     });
 
     window.addEventListener("dpdpRequestAdded", loadPrivacyRequests);

@@ -78,22 +78,16 @@
          ========================================================= -->
     <div id="adminAppView" class="admin-layout" style="display: none;">
 
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar Navigation (Left Drawer) -->
         <aside class="admin-sidebar">
             <div class="sidebar-header">
-                <div class="brand-logo-wrap">
-                    <div class="brand-icon-box">
-                        <img src="/assets/logo.png" alt="Fatcat Logo" class="brand-logo-img">
-                    </div>
-                    <div class="brand-text">
-                        <span class="brand-title">FATCAT</span>
-                        <span class="brand-sub">CONTROL CENTER</span>
-                    </div>
+                <div class="brand-logo-pill">
+                    <img src="/assets/logo.png" alt="Fatcat Wealthy" class="sidebar-brand-logo-img">
                 </div>
             </div>
 
             <div class="sidebar-nav-container">
-                <span class="nav-section-title">CONTENT MANAGEMENT</span>
+                <span class="nav-section-title"><i class="fa-solid fa-folder-tree"></i> CONTENT MANAGEMENT</span>
 
                 <nav class="sidebar-nav">
                     <a href="#dashboard" class="nav-item active" data-tab="dashboard">
@@ -128,7 +122,7 @@
             <div class="sidebar-footer">
                 <div class="admin-user-card">
                     <div class="user-shield-icon">
-                        <i class="fa-solid fa-shield-check"></i>
+                        <i class="fa-solid fa-user-shield"></i>
                     </div>
                     <div class="user-info">
                         <span class="user-email" id="adminUserEmailDisplay">admin@fatcatwealthy.com</span>
@@ -162,6 +156,10 @@
                 </div>
 
                 <div class="topbar-actions">
+                    <!-- Dark/Light Theme Toggle -->
+                    <button type="button" class="btn-theme-toggle" id="adminThemeToggleBtn" title="Toggle Light/Dark Mode">
+                        <i class="fa-solid fa-moon" id="adminThemeToggleIcon"></i>
+                    </button>
                     <a href="/home/index.html" target="_blank" class="btn-view-website">
                         <span>View Website</span>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -200,7 +198,7 @@
                     <!-- 4 Metric Cards -->
                     <div class="metrics-grid">
 
-                        <!-- Box 1: Active Services -->
+                        <!-- Box 1: Active Services (FatCat 7 Consultancy Services) -->
                         <div class="metric-card metric-blue">
                             <div class="metric-header">
                                 <span class="metric-label">ACTIVE SERVICES</span>
@@ -208,7 +206,7 @@
                                     <i class="fa-solid fa-layer-group"></i>
                                 </div>
                             </div>
-                            <div class="metric-number">9</div>
+                            <div class="metric-number">7</div>
                             <a href="#jobs" class="metric-link" data-switch-tab="jobs">
                                 <span>Manage Services</span>
                                 <i class="fa-solid fa-arrow-right"></i>
@@ -325,7 +323,7 @@
 
 
                 <!-- =====================================================
-                     TAB 3: CANDIDATE APPLICATIONS (Dynamic Count & State)
+                     TAB 3: CANDIDATE APPLICATIONS
                      ===================================================== -->
                 <section id="tab-applications" class="tab-pane">
 

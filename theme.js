@@ -212,6 +212,21 @@
     .theme-toggle:focus-visible { outline: 3px solid #fbbf24; outline-offset: 3px; }
     .theme-toggle__icon { pointer-events: none; }
 
+    /* Universal Background Video Alignment Fix across all Screen Sizes */
+    .hero-video,
+    .bg-video,
+    .business-video,
+    .hero-bg-video,
+    .insurance-hero-video,
+    .mf-hero-video,
+    video[class*="video"] {
+      object-fit: cover !important;
+      object-position: center center !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      transform: translateZ(0);
+    }
+
     /* =========================================================
        DARK MODE COMPREHENSIVE HIGH-CONTRAST STYLES
        ========================================================= */
@@ -465,6 +480,32 @@
       color: #94a3b8 !important;
     }
 
+    /* --- Real-Time Mandatory Email & Phone Form Validation Styles --- */
+    input.input-invalid,
+    select.input-invalid,
+    textarea.input-invalid {
+      border: 1.5px solid #ef4444 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+      outline: none !important;
+    }
+
+    input.input-valid,
+    select.input-valid,
+    textarea.input-valid {
+      border-color: #10b981 !important;
+    }
+
+    button:disabled,
+    button.btn-disabled,
+    input[type="submit"]:disabled,
+    .btn-disabled {
+      opacity: 0.55 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
     /* --- Social Icons --- */
     .nav-social-icons { display: inline-flex; align-items: center; gap: 10px; margin-left: 4px; }
     .nav-social-icons a { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: #0b1b66; text-decoration: none; background: #ffffff; transition: transform .2s ease, background-color .2s ease, color .2s ease; }
@@ -472,6 +513,119 @@
     @media (max-width: 900px) { .nav-social-icons { margin-top: 10px; } }
   `;
   document.head.appendChild(style);
+
+  // Global Real-Time Form Validation Engine (Mandatory Email & Phone + Red Border + Button Enable/Disable)
+  function initGlobalFormValidation() {
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((email || "").trim());
+    const isValidPhone = (phone) => {
+      const clean = (phone || "").trim();
+      const digits = clean.replace(/\D/g, "");
+      return /^[\d+\s()-]{10,15}$/.test(clean) && digits.length >= 10;
+    };
+
+    const forms = document.querySelectorAll("form");
+    forms.forEach(form => {
+      if (form.dataset.validationBound === "true") return;
+      form.dataset.validationBound = "true";
+
+      const submitBtn = form.querySelector('button[type="submit"], input[type="submit"], .submit-btn, .btn-login-submit, .btn-job-publish, .contact-btn, .btn-dpdp-submit, .login-btn, .signup-btn');
+      if (!submitBtn) return;
+
+      const emailInput = form.querySelector('input[type="email"], input[name*="email"], input[id*="email"], input[placeholder*="email" i]');
+      const phoneInput = form.querySelector('input[type="tel"], input[name*="phone"], input[id*="phone"], input[name*="mobile"], input[id*="mobile"], input[placeholder*="phone" i], input[placeholder*="mobile" i]');
+      const requiredInputs = Array.from(form.querySelectorAll("input[required], select[required], textarea[required]"));
+
+      if (emailInput && !requiredInputs.includes(emailInput)) requiredInputs.push(emailInput);
+      if (phoneInput && !requiredInputs.includes(phoneInput)) requiredInputs.push(phoneInput);
+
+      function validateForm() {
+        let isFormValid = true;
+
+        requiredInputs.forEach(input => {
+          const val = input.value ? input.value.trim() : "";
+          const isTouched = input.dataset.touched === "true" || val.length > 0;
+
+          if (input === emailInput || (input.type === "email") || (input.id && input.id.includes("email"))) {
+            if (!isValidEmail(val)) {
+              isFormValid = false;
+              if (isTouched) {
+                input.classList.add("input-invalid");
+                input.classList.remove("input-valid");
+              } else {
+                input.classList.remove("input-invalid", "input-valid");
+              }
+            } else {
+              input.classList.remove("input-invalid");
+              input.classList.add("input-valid");
+            }
+          } else if (input === phoneInput || (input.type === "tel") || (input.id && input.id.includes("phone"))) {
+            if (!isValidPhone(val)) {
+              isFormValid = false;
+              if (isTouched) {
+                input.classList.add("input-invalid");
+                input.classList.remove("input-valid");
+              } else {
+                input.classList.remove("input-invalid", "input-valid");
+              }
+            } else {
+              input.classList.remove("input-invalid");
+              input.classList.add("input-valid");
+            }
+          } else if (input.type === "checkbox") {
+            if (!input.checked) isFormValid = false;
+          } else if (!val) {
+            isFormValid = false;
+            if (isTouched) {
+              input.classList.add("input-invalid");
+              input.classList.remove("input-valid");
+            } else {
+              input.classList.remove("input-invalid", "input-valid");
+            }
+          } else {
+            input.classList.remove("input-invalid");
+            input.classList.add("input-valid");
+          }
+        });
+
+        if (isFormValid) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("btn-disabled");
+          submitBtn.removeAttribute("aria-disabled");
+        } else {
+          submitBtn.disabled = true;
+          submitBtn.classList.add("btn-disabled");
+          submitBtn.setAttribute("aria-disabled", "true");
+        }
+      }
+
+      const allInputs = form.querySelectorAll("input, select, textarea");
+      allInputs.forEach(input => {
+        input.addEventListener("input", () => {
+          input.dataset.touched = "true";
+          validateForm();
+        });
+        input.addEventListener("blur", () => {
+          input.dataset.touched = "true";
+          validateForm();
+        });
+        input.addEventListener("change", () => {
+          input.dataset.touched = "true";
+          validateForm();
+        });
+      });
+
+      validateForm();
+    });
+  }
+
+  const formObserver = new MutationObserver(() => initGlobalFormValidation());
+  formObserver.observe(document.body, { childList: true, subtree: true });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGlobalFormValidation);
+  } else {
+    initGlobalFormValidation();
+  }
 
   standardizeHeader();
   setupHeaderNavigation();

@@ -46,7 +46,7 @@
                             <label for="phone">Phone number</label>
                             <div class="input-wrapper">
                                  <i class="fa-solid fa-phone"></i>
-                                <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10" >
+                                <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10" required>
                             </div>
                             <div class="error" id="phoneError"></div>
                         </div>
@@ -56,7 +56,7 @@
                         <label for="email">Email Address</label>
                         <div class="input-wrapper">
                             <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="email" placeholder="Enter your email">
+                            <input type="email" id="email" placeholder="Enter your email" required>
                         </div>
                         <div class="error" id="emailError"></div>
                     </div>
@@ -88,6 +88,11 @@
                             </div>
                             <div class="error" id="confirmPasswordError"></div>
                         </div>
+                    </div>
+
+                    <div class="contact-terms-group" style="margin-bottom: 18px;">
+                        <input type="checkbox" id="signupTerms" class="terms-checkbox" disabled required>
+                        <label for="signupTerms" style="font-size: 13px; color: var(--text-muted, #64748b);">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms" style="color: #2563eb; text-decoration: underline;">Terms & Conditions</a></label>
                     </div>
 
                     <div class="btn-row">

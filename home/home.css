@@ -266,7 +266,10 @@ body.dark-mode .form-box .inpage-terms label {
     inset: 0;
     width: 100%;
     height: 100%;
+    min-width: 100%;
+    min-height: 100%;
     object-fit: cover;
+    object-position: center center;
     z-index: 0;
     filter: brightness(0.55) contrast(1.05);
 }
@@ -906,22 +909,23 @@ body.dark-mode .form-box .inpage-terms label {
    CONTACT & ENQUIRY SECTION
    ========================================================= */
 .contact-section {
-    padding: 80px 6%;
+    padding: 70px 5%;
     background: #eef7ff;
 }
 
 .contact-container {
     display: flex;
-    gap: 40px;
-    max-width: 1200px;
+    gap: 32px;
+    max-width: 1150px;
     margin: 0 auto;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-between;
 }
 
 .map-box {
-    flex: 1.2;
+    flex: 1;
     min-height: 420px;
+    height: 430px;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 14px 35px rgba(15, 75, 135, 0.12);
@@ -931,15 +935,17 @@ body.dark-mode .form-box .inpage-terms label {
 .map-box iframe {
     width: 100%;
     height: 100%;
-    min-height: 380px;
+    min-height: 100%;
     border: 0;
     display: block;
 }
 
 .form-box {
     flex: 1;
+    max-width: 460px;
+    width: 100%;
     background: #ffffff;
-    padding: 36px 30px;
+    padding: 26px 26px;
     border-radius: 18px;
     border: 1px solid rgba(148, 199, 255, 0.7);
     box-shadow: 0 14px 35px rgba(14, 86, 145, 0.08);
@@ -947,24 +953,29 @@ body.dark-mode .form-box .inpage-terms label {
 
 .form-box h3 {
     text-align: center;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     color: #0f2f52;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
 }
 
 .form-box input,
 .form-box textarea {
     width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 14px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
     background: #f8fbff;
     border: 1.5px solid #cbd5e1;
     border-radius: 10px;
-    font-size: 14.5px;
+    font-size: 13.5px;
     color: #0f172a;
     outline: none;
     transition: all 0.25s ease;
+}
+
+.form-box textarea {
+    height: 85px;
+    resize: vertical;
 }
 
 .form-box input:focus,
