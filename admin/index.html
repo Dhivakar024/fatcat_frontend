@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Center | Fatcat Wealthy</title>
+
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- =========================================================
+         ADMIN LOGIN VIEW
+         ========================================================= -->
+    <div id="adminLoginView" class="admin-login-wrapper" style="display: none;">
+        <div class="admin-login-card">
+            <div class="login-brand">
+                <img src="/assets/logo.png" alt="Fatcat Wealthy" class="login-brand-logo">
+                <h2 class="brand-portal-title">FatCat Admin Portal</h2>
+                <p class="brand-portal-sub">Secure control panel for website content &amp; operations</p>
+            </div>
+
+            <div class="login-box-inner">
+                <div class="login-box-header">
+                    <i class="fa-solid fa-shield-check"></i>
+                    <span>ADMIN AUTHENTICATION</span>
+                </div>
+
+                <form id="adminLoginForm" class="admin-login-form">
+                    <div class="login-input-group">
+                        <label for="adminLoginEmail">ADMIN EMAIL</label>
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="adminLoginEmail" value="admin@fatcatwealthy.com" placeholder="Enter admin email" required>
+                        </div>
+                    </div>
+
+                    <div class="login-input-group">
+                        <label for="adminLoginPassword">PASSWORD</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="adminLoginPassword" value="admin123" placeholder="Enter password" required>
+                            <i class="fa-regular fa-eye eye-toggle" id="togglePasswordBtn"></i>
+                        </div>
+                    </div>
+
+                    <div id="loginErrorMsg" class="login-error-alert" style="display: none;">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span>Invalid credentials. Please try again.</span>
+                    </div>
+
+                    <button type="submit" class="btn-login-submit">
+                        <span>Sign In to Dashboard</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <p class="security-protocol-note">
+                    FatCat Administrative Security Protocol &bull; All changes sync with live database
+                </p>
+            </div>
+
+            <div class="login-card-footer">
+                <a href="/home/index.html" class="back-to-site">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Live Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+         ADMIN CONTROL CENTER
+         ========================================================= -->
+    <div id="adminAppView" class="admin-layout" style="display: none;">
+
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="brand-logo-wrap">
+                    <div class="brand-icon-box">
+                        <img src="/assets/logo.png" alt="Fatcat Logo" class="brand-logo-img">
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title">FATCAT</span>
+                        <span class="brand-sub">CONTROL CENTER</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-nav-container">
+                <span class="nav-section-title">CONTENT MANAGEMENT</span>
+
+                <nav class="sidebar-nav">
+                    <a href="#dashboard" class="nav-item active" data-tab="dashboard">
+                        <i class="fa-solid fa-table-cells-large"></i>
+                        <span>Dashboard</span>
+                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
+                    </a>
+
+                    <a href="#jobs" class="nav-item" data-tab="jobs">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>Jobs / Careers</span>
+                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
+                    </a>
+
+                    <a href="#applications" class="nav-item" data-tab="applications">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>Applications</span>
+                        <span class="privacy-badge-count" id="sidebarApplicationsCount" style="display: none; background: #8b5cf6;">0</span>
+                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
+                    </a>
+
+                    <a href="#privacy-requests" class="nav-item" data-tab="privacy-requests">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Privacy Requests</span>
+                        <span class="privacy-badge-count" id="sidebarPrivacyCount" style="display: none;">0</span>
+                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Sidebar Bottom: Account & Actions -->
+            <div class="sidebar-footer">
+                <div class="admin-user-card">
+                    <div class="user-shield-icon">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-email" id="adminUserEmailDisplay">admin@fatcatwealthy.com</span>
+                        <span class="session-status">
+                            <span class="pulse-dot"></span> Active Session
+                        </span>
+                    </div>
+                </div>
+
+                <div class="sidebar-action-buttons">
+                    <a href="/home/index.html" target="_blank" class="btn-sidebar-action btn-live-site">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>Live Site</span>
+                    </a>
+                    <button type="button" class="btn-sidebar-action btn-logout" id="adminLogoutBtn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+
+            <!-- Top Header Bar -->
+            <header class="admin-topbar">
+                <div class="topbar-title-group">
+                    <h1 class="page-main-title" id="pageMainTitle">Dashboard Overview</h1>
+                    <p class="page-main-subtitle" id="pageMainSubtitle">Manage website content and dynamic database entries in real time</p>
+                </div>
+
+                <div class="topbar-actions">
+                    <a href="/home/index.html" target="_blank" class="btn-view-website">
+                        <span>View Website</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Content Tabs Container -->
+            <div class="admin-content-container">
+
+                <!-- =====================================================
+                     TAB 1: DASHBOARD OVERVIEW
+                     ===================================================== -->
+                <section id="tab-dashboard" class="tab-pane active">
+
+                    <!-- Welcome Hero Banner -->
+                    <div class="welcome-banner">
+                        <div class="live-connected-badge">
+                            <i class="fa-solid fa-shield-check"></i>
+                            <span>LIVE WEBSITE CONNECTED</span>
+                        </div>
+                        <h2 class="welcome-heading">Welcome to FatCat Admin Portal</h2>
+                        <p class="welcome-desc">
+                            Add, edit, and manage services, publish job vacancies to the public Careers page, and track inbound client inquiries and job applications.
+                        </p>
+                        <div class="welcome-actions">
+                            <button type="button" class="btn-banner-purple open-post-job-modal">
+                                <i class="fa-solid fa-circle-plus"></i> Post Job Opening
+                            </button>
+                            <a href="#jobs" class="btn-banner-outline" data-switch-tab="jobs">
+                                <i class="fa-solid fa-briefcase"></i> View All Openings
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 4 Metric Cards -->
+                    <div class="metrics-grid">
+
+                        <!-- Box 1: Active Services -->
+                        <div class="metric-card metric-blue">
+                            <div class="metric-header">
+                                <span class="metric-label">ACTIVE SERVICES</span>
+                                <div class="metric-icon">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </div>
+                            </div>
+                            <div class="metric-number">9</div>
+                            <a href="#jobs" class="metric-link" data-switch-tab="jobs">
+                                <span>Manage Services</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Box 2: Job Openings -->
+                        <div class="metric-card metric-purple">
+                            <div class="metric-header">
+                                <span class="metric-label">JOB OPENINGS</span>
+                                <div class="metric-icon">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                            </div>
+                            <div class="metric-number" id="dashboardJobsCountDisplay">4</div>
+                            <a href="#jobs" class="metric-link" data-switch-tab="jobs">
+                                <span>Manage Careers</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Box 3: Job Applications -->
+                        <div class="metric-card metric-teal">
+                            <div class="metric-header">
+                                <span class="metric-label">JOB APPLICATIONS</span>
+                                <div class="metric-icon">
+                                    <i class="fa-solid fa-user-group"></i>
+                                </div>
+                            </div>
+                            <div class="metric-number" id="dashboardApplicationsCountDisplay">0</div>
+                            <a href="#applications" class="metric-link" data-switch-tab="applications">
+                                <span>View Candidates</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Box 4: Privacy Requests -->
+                        <div class="metric-card metric-amber">
+                            <div class="metric-header">
+                                <span class="metric-label">PRIVACY REQUESTS</span>
+                                <div class="metric-icon">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                            </div>
+                            <div class="metric-number" id="dashboardPrivacyCountDisplay">0</div>
+                            <a href="#privacy-requests" class="metric-link" data-switch-tab="privacy-requests">
+                                <span>View Requests</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Quick Privacy Requests Summary Card -->
+                    <div class="dashboard-privacy-summary-card">
+                        <div class="summary-left">
+                            <div class="summary-shield-icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h3>DPDP Act 2023 Compliance Center</h3>
+                                <p>Manage and fulfill Data Principal privacy rights requests submitted from the live Privacy Centre.</p>
+                            </div>
+                        </div>
+                        <div class="summary-right">
+                            <button type="button" class="btn-banner-purple" data-switch-tab="privacy-requests">
+                                <span>Review Privacy Requests</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     TAB 2: JOBS & CAREERS
+                     ===================================================== -->
+                <section id="tab-jobs" class="tab-pane">
+
+                    <div class="section-header-box">
+                        <div class="header-box-left">
+                            <div class="header-box-icon purple-shield-icon">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div class="header-box-text">
+                                <h2>Jobs &amp; Careers Management</h2>
+                                <p><span id="jobsCountText">Total 4 open positions</span> &bull; Published jobs are automatically displayed on the public Careers page</p>
+                            </div>
+                        </div>
+                        <div class="header-box-right">
+                            <button type="button" class="btn-refresh-circle" id="refreshJobsBtn" title="Refresh dynamic database entries">
+                                <i class="fa-solid fa-rotate"></i>
+                            </button>
+                            <button type="button" class="btn-banner-purple open-post-job-modal">
+                                <i class="fa-solid fa-plus"></i> Post New Job
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="search-filter-row">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="jobsSearchInput" placeholder="Search jobs by title, location, or type...">
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Jobs Cards Grid -->
+                    <div class="jobs-cards-grid" id="adminJobsCardsContainer">
+                        <!-- Populated dynamically by admin.js -->
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     TAB 3: CANDIDATE APPLICATIONS (Dynamic Count & State)
+                     ===================================================== -->
+                <section id="tab-applications" class="tab-pane">
+
+                    <div class="section-header-box">
+                        <div class="header-box-left">
+                            <div class="header-box-icon purple-shield-icon">
+                                <i class="fa-solid fa-user-group"></i>
+                            </div>
+                            <div class="header-box-text">
+                                <h2>Candidate Applications</h2>
+                                <p><span id="candApplicationsCountText">Total 0 applications received</span> &bull; Review submitted resumes and contact candidates</p>
+                            </div>
+                        </div>
+                        <div class="header-box-right">
+                            <button type="button" class="btn-refresh-circle" id="refreshCandidatesBtn" title="Refresh candidates list">
+                                <i class="fa-solid fa-rotate"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="search-filter-row">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="candidateSearchInput" placeholder="Search applicants by name, email, job title, or location...">
+                        </div>
+                    </div>
+
+                    <!-- Empty State for Candidate Applications -->
+                    <div id="applicationsEmptyState" class="empty-state-box">
+                        <div class="empty-shield-icon">
+                            <i class="fa-solid fa-user-group"></i>
+                        </div>
+                        <h3 class="empty-title">No applications received yet</h3>
+                        <p class="empty-desc">Submitted candidate job applications from the Careers page will appear here.</p>
+                    </div>
+
+                    <!-- Candidate Cards Grid -->
+                    <div class="candidate-cards-grid" id="candidateCardsContainer" style="display: none;">
+                        <!-- Rendered dynamically by admin.js -->
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================================
+                     TAB 4: DPDP PRIVACY REQUESTS
+                     ===================================================== -->
+                <section id="tab-privacy-requests" class="tab-pane">
+
+                    <div class="section-header-box">
+                        <div class="header-box-left">
+                            <div class="header-box-icon purple-shield-icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div class="header-box-text">
+                                <h2>DPDP Privacy Requests &amp; Grievances</h2>
+                                <p>
+                                    <span id="requestsCountText">Total 0 requests received</span> &bull; 
+                                    <span>Fulfill Data Principal rights within statutory timeframes under DPDP Act 2023</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="header-box-right">
+                            <button type="button" class="btn-refresh-circle" id="refreshRequestsBtn" title="Refresh dynamic database entries">
+                                <i class="fa-solid fa-rotate"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="search-filter-row">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="privacySearchInput" placeholder="Search by principal name, email, request type, or keyword...">
+                        </div>
+
+                        <div class="status-filter-wrap">
+                            <select id="privacyStatusFilter" class="status-dropdown">
+                                <option value="All">All Statuses</option>
+                                <option value="Pending">Pending</option>
+                                <option value="In Review">In Review</option>
+                                <option value="Resolved">Resolved</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Empty State Container -->
+                    <div id="privacyEmptyState" class="empty-state-box">
+                        <div class="empty-shield-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="empty-title">No privacy requests found</h3>
+                        <p class="empty-desc">Data Principal rights requests submitted via the Privacy Centre will appear here.</p>
+                    </div>
+
+                    <!-- Populated State Container -->
+                    <div id="privacyTableContainer" class="privacy-table-wrapper" style="display: none;">
+                        <table class="privacy-table">
+                            <thead>
+                                <tr>
+                                    <th>Tracking ID</th>
+                                    <th>Data Principal</th>
+                                    <th>Request Type</th>
+                                    <th>Submitted Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="privacyRequestsTableBody">
+                                <!-- Rendered dynamically by admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+
+    <!-- MODAL 1: POST NEW JOB OPENING -->
+    <div id="postJobModal" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="postJobModalTitle">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-purple-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <h3 id="postJobModalTitle">Post New Job Opening</h3>
+                    </div>
+                </div>
+                <button type="button" class="admin-modal-close" id="closePostJobModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+
+            <form id="postJobForm" class="post-job-form">
+                <div class="job-form-group">
+                    <label for="newJobTitle">JOB TITLE <span class="req">*</span></label>
+                    <input type="text" id="newJobTitle" placeholder="e.g. Senior Full Stack Developer" required>
+                </div>
+
+                <div class="job-form-row">
+                    <div class="job-form-group">
+                        <label for="newJobLocation">LOCATION <span class="req">*</span></label>
+                        <input type="text" id="newJobLocation" placeholder="Salem / Hybrid" required>
+                    </div>
+                    <div class="job-form-group">
+                        <label for="newJobType">EMPLOYMENT TYPE</label>
+                        <select id="newJobType">
+                            <option value="Full Time">Full Time</option>
+                            <option value="Part Time">Part Time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Internship">Internship</option>
+                            <option value="Remote">Remote</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="job-form-group">
+                    <label for="newJobDesc">JOB DESCRIPTION &amp; REQUIREMENTS <span class="req">*</span></label>
+                    <textarea id="newJobDesc" rows="4" placeholder="Describe role responsibilities, required skills, and qualifications..." required></textarea>
+                </div>
+
+                <div class="job-modal-actions">
+                    <button type="button" class="btn-job-cancel" id="cancelPostJobModalBtn">Cancel</button>
+                    <button type="submit" class="btn-job-publish">
+                        Publish Job Opening
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- MODAL 2: EDIT JOB OPENING -->
+    <div id="editJobModal" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="editJobModalTitle">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-purple-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <h3 id="editJobModalTitle">Edit Job Opening</h3>
+                    </div>
+                </div>
+                <button type="button" class="admin-modal-close" id="closeEditJobModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+
+            <form id="editJobForm" class="post-job-form">
+                <input type="hidden" id="editJobId">
+                <div class="job-form-group">
+                    <label for="editJobTitle">JOB TITLE <span class="req">*</span></label>
+                    <input type="text" id="editJobTitle" placeholder="e.g. AI/ML" required>
+                </div>
+
+                <div class="job-form-row">
+                    <div class="job-form-group">
+                        <label for="editJobLocation">LOCATION <span class="req">*</span></label>
+                        <input type="text" id="editJobLocation" placeholder="Salem Tamilnadu" required>
+                    </div>
+                    <div class="job-form-group">
+                        <label for="editJobType">EMPLOYMENT TYPE</label>
+                        <select id="editJobType">
+                            <option value="Full Time">Full Time</option>
+                            <option value="Part Time">Part Time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Internship">Internship</option>
+                            <option value="Remote">Remote</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="job-form-group">
+                    <label for="editJobDesc">JOB DESCRIPTION &amp; REQUIREMENTS <span class="req">*</span></label>
+                    <textarea id="editJobDesc" rows="4" placeholder="Python developer" required></textarea>
+                </div>
+
+                <div class="job-modal-actions">
+                    <button type="button" class="btn-job-cancel" id="cancelEditJobModalBtn">Cancel</button>
+                    <button type="submit" class="btn-job-publish">
+                        <i class="fa-solid fa-check"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- MODAL 3: VIEW JOB DETAILS -->
+    <div id="jobViewDetailsModal" class="admin-modal-backdrop" role="dialog" aria-modal="true">
+        <div class="admin-modal" style="max-width: 480px;">
+            <div class="admin-modal-header">
+                <h3 id="viewJobDetailTitle" style="font-size: 20px; font-weight: 700;">AI/ML</h3>
+                <button type="button" class="admin-modal-close" id="closeJobDetailModalBtn">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                    <span class="job-badge" id="viewJobDetailType">Full Time</span>
+                    <span style="color: #64748b;">&bull;</span>
+                    <span style="color: #64748b; font-size: 13px;" id="viewJobDetailLocation"><i class="fa-solid fa-location-dot"></i> Salem Tamilnadu</span>
+                </div>
+                <div style="background: var(--adm-input-bg); border: 1px solid var(--adm-border); border-radius: 10px; padding: 16px; font-size: 13px; color: var(--adm-text-main); white-space: pre-wrap; line-height: 1.6;" id="viewJobDetailDesc">
+                    Python developer
+                </div>
+            </div>
+            <div class="admin-modal-footer" style="justify-content: flex-end;">
+                <button type="button" class="btn-job-cancel" id="closeJobDetailFooterBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL 4: REQUEST DETAILS MODAL -->
+    <div id="requestDetailsModal" class="admin-modal-backdrop" role="dialog" aria-modal="true">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <div class="modal-title-wrap">
+                    <span class="modal-badge"><i class="fa-solid fa-shield-halved"></i> DPDP Request Details</span>
+                    <h3 id="modalReqTrackingId">DPDP-2026-XXXX</h3>
+                </div>
+                <button type="button" class="admin-modal-close" id="closeReqModalBtn">&times;</button>
+            </div>
+            
+            <div class="admin-modal-body" id="reqModalContent">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <div class="admin-modal-footer">
+                <button type="button" class="btn-sidebar-action btn-logout" id="deleteRequestBtn">Delete Record</button>
+                <button type="button" class="btn-banner-purple" id="closeReqModalFooterBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

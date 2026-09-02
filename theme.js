@@ -168,6 +168,7 @@
     if (bottom && !bottom.querySelector(".footer-legal")) {
       bottom.insertAdjacentHTML("beforeend", `
         <nav class="footer-legal" aria-label="Legal links">
+          <a href="/privacy-center/index.html">Privacy Centre</a>
           <a href="#privacy-policy">Privacy Policy</a>
           <a href="#terms-of-use">Terms of Use</a>
           <a href="#disclaimer">Disclaimer</a>

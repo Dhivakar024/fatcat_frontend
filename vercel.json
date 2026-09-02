@@ -6,6 +6,11 @@
     { "src": "/academy", "dest": "/academy/academy.html" },
     { "src": "/business", "dest": "/business/business.html" },
     { "src": "/career", "dest": "/career/career.html" },
-    { "src": "/contact", "dest": "/contact/contact.html" }
+    { "src": "/contact", "dest": "/contact/contact.html" },
+    { "src": "/privacy-center", "dest": "/privacy-center/index.html" },
+    { "src": "/privacy-centre", "dest": "/privacy-center/index.html" },
+    { "src": "/privacy_centre", "dest": "/privacy-center/index.html" },
+    { "src": "/admin", "dest": "/admin/index.html" },
+    { "src": "/admin/(.*)", "dest": "/admin/index.html" }
   ]
 }
