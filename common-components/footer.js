@@ -83,26 +83,35 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
+        let currentActiveTab = "terms";
+
         function openModal(tabName = "terms") {
+            currentActiveTab = tabName;
             switchTab(tabName);
             modal.classList.add("active");
             document.body.style.overflow = "hidden";
         }
 
         function closeModal() {
+            if (currentActiveTab === "terms") {
+                unlockTermsCheckboxes();
+            }
             modal.classList.remove("active");
             document.body.style.overflow = "";
         }
 
         function unlockTermsCheckboxes() {
             const checkboxes = document.querySelectorAll(
-                '#modalTerms, #homeEnquiryTerms, #contactTerms, .terms-checkbox, input[data-terms-checkbox]'
+                '#modalTerms, #homeEnquiryTerms, #contactTerms, #signupTerms, .terms-checkbox, input[data-terms-checkbox]'
             );
             checkboxes.forEach(cb => {
                 cb.disabled = false;
                 cb.removeAttribute("disabled");
+                cb.checked = true;
+                cb.dispatchEvent(new Event("change", { bubbles: true }));
+                cb.dispatchEvent(new Event("input", { bubbles: true }));
                 cb.classList.add("terms-unlocked");
-                const group = cb.closest(".modal-terms, .contact-terms-group, .form-terms, .form-group");
+                const group = cb.closest(".modal-terms, .contact-terms-group, .form-terms, .terms-group, .form-group");
                 if (group) {
                     group.classList.add("terms-unlocked");
                 }
