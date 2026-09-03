@@ -539,32 +539,26 @@ body.dark-mode .form-box .inpage-terms label {
 }
 
 .service-content ul {
-    list-style: none !important;
-    padding-left: 0 !important;
-    margin: 16px 0 0 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    align-items: flex-start !important;
+    list-style: none;
+    padding: 0;
+    margin:0 auto;
+    width:fit-content;
+    text-align:left;
 }
 
 .service-content li {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    margin-bottom: 0 !important;
-    color: #f1f5f9 !important;
-    font-size: 15px !important;
-    text-align: left !important;
+   position:relative;
+   padding-left:18px;
+   margin-bottom:8px;
+   font-size:15px;
+   color:#f1f5f9;
+   line-height:1.5;
 }
 
 .service-content li::before {
     content: "•";
-    color: #05d5ff;
-    font-size: 22px;
-    line-height: 1;
-    display: inline-block;
-    flex-shrink: 0;
+   position:absolute;
+   left:0;
 }
 
 /*  ACADEMY SECTION */
