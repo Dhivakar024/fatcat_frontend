@@ -572,7 +572,7 @@
               input.classList.add("input-valid");
             }
           } else if (input.type === "checkbox") {
-            if (!input.checked) isFormValid = false;
+            if (!input.checked || input.disabled) isFormValid = false;
           } else if (!val) {
             isFormValid = false;
             if (isTouched) {

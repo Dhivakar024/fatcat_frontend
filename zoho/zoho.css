@@ -657,8 +657,10 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     background: rgba(0, 30, 40, .25);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .play-symbol {
