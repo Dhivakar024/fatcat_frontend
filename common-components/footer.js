@@ -163,10 +163,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // If user clicks a disabled terms checkbox or its container, open Terms & Conditions modal directly
-            const disabledTerms = e.target.closest('.terms-checkbox[disabled], .modal-terms input[disabled], .contact-terms-group input[disabled]');
+            const disabledTerms = e.target.closest('.terms-checkbox[disabled], .modal-terms input[disabled], .contact-terms-group input[disabled], .modal-terms, .contact-terms-group');
             if (disabledTerms) {
-                e.preventDefault();
-                openModal("terms");
+                const cb = disabledTerms.tagName === 'INPUT' ? disabledTerms : disabledTerms.querySelector('input[type="checkbox"]');
+                if (cb && cb.disabled) {
+                    e.preventDefault();
+                    openModal("terms");
+                }
             }
         });
 

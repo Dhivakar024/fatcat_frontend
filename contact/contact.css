@@ -78,7 +78,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    align-items: start;
+    align-items: stretch;
 }
 
 /* LEFT SIDE - FORM */
@@ -261,6 +261,7 @@ body.dark-mode .contact-terms-group label a {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
 }
 
 .map-label {
@@ -283,7 +284,8 @@ body.dark-mode .contact-terms-group label a {
 
 .contact-right iframe {
     width: 100%;
-    min-height: 480px;
+    flex: 1;
+    min-height: 380px;
     height: 100%;
     border: 0;
     border-radius: 16px;
