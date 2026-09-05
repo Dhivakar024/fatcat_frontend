@@ -9,96 +9,13 @@
    * hard-coding paths that would work on one page but fail on another.
    */
   const standardizeHeader = () => {
-    const header = document.querySelector("header.navbar");
-    const menu = header?.querySelector(".nav-menu");
-    const logo = header?.querySelector(".logo img");
-    const hamburger = header?.querySelector(".hamburger");
-
-    // A page without the site header should continue to work normally.
-    if (!header || !menu || !logo || !hamburger) return;
-
-    const links = Array.from(menu.querySelectorAll("a"));
-    const findLink = (label) => links.find((link) => link.textContent.trim().toLowerCase().startsWith(label.toLowerCase()));
-    const href = (label, fallback = "#") => findLink(label)?.getAttribute("href") || fallback;
-    const currentUrl = new URL(window.location.href);
-    const isCurrent = (url) => {
-      try {
-        return new URL(url, currentUrl).pathname === currentUrl.pathname;
-      } catch {
-        return false;
-      }
-    };
-    const active = (url) => isCurrent(url) ? " active" : "";
-
-    const homeHref = href("Home");
-    const aboutHref = href("About Us");
-    const servicesHref = href("Services");
-    const mutualFundHref = href("Mutual Fund");
-    const stockBrokingHref = href("Stock Broking");
-    const insuranceHref = href("Insurance");
-    const loansHref = href("Loans");
-    const academyHref = href("Academy");
-    const businessHref = href("Business");
-    const careerHref = href("Career");
-    const contactHref = href("Contact Us");
-    const loginHref = href("Login");
-    const logoSrc = logo.getAttribute("src");
-    const logoAlt = logo.getAttribute("alt") || "Fatcat Wealthy";
-
-    header.innerHTML = `
-      <div class="nav-container">
-        <div class="logo"><img src="${logoSrc}" alt="${logoAlt}"></div>
-        <nav class="nav-menu" id="navMenu" aria-label="Primary navigation">
-          <a href="${homeHref}" class="${active(homeHref).trim()}">Home</a>
-          <a href="${aboutHref}" class="${active(aboutHref).trim()}">About Us</a>
-          <div class="dropdown">
-            <a href="${servicesHref}" class="dropbtn${active(servicesHref)}" id="servicesLink">Services <span class="arrow" aria-hidden="true">▾</span></a>
-            <div class="dropdown-content">
-              <div class="submenu">
-                <a href="#">Investment Broking <span aria-hidden="true">▸</span></a>
-                <div class="submenu-content">
-                  <a href="${mutualFundHref}">Mutual Fund</a>
-                  <a href="${stockBrokingHref}">Stock Broking</a>
-                </div>
-              </div>
-              <a href="${insuranceHref}">Insurance</a>
-              <a href="${loansHref}">Loans</a>
-            </div>
-          </div>
-          <a href="${academyHref}" class="${active(academyHref).trim()}">Academy</a>
-          <a href="${businessHref}" class="${active(businessHref).trim()}">Business</a>
-          <a href="${careerHref}" class="${active(careerHref).trim()}">Career</a>
-          <a href="${contactHref}" class="contact-btn${active(contactHref)}">Contact Us</a>
-          <a href="${loginHref}" class="login-btn${active(loginHref)}">Login</a>
-        </nav>
-        <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>`;
+    // Disabled to preserve shared header.html & mobile drawer structure
+    return;
   };
 
   const setupHeaderNavigation = () => {
-    const hamburger = document.getElementById("hamburger");
-    const navMenu = document.getElementById("navMenu");
-    const dropdown = navMenu?.querySelector(".dropdown");
-    const servicesLink = navMenu?.querySelector("#servicesLink");
-
-    if (hamburger && navMenu) {
-      hamburger.addEventListener("click", () => {
-        const isOpen = navMenu.classList.toggle("active");
-        hamburger.classList.toggle("active", isOpen);
-        hamburger.setAttribute("aria-expanded", String(isOpen));
-      });
-    }
-
-    if (dropdown && servicesLink) {
-      servicesLink.addEventListener("click", (event) => {
-        if (window.innerWidth <= 900) {
-          event.preventDefault();
-          dropdown.classList.toggle("open");
-        }
-      });
-    }
+    // Disabled to preserve shared header.js navigation
+    return;
   };
 
   const applyTheme = (theme) => {
@@ -107,8 +24,9 @@
     document.documentElement.classList.toggle("dark-mode", isDark);
     document.documentElement.style.colorScheme = isDark ? "dark" : "light";
     localStorage.setItem(storageKey, isDark ? "dark" : "light");
-    const toggle = document.querySelector(".theme-toggle");
-    if (toggle) {
+
+    const toggles = document.querySelectorAll(".theme-toggle");
+    toggles.forEach(toggle => {
       toggle.setAttribute("aria-pressed", String(isDark));
       toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
       toggle.title = isDark ? "Switch to light mode" : "Switch to dark mode";
@@ -117,8 +35,15 @@
         icon.classList.toggle("fa-sun", !isDark);
         icon.classList.toggle("fa-moon", isDark);
       }
+    });
+
+    const drawerToggle = document.getElementById("drawerThemeToggle");
+    if (drawerToggle) {
+      drawerToggle.checked = !isDark;
     }
   };
+
+  window.applyTheme = applyTheme;
 
   const addThemeToggle = () => {
     
@@ -228,9 +153,9 @@
     }
 
     /* =========================================================
-       DARK MODE COMPREHENSIVE HIGH-CONTRAST STYLES
+       DARK MODE COMPREHENSIVE HIGH-CONTRAST & ULTRA-READABLE TYPOGRAPHY
        ========================================================= */
-    body.dark-mode { background: #080c14 !important; color: #e2e8f0 !important; }
+    body.dark-mode { background: #080c14 !important; color: #f8fafc !important; }
     body.dark-mode main,
     body.dark-mode section:not(.hero):not(.hero-section):not(.cta-section) { background-color: #080c14 !important; }
 
@@ -245,32 +170,33 @@
 
     body.dark-mode :is(.login-box, .signup-box) {
       background: rgba(17, 24, 39, 0.95) !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
       backdrop-filter: blur(15px);
     }
     body.dark-mode :is(.login-box, .signup-box) :is(h2, h3) { color: #ffffff !important; }
-    body.dark-mode :is(.login-box, .signup-box) p { color: #94a3b8 !important; }
-    body.dark-mode :is(.login-box, .signup-box) label { color: #e2e8f0 !important; }
+    body.dark-mode :is(.login-box, .signup-box) p { color: #e2e8f0 !important; }
+    body.dark-mode :is(.login-box, .signup-box) label { color: #ffffff !important; }
 
     /* --- Navbar & Navigation --- */
     body.dark-mode .navbar { background: #070b14 !important; border-bottom: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 20px rgba(0,0,0,.5); }
     body.dark-mode .nav-menu > a,
-    body.dark-mode .dropbtn { color: #f1f5f9 !important; font-weight: 500; }
+    body.dark-mode .dropbtn { color: #ffffff !important; font-weight: 500; }
     body.dark-mode .nav-menu > a:hover,
     body.dark-mode .nav-menu > a.active,
     body.dark-mode .dropbtn:hover { color: #38bdf8 !important; }
 
     body.dark-mode .contact-btn,
     body.dark-mode .nav-menu .contact-btn {
-      background: rgba(39, 174, 185, 0.15) !important;
-      border: 1.5px solid #27aeb9 !important;
+      background: rgba(39, 174, 185, 0.25) !important;
+      border: 1.5px solid #38bdf8 !important;
       color: #ffffff !important;
       font-weight: 600 !important;
     }
     body.dark-mode .contact-btn:hover,
     body.dark-mode .nav-menu .contact-btn:hover {
-      background: #27aeb9 !important;
+      background: #087f9b !important;
+      border-color: #087f9b !important;
       color: #ffffff !important;
     }
 
@@ -296,27 +222,76 @@
     body.dark-mode .dropdown-view-all { background: #0f172a !important; color: #38bdf8 !important; border-bottom: 1px solid #1e293b !important; }
     body.dark-mode .dropdown-view-all:hover { background: #1e293b !important; color: #60a5fa !important; }
     body.dark-mode .dropdown-content a,
-    body.dark-mode .submenu-content a { color: #e2e8f0 !important; }
+    body.dark-mode .submenu-content a { color: #f8fafc !important; }
     body.dark-mode .dropdown-content a:hover,
     body.dark-mode .submenu-content a:hover { background: #1e293b !important; color: #38bdf8 !important; }
-    body.dark-mode .theme-toggle { background: #1e293b; color: #e2e8f0; border-color: #475569; }
+    body.dark-mode .theme-toggle { background: #1e293b; color: #ffd700; border-color: #475569; }
 
     @media (max-width: 900px) { body.dark-mode .nav-menu { background: #070b14 !important; } }
 
     /* --- Mobile Drawer --- */
-    body.dark-mode .mobile-drawer { background: #0b0f19 !important; color: #f8fafc !important; border-left: 1px solid #1e293b !important; }
+    body.dark-mode .mobile-drawer { background: #0b0f19 !important; color: #ffffff !important; border-left: 1px solid #1e293b !important; }
     body.dark-mode .drawer-header { border-bottom: 1px solid #1e293b !important; }
+    body.dark-mode .drawer-logo { background: #ffffff !important; padding: 5px 12px !important; border-radius: 10px !important; display: inline-flex !important; align-items: center !important; }
+    body.dark-mode .drawer-logo img { width: 110px !important; height: auto !important; display: block !important; }
     body.dark-mode .drawer-close { color: #ffffff !important; }
+    body.dark-mode .drawer-close:hover { background: #1e293b !important; }
     body.dark-mode .drawer-link,
+    body.dark-mode .drawer-toggle-row,
+    body.dark-mode .drawer-toggle-row2,
     body.dark-mode .drawer-sub-link,
-    body.dark-mode .drawer-sub2-link { color: #e2e8f0 !important; }
+    body.dark-mode .drawer-sub2-link { color: #f8fafc !important; border-bottom: 1px solid #1e293b !important; }
     body.dark-mode .drawer-link:hover,
+    body.dark-mode .drawer-toggle-row:hover,
+    body.dark-mode .drawer-toggle-row2:hover,
     body.dark-mode .drawer-sub-link:hover,
-    body.dark-mode .drawer-sub2-link:hover { color: #38bdf8 !important; background: rgba(56, 189, 248, 0.1) !important; }
-    body.dark-mode .drawer-sub-panel,
-    body.dark-mode .drawer-sub2-panel { background: #070a10 !important; border-left: 2px solid #334155 !important; }
+    body.dark-mode .drawer-sub2-link:hover { color: #38bdf8 !important; background: rgba(56, 189, 248, 0.12) !important; }
+    body.dark-mode .drawer-icon { background: #1e293b !important; color: #38bdf8 !important; }
+    body.dark-mode .drawer-icon i,
+    body.dark-mode .drawer-icon .fa-solid { color: #38bdf8 !important; }
+    body.dark-mode .drawer-link:hover .drawer-icon,
+    body.dark-mode .drawer-toggle-row:hover .drawer-icon { background: #2563eb !important; color: #ffffff !important; }
+    body.dark-mode .drawer-link:hover .drawer-icon i,
+    body.dark-mode .drawer-toggle-row:hover .drawer-icon i { color: #ffffff !important; }
+    body.dark-mode .drawer-chevron,
+    body.dark-mode .drawer-sub-chevron,
+    body.dark-mode .drawer-sub2-chevron { color: #94a3b8 !important; }
+    body.dark-mode .drawer-sub-panel { background: #0e1424 !important; border-left: 2px solid #334155 !important; }
+    body.dark-mode .drawer-sub2-panel { background: #172033 !important; }
+    body.dark-mode .drawer-sub-dot { background: #38bdf8 !important; }
+    body.dark-mode .drawer-sub2-dot { background: #60a5fa !important; }
+    body.dark-mode .drawer-view-all { color: #38bdf8 !important; }
     body.dark-mode .drawer-footer { border-top: 1px solid #1e293b !important; background: #070a10 !important; }
-    body.dark-mode .drawer-theme-label { color: #e2e8f0 !important; }
+    body.dark-mode .drawer-theme-label { color: #ffffff !important; }
+
+    /* --- Calculators (Lumpsum, SIP, ELSS, MF Returns, Step-up, SWP) --- */
+    body.dark-mode .calc-hero,
+    body.dark-mode .sip-info,
+    body.dark-mode .lumpsum-section,
+    body.dark-mode .sip-section,
+    body.dark-mode .elss-section,
+    body.dark-mode .swp-section,
+    body.dark-mode .returns-section { background-color: #080c14 !important; color: #f8fafc !important; }
+    body.dark-mode .calc-container h1,
+    body.dark-mode .sip-info h2,
+    body.dark-mode .sip-info h3,
+    body.dark-mode .lumpsum-title,
+    body.dark-mode .sip-title,
+    body.dark-mode .elss-title,
+    body.dark-mode .estimator-title { color: #ffffff !important; }
+    body.dark-mode .calc-container p,
+    body.dark-mode .sip-info p,
+    body.dark-mode .sip-info li,
+    body.dark-mode .estimator-sub,
+    body.dark-mode .slider-group label,
+    body.dark-mode .amount-box label,
+    body.dark-mode .legend p { color: #e2e8f0 !important; }
+    body.dark-mode :is(.lumpsum-box, .sip-box, .elss-box, .swp-box, .returns-box, .stepup-box) {
+      background: #111827 !important;
+      border: 1px solid #1e293b !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    }
+    body.dark-mode .result-value { color: #38bdf8 !important; }
 
     /* --- Typography: High Contrast & Crystal Clear --- */
     body.dark-mode h1,
@@ -329,30 +304,90 @@
     body.dark-mode b,
     body.dark-mode .hero-content h1,
     body.dark-mode .section-title,
-    body.dark-mode .title { color: #ffffff !important; font-weight: 700 !important; }
+    body.dark-mode .academy-title,
+    body.dark-mode .learn-title,
+    body.dark-mode .testimonial-title,
+    body.dark-mode .brand-title,
+    body.dark-mode .title,
+    body.dark-mode .about-content h2,
+    body.dark-mode .service-content h3,
+    body.dark-mode .academy-card h3,
+    body.dark-mode .learn-card h3,
+    body.dark-mode .testimonial-card h4,
+    body.dark-mode .form-box h3,
+    body.dark-mode .stat-card h3 { color: #ffffff !important; }
 
     body.dark-mode p,
     body.dark-mode li,
     body.dark-mode dt,
     body.dark-mode dd,
     body.dark-mode label,
-    body.dark-mode .hero-content p { color: #cbd5e1 !important; }
+    body.dark-mode td,
+    body.dark-mode th,
+    body.dark-mode div:not(.hero-btn):not(.btn),
+    body.dark-mode .hero-content p,
+    body.dark-mode .section-subtitle,
+    body.dark-mode .academy-subtitle,
+    body.dark-mode .brand-desc,
+    body.dark-mode .learn-sub,
+    body.dark-mode .about-content p,
+    body.dark-mode .service-content p,
+    body.dark-mode .learn-card p,
+    body.dark-mode .testimonial-card p,
+    body.dark-mode .stat-card p,
+    body.dark-mode .academy-card p { color: #f8fafc !important; }
+
+    body.dark-mode span:not(.hero-btn):not(.about-btn):not(.brand-btn):not(.btn) { color: #e2e8f0 !important; }
+    body.dark-mode .about-tag { color: #38bdf8 !important; }
+    body.dark-mode .testimonial-card span { color: #38bdf8 !important; }
 
     body.dark-mode small,
     body.dark-mode .meta,
     body.dark-mode .date,
-    body.dark-mode .sub-title { color: #94a3b8 !important; }
+    body.dark-mode .sub-title { color: #e2e8f0 !important; }
 
     /* --- Cards, Boxes, Panels & Sections --- */
-    body.dark-mode :is(form, [class*="card"], [class*="Card"], [class*="box"], [class*="Box"], [class*="tile"], [class*="Tile"], [class*="panel"], [class*="Panel"], .feature-item, .why-item, .job-details, .job-list, .stat-card, .service-card, .about-intro-inner, .job-filter-container, .brand-section, .about-section, .contact-section) {
+    body.dark-mode :is([class*="card"], [class*="Card"], [class*="box"], [class*="Box"], [class*="tile"], [class*="Tile"], [class*="panel"], [class*="Panel"], .feature-item, .why-item, .job-details, .job-list, .stat-card, .service-card, .about-intro-inner, .job-filter-container, .brand-section, .about-section, .contact-section, .learn-section, .academy-section, .services-section, .testimonial-section) {
       background-color: #111827 !important;
       border-color: #1e293b !important;
-      color: #cbd5e1 !important;
+      color: #f8fafc !important;
     }
     body.dark-mode .contact-section { background: #070a12 !important; }
-    body.dark-mode .learn-section { background: #0c1524 !important; }
+    body.dark-mode .learn-section { background: #090e1a !important; }
     body.dark-mode .brand-section { background: #070a12 !important; }
+    body.dark-mode .about-section { background: #0d1527 !important; }
+    body.dark-mode .testimonial-section { background: #070b14 !important; }
+    body.dark-mode .academy-section { background: #090e1a !important; }
+    body.dark-mode .services-section { background: #070b14 !important; }
     body.dark-mode .marquee { background-color: #111827 !important; border-color: #1e293b !important; }
+
+    /* --- Learn Tabs Section --- */
+    body.dark-mode .learn-btn {
+      background: #111b33 !important;
+      color: #f8fafc !important;
+      border: 1px solid #1e293b !important;
+    }
+    body.dark-mode .learn-btn:hover {
+      background: #1e293b !important;
+      color: #38bdf8 !important;
+    }
+    body.dark-mode .learn-btn.active {
+      background: #2563eb !important;
+      color: #ffffff !important;
+      border-color: #3b82f6 !important;
+    }
+    body.dark-mode .learn-card {
+      background: #111b33 !important;
+      border: 1px solid #1e293b !important;
+      color: #f8fafc !important;
+    }
+
+    /* --- Testimonial Cards --- */
+    body.dark-mode .testimonial-card {
+      background: #111b33 !important;
+      border: 1px solid #1e293b !important;
+      color: #f8fafc !important;
+    }
 
     /* --- Buttons --- */
     body.dark-mode .hero-btn,
@@ -362,7 +397,7 @@
     body.dark-mode .work-btn,
     body.dark-mode .apply-btn,
     body.dark-mode .calculate-btn,
-    body.dark-mode .learn-btn.active {
+    body.dark-mode .brand-btn {
       background: #2563eb !important;
       color: #ffffff !important;
       border: 1px solid #3b82f6 !important;
@@ -373,7 +408,8 @@
     body.dark-mode button[type="submit"]:hover,
     body.dark-mode .cta-btn:hover,
     body.dark-mode .work-btn:hover,
-    body.dark-mode .apply-btn:hover {
+    body.dark-mode .apply-btn:hover,
+    body.dark-mode .brand-btn:hover {
       background: #1d4ed8 !important;
       color: #ffffff !important;
     }
@@ -381,10 +417,20 @@
     body.dark-mode .btn-cancel,
     body.dark-mode .form-cancel-btn,
     body.dark-mode button[type="reset"] {
-      background: #334155 !important;
+      background: #1e293b !important;
       color: #f8fafc !important;
-      border: 1px solid #475569 !important;
+      border: 1px solid #334155 !important;
       font-weight: 500 !important;
+    }
+
+    body.dark-mode .about-btn {
+      border: 1px solid #ffd700 !important;
+      background: #1e293b !important;
+      color: #ffd700 !important;
+    }
+    body.dark-mode .about-btn:hover {
+      background: #ffd700 !important;
+      color: #070b14 !important;
     }
 
     body.dark-mode .back-btn {
@@ -401,33 +447,11 @@
     body.dark-mode .btn-cancel:hover,
     body.dark-mode .form-cancel-btn:hover,
     body.dark-mode button[type="reset"]:hover {
-      background: #475569 !important;
+      background: #334155 !important;
       color: #ffffff !important;
     }
 
-    /* --- Form Inputs --- */
-    body.dark-mode input,
-    body.dark-mode textarea,
-    body.dark-mode select {
-      background: #1e293b !important;
-      color: #ffffff !important;
-      border: 1px solid #334155 !important;
-    }
-    body.dark-mode input::placeholder,
-    body.dark-mode textarea::placeholder {
-      color: #64748b !important;
-    }
-    body.dark-mode input:focus,
-    body.dark-mode textarea:focus,
-    body.dark-mode select:focus {
-      border-color: #38bdf8 !important;
-      outline: none !important;
-    }
-    body.dark-mode select option,
-    body.dark-mode select optgroup {
-      background: #111827;
-      color: #f8fafc;
-    }
+
 
     /* --- Enquiry Modal --- */
     body.dark-mode .modal-content {
@@ -437,7 +461,7 @@
       color: #ffffff !important;
     }
     body.dark-mode .modal-content h2 { color: #ffffff !important; font-weight: 700 !important; }
-    body.dark-mode .modal-content label { color: #cbd5e1 !important; font-weight: 500 !important; }
+    body.dark-mode .modal-content label { color: #ffffff !important; font-weight: 600 !important; }
     body.dark-mode .modal-content .close-btn {
       background: #334155 !important;
       color: #ffffff !important;
@@ -460,7 +484,7 @@
     body.dark-mode footer.footer span,
     body.dark-mode footer.footer p,
     body.dark-mode footer.footer li {
-      color: #cbd5e1 !important;
+      color: #f8fafc !important;
     }
     body.dark-mode footer.footer a:hover {
       color: #38bdf8 !important;
@@ -477,7 +501,7 @@
     }
     body.dark-mode .footer-bottom {
       border-top: 1px solid #1e293b !important;
-      color: #94a3b8 !important;
+      color: #e2e8f0 !important;
     }
 
     /* --- Real-Time Mandatory Email & Phone Form Validation Styles --- */
@@ -631,7 +655,7 @@
   setupHeaderNavigation();
 
   const savedTheme = localStorage.getItem(storageKey);
-  const preferredTheme = savedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const preferredTheme = savedTheme || "light";
   addThemeToggle();
   formatFooterContactDetails();
   standardizeFooter();

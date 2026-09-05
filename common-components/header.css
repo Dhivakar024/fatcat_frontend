@@ -298,9 +298,19 @@ a {
     border-bottom: 1px solid #f0f0f0;
 }
 
+.drawer-logo {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
 .drawer-logo img {
     width: 110px;
     height: auto;
+    display: block;
 }
 
 .drawer-close {
@@ -789,6 +799,108 @@ body.dark-mode .drawer-sub2-link.active .drawer-sub2-dot {
     background: #ffd700 !important;
 }
 
+/* Mobile Drawer Dark Mode Overrides */
+body.dark-mode .mobile-drawer {
+    background: #0b0f19 !important;
+    color: #ffffff !important;
+    border-left: 1px solid #1e293b !important;
+}
+
+body.dark-mode .drawer-header {
+    border-bottom: 1px solid #1e293b !important;
+}
+
+body.dark-mode .drawer-logo {
+    background: #ffffff !important;
+    padding: 5px 12px !important;
+    border-radius: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+body.dark-mode .drawer-close {
+    color: #ffffff !important;
+}
+
+body.dark-mode .drawer-close:hover {
+    background: #1e293b !important;
+}
+
+body.dark-mode .drawer-link,
+body.dark-mode .drawer-toggle-row,
+body.dark-mode .drawer-toggle-row2,
+body.dark-mode .drawer-sub-link,
+body.dark-mode .drawer-sub2-link {
+    color: #f8fafc !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+body.dark-mode .drawer-link:hover,
+body.dark-mode .drawer-toggle-row:hover,
+body.dark-mode .drawer-toggle-row2:hover,
+body.dark-mode .drawer-sub-link:hover,
+body.dark-mode .drawer-sub2-link:hover {
+    color: #38bdf8 !important;
+    background: rgba(56, 189, 248, 0.12) !important;
+}
+
+body.dark-mode .drawer-icon {
+    background: #1e293b !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .drawer-icon i,
+body.dark-mode .drawer-icon .fa-solid {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .drawer-link:hover .drawer-icon,
+body.dark-mode .drawer-toggle-row:hover .drawer-icon {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .drawer-link:hover .drawer-icon i,
+body.dark-mode .drawer-toggle-row:hover .drawer-icon i {
+    color: #ffffff !important;
+}
+
+body.dark-mode .drawer-chevron,
+body.dark-mode .drawer-sub-chevron,
+body.dark-mode .drawer-sub2-chevron {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .drawer-sub-panel {
+    background: #0e1424 !important;
+    border-left: 2px solid #334155 !important;
+}
+
+body.dark-mode .drawer-sub2-panel {
+    background: #172033 !important;
+}
+
+body.dark-mode .drawer-sub-dot {
+    background: #38bdf8 !important;
+}
+
+body.dark-mode .drawer-sub2-dot {
+    background: #60a5fa !important;
+}
+
+body.dark-mode .drawer-view-all {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .drawer-footer {
+    border-top: 1px solid #1e293b !important;
+    background: #070a10 !important;
+}
+
+body.dark-mode .drawer-theme-label {
+    color: #ffffff !important;
+}
+
 .dropdown {
     position: relative;
 }
@@ -1268,23 +1380,27 @@ body.dark-mode .drawer-sub2-link.active .drawer-sub2-dot {
 
     /* Show hamburger */
     .hamburger {
-        display: block;
+        display: block !important;
         margin-left: 10px;
+        flex-shrink: 0;
+        cursor: pointer;
+        z-index: 1001;
     }
 
     /* Show Login button in navbar */
     .mobile-login-btn {
-        display: inline-flex;
+        display: inline-flex !important;
         align-items: center;
         margin-left: auto;
-        padding: 8px 18px;
+        padding: 6px 14px;
         background: #ffffff;
         color: #0b1b66;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         border-radius: 7px;
         text-decoration: none;
         white-space: nowrap;
+        flex-shrink: 0;
         transition: background 0.2s, color 0.2s;
     }
 
@@ -1305,19 +1421,23 @@ body.dark-mode .drawer-sub2-link.active .drawer-sub2-dot {
 
     /* Logo size on mobile */
     .logo-main {
-        padding: 6px 14px;
-        border-radius: 12px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        flex-shrink: 0;
     }
 
     .logo-main img {
-        width: 110px;
+        width: 95px;
+        max-width: 100px;
+        height: auto;
     }
 
     /* Navbar padding on mobile */
     .nav-container {
-        padding: 12px 16px;
+        padding: 10px 14px;
         justify-content: space-between;
-        gap: 0;
+        align-items: center;
+        gap: 8px;
     }
 }
 

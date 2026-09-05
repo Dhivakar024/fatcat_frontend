@@ -633,7 +633,7 @@ body.dark-mode .form-box .inpage-terms label {
 /* BRAND / PARTNERS SECTION*/
 .brand-section {
     background: #f1f5f9;
-    padding: 40px 6% 45px;
+    padding: 40px 0 45px;
     text-align: center;
     overflow: hidden;
 }
@@ -641,6 +641,7 @@ body.dark-mode .form-box .inpage-terms label {
 .brand-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .brand-slider {
@@ -649,15 +650,15 @@ body.dark-mode .form-box .inpage-terms label {
     max-width: 100%;
     margin-bottom: 28px;
     padding: 10px 0;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
 }
 
 .brand-track {
     display: flex;
     align-items: center;
     width: max-content;
-    animation: scrollBrands 24s linear infinite;
+    animation: scrollBrands 12s linear infinite;
 }
 
 .brand-logo-set {
@@ -1123,13 +1124,20 @@ body.dark-mode .form-box .inpage-terms label {
 /* =========================================================
    DARK MODE
    ========================================================= */
+/* =========================================================
+   DARK MODE HIGH CONTRAST & READABILITY
+   ========================================================= */
 body.dark-mode {
     background: #070b14;
-    color: #f1f5f9;
+    color: #f8fafc;
 }
 
 body.dark-mode .about-section {
     background: #0d1527;
+}
+
+body.dark-mode .about-tag {
+    color: #38bdf8;
 }
 
 body.dark-mode .about-content h2 {
@@ -1137,16 +1145,33 @@ body.dark-mode .about-content h2 {
 }
 
 body.dark-mode .about-content p {
-    color: #94a3b8;
+    color: #f1f5f9;
 }
 
 body.dark-mode .stat-card {
     background: #111b33;
-    border-color: rgba(255, 255, 255, 0.08);
+    border-color: #1e293b;
+}
+
+body.dark-mode .stat-card h3 {
+    color: #38bdf8;
 }
 
 body.dark-mode .stat-card p {
-    color: #94a3b8;
+    color: #f1f5f9;
+}
+
+body.dark-mode .services-section {
+    background: #070b14;
+}
+
+body.dark-mode .service-content h3 {
+    color: #38bdf8;
+}
+
+body.dark-mode .service-content p,
+body.dark-mode .service-content li {
+    color: #f1f5f9;
 }
 
 body.dark-mode .academy-section {
@@ -1158,16 +1183,20 @@ body.dark-mode .academy-title {
 }
 
 body.dark-mode .academy-subtitle {
-    color: #94a3b8;
+    color: #e2e8f0;
 }
 
 body.dark-mode .academy-card {
     background: #111b33;
-    border-color: rgba(255, 255, 255, 0.08);
+    border-color: #1e293b;
+}
+
+body.dark-mode .academy-card h3 {
+    color: #38bdf8;
 }
 
 body.dark-mode .academy-card p {
-    color: #94a3b8;
+    color: #f1f5f9;
 }
 
 body.dark-mode .brand-section {
@@ -1179,7 +1208,72 @@ body.dark-mode .brand-title {
 }
 
 body.dark-mode .brand-desc {
-    color: #94a3b8;
+    color: #e2e8f0;
+}
+
+body.dark-mode .learn-section {
+    background: #090e1a;
+}
+
+body.dark-mode .learn-title {
+    color: #ffffff;
+}
+
+body.dark-mode .learn-sub {
+    color: #e2e8f0;
+}
+
+body.dark-mode .learn-btn {
+    background: #111b33;
+    color: #f8fafc;
+    border: 1px solid #1e293b;
+}
+
+body.dark-mode .learn-btn:hover {
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+body.dark-mode .learn-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+}
+
+body.dark-mode .learn-card {
+    background: #111b33;
+    border: 1px solid #1e293b;
+    color: #f8fafc;
+}
+
+body.dark-mode .learn-card h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .learn-card p {
+    color: #f1f5f9;
+}
+
+body.dark-mode .testimonial-section {
+    background: #070b14;
+}
+
+body.dark-mode .testimonial-card {
+    background: #111b33;
+    border: 1px solid #1e293b;
+    color: #f8fafc;
+}
+
+body.dark-mode .testimonial-card h4 {
+    color: #ffffff;
+}
+
+body.dark-mode .testimonial-card p {
+    color: #f1f5f9;
+}
+
+body.dark-mode .testimonial-card span {
+    color: #38bdf8;
 }
 
 body.dark-mode .contact-section {
@@ -1188,7 +1282,7 @@ body.dark-mode .contact-section {
 
 body.dark-mode .form-box {
     background: #111b33;
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: #1e293b;
 }
 
 body.dark-mode .form-box h3 {

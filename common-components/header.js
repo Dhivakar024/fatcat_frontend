@@ -19,7 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const themeToggle = document.querySelector('#themeToggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
+                const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+                if (typeof window.applyTheme === 'function') {
+                    window.applyTheme(nextTheme);
+                } else {
+                    document.body.classList.toggle('dark-mode');
+                }
             });
         }
 
@@ -132,13 +137,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Drawer light-mode toggle
         if (drawerTheme) {
-            // Sync initial state: checked = light mode on
             drawerTheme.checked = !document.body.classList.contains('dark-mode');
             drawerTheme.addEventListener('change', () => {
-                if (drawerTheme.checked) {
-                    document.body.classList.remove('dark-mode');
+                const nextTheme = drawerTheme.checked ? 'light' : 'dark';
+                if (typeof window.applyTheme === 'function') {
+                    window.applyTheme(nextTheme);
                 } else {
-                    document.body.classList.add('dark-mode');
+                    document.body.classList.toggle('dark-mode', !drawerTheme.checked);
                 }
             });
         }
