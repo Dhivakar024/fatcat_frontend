@@ -9,7 +9,7 @@ if (hamburger && navMenu) {
 }
 
 // ===== REGEX PATTERNS =====
-const NAME_REGEX = /^[A-Za-z]{2,30}$/;
+const NAME_REGEX = /^[A-Za-z\s]{2,30}$/;
 const PHONE_REGEX = /^[6-9][0-9]{9}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
@@ -21,12 +21,13 @@ const phone = document.getElementById("phone");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
+const signupTerms = document.getElementById("signupTerms");
 const cancelBtn = document.getElementById("cancelBtn");
 
 // ===== HELPERS =====
 function setError(input, errorEl, message) {
-    errorEl.textContent = message;
-    input.classList.toggle("invalid", Boolean(message));
+    if (errorEl) errorEl.textContent = message;
+    if (input) input.classList.toggle("invalid", Boolean(message));
     return message === "";
 }
 
@@ -42,10 +43,10 @@ function validateFirstName() {
 function validatePhone() {
     const el = document.getElementById("phoneError");
     if (!phone.value.trim()) {
-        return setError( phone, el, "Phone number is required." );
+        return setError(phone, el, "Phone number is required.");
     }
     if (!PHONE_REGEX.test(phone.value.trim())) {
-        return setError( phone, el, "Enter a valid 10-digit phone number." );
+        return setError(phone, el, "Enter a valid 10-digit phone number.");
     }
     return setError(phone, el, "");
 }
@@ -81,15 +82,101 @@ function validateConfirmPassword() {
     return setError(confirmPassword, el, "");
 }
 
+function validateTerms() {
+    const el = document.getElementById("termsError");
+    if (!signupTerms || !signupTerms.checked) {
+        if (el) el.textContent = "You must agree to the Terms & Conditions.";
+        return false;
+    }
+    if (el) el.textContent = "";
+    return true;
+}
+
+// ===== PASSWORD VISIBILITY TOGGLE (INDEPENDENT) =====
+function togglePasswordField(inputEl, btnEl) {
+    if (!inputEl) return;
+    const isPass = inputEl.type === "password";
+    inputEl.type = isPass ? "text" : "password";
+
+    const icon = btnEl ? btnEl.querySelector("i") : null;
+    if (icon) {
+        if (isPass) {
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+
+    if (btnEl) {
+        btnEl.setAttribute("aria-label", isPass ? "Hide password" : "Show password");
+    }
+
+    // Preserve cursor position & focus
+    try {
+        const len = inputEl.value.length;
+        inputEl.focus({ preventScroll: true });
+        inputEl.setSelectionRange(len, len);
+    } catch (_) {}
+}
+
+// Expose globally to support HTML onclick attributes
+window.togglePassword = function (fieldId, btnEl) {
+    const input = document.getElementById(fieldId);
+    togglePasswordField(input, btnEl);
+};
+
+// Also attach event listeners if inline onclick is not already defined
+const togglePassBtn = document.getElementById("togglePasswordBtn");
+if (togglePassBtn && !togglePassBtn.getAttribute("onclick")) {
+    togglePassBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        togglePasswordField(password, this);
+    });
+}
+
+const toggleConfirmPassBtn = document.getElementById("toggleConfirmPasswordBtn");
+if (toggleConfirmPassBtn && !toggleConfirmPassBtn.getAttribute("onclick")) {
+    toggleConfirmPassBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        togglePasswordField(confirmPassword, this);
+    });
+}
+
+// ===== AUTOFILL / EMPTY FORM PRESERVATION =====
+function clearSignupForm() {
+    if (form) form.reset();
+    if (firstName) { firstName.value = ""; firstName.defaultValue = ""; }
+    if (phone) { phone.value = ""; phone.defaultValue = ""; }
+    if (email) { email.value = ""; email.defaultValue = ""; }
+    if (password) { password.value = ""; password.defaultValue = ""; }
+    if (confirmPassword) { confirmPassword.value = ""; confirmPassword.defaultValue = ""; }
+    if (signupTerms) signupTerms.checked = false;
+    document.querySelectorAll(".error").forEach((el) => (el.textContent = ""));
+    document.querySelectorAll("input").forEach((el) => el.classList.remove("invalid", "error-input", "success-input"));
+}
+
+clearSignupForm();
+window.addEventListener("pageshow", clearSignupForm);
+
 // ===== LIVE VALIDATION =====
 firstName.addEventListener("input", validateFirstName);
-phone.addEventListener("input", () => { phone.value = phone.value .replace(/\D/g, "") .slice(0, 10); validatePhone();});
+phone.addEventListener("input", () => {
+    phone.value = phone.value.replace(/\D/g, "").slice(0, 10);
+    validatePhone();
+});
 email.addEventListener("input", validateEmail);
 password.addEventListener("input", () => {
     validatePassword();
     if (confirmPassword.value) validateConfirmPassword();
 });
 confirmPassword.addEventListener("input", validateConfirmPassword);
+if (signupTerms) {
+    signupTerms.addEventListener("change", validateTerms);
+}
 
 // ===== SUBMIT =====
 form.addEventListener("submit", (e) => {
@@ -100,28 +187,78 @@ form.addEventListener("submit", (e) => {
         validatePhone(),
         validateEmail(),
         validatePassword(),
-        validateConfirmPassword()
+        validateConfirmPassword(),
+        validateTerms()
     ];
 
     const isValid = validations.every(Boolean);
     if (!isValid) {
+        if (!validateTerms() && typeof showNotification === "function") {
+            showNotification("Please agree to the Terms & Conditions.", "error");
+        }
         return;
     }
+
     const userData = {
         firstName: firstName.value.trim(),
         phone: phone.value.trim(),
-        email: email.value .trim() .toLowerCase(),
+        email: email.value.trim().toLowerCase(),
         password: password.value
     };
 
-    localStorage.setItem( "fatcatUser",JSON.stringify(userData) );
-    window.location.href = "../login/login.html";
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : "Create Account";
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Creating Account...";
+    }
 
+    const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
+
+    fetch(`${API_BASE}/auth/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData)
+    })
+    .then(async res => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+            throw new Error(data.detail || "Unable to create your account. Please try again.");
+        }
+        // Save safe display info only (NEVER store password)
+        localStorage.setItem("fatcatUser", JSON.stringify({
+            firstName: userData.firstName,
+            phone: userData.phone,
+            email: userData.email
+        }));
+        if (typeof showNotification === "function") {
+            showNotification("Account created successfully! You can now log in.", "success");
+        }
+        setTimeout(() => {
+            window.location.href = "../login/login.html";
+        }, 1200);
+    })
+    .catch(err => {
+        if (typeof showNotification === "function") {
+            showNotification(err.message || "Unable to create your account. Please try again.", "error");
+        }
+        const emailErrEl = document.getElementById("emailError");
+        if (emailErrEl) {
+            emailErrEl.textContent = err.message || "Unable to create your account. Please try again.";
+            email.classList.add("invalid");
+        }
+    })
+    .finally(() => {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
 });
 
 // ===== CANCEL =====
-cancelBtn.addEventListener("click", () => {
-    form.reset();
-    document.querySelectorAll(".error").forEach((el) => (el.textContent = ""));
-    document.querySelectorAll("input").forEach((el) => el.classList.remove("invalid"));
-});
+if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+        clearSignupForm();
+    });
+}

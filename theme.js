@@ -91,9 +91,11 @@
 
     const bottom = footer.querySelector(".footer-bottom");
     if (bottom && !bottom.querySelector(".footer-legal")) {
+      const isCalc = window.location.pathname.replace(/\\/g, "/").includes("/calculators/");
+      const privPath = isCalc ? "../../privacy-center/index.html" : "../privacy-center/index.html";
       bottom.insertAdjacentHTML("beforeend", `
         <nav class="footer-legal" aria-label="Legal links">
-          <a href="/privacy-center/index.html">Privacy Centre</a>
+          <a href="${privPath}">Privacy Centre</a>
           <a href="#privacy-policy">Privacy Policy</a>
           <a href="#terms-of-use">Terms of Use</a>
           <a href="#disclaimer">Disclaimer</a>
@@ -523,9 +525,8 @@
     button.btn-disabled,
     input[type="submit"]:disabled,
     .btn-disabled {
-      opacity: 0.55 !important;
+      opacity: 0.65 !important;
       cursor: not-allowed !important;
-      pointer-events: none !important;
       box-shadow: none !important;
       transform: none !important;
     }
@@ -661,6 +662,15 @@
   standardizeFooter();
   applyTheme(preferredTheme);
   document.documentElement.classList.add("site-chrome-ready");
+
+  // Ensure global notifications system is loaded across all pages
+  if (typeof window !== "undefined" && !window.showNotification) {
+    const isCalc = window.location.pathname.replace(/\\/g, "/").includes("/calculators/");
+    const notifScript = document.createElement("script");
+    notifScript.src = isCalc ? "../../common-components/notifications.js" : "../common-components/notifications.js";
+    notifScript.defer = true;
+    document.head.appendChild(notifScript);
+  }
 })();
 
 

@@ -1,16 +1,17 @@
-const savedUser = localStorage.getItem("fatcatUser");
+const savedUser = localStorage.getItem("loggedInUser") || localStorage.getItem("fatcatUser");
+const token = localStorage.getItem("fatcat_token");
 
-if (!savedUser) {
-    window.location.href =  "../login/login.html";
+if (!savedUser && !token) {
+    window.location.href = "../login/login.html";
 }
 
-const user = JSON.parse(savedUser);
+const user = savedUser ? JSON.parse(savedUser) : { firstName: "Student" };
 
 // ======== USER NAME========
-const firstName =  user.firstName || "Student";
-document.getElementById( "welcomeName").textContent = firstName;
-document.getElementById( "profileName").textContent = firstName;
-document.getElementById( "profileInitial").textContent = firstName.charAt(0).toUpperCase();
+const firstName = user.firstName || "Student";
+document.getElementById("welcomeName").textContent = firstName;
+document.getElementById("profileName").textContent = firstName;
+document.getElementById("profileInitial").textContent = firstName.charAt(0).toUpperCase();
 
 // ====DATE==========
 const today = new Date();
@@ -252,7 +253,7 @@ function renderContinueLearning() {
 // ===== COURSE ACTION=========
 function handleCourse(id) {
 
-    const course = courses.find( course => course.id === id );
+    const course = courses.find(course => course.id === id);
     if (!course) {
         return;
     }
@@ -261,11 +262,37 @@ function handleCourse(id) {
         course.enrolled = true;
         course.progress = 0;
         course.lessons = "0 / 15 Lessons";
-        alert( `${course.title} enrolled successfully!`);
+
+        const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
+        const currentToken = localStorage.getItem("fatcat_token");
+
+        if (currentToken) {
+            fetch(`${API_BASE}/dashboard/courses/${id}/enroll`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${currentToken}`
+                }
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Unable to enroll in this course. Please try again.");
+                }
+            })
+            .catch(err => {
+                console.warn("Course enrollment sync error:", err);
+            });
+        }
+
+        if (typeof showNotification === "function") {
+            showNotification(`Successfully enrolled in ${course.title}!`, "success");
+        }
         updateDashboard();
         return;
     }
-    alert( `Opening ${course.title}...` );
+    if (typeof showNotification === "function") {
+        showNotification(`Opening ${course.title}...`, "info");
+    }
 }
 
 // ========== UPDATE EVERYTHING=========
@@ -277,45 +304,61 @@ function updateDashboard() {
 }
 
 // ========== COURSE SEARCH===========
-const courseSearch = document.getElementById( "courseSearch" );
-courseSearch.addEventListener(
-    "input",
-    function () {
-        const value =  this.value  .toLowerCase() .trim();
-        const cards = document.querySelectorAll( ".course-card" );
+const courseSearch = document.getElementById("courseSearch");
+if (courseSearch) {
+    courseSearch.addEventListener("input", function () {
+        const value = this.value.toLowerCase().trim();
+        const cards = document.querySelectorAll(".course-card");
         cards.forEach(card => {
-            const text = card.textContent .toLowerCase();
-            card.style.display =  text.includes(value) ? "" : "none";
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(value) ? "" : "none";
         });
-    }
-);
+    });
+}
 
 // ==========/ MOBILE SIDEBAR========
-const menuBtn =
-    document.getElementById(
-        "menuBtn"
-    );
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.querySelector(".sidebar");
 
+if (menuBtn && sidebar) {
+    menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+    });
+}
 
-const sidebar = document.querySelector( ".sidebar" );
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("fatcat_token");
+        localStorage.removeItem("loggedInUser");
+        window.location.href = "../login/login.html";
+    });
+}
 
-menuBtn.addEventListener(
-    "click",
-    () => {
-        sidebar.classList.toggle(
-            "open"
-        );
-    }
-);
+// Load live dashboard data from FastAPI backend if logged in with token
+const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
 
-document.getElementById(
-    "logoutBtn"
-).addEventListener(
-    "click",
-    () => {
-        localStorage.removeItem( "isLoggedIn" );
-        window.location.href ="../login/login.html";
-    }
-);
+if (token) {
+    fetch(`${API_BASE}/dashboard/overview`, {
+        headers: { "Authorization": `Bearer ${token}` }
+    })
+    .then(async res => {
+        if (res.ok) {
+            const data = await res.json();
+            if (data.first_name) {
+                document.getElementById("welcomeName").textContent = data.first_name;
+                document.getElementById("profileName").textContent = data.first_name;
+                document.getElementById("profileInitial").textContent = data.first_name.charAt(0).toUpperCase();
+            }
+            if (Array.isArray(data.courses) && data.courses.length > 0) {
+                courses.length = 0;
+                data.courses.forEach(c => courses.push(c));
+                updateDashboard();
+            }
+        }
+    })
+    .catch(() => {});
+}
 
 updateDashboard();

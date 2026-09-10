@@ -3,13 +3,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const footer = document.getElementById("footer");
     if (!footer) return;
 
+    function getSiteBase() {
+        if (window.location.protocol === "file:") {
+            const p = window.location.pathname.replace(/\\/g, "/");
+            return p.includes("/calculators/") ? "../../" : "../";
+        }
+        const known = ["home", "about", "services", "academy", "business", "career", "contact", "login", "signup", "zoho", "calculators", "privacy-center", "dashboard", "admin", "legal", "common-components"];
+        const match = window.location.pathname.match(new RegExp(`^(.*?)\\/(?:${known.join("|")})(?:\\/|$)`, "i"));
+        return (match && match[1]) ? match[1] : "";
+    }
+
+    function adjustComponentHtml(html) {
+        const base = getSiteBase();
+        if (!base) return html;
+
+        if (base.endsWith("/")) {
+            return html.replace(/(href|src)="\/(?!\/)/g, `$1="${base}`);
+        }
+        return html.replace(/(href|src)="\/(?!\/)/g, `$1="${base}/`);
+    }
+
     // Robust fetch with sequential path fallbacks (works across root, subfolders, and file protocol)
     function loadFooterHtml() {
         const paths = [
-            "/common-components/footer.html",
             "../common-components/footer.html",
             "../../common-components/footer.html",
             "./common-components/footer.html",
+            "/common-components/footer.html",
             "common-components/footer.html"
         ];
 
@@ -27,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadFooterHtml()
         .then(data => {
-            footer.innerHTML = data;
+            footer.innerHTML = adjustComponentHtml(data);
 
             // Move floating cookie banner and legal modal directly to body to ensure
             // they float over the viewport and are never constrained by footer or page container styles

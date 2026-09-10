@@ -4,25 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/theme.js" defer></script>
+    <script src="../theme.js" defer></script>
     <title>Sign Up | Fatcat Wealthy</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/common-components/header.css">
-    <link rel="stylesheet" href="/common-components/footer.css">
-    <link rel="stylesheet" href="/signup/signup.css">
+    <link rel="stylesheet" href="../common-components/header.css">
+    <link rel="stylesheet" href="../common-components/footer.css">
+    <link rel="stylesheet" href="../common-components/notifications.css">
+    <link rel="stylesheet" href="./signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="/common-components/header.js" defer></script>
-    <script src="/common-components/footer.js" defer></script>
+    <script src="../common-components/header.js" defer></script>
+    <script src="../common-components/footer.js" defer></script>
 </head>
 
 <body class="signup-body">
     <div id="header"></div>
     <video class="bg-video" autoplay muted loop playsinline>
-        <source src="/home/assets/login-bg.mp4" type="video/mp4">
+        <source src="../home/assets/login-bg.mp4" type="video/mp4">
     </video>
 
     <main class="signup-main">
@@ -33,7 +34,7 @@
                     <p>Join Fatcat Wealthy and start your financial journey.</p>
                 </div>
 
-                <form id="signupForm" novalidate>
+                <form id="signupForm" autocomplete="off" novalidate>
 
                     <div class="form-row">
 
@@ -41,7 +42,7 @@
                             <label for="firstName">First Name</label>
                             <div class="input-wrapper">
                                 <i class="fa-regular fa-user"></i>
-                                <input type="text" id="firstName" placeholder="First name">
+                                <input type="text" id="firstName" placeholder="First name" autocomplete="off" required>
                             </div>
                             <div class="error" id="firstNameError"></div>
                         </div>
@@ -51,7 +52,7 @@
                             <label for="phone">Phone number</label>
                             <div class="input-wrapper">
                                  <i class="fa-solid fa-phone"></i>
-                                <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10" required>
+                                <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10" autocomplete="off" required>
                             </div>
                             <div class="error" id="phoneError"></div>
                         </div>
@@ -61,7 +62,7 @@
                         <label for="email">Email Address</label>
                         <div class="input-wrapper">
                             <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="email" placeholder="Enter your email" required>
+                            <input type="email" id="email" placeholder="Email address" autocomplete="off" required>
                         </div>
                         <div class="error" id="emailError"></div>
                     </div>
@@ -71,9 +72,9 @@
                             <label for="password">Password</label>
                             <div class="input-wrapper">
                                 <i class="fa-solid fa-lock"></i>
-                                <input type="password" id="password" placeholder="Create password">
-                                <button type="button" class="password-toggle"
-                                    onclick="togglePassword('password', this)">
+                                <input type="password" id="password" placeholder="Password" autocomplete="new-password" required>
+                                <button type="button" class="password-toggle" id="togglePasswordBtn"
+                                    aria-label="Toggle password visibility" onclick="togglePassword('password', this)">
                                     <i class="fa-regular fa-eye"></i>
                                 </button>
                             </div>
@@ -85,9 +86,9 @@
                             <label for="confirmPassword">Confirm Password</label>
                             <div class="input-wrapper">
                                 <i class="fa-solid fa-lock"></i>
-                                <input type="password" id="confirmPassword" placeholder="Confirm password">
-                                <button type="button" class="password-toggle"
-                                    onclick="togglePassword('confirmPassword', this)">
+                                <input type="password" id="confirmPassword" placeholder="Confirm password" autocomplete="new-password" required>
+                                <button type="button" class="password-toggle" id="toggleConfirmPasswordBtn"
+                                    aria-label="Toggle confirm password visibility" onclick="togglePassword('confirmPassword', this)">
                                     <i class="fa-regular fa-eye"></i>
                                 </button>
                             </div>
@@ -95,10 +96,11 @@
                         </div>
                     </div>
 
-                    <div class="contact-terms-group" style="margin-bottom: 18px;">
-                        <input type="checkbox" id="signupTerms" class="terms-checkbox" disabled required>
-                        <label for="signupTerms" style="font-size: 13px; color: var(--text-muted, #64748b);">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms" style="color: #2563eb; text-decoration: underline;">Terms & Conditions</a></label>
+                    <div class="contact-terms-group">
+                        <input type="checkbox" id="signupTerms" class="terms-checkbox" required>
+                        <label for="signupTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms &amp; Conditions</a></label>
                     </div>
+                    <div class="error" id="termsError"></div>
 
                     <div class="btn-row">
                         <button type="button" class="btn btn-cancel" id="cancelBtn">
@@ -122,7 +124,9 @@
 
     <div id="footer"></div>
 
-    <script src="/signup/signup.js"></script>
+    <script src="../api-config.js"></script>
+    <script src="../common-components/notifications.js"></script>
+    <script src="./signup.js"></script>
 </body>
 
 </html>

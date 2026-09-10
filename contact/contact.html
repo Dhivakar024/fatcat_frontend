@@ -10,18 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/contact/contact.css">
+    <link rel="stylesheet" href="./contact.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <link rel="stylesheet" href="/common-components/header.css">
-    <link rel="stylesheet" href="/common-components/footer.css">
+    <link rel="stylesheet" href="../common-components/header.css">
+    <link rel="stylesheet" href="../common-components/footer.css">
+    <link rel="stylesheet" href="../common-components/notifications.css">
 
-    <script src="/common-components/header.js" defer></script>
-    <script src="/common-components/footer.js" defer></script>
-    <script src="/theme.js" defer></script>
+    <script src="../common-components/header.js" defer></script>
+    <script src="../common-components/footer.js" defer></script>
+    <script src="../theme.js" defer></script>
 </head>
 
 <body>
@@ -59,7 +60,7 @@
                     We aim to respond quickly and ensure a smooth support experience.
                     Your input helps us improve and serve you better every day.
                 </p>
-                  <form id="contact-form" class="contact-form" action="https://formspree.io/f/xxxxxxx" method="POST">
+                  <form id="contact-form" class="contact-form">
                             <div class="form-group">
                                 <label><i class="fa-solid fa-circle-user"></i> Name</label>
                                 <input type="text" name="name" placeholder="Enter your name" required>
@@ -81,7 +82,7 @@
                                 <textarea rows="4" name="message" placeholder="Enter your message or questions here..."></textarea>
                             </div>
                             <div class="contact-terms-group">
-                                <input type="checkbox" id="contactTerms" class="terms-checkbox" disabled required>
+                                <input type="checkbox" id="contactTerms" class="terms-checkbox" required>
                                 <label for="contactTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms & Conditions</a></label>
                             </div>
                             <button type="submit" class="contact-btn">SEND</button>
@@ -125,18 +126,24 @@
 
     <div id="footer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Core Application & Notification Scripts (Load First) -->
+    <script src="../api-config.js"></script>
+    <script src="../common-components/notifications.js"></script>
+    <script src="./contact.js"></script>
 
+    <!-- External UI & Animation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="/contact/contact.js"></script>
 
     <script>
-        AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
-            once: true
-        });
+        if (typeof AOS !== "undefined") {
+            AOS.init({
+                duration: 1000,
+                easing: "ease-in-out",
+                once: true
+            });
+        }
     </script>
 
 </body>

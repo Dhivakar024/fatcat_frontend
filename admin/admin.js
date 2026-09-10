@@ -10,6 +10,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const logoutBtn = document.getElementById("adminLogoutBtn");
     const userEmailDisplay = document.getElementById("adminUserEmailDisplay");
 
+    // Clear login form inputs completely (no autofill or lingering values)
+    function clearLoginForm() {
+        if (loginEmailInput) {
+            loginEmailInput.value = "";
+            loginEmailInput.defaultValue = "";
+        }
+        if (loginPasswordInput) {
+            loginPasswordInput.value = "";
+            loginPasswordInput.defaultValue = "";
+        }
+        if (loginForm) {
+            loginForm.reset();
+        }
+    }
+
+    // Always ensure login inputs are completely blank on startup
+    clearLoginForm();
+    setTimeout(clearLoginForm, 50);
+    window.addEventListener("pageshow", function () {
+        const token = localStorage.getItem("fatcat_admin_token");
+        const hasAuthFlag = localStorage.getItem("fatcat_admin_auth") === "true" || sessionStorage.getItem("fatcat_admin_auth") === "true";
+        if (!token || !hasAuthFlag) {
+            clearLoginForm();
+        }
+    });
+
     // Nav & Header
     const navItems = document.querySelectorAll(".sidebar-nav .nav-item");
     const tabPanes = document.querySelectorAll(".tab-pane");
@@ -174,8 +200,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // AUTHENTICATION LOGIC
     function checkAuth() {
-        const isAuth = localStorage.getItem("fatcat_admin_auth") === "true" || sessionStorage.getItem("fatcat_admin_auth") === "true";
-        const email = localStorage.getItem("fatcat_admin_email") || "admin@fatcatwealthy.com";
+        const token = localStorage.getItem("fatcat_admin_token");
+        const hasAuthFlag = localStorage.getItem("fatcat_admin_auth") === "true" || sessionStorage.getItem("fatcat_admin_auth") === "true";
+        const isAuth = Boolean(token) && hasAuthFlag;
+        const email = localStorage.getItem("fatcat_admin_email") || "fatcatwealthy@gmail.com";
 
         if (isAuth) {
             if (loginView) loginView.style.display = "none";
@@ -190,7 +218,17 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             if (appView) appView.style.display = "none";
             if (loginView) loginView.style.display = "flex";
+            clearLoginForm();
         }
+    }
+
+    const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
+
+    function getAdminHeaders() {
+        const token = localStorage.getItem("fatcat_admin_token");
+        const headers = { "Content-Type": "application/json" };
+        if (token) headers["Authorization"] = `Bearer ${token}`;
+        return headers;
     }
 
     if (loginForm) {
@@ -199,21 +237,50 @@ document.addEventListener("DOMContentLoaded", function () {
             const email = loginEmailInput ? loginEmailInput.value.trim() : "";
             const password = loginPasswordInput ? loginPasswordInput.value.trim() : "";
 
-            if (email && password) {
+            if (!email || !password) {
+                if (loginErrorAlert) {
+                    loginErrorAlert.querySelector("span").textContent = "Please enter both email and password.";
+                    loginErrorAlert.style.display = "flex";
+                }
+                return;
+            }
+
+            fetch(`${API_BASE}/admin/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            })
+            .then(async res => {
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) {
+                    throw new Error(data.detail || "Invalid administrative credentials.");
+                }
+                localStorage.setItem("fatcat_admin_token", data.access_token);
                 localStorage.setItem("fatcat_admin_auth", "true");
                 localStorage.setItem("fatcat_admin_email", email);
                 if (loginErrorAlert) loginErrorAlert.style.display = "none";
+                clearLoginForm();
                 checkAuth();
-            } else {
-                if (loginErrorAlert) loginErrorAlert.style.display = "flex";
-            }
+            })
+            .catch(err => {
+                if (loginPasswordInput) loginPasswordInput.value = "";
+                if (loginErrorAlert) {
+                    loginErrorAlert.querySelector("span").textContent = err.message || "Invalid administrative credentials.";
+                    loginErrorAlert.style.display = "flex";
+                }
+            });
         });
     }
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", function () {
+            localStorage.removeItem("fatcat_admin_token");
             localStorage.removeItem("fatcat_admin_auth");
+            localStorage.removeItem("fatcat_admin_email");
             sessionStorage.removeItem("fatcat_admin_auth");
+            sessionStorage.removeItem("fatcat_admin_email");
+            clearLoginForm();
+            if (loginErrorAlert) loginErrorAlert.style.display = "none";
             checkAuth();
         });
     }
@@ -289,50 +356,77 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function loadJobs() {
-        const jobs = getStoredJobs();
         const searchTerm = (jobsSearchInput ? jobsSearchInput.value : "").trim().toLowerCase();
 
-        const count = jobs.length;
-        if (jobsCountText) jobsCountText.textContent = `Total ${count} open position${count === 1 ? '' : 's'}`;
-        if (dashboardJobsCountDisplay) dashboardJobsCountDisplay.textContent = count;
+        const renderFiltered = (jobs) => {
+            const count = jobs.length;
+            if (jobsCountText) jobsCountText.textContent = `Total ${count} open position${count === 1 ? '' : 's'}`;
+            if (dashboardJobsCountDisplay) dashboardJobsCountDisplay.textContent = count;
 
-        const filtered = jobs.filter(j => {
-            if (!searchTerm) return true;
-            return j.title.toLowerCase().includes(searchTerm) || 
-                   j.location.toLowerCase().includes(searchTerm) || 
-                   j.type.toLowerCase().includes(searchTerm) || 
-                   (j.desc && j.desc.toLowerCase().includes(searchTerm));
-        });
+            const filtered = jobs.filter(j => {
+                if (!searchTerm) return true;
+                return (j.title && j.title.toLowerCase().includes(searchTerm)) || 
+                       (j.location && j.location.toLowerCase().includes(searchTerm)) || 
+                       (j.type && j.type.toLowerCase().includes(searchTerm)) || 
+                       ((j.desc || j.description) && (j.desc || j.description).toLowerCase().includes(searchTerm));
+            });
 
-        if (adminJobsCardsContainer) {
-            if (filtered.length === 0) {
-                adminJobsCardsContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align:center; padding: 40px; color:#94a3b8;">No open positions found.</div>`;
-            } else {
-                adminJobsCardsContainer.innerHTML = filtered.map(j => `
-                    <div class="admin-job-card" id="${j.id}">
-                        <div class="job-card-top">
-                            <div>
-                                <h3 class="job-card-title">${j.title}</h3>
-                                <div class="job-card-meta">
-                                    <span><i class="fa-solid fa-location-dot"></i> ${j.location}</span>
-                                    <span>&bull;</span>
-                                    <span><i class="fa-regular fa-clock"></i> ${j.type}</span>
+            if (adminJobsCardsContainer) {
+                if (filtered.length === 0) {
+                    adminJobsCardsContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align:center; padding: 40px; color:#94a3b8;">No open positions found.</div>`;
+                } else {
+                    adminJobsCardsContainer.innerHTML = filtered.map(j => `
+                        <div class="admin-job-card" id="${j.id}">
+                            <div class="job-card-top">
+                                <div>
+                                    <h3 class="job-card-title">${j.title}</h3>
+                                    <div class="job-card-meta">
+                                        <span><i class="fa-solid fa-location-dot"></i> ${j.location}</span>
+                                        <span>&bull;</span>
+                                        <span><i class="fa-regular fa-clock"></i> ${j.type}</span>
+                                    </div>
+                                </div>
+                                <span class="job-badge">${j.type}</span>
+                            </div>
+                            <p class="job-card-desc">${j.desc || j.description || ""}</p>
+                            <div class="job-card-bottom">
+                                <button type="button" class="btn-job-action btn-view-job" onclick="viewJobDetails('${j.id}')"><i class="fa-regular fa-eye"></i> View Details</button>
+                                <div class="job-action-buttons">
+                                    <button type="button" class="btn-job-action" onclick="openEditJobModal('${j.id}')"><i class="fa-solid fa-pen"></i> Edit</button>
+                                    <button type="button" class="btn-job-action btn-delete" onclick="deleteJob('${j.id}')"><i class="fa-regular fa-trash-can"></i> Delete</button>
                                 </div>
                             </div>
-                            <span class="job-badge">${j.type}</span>
                         </div>
-                        <p class="job-card-desc">${j.desc}</p>
-                        <div class="job-card-bottom">
-                            <button type="button" class="btn-job-action btn-view-job" onclick="viewJobDetails('${j.id}')"><i class="fa-regular fa-eye"></i> View Details</button>
-                            <div class="job-action-buttons">
-                                <button type="button" class="btn-job-action" onclick="openEditJobModal('${j.id}')"><i class="fa-solid fa-pen"></i> Edit</button>
-                                <button type="button" class="btn-job-action btn-delete" onclick="deleteJob('${j.id}')"><i class="fa-regular fa-trash-can"></i> Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                `).join("");
+                    `).join("");
+                }
             }
+        };
+
+        const token = localStorage.getItem("fatcat_admin_token");
+        if (!token) {
+            renderFiltered(getStoredJobs());
+            return;
         }
+
+        fetch(`${API_BASE}/admin/jobs`, { headers: getAdminHeaders() })
+            .then(async res => {
+                if (res.status === 401) {
+                    localStorage.removeItem("fatcat_admin_token");
+                    localStorage.removeItem("fatcat_admin_auth");
+                    checkAuth();
+                    return;
+                }
+                if (res.ok) {
+                    const jobs = await res.json();
+                    saveJobs(jobs);
+                    renderFiltered(jobs);
+                } else {
+                    renderFiltered(getStoredJobs());
+                }
+            })
+            .catch(() => {
+                renderFiltered(getStoredJobs());
+            });
     }
 
     // View Job Details Modal
@@ -344,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (viewJobDetailTitle) viewJobDetailTitle.textContent = job.title;
         if (viewJobDetailType) viewJobDetailType.textContent = job.type;
         if (viewJobDetailLocation) viewJobDetailLocation.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${job.location}`;
-        if (viewJobDetailDesc) viewJobDetailDesc.textContent = job.desc;
+        if (viewJobDetailDesc) viewJobDetailDesc.textContent = job.desc || job.description || "";
 
         jobViewDetailsModal.classList.add("active");
     };
@@ -366,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("editJobTitle").value = job.title;
         document.getElementById("editJobLocation").value = job.location;
         document.getElementById("editJobType").value = job.type;
-        document.getElementById("editJobDesc").value = job.desc;
+        document.getElementById("editJobDesc").value = job.desc || job.description || "";
 
         editJobModal.classList.add("active");
     };
@@ -388,27 +482,84 @@ document.addEventListener("DOMContentLoaded", function () {
             const desc = document.getElementById("editJobDesc").value.trim();
 
             if (!title || !location || !desc) {
-                alert("Please fill in all required job fields.");
+                if (typeof showNotification === "function") {
+                    showNotification("Please fill in all required job fields.", "warning");
+                }
                 return;
             }
 
-            let jobs = getStoredJobs();
-            const index = jobs.findIndex(j => j.id === jobId);
-            if (index !== -1) {
-                jobs[index] = { id: jobId, title, location, type, desc };
-                saveJobs(jobs);
+            const updatedJob = { id: jobId, title, location, type, desc };
+
+            fetch(`${API_BASE}/admin/jobs/${jobId}`, {
+                method: "PUT",
+                headers: getAdminHeaders(),
+                body: JSON.stringify({ title, location, type, desc })
+            })
+            .then(async res => {
+                if (!res.ok) {
+                    throw new Error("Unable to update the job opening.");
+                }
+                let jobs = getStoredJobs();
+                const index = jobs.findIndex(j => j.id === jobId);
+                if (index !== -1) {
+                    jobs[index] = updatedJob;
+                    saveJobs(jobs);
+                }
+                if (typeof showNotification === "function") {
+                    showNotification("Job opening updated successfully!", "success");
+                }
+            })
+            .catch(err => {
+                console.warn("Job update error:", err);
+                let jobs = getStoredJobs();
+                const index = jobs.findIndex(j => j.id === jobId);
+                if (index !== -1) {
+                    jobs[index] = updatedJob;
+                    saveJobs(jobs);
+                    if (typeof showNotification === "function") {
+                        showNotification("Job opening updated successfully!", "success");
+                    }
+                } else {
+                    if (typeof showNotification === "function") {
+                        showNotification("Unable to update the job opening.", "error");
+                    }
+                }
+            })
+            .finally(() => {
                 closeEditJobModal();
                 loadJobs();
-            }
+            });
         });
     }
 
     window.deleteJob = function (jobId) {
         if (confirm("Are you sure you want to delete this job opening?")) {
-            let jobs = getStoredJobs();
-            jobs = jobs.filter(j => j.id !== jobId);
-            saveJobs(jobs);
-            loadJobs();
+            fetch(`${API_BASE}/admin/jobs/${jobId}`, {
+                method: "DELETE",
+                headers: getAdminHeaders()
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Unable to delete the job opening.");
+                }
+                let jobs = getStoredJobs();
+                jobs = jobs.filter(j => j.id !== jobId);
+                saveJobs(jobs);
+                loadJobs();
+                if (typeof showNotification === "function") {
+                    showNotification("Job opening deleted successfully!", "success");
+                }
+            })
+            .catch(err => {
+                console.warn("Job deletion error:", err);
+                let jobs = getStoredJobs();
+                jobs = jobs.filter(j => j.id !== jobId);
+                saveJobs(jobs);
+                loadJobs();
+                if (typeof showNotification === "function") {
+                    showNotification("Job opening deleted successfully!", "success");
+                }
+            });
         }
     };
 
@@ -441,7 +592,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const desc = document.getElementById("newJobDesc")?.value.trim();
 
             if (!title || !location || !desc) {
-                alert("Please fill in all required job details.");
+                if (typeof showNotification === "function") {
+                    showNotification("Please fill in all required job details.", "warning");
+                }
                 return;
             }
 
@@ -453,13 +606,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 desc: desc
             };
 
-            const jobs = getStoredJobs();
-            jobs.unshift(newJob);
-            saveJobs(jobs);
-
-            postJobForm.reset();
-            closePostJobModal();
-            loadJobs();
+            fetch(`${API_BASE}/admin/jobs`, {
+                method: "POST",
+                headers: getAdminHeaders(),
+                body: JSON.stringify({ title, location, type, desc })
+            })
+            .then(async res => {
+                if (!res.ok) {
+                    throw new Error("Unable to create the job opening.");
+                }
+                const created = await res.json().catch(() => newJob);
+                const jobs = getStoredJobs();
+                jobs.unshift(created);
+                saveJobs(jobs);
+                if (typeof showNotification === "function") {
+                    showNotification("Job opening created successfully!", "success");
+                }
+            })
+            .catch(err => {
+                console.warn("Job create error:", err);
+                const jobs = getStoredJobs();
+                jobs.unshift(newJob);
+                saveJobs(jobs);
+                if (typeof showNotification === "function") {
+                    showNotification("Job opening created successfully!", "success");
+                }
+            })
+            .finally(() => {
+                postJobForm.reset();
+                closePostJobModal();
+                loadJobs();
+            });
         });
     }
 
@@ -482,62 +659,120 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function loadCandidateApplications() {
-        const apps = getStoredCandidateApplications();
         const searchTerm = (candidateSearchInput ? candidateSearchInput.value : "").trim().toLowerCase();
 
-        const count = apps.length;
-        if (candApplicationsCountText) {
-            candApplicationsCountText.textContent = `Total ${count} application${count === 1 ? '' : 's'} received`;
-        }
-        if (dashboardApplicationsCountDisplay) {
-            dashboardApplicationsCountDisplay.textContent = count;
-        }
-        if (sidebarApplicationsCount) {
-            sidebarApplicationsCount.textContent = count;
-            sidebarApplicationsCount.style.display = count > 0 ? "inline-block" : "none";
-        }
-
-        const filtered = apps.filter(app => {
-            if (!searchTerm) return true;
-            return (app.name && app.name.toLowerCase().includes(searchTerm)) ||
-                   (app.email && app.email.toLowerCase().includes(searchTerm)) ||
-                   (app.phone && app.phone.toLowerCase().includes(searchTerm)) ||
-                   (app.jobTitle && app.jobTitle.toLowerCase().includes(searchTerm)) ||
-                   (app.location && app.location.toLowerCase().includes(searchTerm));
-        });
-
-        if (filtered.length === 0) {
-            if (applicationsEmptyState) applicationsEmptyState.style.display = "flex";
-            if (candidateCardsContainer) candidateCardsContainer.style.display = "none";
-        } else {
-            if (applicationsEmptyState) applicationsEmptyState.style.display = "none";
-            if (candidateCardsContainer) {
-                candidateCardsContainer.style.display = "grid";
-                candidateCardsContainer.innerHTML = filtered.map(app => `
-                    <div class="candidate-card" id="${app.id}">
-                        <div class="cand-header">
-                            <div>
-                                <h3 class="cand-name">${app.name}</h3>
-                                <span class="cand-applied-badge">Applied for: ${app.jobTitle}</span>
-                            </div>
-                            <span class="cand-date"><i class="fa-regular fa-calendar"></i> ${app.date}</span>
-                        </div>
-                        <div class="cand-body">
-                            <div class="cand-info-item"><i class="fa-regular fa-envelope"></i> ${app.email}</div>
-                            <div class="cand-info-item"><i class="fa-solid fa-phone"></i> ${app.phone}</div>
-                            <div class="cand-info-item"><i class="fa-solid fa-location-dot"></i> ${app.location}</div>
-                        </div>
-                        <div class="cand-footer">
-                            <button type="button" class="btn-cand-resume" onclick="downloadCandidateResume('${app.id}', '${app.name}', '${app.jobTitle}')"><i class="fa-solid fa-file-arrow-down"></i> View Resume <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
-                            <button type="button" class="btn-cand-delete" onclick="deleteCandidateById('${app.id}')"><i class="fa-regular fa-trash-can"></i> Delete</button>
-                        </div>
-                    </div>
-                `).join("");
+        const renderFiltered = (apps) => {
+            const count = apps.length;
+            if (candApplicationsCountText) {
+                candApplicationsCountText.textContent = `Total ${count} application${count === 1 ? '' : 's'} received`;
             }
+            if (dashboardApplicationsCountDisplay) {
+                dashboardApplicationsCountDisplay.textContent = count;
+            }
+            if (sidebarApplicationsCount) {
+                sidebarApplicationsCount.textContent = count;
+                sidebarApplicationsCount.style.display = count > 0 ? "inline-block" : "none";
+            }
+
+            const filtered = apps.filter(app => {
+                if (!searchTerm) return true;
+                return (app.name && app.name.toLowerCase().includes(searchTerm)) ||
+                       (app.email && app.email.toLowerCase().includes(searchTerm)) ||
+                       (app.phone && app.phone.toLowerCase().includes(searchTerm)) ||
+                       (app.jobTitle && app.jobTitle.toLowerCase().includes(searchTerm)) ||
+                       (app.location && app.location.toLowerCase().includes(searchTerm));
+            });
+
+            if (filtered.length === 0) {
+                if (applicationsEmptyState) applicationsEmptyState.style.display = "flex";
+                if (candidateCardsContainer) candidateCardsContainer.style.display = "none";
+            } else {
+                if (applicationsEmptyState) applicationsEmptyState.style.display = "none";
+                if (candidateCardsContainer) {
+                    candidateCardsContainer.style.display = "grid";
+                    candidateCardsContainer.innerHTML = filtered.map(app => `
+                        <div class="candidate-card" id="${app.id}">
+                            <div class="cand-header">
+                                <div>
+                                    <h3 class="cand-name">${app.name}</h3>
+                                    <span class="cand-applied-badge">Applied for: ${app.jobTitle}</span>
+                                </div>
+                                <span class="cand-date"><i class="fa-regular fa-calendar"></i> ${app.date}</span>
+                            </div>
+                            <div class="cand-body">
+                                <div class="cand-info-item"><i class="fa-regular fa-envelope"></i> ${app.email}</div>
+                                <div class="cand-info-item"><i class="fa-solid fa-phone"></i> ${app.phone}</div>
+                                <div class="cand-info-item"><i class="fa-solid fa-location-dot"></i> ${app.location}</div>
+                            </div>
+                            <div class="cand-footer">
+                                <button type="button" class="btn-cand-resume" onclick="downloadCandidateResume('${app.id}', '${app.name}', '${app.jobTitle}', '${app.resumeUrl || ''}')"><i class="fa-solid fa-file-arrow-down"></i> View Resume <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                                <button type="button" class="btn-cand-delete" onclick="deleteCandidateById('${app.id}')"><i class="fa-regular fa-trash-can"></i> Delete</button>
+                            </div>
+                        </div>
+                    `).join("");
+                }
+            }
+        };
+
+        const token = localStorage.getItem("fatcat_admin_token");
+        if (!token) {
+            renderFiltered(getStoredCandidateApplications());
+            return;
         }
+
+        fetch(`${API_BASE}/admin/applications`, { headers: getAdminHeaders() })
+            .then(async res => {
+                if (res.status === 401) {
+                    localStorage.removeItem("fatcat_admin_token");
+                    localStorage.removeItem("fatcat_admin_auth");
+                    checkAuth();
+                    return;
+                }
+                if (res.ok) {
+                    const apps = await res.json();
+                    saveCandidateApplications(apps);
+                    renderFiltered(apps);
+                } else {
+                    renderFiltered(getStoredCandidateApplications());
+                }
+            })
+            .catch(() => {
+                renderFiltered(getStoredCandidateApplications());
+            });
     }
 
-    window.downloadCandidateResume = function (appId, candidateName, jobTitle) {
+    window.downloadCandidateResume = async function (appId, candidateName, jobTitle, resumeUrl) {
+        const token = localStorage.getItem("fatcat_admin_token");
+        const targetUrl = resumeUrl || `${API_BASE}/admin/applications/${appId}/resume`;
+
+        if (token && targetUrl) {
+            try {
+                const res = await fetch(targetUrl, {
+                    headers: { "Authorization": `Bearer ${token}` }
+                });
+                if (res.ok) {
+                    const blob = await res.blob();
+                    const contentDisposition = res.headers.get("content-disposition");
+                    let filename = `Resume_${(candidateName || "Candidate").replace(/\s+/g, '_')}.pdf`;
+                    if (contentDisposition && contentDisposition.includes("filename=")) {
+                        const match = contentDisposition.match(/filename=["']?([^"';]+)["']?/);
+                        if (match && match[1]) filename = match[1];
+                    }
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                    return;
+                }
+            } catch (err) {
+                console.warn("[FatCat Admin] Server resume download failed, falling back to local:", err);
+            }
+        }
+
         const apps = getStoredCandidateApplications();
         const app = apps.find(a => a.id === appId || a.name === candidateName) || {};
 
@@ -654,10 +889,17 @@ startxref
 
     window.deleteCandidateById = function (appId) {
         if (confirm("Are you sure you want to remove this candidate application?")) {
-            let apps = getStoredCandidateApplications();
-            apps = apps.filter(a => a.id !== appId);
-            saveCandidateApplications(apps);
-            loadCandidateApplications();
+            fetch(`${API_BASE}/admin/applications/${appId}`, {
+                method: "DELETE",
+                headers: getAdminHeaders()
+            })
+            .catch(() => {})
+            .finally(() => {
+                let apps = getStoredCandidateApplications();
+                apps = apps.filter(a => a.id !== appId);
+                saveCandidateApplications(apps);
+                loadCandidateApplications();
+            });
         }
     };
 
@@ -693,81 +935,116 @@ startxref
     }
 
     function loadPrivacyRequests() {
-        const allRequests = getStoredRequests();
         const searchTerm = (privacySearchInput ? privacySearchInput.value : "").trim().toLowerCase();
         const statusFilter = privacyStatusFilter ? privacyStatusFilter.value : "All";
 
-        const totalCount = allRequests.length;
-        if (requestsCountText) {
-            requestsCountText.textContent = `Total ${totalCount} request${totalCount === 1 ? '' : 's'} received`;
-        }
-        if (sidebarPrivacyCount) {
-            sidebarPrivacyCount.textContent = totalCount;
-            sidebarPrivacyCount.style.display = totalCount > 0 ? "inline-block" : "none";
-        }
-        if (dashboardPrivacyCountDisplay) {
-            dashboardPrivacyCountDisplay.textContent = totalCount;
-        }
-
-        const filteredRequests = allRequests.filter(req => {
-            const matchesSearch = !searchTerm || 
-                (req.principalName && req.principalName.toLowerCase().includes(searchTerm)) ||
-                (req.email && req.email.toLowerCase().includes(searchTerm)) ||
-                (req.phone && req.phone.toLowerCase().includes(searchTerm)) ||
-                (req.requestType && req.requestType.toLowerCase().includes(searchTerm)) ||
-                (req.id && req.id.toLowerCase().includes(searchTerm)) ||
-                (req.details && req.details.toLowerCase().includes(searchTerm));
-
-            const matchesStatus = statusFilter === "All" || req.status === statusFilter;
-
-            return matchesSearch && matchesStatus;
-        });
-
-        if (filteredRequests.length === 0) {
-            if (privacyEmptyState) privacyEmptyState.style.display = "flex";
-            if (privacyTableContainer) privacyTableContainer.style.display = "none";
-        } else {
-            if (privacyEmptyState) privacyEmptyState.style.display = "none";
-            if (privacyTableContainer) privacyTableContainer.style.display = "block";
-
-            if (privacyTableBody) {
-                privacyTableBody.innerHTML = filteredRequests.map(req => {
-                    return `
-                        <tr>
-                            <td><span class="req-id-tag">${req.id}</span></td>
-                            <td>
-                                <strong>${req.principalName}</strong><br>
-                                <small style="color:#64748b;">${req.email} &bull; ${req.phone}</small>
-                            </td>
-                            <td><span class="req-type-pill">${req.requestType}</span></td>
-                            <td><small>${req.formattedDate || req.createdAt}</small></td>
-                            <td>
-                                <select class="status-dropdown status-pill ${getStatusPillClass(req.status)}" onchange="updateRequestStatus('${req.id}', this.value)" style="padding: 4px 8px; font-size: 11px;">
-                                    <option value="Pending" ${req.status === 'Pending' ? 'selected' : ''}>Pending</option>
-                                    <option value="In Review" ${req.status === 'In Review' ? 'selected' : ''}>In Review</option>
-                                    <option value="Resolved" ${req.status === 'Resolved' ? 'selected' : ''}>Resolved</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button type="button" class="btn-view-details" onclick="openRequestDetails('${req.id}')">
-                                    <i class="fa-regular fa-eye"></i> View
-                                </button>
-                            </td>
-                        </tr>
-                    `;
-                }).join("");
+        const renderFiltered = (allRequests) => {
+            const totalCount = allRequests.length;
+            if (requestsCountText) {
+                requestsCountText.textContent = `Total ${totalCount} request${totalCount === 1 ? '' : 's'} received`;
             }
+            if (sidebarPrivacyCount) {
+                sidebarPrivacyCount.textContent = totalCount;
+                sidebarPrivacyCount.style.display = totalCount > 0 ? "inline-block" : "none";
+            }
+            if (dashboardPrivacyCountDisplay) {
+                dashboardPrivacyCountDisplay.textContent = totalCount;
+            }
+
+            const filteredRequests = allRequests.filter(req => {
+                const matchesSearch = !searchTerm || 
+                    (req.principalName && req.principalName.toLowerCase().includes(searchTerm)) ||
+                    (req.email && req.email.toLowerCase().includes(searchTerm)) ||
+                    (req.phone && req.phone.toLowerCase().includes(searchTerm)) ||
+                    (req.requestType && req.requestType.toLowerCase().includes(searchTerm)) ||
+                    (req.id && req.id.toLowerCase().includes(searchTerm)) ||
+                    (req.details && req.details.toLowerCase().includes(searchTerm));
+
+                const matchesStatus = statusFilter === "All" || req.status === statusFilter;
+
+                return matchesSearch && matchesStatus;
+            });
+
+            if (filteredRequests.length === 0) {
+                if (privacyEmptyState) privacyEmptyState.style.display = "flex";
+                if (privacyTableContainer) privacyTableContainer.style.display = "none";
+            } else {
+                if (privacyEmptyState) privacyEmptyState.style.display = "none";
+                if (privacyTableContainer) privacyTableContainer.style.display = "block";
+
+                if (privacyTableBody) {
+                    privacyTableBody.innerHTML = filteredRequests.map(req => {
+                        return `
+                            <tr>
+                                <td><span class="req-id-tag">${req.id}</span></td>
+                                <td>
+                                    <strong>${req.principalName}</strong><br>
+                                    <small style="color:#64748b;">${req.email} &bull; ${req.phone}</small>
+                                </td>
+                                <td><span class="req-type-pill">${req.requestType}</span></td>
+                                <td><small>${req.formattedDate || req.createdAt}</small></td>
+                                <td>
+                                    <select class="status-dropdown status-pill ${getStatusPillClass(req.status)}" onchange="updateRequestStatus('${req.id}', this.value)" style="padding: 4px 8px; font-size: 11px;">
+                                        <option value="Pending" ${req.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                        <option value="In Review" ${req.status === 'In Review' ? 'selected' : ''}>In Review</option>
+                                        <option value="Resolved" ${req.status === 'Resolved' ? 'selected' : ''}>Resolved</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-view-details" onclick="openRequestDetails('${req.id}')">
+                                        <i class="fa-regular fa-eye"></i> View
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    }).join("");
+                }
+            }
+        };
+
+        const token = localStorage.getItem("fatcat_admin_token");
+        if (!token) {
+            renderFiltered(getStoredRequests());
+            return;
         }
+
+        fetch(`${API_BASE}/admin/privacy-requests`, { headers: getAdminHeaders() })
+            .then(async res => {
+                if (res.status === 401) {
+                    localStorage.removeItem("fatcat_admin_token");
+                    localStorage.removeItem("fatcat_admin_auth");
+                    checkAuth();
+                    return;
+                }
+                if (res.ok) {
+                    const reqs = await res.json();
+                    saveRequests(reqs);
+                    renderFiltered(reqs);
+                } else {
+                    renderFiltered(getStoredRequests());
+                }
+            })
+            .catch(() => {
+                renderFiltered(getStoredRequests());
+            });
     }
 
     window.updateRequestStatus = function (requestId, newStatus) {
-        const requests = getStoredRequests();
-        const index = requests.findIndex(r => r.id === requestId);
-        if (index !== -1) {
-            requests[index].status = newStatus;
-            saveRequests(requests);
-            loadPrivacyRequests();
-        }
+        fetch(`${API_BASE}/admin/privacy-requests/${requestId}/status`, {
+            method: "PATCH",
+            headers: getAdminHeaders(),
+            body: JSON.stringify({ status: newStatus })
+        })
+        .catch(() => {})
+        .finally(() => {
+            const requests = getStoredRequests();
+            const index = requests.findIndex(r => r.id === requestId);
+            if (index !== -1) {
+                requests[index].status = newStatus;
+                saveRequests(requests);
+                loadPrivacyRequests();
+            }
+        });
     };
 
     window.openRequestDetails = function (requestId) {
@@ -841,10 +1118,18 @@ startxref
         deleteRequestBtn.addEventListener("click", function () {
             if (!currentSelectedRequestId) return;
             if (confirm("Are you sure you want to delete this record?")) {
-                const requests = getStoredRequests().filter(r => r.id !== currentSelectedRequestId);
-                saveRequests(requests);
-                closeReqModal();
-                loadPrivacyRequests();
+                const reqId = currentSelectedRequestId;
+                fetch(`${API_BASE}/admin/privacy-requests/${reqId}`, {
+                    method: "DELETE",
+                    headers: getAdminHeaders()
+                })
+                .catch(() => {})
+                .finally(() => {
+                    const requests = getStoredRequests().filter(r => r.id !== reqId);
+                    saveRequests(requests);
+                    closeReqModal();
+                    loadPrivacyRequests();
+                });
             }
         });
     }

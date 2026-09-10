@@ -5,20 +5,21 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/theme.js" defer></script>
+    <script src="../theme.js" defer></script>
     <title>Career Application | FatCat Wealthy</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/common-components/header.css">
-    <link rel="stylesheet" href="/common-components/footer.css">
+    <link rel="stylesheet" href="../common-components/header.css">
+    <link rel="stylesheet" href="../common-components/footer.css">
+    <link rel="stylesheet" href="../common-components/notifications.css">
     <link rel="stylesheet" href="career-application.css">
-    <link rel="stylesheet" href="/career/career.css">
+    <link rel="stylesheet" href="./career.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="/common-components/header.js" defer></script>
-    <script src="/common-components/footer.js" defer></script>
+    <script src="../common-components/header.js" defer></script>
+    <script src="../common-components/footer.js" defer></script>
 </head>
 
 <body>
@@ -57,7 +58,7 @@
                 </div>
 
 
-                <form id="careerForm">
+                <form id="careerForm" onsubmit="return false;">
 
                     <div class="form-section">
 
@@ -249,6 +250,8 @@
 
     <div id="footer"></div>
 
+    <script src="../api-config.js"></script>
+    <script src="../common-components/notifications.js"></script>
     <script src="career-application.js"></script>
 
 </body>

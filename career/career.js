@@ -18,16 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", revealElements);
     revealElements(); // run once on load
 
-    // ── Job Cards: click to show details ──
-    const jobCards = document.querySelectorAll(".job-card");
     const jobTitle = document.getElementById("jobTitle");
     const jobMeta = document.getElementById("jobMeta");
     const jobDescription = document.getElementById("jobDescription");
     const jobSpecs = document.getElementById("jobSpecs");
 
-    jobCards.forEach(card => {
+    function attachCardClickListener(card) {
         card.addEventListener("click", function () {
-            jobCards.forEach(c => c.classList.remove("active"));
+            document.querySelectorAll(".job-card").forEach(c => c.classList.remove("active"));
             this.classList.add("active");
 
             if (jobTitle) jobTitle.textContent = this.dataset.title || "";
@@ -35,7 +33,47 @@ document.addEventListener("DOMContentLoaded", function () {
             if (jobDescription) jobDescription.textContent = this.dataset.description || "";
             if (jobSpecs) jobSpecs.textContent = this.dataset.specs || "";
         });
-    });
+    }
+
+    document.querySelectorAll(".job-card").forEach(attachCardClickListener);
+
+    // Fetch live jobs from backend
+    const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
+
+    const jobListContainer = document.querySelector(".job-list");
+    if (jobListContainer) {
+        fetch(`${API_BASE}/jobs`)
+            .then(async res => {
+                if (res.ok) {
+                    const jobs = await res.json();
+                    if (Array.isArray(jobs) && jobs.length > 0) {
+                        jobListContainer.innerHTML = jobs.map((j, idx) => `
+                            <div class="job-card ${idx === 0 ? 'active' : ''}"
+                                data-title="${j.title}"
+                                data-level="${j.level || 'Mid-Level'}"
+                                data-location="${j.location}"
+                                data-description="${j.desc || j.description || ''}"
+                                data-specs="${j.specs || ''}">
+                                <h3>${j.title}</h3>
+                                <p>${j.level || 'Mid-Level'} ${j.location}</p>
+                            </div>
+                        `).join("");
+
+                        document.querySelectorAll(".job-card").forEach(attachCardClickListener);
+
+                        // Set first job details
+                        const firstJob = jobs[0];
+                        if (jobTitle) jobTitle.textContent = firstJob.title || "";
+                        if (jobMeta) jobMeta.textContent = (firstJob.level || "Mid-Level") + " | " + (firstJob.location || "");
+                        if (jobDescription) jobDescription.textContent = firstJob.desc || firstJob.description || "";
+                        if (jobSpecs) jobSpecs.textContent = firstJob.specs || "";
+                    }
+                }
+            })
+            .catch(() => {
+                // Keep static HTML jobs if backend offline
+            });
+    }
 
     // ── Hero search button ──
     const searchBtn = document.getElementById("searchBtn");

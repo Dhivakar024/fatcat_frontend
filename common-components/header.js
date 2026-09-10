@@ -3,10 +3,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!header) return;
 
-    fetch("/common-components/header.html")
-        .then(response => response.text())
+    function getSiteBase() {
+        if (window.location.protocol === "file:") {
+            const p = window.location.pathname.replace(/\\/g, "/");
+            return p.includes("/calculators/") ? "../../" : "../";
+        }
+        const known = ["home", "about", "services", "academy", "business", "career", "contact", "login", "signup", "zoho", "calculators", "privacy-center", "dashboard", "admin", "legal", "common-components"];
+        const match = window.location.pathname.match(new RegExp(`^(.*?)\\/(?:${known.join("|")})(?:\\/|$)`, "i"));
+        return (match && match[1]) ? match[1] : "";
+    }
+
+    function adjustComponentHtml(html) {
+        const base = getSiteBase();
+        if (!base) return html;
+
+        if (base.endsWith("/")) {
+            return html.replace(/(href|src)="\/(?!\/)/g, `$1="${base}`);
+        }
+        return html.replace(/(href|src)="\/(?!\/)/g, `$1="${base}/`);
+    }
+
+    function loadHeaderHtml() {
+        const paths = [
+            "../common-components/header.html",
+            "../../common-components/header.html",
+            "./common-components/header.html",
+            "/common-components/header.html",
+            "common-components/header.html"
+        ];
+
+        let promise = Promise.reject();
+        paths.forEach(p => {
+            promise = promise.catch(() => {
+                return fetch(p).then(res => {
+                    if (!res.ok) throw new Error("Path failed: " + p);
+                    return res.text();
+                });
+            });
+        });
+        return promise;
+    }
+
+    loadHeaderHtml()
         .then(data => {
-            header.innerHTML = data;
+            header.innerHTML = adjustComponentHtml(data);
             initHeader();
         })
         .catch(error => {
@@ -163,8 +203,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (currentPath === linkPath) return true;
 
                     // Home matching
-                    if ((currentPath === "/" || currentPath === "" || currentPath.endsWith("/index.html") || currentPath.endsWith("/home/")) &&
-                        (linkPath === "/home/index.html" || linkPath === "/index.html" || linkPath === "/")) {
+                    if ((currentPath === "/" || currentPath === "" || currentPath.endsWith("/home/index.html") || currentPath.endsWith("/home/") || currentPath.endsWith("/index.html") || currentPath.endsWith("/home")) &&
+                        (linkPath.endsWith("/home/index.html") || linkPath.endsWith("/home/") || linkPath.endsWith("/index.html") || linkPath === "/")) {
                         return true;
                     }
 

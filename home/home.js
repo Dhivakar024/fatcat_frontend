@@ -107,6 +107,88 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && modal.style.display === "flex") closeModal();
     });
+
+    // Handle Modal Enquiry Submission
+    const modalForm = modal.querySelector("form");
+    if (modalForm) {
+      modalForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const inputs = modalForm.querySelectorAll("input, textarea");
+        const payload = {
+          fullName: modalForm.querySelector('input[type="text"]')?.value.trim() || "",
+          email: modalForm.querySelector('input[type="email"]')?.value.trim() || "",
+          phone: modalForm.querySelector('input[type="tel"]')?.value.trim() || "",
+          address: modalForm.querySelectorAll('input[type="text"]')[1]?.value.trim() || "",
+          message: modalForm.querySelector('textarea')?.value.trim() || "",
+          source: "popup_modal"
+        };
+
+        const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
+
+        fetch(`${API_BASE}/enquiries`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        })
+        .then(async res => {
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            throw new Error(data.detail || "Unable to submit your enquiry. Please try again.");
+          }
+          if (typeof showNotification === "function") {
+            showNotification("Enquiry submitted successfully! We'll get back to you soon.", "success");
+          }
+          modalForm.reset();
+          closeModal();
+        })
+        .catch(err => {
+          console.warn("Enquiry error:", err);
+          if (typeof showNotification === "function") {
+            showNotification("Unable to submit your enquiry. Please try again.", "error");
+          }
+        });
+      });
+    }
+  }
+
+  // Handle In-page Consultation Form
+  const inpageForm = document.querySelector(".form-box form");
+  if (inpageForm) {
+    inpageForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const payload = {
+        fullName: inpageForm.querySelector('input[type="text"]')?.value.trim() || "",
+        email: inpageForm.querySelector('input[type="email"]')?.value.trim() || "",
+        phone: inpageForm.querySelector('input[type="tel"]')?.value.trim() || "",
+        address: "",
+        message: inpageForm.querySelector('textarea')?.value.trim() || "",
+        source: "homepage_banner"
+      };
+
+      const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
+
+      fetch(`${API_BASE}/enquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(async res => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.detail || "Unable to submit your enquiry. Please try again.");
+        }
+        if (typeof showNotification === "function") {
+          showNotification("Enquiry submitted successfully! We'll get back to you soon.", "success");
+        }
+        inpageForm.reset();
+      })
+      .catch(err => {
+        console.warn("Inpage enquiry error:", err);
+        if (typeof showNotification === "function") {
+          showNotification("Unable to submit your enquiry. Please try again.", "error");
+        }
+      });
+    });
   }
 
 

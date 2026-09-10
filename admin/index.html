@@ -7,6 +7,7 @@
     <title>Admin Control Center | Fatcat Wealthy</title>
 
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../common-components/notifications.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,13 +21,12 @@
          ========================================================= -->
     <div id="adminLoginView" class="admin-login-wrapper" style="display: none;">
         <video autoplay loop muted playsinline class="admin-login-bg-video" preload="auto">
-            <source src="/assets/admin-login video.mp4" type="video/mp4">
             <source src="../assets/admin-login video.mp4" type="video/mp4">
         </video>
         <div class="admin-login-overlay"></div>
         <div class="admin-login-card">
             <div class="login-brand">
-                <img src="/assets/logo.png" alt="Fatcat Wealthy" class="login-brand-logo">
+                <img src="../assets/logo.png" alt="Fatcat Wealthy" class="login-brand-logo" onerror="this.onerror=null;this.src='/assets/logo.png';">
                 <h2 class="brand-portal-title">FatCat Admin Portal</h2>
                 <p class="brand-portal-sub">Secure control panel for website content &amp; operations</p>
             </div>
@@ -37,12 +37,12 @@
                     <span>ADMIN AUTHENTICATION</span>
                 </div>
 
-                <form id="adminLoginForm" class="admin-login-form">
+                <form id="adminLoginForm" class="admin-login-form" autocomplete="off">
                     <div class="login-input-group">
                         <label for="adminLoginEmail">ADMIN EMAIL</label>
                         <div class="input-with-icon">
                             <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="adminLoginEmail" value="admin@fatcatwealthy.com" placeholder="Enter admin email" required>
+                            <input type="email" id="adminLoginEmail" placeholder="Enter admin mail" autocomplete="off" required>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                         <label for="adminLoginPassword">PASSWORD</label>
                         <div class="input-with-icon">
                             <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="adminLoginPassword" value="admin123" placeholder="Enter password" required>
+                            <input type="password" id="adminLoginPassword" placeholder="Enter password" autocomplete="new-password" required>
                             <i class="fa-regular fa-eye eye-toggle" id="togglePasswordBtn"></i>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
             </div>
 
             <div class="login-card-footer">
-                <a href="/home/index.html" class="back-to-site">
+                <a href="../home/index.html" class="back-to-site">
                     <i class="fa-solid fa-arrow-left"></i> Back to Live Website
                 </a>
             </div>
@@ -89,7 +89,7 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <div class="brand-logo-pill">
-                    <img src="/assets/logo.png" alt="Fatcat Wealthy" class="sidebar-brand-logo-img">
+                    <img src="../assets/logo.png" alt="Fatcat Wealthy" class="sidebar-brand-logo-img" onerror="this.onerror=null;this.src='/assets/logo.png';">
                 </div>
             </div>
 
@@ -133,7 +133,7 @@
                         <i class="fa-solid fa-user-shield"></i>
                     </div>
                     <div class="user-info">
-                        <span class="user-email" id="adminUserEmailDisplay">admin@fatcatwealthy.com</span>
+                        <span class="user-email" id="adminUserEmailDisplay">fatcatwealthy@gmail.com</span>
                         <span class="session-status">
                             <span class="pulse-dot"></span> Active Session
                         </span>
@@ -141,7 +141,7 @@
                 </div>
 
                 <div class="sidebar-action-buttons">
-                    <a href="/home/index.html" target="_blank" class="btn-sidebar-action btn-live-site">
+                    <a href="../home/index.html" target="_blank" class="btn-sidebar-action btn-live-site">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         <span>Live Site</span>
                     </a>
@@ -168,7 +168,7 @@
                     <button type="button" class="btn-theme-toggle" id="adminThemeToggleBtn" title="Toggle Light/Dark Mode">
                         <i class="fa-solid fa-moon" id="adminThemeToggleIcon"></i>
                     </button>
-                    <a href="/home/index.html" target="_blank" class="btn-view-website">
+                    <a href="../home/index.html" target="_blank" class="btn-view-website">
                         <span>View Website</span>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
@@ -608,6 +608,8 @@
         </div>
     </div>
 
+    <script src="../api-config.js"></script>
+    <script src="../common-components/notifications.js"></script>
     <script src="admin.js"></script>
 </body>
 

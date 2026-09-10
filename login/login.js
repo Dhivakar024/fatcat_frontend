@@ -94,40 +94,97 @@ if (form) {
             return;
         }
 
-        const savedUser = localStorage.getItem("fatcatUser");
-        if (!savedUser) {
-            emailError.textContent = "No account found. Please sign up first.";
-            emailInput.classList.add("invalid");
-            return;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn ? submitBtn.textContent : "Login";
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Logging in...";
         }
 
-        const user = JSON.parse(savedUser);
+        const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
 
-        if (email !== user.email) {
-            emailError.textContent = "Email address is incorrect.";
+        fetch(`${API_BASE}/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        })
+        .then(async res => {
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) {
+                throw new Error("Invalid email or password. Please try again.");
+            }
+
+            localStorage.setItem("fatcat_token", data.access_token);
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem(
+                "loggedInUser",
+                JSON.stringify({
+                    firstName: data.user.firstName,
+                    fullName: data.user.firstName,
+                    email: data.user.email,
+                    phone: data.user.phone
+                })
+            );
+
+            if (typeof showNotification === "function") {
+                showNotification("Login successful! Welcome back.", "success");
+            }
+            setTimeout(() => {
+                window.location.href = "../dashboard/dashboard.html";
+            }, 1000);
+        })
+        .catch(err => {
+            // Offline fallback to localStorage
+            if (err.message && (err.message.includes("Failed to fetch") || err.message.includes("NetworkError"))) {
+                console.warn("Backend offline, checking localStorage fallback:", err);
+                const savedUser = localStorage.getItem("fatcatUser");
+                if (!savedUser) {
+                    if (typeof showNotification === "function") {
+                        showNotification("Invalid email or password. Please try again.", "error");
+                    }
+                    emailError.textContent = "No account found. Please sign up first.";
+                    emailInput.classList.add("invalid");
+                    return;
+                }
+                const user = JSON.parse(savedUser);
+                if (email !== user.email || password !== user.password) {
+                    if (typeof showNotification === "function") {
+                        showNotification("Invalid email or password. Please try again.", "error");
+                    }
+                    emailError.textContent = "Invalid email or password. Please try again.";
+                    emailInput.classList.add("invalid");
+                    return;
+                }
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("loggedInUser", JSON.stringify({
+                    firstName: user.firstName,
+                    fullName: user.fullName || user.firstName,
+                    email: user.email,
+                    phone: user.phone
+                }));
+                if (typeof showNotification === "function") {
+                    showNotification("Login successful! Welcome back.", "success");
+                }
+                setTimeout(() => {
+                    window.location.href = "../dashboard/dashboard.html";
+                }, 1000);
+                return;
+            }
+
+            // Server-returned validation or credential error
+            if (typeof showNotification === "function") {
+                showNotification("Invalid email or password. Please try again.", "error");
+            }
+            emailError.textContent = "Invalid email or password. Please try again.";
             emailInput.classList.add("invalid");
-            return;
-        }
-
-        if (password !== user.password) {
-            passwordError.textContent = "Incorrect password.";
             passwordInput.classList.add("invalid");
-            return;
-        }
-
-        localStorage.setItem("isLoggedIn", "true");
-
-        localStorage.setItem(
-            "loggedInUser",
-            JSON.stringify({
-                firstName: user.firstName,
-                fullName: user.fullName,
-                email: user.email,
-                phone: user.phone
-            })
-        );
-
-        window.location.href = "../dashboard/dashboard.html";
+        })
+        .finally(() => {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
 
     });
 

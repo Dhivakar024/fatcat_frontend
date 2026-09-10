@@ -92,48 +92,84 @@ document.addEventListener("DOMContentLoaded", function () {
             const declaration = document.getElementById("principalDeclaration")?.checked;
 
             if (!name || !email || !details || !declaration) {
-                alert("Please fill in all required fields and accept the agreement.");
+                if (typeof showNotification === "function") {
+                    showNotification("Please fill in all required fields and accept the agreement.", "warning");
+                }
                 return;
             }
 
             const timestamp = new Date();
             const randomCode = Math.floor(1000 + Math.random() * 9000);
-            const trackingId = `DPDP-2026-${randomCode}`;
+            let trackingId = `DPDP-2026-${randomCode}`;
 
-            const newRequest = {
-                id: trackingId,
+            const payload = {
                 principalName: name,
                 email: email,
                 phone: phone || "N/A",
                 requestType: activeRequestType,
                 details: details,
-                status: "Pending",
-                createdAt: timestamp.toISOString(),
-                formattedDate: timestamp.toLocaleDateString("en-US", {
-                    month: "numeric",
-                    day: "numeric",
-                    year: "numeric"
-                })
+                declaration: Boolean(declaration)
             };
 
-            // Save to localStorage
-            try {
-                const existing = JSON.parse(localStorage.getItem("fatcat_dpdp_requests") || "[]");
-                existing.unshift(newRequest);
-                localStorage.setItem("fatcat_dpdp_requests", JSON.stringify(existing));
-                window.dispatchEvent(new CustomEvent("dpdpRequestAdded", { detail: newRequest }));
-            } catch (err) {
-                console.error("Failed to store DPDP request:", err);
-            }
+            const API_BASE = (window.FATCAT_API && window.FATCAT_API.BASE_URL) || "https://fatcat-backend.onrender.com/api";
 
-            // Display Success Screen
-            if (trackingCodeEl) {
-                trackingCodeEl.textContent = trackingId;
-            }
-            requestForm.style.display = "none";
-            if (successScreen) {
-                successScreen.style.display = "block";
-            }
+            fetch(`${API_BASE}/privacy/requests`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            })
+            .then(async res => {
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) {
+                    throw new Error(data.detail || "Unable to submit your privacy request. Please try again.");
+                }
+                if (data.tracking_id) {
+                    trackingId = data.tracking_id;
+                }
+                if (typeof showNotification === "function") {
+                    showNotification("Privacy request submitted successfully!", "success");
+                }
+            })
+            .catch(err => {
+                console.warn("Backend offline or request failed:", err);
+                if (typeof showNotification === "function") {
+                    showNotification("Unable to submit your privacy request. Please try again.", "error");
+                }
+            })
+            .finally(() => {
+                const newRequest = {
+                    id: trackingId,
+                    principalName: name,
+                    email: email,
+                    phone: phone || "N/A",
+                    requestType: activeRequestType,
+                    details: details,
+                    status: "Pending",
+                    createdAt: timestamp.toISOString(),
+                    formattedDate: timestamp.toLocaleDateString("en-US", {
+                        month: "numeric",
+                        day: "numeric",
+                        year: "numeric"
+                    })
+                };
+
+                try {
+                    const existing = JSON.parse(localStorage.getItem("fatcat_dpdp_requests") || "[]");
+                    existing.unshift(newRequest);
+                    localStorage.setItem("fatcat_dpdp_requests", JSON.stringify(existing));
+                    window.dispatchEvent(new CustomEvent("dpdpRequestAdded", { detail: newRequest }));
+                } catch (err) {
+                    console.error("Failed to store DPDP request:", err);
+                }
+
+                if (trackingCodeEl) {
+                    trackingCodeEl.textContent = trackingId;
+                }
+                requestForm.style.display = "none";
+                if (successScreen) {
+                    successScreen.style.display = "block";
+                }
+            });
         });
     }
 });
