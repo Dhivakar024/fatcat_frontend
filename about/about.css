@@ -205,6 +205,17 @@ button:focus-visible {
    transform: translate(0, 0);
 }
 
+@media (max-width: 768px) {
+   .reveal-left,
+   .reveal-right {
+      transform: translateY(24px);
+   }
+   .reveal-left.active,
+   .reveal-right.active {
+      transform: translate(0, 0);
+   }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
    .reveal,

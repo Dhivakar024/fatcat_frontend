@@ -124,6 +124,17 @@ width:100%;
 .trade-container{
 flex-direction:column;
 text-align:center;
+padding:24px 16px;
+}
+
+.trade-content{
+min-width:0;
+width:100%;
+}
+
+.trade-image{
+min-width:0;
+width:100%;
 }
 
 .trade-image img{

@@ -1,5 +1,6 @@
 {
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/", "dest": "/home/index.html" },
     { "src": "/about", "dest": "/about/about.html" },
     { "src": "/services", "dest": "/services/service.html" },
@@ -10,7 +11,8 @@
     { "src": "/privacy-center", "dest": "/privacy-center/index.html" },
     { "src": "/privacy-centre", "dest": "/privacy-center/index.html" },
     { "src": "/privacy_centre", "dest": "/privacy-center/index.html" },
-    { "src": "/admin", "dest": "/admin/index.html" },
-    { "src": "/admin/(.*)", "dest": "/admin/index.html" }
+    { "src": "^/admin$", "status": 308, "headers": { "Location": "/admin/" } },
+    { "src": "^/admin/$", "dest": "/admin/index.html" },
+    { "src": "^/admin/(?!.*\\.[a-zA-Z0-9]+$).*", "dest": "/admin/index.html" }
   ]
 }

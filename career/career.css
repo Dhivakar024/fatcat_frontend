@@ -316,6 +316,17 @@ opacity:1;
 transform:translateX(0);
 }
 
+@media(max-width:768px){
+.reveal-left,
+.reveal-right{
+transform:translateY(24px);
+}
+.reveal-left.active,
+.reveal-right.active{
+transform:translate(0, 0);
+}
+}
+
 
 .reveal-zoom{
 opacity:0;
@@ -626,6 +637,11 @@ color:#888;
 
 .career-container{
 grid-template-columns:1fr;
+margin: 0 auto;
+width: 100%;
+max-width: 100%;
+padding: 0 16px;
+box-sizing: border-box;
 }
 
 .job-details{
@@ -672,7 +688,11 @@ color:white;
 
     .career-container {
         grid-template-columns: 1fr; /* stack layout */
-        margin: 0 30px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0 24px;
         gap: 30px;
     }
 
@@ -690,7 +710,11 @@ color:white;
 @media (max-width: 768px) {
 
     .career-container {
-        margin: 0 20px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0 16px;
         gap: 20px;
     }
 
@@ -729,7 +753,11 @@ color:white;
 @media (max-width: 480px) {
 
     .career-container {
-        margin: 0 15px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0 12px;
     }
 
     .job-card {
@@ -755,7 +783,11 @@ color:white;
 @media (max-width: 360px) {
 
     .career-container {
-        margin: 0 10px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0 8px;
     }
 
     .job-card h3 {

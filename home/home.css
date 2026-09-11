@@ -1110,6 +1110,17 @@ body.dark-mode .form-box .inpage-terms label {
     transform: translate(0, 0);
 }
 
+@media (max-width: 768px) {
+    .reveal-left,
+    .reveal-right {
+        transform: translateY(24px);
+    }
+    .reveal-left.active,
+    .reveal-right.active {
+        transform: translate(0, 0);
+    }
+}
+
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -1467,8 +1478,8 @@ body.dark-mode .form-cancel-btn {
     }
 }
 
-/* --- Laptop & High-DPI Display Scale Support (max-width: 1366px) --- */
-@media screen and (max-width: 1366px) {
+/* --- Laptop & High-DPI Display Scale Support (769px - 1366px) --- */
+@media screen and (min-width: 769px) and (max-width: 1366px) {
     .service-box {
         display: flex !important;
         flex-direction: row !important;
@@ -1549,10 +1560,22 @@ body.dark-mode .form-cancel-btn {
 @media (max-width: 768px) {
     .service-box,
     .service-box.reverse {
-        flex-direction: column;
+        flex-direction: column !important;
         text-align: center;
         gap: 24px;
         margin-bottom: 40px;
+    }
+
+    .service-image {
+        flex: none !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .service-content {
+        width: 100% !important;
+        min-width: 0 !important;
     }
 
     .contact-container {

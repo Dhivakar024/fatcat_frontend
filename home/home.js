@@ -80,18 +80,43 @@ document.addEventListener("DOMContentLoaded", () => {
     function closeModal() {
       modal.style.display = "none";
     }
-    // ─────────────────────────────────────────────────────
 
-    // Show modal 1 s after page finishes loading
-    window.addEventListener("load", () => {
-      setTimeout(openModal, 1000);
+    window.openEnquiryModal = openModal;
+    window.closeEnquiryModal = closeModal;
+
+    // ─────────────────────────────────────────────────────
+    // Show modal ONLY when website is opened initially OR refreshed/reloaded.
+    // Must NOT automatically appear on inter-page navigation.
+    const navEntries = (window.performance && typeof window.performance.getEntriesByType === "function") 
+      ? window.performance.getEntriesByType("navigation") 
+      : [];
+    const isReload = (navEntries.length > 0 && navEntries[0].type === "reload") || 
+      (window.performance && window.performance.navigation && window.performance.navigation.type === 1);
+    const hasShownSession = sessionStorage.getItem("fatcat_enquiry_shown");
+
+    if (isReload || !hasShownSession) {
+      sessionStorage.setItem("fatcat_enquiry_shown", "true");
+      if (document.readyState === "complete") {
+        setTimeout(openModal, 1000);
+      } else {
+        window.addEventListener("load", () => {
+          setTimeout(openModal, 1000);
+        });
+      }
+    }
+
+    // Manual triggers if clicked anywhere
+    document.querySelectorAll("[data-open-enquiry], .btn-open-enquiry, a[href='#enquiryModal']").forEach(trigger => {
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        openModal();
+      });
     });
 
     // Close via ✕ button
     if (closeBtn) {
       closeBtn.addEventListener("click", closeModal);
     }
-    
 
     // Close via Cancel button (it's type="reset" — also close the modal)
     if (cancelBtn) {

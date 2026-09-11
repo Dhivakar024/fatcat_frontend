@@ -571,14 +571,16 @@ scroll-behavior:smooth;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 30px;
+  overflow: hidden;
+  width: 100%;
 }
 
 /* LOAN AMOUNT - AUTO SCROLL MARQUEE */
 .amount-slider-wrap {
   overflow: hidden;
   width: 100%;
-  margin-left:0;
-  margin-left: calc(-50vw + 50%);
+  max-width: 100%;
+  margin-left: 0;
   margin-top: 40px;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
@@ -709,8 +711,9 @@ scroll-behavior:smooth;
 /* LOAN AMOUNT - AUTO SCROLL MARQUEE */
 .amount-slider-wrap {
   overflow: hidden;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
 }
@@ -979,6 +982,9 @@ scroll-behavior:smooth;
   .eligibility-grid {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
+    width: 100%;
+    max-width: 100%;
+    transform: none;
   }
 
   .eligibility-card {

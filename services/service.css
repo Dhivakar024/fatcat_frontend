@@ -76,7 +76,16 @@ main{background:#f7f7f7}
 .service-details p{color:var(--muted);margin:10px 0}
 .service-details ul{color:var(--muted);padding-left:18px}
 
-@media(max-width:900px){.services-container{grid-template-columns:1fr}.financial-container{grid-template-columns:1fr;text-align:center}.hero-content{text-align:center;padding-left:0;padding:0 4%}}
+@media(max-width:900px){
+  .services-container{grid-template-columns:1fr}
+  .stats-container{grid-template-columns:1fr;gap:16px}
+  .financial-container{grid-template-columns:1fr;text-align:center}
+  .financial-images{grid-template-columns:1fr}
+  .service-card{flex-direction:column}
+  .service-img{flex:none;width:100%}
+  .service-img img{width:100%;height:180px}
+  .hero-content{text-align:center;padding-left:0;padding:0 4%}
+}
 
 /* CONSULTANCY */
 .consultancy{padding:70px 0;background-image:linear-gradient(180deg,rgba(7,16,38,0.6),rgba(7,16,38,0.6)),url('../assets/bg8.jpg');background-size:cover;background-position:center;color:#f1f4f8}
