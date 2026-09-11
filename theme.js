@@ -107,10 +107,10 @@
   const formatFooterContactDetails = () => {
     const address = "1st Floor, CPS Tower, Advaitha Ashram Rd, Fairlands - Salem, Chennai";
 
-    document.querySelectorAll("footer.footer .contact-item span").forEach((detail) => {
+    document.querySelectorAll("footer.footer .contact-item span, footer.footer .contact-item a").forEach((detail) => {
       const text = detail.textContent.replace(/\s+/g, " ").trim();
 
-      if (text === "support@fatcatwealthy.com") {
+      if (text === "fatcatwealthy@gmail.com") {
         detail.classList.add("contact-email");
       }
 

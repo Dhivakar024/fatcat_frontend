@@ -217,9 +217,34 @@ flex:0 0 18px;
 margin-top:3px;
 }
 
+.contact-item a{
+color:inherit;
+text-decoration:none;
+transition:color 0.25s ease;
+display:inline-block;
+word-break:break-word;
+overflow-wrap:break-word;
+}
+
+.contact-item a:hover{
+color:#38f8c2;
+text-decoration:underline;
+}
+
 .contact-email{
 word-break:break-word;
 overflow-wrap:break-word;
+}
+
+.legal-email-link{
+color:#1e8ea3 !important;
+text-decoration:underline !important;
+font-weight:600;
+transition:color 0.2s ease;
+}
+
+.legal-email-link:hover{
+color:#0b1b66 !important;
 }
 
 .contact-address{
