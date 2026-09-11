@@ -138,6 +138,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (modalForm) {
       modalForm.addEventListener("submit", function (e) {
         e.preventDefault();
+
+        const terms = modalForm.querySelector('#modalTerms, .terms-checkbox');
+        if (terms && !terms.checked) {
+          terms.focus();
+          terms.classList.add("input-invalid");
+          if (typeof showNotification === "function") {
+            showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+          }
+          return;
+        }
+
         const inputs = modalForm.querySelectorAll("input, textarea");
         const payload = {
           fullName: modalForm.querySelector('input[type="text"]')?.value.trim() || "",
@@ -181,6 +192,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (inpageForm) {
     inpageForm.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      const terms = inpageForm.querySelector('#homeEnquiryTerms, .terms-checkbox');
+      if (terms && !terms.checked) {
+        terms.focus();
+        terms.classList.add("input-invalid");
+        if (typeof showNotification === "function") {
+          showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+        }
+        return;
+      }
+
       const payload = {
         fullName: inpageForm.querySelector('input[type="text"]')?.value.trim() || "",
         email: inpageForm.querySelector('input[type="email"]')?.value.trim() || "",

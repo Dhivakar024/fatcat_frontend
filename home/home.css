@@ -133,18 +133,20 @@ img {
     margin-bottom: 12px;
 }
 
-.modal-terms input[type="checkbox"] {
+.modal-terms input[type="checkbox"],
+.terms-checkbox {
     width: 16px;
     height: 16px;
     margin: 0;
-    cursor: not-allowed;
+    cursor: pointer;
     accent-color: #0b1b66;
     flex-shrink: 0;
-    opacity: 0.65;
+    opacity: 1;
     transition: all 0.25s ease;
 }
 
-.modal-terms input[type="checkbox"]:not(:disabled) {
+.modal-terms input[type="checkbox"]:not(:disabled),
+.terms-checkbox:not(:disabled) {
     cursor: pointer;
     opacity: 1;
 }
@@ -271,7 +273,7 @@ body.dark-mode .form-box .inpage-terms label {
     object-fit: cover;
     object-position: center center;
     z-index: 0;
-    filter: brightness(0.55) contrast(1.05);
+    filter: none;
 }
 
 .hero-overlay {

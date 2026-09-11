@@ -263,6 +263,46 @@ input[type="file"]{
 
 
 /* ===============================
+   TERMS & CONDITIONS
+================================ */
+
+.form-terms {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.form-terms .terms-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #344b52;
+    user-select: none;
+}
+
+.form-terms input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #168e9e;
+    flex-shrink: 0;
+    opacity: 1;
+}
+
+.form-terms a {
+    color: #168e9e;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.form-terms a:hover {
+    color: #0b1b66;
+}
+
+/* ===============================
    MOBILE
 ================================ */
 
@@ -293,4 +333,121 @@ input[type="file"]{
         width:100%;
     }
 
+}
+
+/* ===============================
+   DARK MODE
+================================ */
+
+body.dark-mode {
+    background: #080c14 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .application-page {
+    background: #080c14 !important;
+}
+
+body.dark-mode .application-header h1 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .application-header p {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .application-tag {
+    background: rgba(56, 189, 248, 0.15) !important;
+    color: #38bdf8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+body.dark-mode .application-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.dark-mode .selected-job {
+    background: #172033 !important;
+    border-left: 4px solid #38bdf8 !important;
+}
+
+body.dark-mode .selected-job span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .selected-job h2 {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .form-section h3 {
+    color: #ffffff !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+body.dark-mode .form-group label {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+}
+
+body.dark-mode input[type="file"] {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .form-group small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .form-terms .terms-label {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .form-terms input[type="checkbox"] {
+    accent-color: #38bdf8 !important;
+}
+
+body.dark-mode .form-terms a {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .application-actions {
+    border-top: 1px solid #1e293b !important;
+}
+
+body.dark-mode .cancel-btn {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .cancel-btn:hover {
+    background: #334155 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .submit-btn {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35) !important;
+}
+
+body.dark-mode .submit-btn:hover {
+    background: #1d4ed8 !important;
 }

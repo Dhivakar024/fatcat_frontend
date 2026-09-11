@@ -39,7 +39,16 @@
 
     const drawerToggle = document.getElementById("drawerThemeToggle");
     if (drawerToggle) {
-      drawerToggle.checked = !isDark;
+      drawerToggle.checked = isDark;
+    }
+    const drawerLabel = document.querySelector(".drawer-theme-label");
+    if (drawerLabel) {
+      drawerLabel.textContent = isDark ? "Dark Mode" : "Light Mode";
+    }
+    const drawerIcon = document.querySelector(".drawer-theme-icon");
+    if (drawerIcon) {
+      drawerIcon.className = `fa-solid ${isDark ? "fa-moon" : "fa-sun"} drawer-theme-icon`;
+      drawerIcon.style.color = isDark ? "#ffd700" : "#f5a623";
     }
   };
 
@@ -158,17 +167,26 @@
        DARK MODE COMPREHENSIVE HIGH-CONTRAST & ULTRA-READABLE TYPOGRAPHY
        ========================================================= */
     body.dark-mode { background: #080c14 !important; color: #f8fafc !important; }
-    body.dark-mode main,
-    body.dark-mode section:not(.hero):not(.hero-section):not(.cta-section) { background-color: #080c14 !important; }
+    body.dark-mode main:not(.login-main):not(.signup-main) { background-color: #080c14 !important; }
+    body.dark-mode section:not(.hero):not(.hero-section):not(.cta-section):not(.stock-hero):not(.mf-hero):not(.insurance-hero):not(.career-hero):not(.services-hero):not(.consultancy):not(.business-hero) { background-color: #080c14 !important; }
 
+    /* Preserve Full Background Video & Image Clarity in Dark Mode */
+    body.dark-mode video,
     body.dark-mode .hero-video,
-    body.dark-mode .cta-video { filter: brightness(0.7) contrast(1.05) !important; }
-    body.dark-mode .hero-overlay { background-color: rgba(0, 0, 0, 0.55) !important; }
-    body.dark-mode .hero-section,
-    body.dark-mode .hero,
-    body.dark-mode .cta-section,
-    body.dark-mode main.login-main,
-    body.dark-mode main.signup-main { background-color: transparent !important; }
+    body.dark-mode .cta-video,
+    body.dark-mode .bg-video,
+    body.dark-mode .business-video,
+    body.dark-mode .insurance-hero-video,
+    body.dark-mode .mf-hero-video,
+    body.dark-mode .hero-bg-video,
+    body.dark-mode .admin-login-bg-video {
+      filter: none !important;
+      opacity: 1 !important;
+    }
+    body.dark-mode .hero-overlay { background-color: rgba(8, 12, 20, 0.40) !important; }
+    body.dark-mode :is(.stock-hero, .career-hero, .services-hero, .consultancy, .business-hero, .hero, .hero-section, .cta-section, .mf-hero, .insurance-hero, .loans-hero, .bg-video-container, main.login-main, main.signup-main) {
+      background-color: transparent !important;
+    }
 
     body.dark-mode :is(.login-box, .signup-box) {
       background: rgba(17, 24, 39, 0.95) !important;
@@ -264,7 +282,11 @@
     body.dark-mode .drawer-sub2-dot { background: #60a5fa !important; }
     body.dark-mode .drawer-view-all { color: #38bdf8 !important; }
     body.dark-mode .drawer-footer { border-top: 1px solid #1e293b !important; background: #070a10 !important; }
-    body.dark-mode .drawer-theme-label { color: #ffffff !important; }
+    body.dark-mode .drawer-theme-row { color: #ffffff !important; }
+    body.dark-mode .drawer-theme-label { color: #ffffff !important; font-weight: 500; }
+    body.dark-mode .drawer-theme-icon { color: #ffd700 !important; }
+    body.dark-mode .drawer-slider { background: #2563eb !important; }
+    body.dark-mode .drawer-slider::before { background: #ffffff !important; }
 
     /* --- Calculators (Lumpsum, SIP, ELSS, MF Returns, Step-up, SWP) --- */
     body.dark-mode .calc-hero,
@@ -597,7 +619,7 @@
               input.classList.add("input-valid");
             }
           } else if (input.type === "checkbox") {
-            if (!input.checked || input.disabled) isFormValid = false;
+            // Terms checkboxes are validated at submission to display friendly toast notifications
           } else if (!val) {
             isFormValid = false;
             if (isTouched) {
@@ -612,16 +634,28 @@
           }
         });
 
-        if (isFormValid) {
-          submitBtn.disabled = false;
-          submitBtn.classList.remove("btn-disabled");
-          submitBtn.removeAttribute("aria-disabled");
-        } else {
-          submitBtn.disabled = true;
-          submitBtn.classList.add("btn-disabled");
-          submitBtn.setAttribute("aria-disabled", "true");
-        }
+        // Keep submit button clickable so submission attempt triggers validation toasts
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("btn-disabled");
+        submitBtn.removeAttribute("aria-disabled");
       }
+
+      // Universal Terms & Conditions validation guard on form submission
+      form.addEventListener("submit", (e) => {
+        const termsCb = form.querySelector('.terms-checkbox, #modalTerms, #homeEnquiryTerms, #contactTerms, #signupTerms, #careerTerms');
+        if (termsCb && !termsCb.checked) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          termsCb.focus();
+          termsCb.classList.add("input-invalid");
+          if (typeof window.showNotification === "function") {
+            window.showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+          } else {
+            alert("Please agree to the Terms & Conditions to proceed.");
+          }
+          return false;
+        }
+      }, true);
 
       const allInputs = form.querySelectorAll("input, select, textarea");
       allInputs.forEach(input => {

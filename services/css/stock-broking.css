@@ -340,3 +340,98 @@ transform:translateY(0);
     font-size:28px;
   }
 }
+
+/* =========================================================
+   STOCK BROKING COMPREHENSIVE DARK MODE STYLING
+   ========================================================= */
+body.dark-mode {
+  background-color: #080c14 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .stock-hero {
+  background: url("../../assets/sbHero.png") center/cover no-repeat !important;
+}
+
+body.dark-mode .stock-hero-overlay {
+  background: rgba(8, 12, 20, 0.45) !important;
+}
+
+body.dark-mode .stock-hero-content h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .trade-section {
+  background-color: #080c14 !important;
+}
+
+body.dark-mode .trade-container {
+  background: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .trade-content h2 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .trade-content p {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .services-section {
+  background-color: #0b0f19 !important;
+}
+
+body.dark-mode .services-section .section-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .service-card {
+  background: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-mode .service-card:hover {
+  background: #1e293b !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark-mode .service-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .service-card p {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .cta-section {
+  background-color: #080c14 !important;
+}
+
+body.dark-mode .cta-container {
+  background: linear-gradient(135deg, #0d1e3a, #11284d) !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .cta-container h2 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .cta-container p {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .cta-btn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #3b82f6 !important;
+}
+
+body.dark-mode .cta-btn:hover {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}

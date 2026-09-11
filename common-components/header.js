@@ -163,29 +163,58 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;   // don't close drawer
             }
 
-            // ── Real nav links & login button: close drawer ──
-            const isRealLink = e.target.closest('.drawer-link:not(.drawer-toggle-row)')
-                            || e.target.closest('.drawer-sub-link:not(.drawer-toggle-row2)')
-                            || e.target.closest('.drawer-sub2-link')
-                            || e.target.closest('.drawer-login-btn');
-            if (isRealLink) {
-                closeDrawer();
+            // ── Inside Mobile Drawer clicks ──
+            if (e.target.closest('#mobileDrawer')) {
+                const isRealLink = e.target.closest('.drawer-link:not(.drawer-toggle-row)')
+                                || e.target.closest('.drawer-sub-link:not(.drawer-toggle-row2)')
+                                || e.target.closest('.drawer-sub2-link')
+                                || e.target.closest('.drawer-login-btn');
+                if (isRealLink) {
+                    closeDrawer();
+                }
                 return;
             }
         });
 
 
-        // Drawer light-mode toggle
+        // Drawer dark/light-mode toggle
+        function updateDrawerThemeUI(isDark) {
+            if (drawerTheme) drawerTheme.checked = isDark;
+            const drawerLabel = document.querySelector('.drawer-theme-label');
+            if (drawerLabel) drawerLabel.textContent = isDark ? "Dark Mode" : "Light Mode";
+            const drawerIcon = document.querySelector('.drawer-theme-icon');
+            if (drawerIcon) {
+                drawerIcon.className = `fa-solid ${isDark ? "fa-moon" : "fa-sun"} drawer-theme-icon`;
+                drawerIcon.style.color = isDark ? "#ffd700" : "#f5a623";
+            }
+        }
+
         if (drawerTheme) {
-            drawerTheme.checked = !document.body.classList.contains('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode');
+            updateDrawerThemeUI(isDark);
+
             drawerTheme.addEventListener('change', () => {
-                const nextTheme = drawerTheme.checked ? 'light' : 'dark';
+                const nextTheme = drawerTheme.checked ? 'dark' : 'light';
                 if (typeof window.applyTheme === 'function') {
                     window.applyTheme(nextTheme);
                 } else {
-                    document.body.classList.toggle('dark-mode', !drawerTheme.checked);
+                    document.body.classList.toggle('dark-mode', drawerTheme.checked);
+                    updateDrawerThemeUI(drawerTheme.checked);
                 }
             });
+
+            // Allow tapping anywhere on .drawer-theme-row to toggle
+            const drawerThemeRow = document.querySelector('.drawer-theme-row');
+            if (drawerThemeRow) {
+                drawerThemeRow.style.cursor = 'pointer';
+                drawerThemeRow.addEventListener('click', (e) => {
+                    if (!e.target.closest('.drawer-toggle-switch')) {
+                        e.preventDefault();
+                        drawerTheme.checked = !drawerTheme.checked;
+                        drawerTheme.dispatchEvent(new Event('change'));
+                    }
+                });
+            }
         }
 
         // ── Active Page Navigation Highlighting ──

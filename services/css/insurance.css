@@ -369,6 +369,7 @@ transform:translateY(0);
   height:200px;
   background:white;
   border-radius:12px;
+  border: 1px solid #e2e8f0;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -380,6 +381,7 @@ transform:translateY(0);
 .type-card img{
   width:40px;
   margin-bottom:8px;
+  filter: drop-shadow(0 2px 4px rgba(11,27,102,0.12));
 }
 
 .type-card p{
@@ -820,7 +822,7 @@ transform:translateY(-6px);
 .why-icon{
 width:40px;
 height:40px;
-background:#1e9bb3;
+background:#0b1b66;
 color:white;
 display:flex;
 align-items:center;
@@ -829,6 +831,7 @@ border-radius:8px;
 margin:auto;
 margin-bottom:15px;
 font-size:18px;
+box-shadow: 0 4px 10px rgba(11,27,102,0.25);
 }
 .why-icon svg{
 color:white;
@@ -904,4 +907,220 @@ transition:all .8s ease;
 .scroll-animate.active{
 opacity:1;
 transform:translateY(0);
+}
+
+/* =========================================================
+   INSURANCE COMPREHENSIVE DARK MODE & HIGH-CONTRAST ICONS
+   ========================================================= */
+body.dark-mode {
+  background-color: #080c14 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .insurance-hero {
+  background: transparent !important;
+}
+
+body.dark-mode .insurance-hero-video {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+body.dark-mode .hero-left h1 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .hero-left h1 span {
+  color: #ffd400 !important;
+}
+
+body.dark-mode .hero-left p {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .stat-box {
+  background: rgba(17, 24, 39, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .insurance-simple {
+  background-color: #080c14 !important;
+}
+
+body.dark-mode .insurance-simple .section-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .type-card {
+  background: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-mode .type-card p {
+  color: #f8fafc !important;
+  font-weight: 600 !important;
+}
+
+body.dark-mode .type-card img {
+  filter: brightness(1.2) contrast(1.1) drop-shadow(0 2px 6px rgba(56, 189, 248, 0.3)) !important;
+}
+
+body.dark-mode .type-card:hover {
+  background: #1e293b !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark-mode .product-features {
+  background-color: #0b0f19 !important;
+}
+
+body.dark-mode .product-features .section-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .feature-tabs .tab-btn {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border: 1px solid #334155 !important;
+}
+
+body.dark-mode .feature-tabs .tab-btn.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #3b82f6 !important;
+}
+
+body.dark-mode .feature-card {
+  background: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-mode .feature-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .feature-card p {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .view-plan-btn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .join-us {
+  background-color: #080c14 !important;
+}
+
+body.dark-mode .join-us .section-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .join-card {
+  background: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-mode .join-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .join-card p {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .protection-plan {
+  background-color: #0b0f19 !important;
+}
+
+body.dark-mode .protection-plan .section-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .protection-plan .section-sub {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .plan-card {
+  background: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .plan-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .plan-desc {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .coverage-box {
+  background: #172033 !important;
+  border: 1px solid #1e293b !important;
+}
+
+body.dark-mode .coverage-box p {
+  color: #94a3b8 !important;
+}
+
+body.dark-mode .coverage-box h4 {
+  color: #38bdf8 !important;
+}
+
+body.dark-mode .coverage-box h5 {
+  color: #4ade80 !important;
+}
+
+body.dark-mode .plan-features {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .plan-features li {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .plan-btn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .why-insurance {
+  background-color: #080c14 !important;
+}
+
+body.dark-mode .why-insurance .section-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .why-insurance .section-sub {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .why-card {
+  background: #111827 !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-mode .why-card h3 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .why-card p {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .why-icon {
+  background: rgba(56, 189, 248, 0.15) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-mode .why-icon svg {
+  stroke: #38bdf8 !important;
 }

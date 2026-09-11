@@ -5,17 +5,17 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-body{
-font-family: 'Poppins', sans-serif;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+}
 
-
-
-
-
-html{
-scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 } 
 
 
@@ -1622,5 +1622,125 @@ body.dark-mode .work-btn {
 
 body.dark-mode .work-btn:hover {
     background: #1d4ed8 !important;
+    color: #ffffff !important;
+}
+
+/* ===============================
+   CAREER DARK MODE ENHANCEMENTS
+================================ */
+body.dark-mode .join-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    color: #f8fafc !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .join-card h4 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .join-card p {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .join-icon {
+    background: rgba(28, 142, 162, 0.25) !important;
+    border: 1.5px solid rgba(56, 189, 248, 0.5) !important;
+}
+
+body.dark-mode .join-icon i,
+body.dark-mode .join-icon {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .join-icon.green {
+    background: rgba(63, 169, 122, 0.25) !important;
+    border-color: rgba(74, 222, 128, 0.5) !important;
+}
+
+body.dark-mode .join-icon.green i,
+body.dark-mode .join-icon.green {
+    color: #4ade80 !important;
+}
+
+body.dark-mode .join-icon.blue {
+    background: rgba(76, 124, 214, 0.25) !important;
+    border-color: rgba(96, 165, 250, 0.5) !important;
+}
+
+body.dark-mode .join-icon.blue i,
+body.dark-mode .join-icon.blue {
+    color: #60a5fa !important;
+}
+
+body.dark-mode .join-icon.orange {
+    background: rgba(242, 140, 58, 0.25) !important;
+    border-color: rgba(251, 146, 60, 0.5) !important;
+}
+
+body.dark-mode .join-icon.orange i,
+body.dark-mode .join-icon.orange {
+    color: #fb923c !important;
+}
+
+body.dark-mode .job-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .job-card:hover {
+    background: #1e293b !important;
+    border-color: #38bdf8 !important;
+}
+
+body.dark-mode .job-card.active {
+    background: #172033 !important;
+    border-color: #38bdf8 !important;
+}
+
+body.dark-mode .job-card h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .job-card p {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .job-details {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .job-details h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .job-details h4 {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .job-details p,
+body.dark-mode .job-details li {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .job-filter-container {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+body.dark-mode .job-search-input,
+body.dark-mode #experienceFilter,
+body.dark-mode #locationFilter,
+body.dark-mode #categoryFilter {
+    background: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .job-search-btn {
+    background: #2563eb !important;
     color: #ffffff !important;
 }

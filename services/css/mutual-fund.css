@@ -1019,3 +1019,271 @@ margin-bottom:10px;
 font-size:18px;
 color:#555;
 }
+
+/* =========================================================
+   MUTUAL FUNDS COMPREHENSIVE DARK MODE STYLING
+   ========================================================= */
+body.dark-mode {
+    background-color: #080c14 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .mf-hero {
+    background: transparent !important;
+}
+
+body.dark-mode .mf-hero::before {
+    background: linear-gradient(90deg, rgba(5, 24, 59, 0.75), rgba(5, 24, 59, 0.45)) !important;
+}
+
+body.dark-mode .mf-hero-video {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .mf-hero-text h1 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .mf-hero-text span {
+    color: #ffd400 !important;
+}
+
+body.dark-mode .mf-hero-text p {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .mf-intro {
+    background-color: #080c14 !important;
+}
+
+body.dark-mode .mf-intro h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .mf-intro p {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .mf-trending {
+    background-color: #0b0f19 !important;
+}
+
+body.dark-mode .mf-trending-header h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .tab-btn {
+    background: #1e293b !important;
+    color: #cbd5e1 !important;
+    border: 1px solid #334155 !important;
+}
+
+body.dark-mode .tab-btn:hover {
+    background: #334155 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .tab-btn.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #3b82f6 !important;
+}
+
+body.dark-mode .know-more-btn {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .fund-card {
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .fund-card:hover {
+    background: #1e293b !important;
+    border-color: #38bdf8 !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .explore-mf {
+    background-color: #080c14 !important;
+}
+
+body.dark-mode .explore-title h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .mf-sidebar {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+body.dark-mode .mf-sidebar h4 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .mf-category {
+    color: #e2e8f0 !important;
+    background: transparent !important;
+}
+
+body.dark-mode .mf-category:hover {
+    background: #1e293b !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .mf-category.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .table-wrapper {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+body.dark-mode .mf-table thead tr {
+    background: #1e293b !important;
+}
+
+body.dark-mode .mf-table th {
+    color: #ffffff !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+body.dark-mode .mf-table tbody tr {
+    border-bottom: 1px solid #1e293b !important;
+}
+
+body.dark-mode .mf-table tbody tr:hover {
+    background: #172033 !important;
+}
+
+body.dark-mode .mf-table td {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .mf-benefits {
+    background-color: #0b0f19 !important;
+}
+
+body.dark-mode .mf-header h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .mf-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .mf-card h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .mf-card p {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .mf-card .icon {
+    background: rgba(56, 189, 248, 0.15) !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .investment-section {
+    background-color: #080c14 !important;
+}
+
+body.dark-mode .investment-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .investment-sub {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .investment-card,
+body.dark-mode .investment-grid .investment-card {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .investment-card h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .investment-card p {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .investment-info {
+    background: #172033 !important;
+    border: 1px solid #1e293b !important;
+}
+
+body.dark-mode .investment-info span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .investment-info h4 {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .investment-info .min-invest {
+    color: #fbbf24 !important;
+}
+
+body.dark-mode .investment-card ul li {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .calculator-section {
+    background-color: #0b0f19 !important;
+}
+
+body.dark-mode .calculator-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .calc-btn {
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #1e293b !important;
+}
+
+body.dark-mode .calc-btn:hover {
+    background: #2563eb !important;
+    border-color: #3b82f6 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .why-mf-section {
+    background-color: #080c14 !important;
+}
+
+body.dark-mode .why-mf-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .why-mf-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .why-mf-card h4 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .why-mf-card p {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .why-mf-icon {
+    color: #38bdf8 !important;
+}

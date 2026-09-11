@@ -31,13 +31,14 @@ function setupContactForm() {
         console.log("[FatCat Contact] defaultPrevented =", e.defaultPrevented);
 
         const termsCb = contactForm.querySelector("#contactTerms, .terms-checkbox");
-        if (termsCb && (!termsCb.checked || termsCb.disabled)) {
+        if (termsCb && !termsCb.checked) {
+            termsCb.focus();
+            termsCb.classList.add("input-invalid");
             if (typeof showNotification === "function") {
                 showNotification("Please agree to the Terms & Conditions before submitting.", "warning");
             } else {
                 alert("Please agree to the Terms & Conditions before submitting.");
             }
-            if (termsCb) termsCb.focus();
             return;
         }
 

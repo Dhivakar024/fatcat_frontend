@@ -75,6 +75,18 @@ function setupCareerForm() {
                 return;
             }
 
+            const termsCb = document.getElementById("careerTerms");
+            if (termsCb && !termsCb.checked) {
+                termsCb.focus();
+                termsCb.classList.add("input-invalid");
+                showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+                return;
+            }
+
             const currentJob = (selectedJob || (jobElement ? jobElement.textContent.trim() : "General Application"));
 
             // Construct multipart FormData payload directly without blocking FileReader

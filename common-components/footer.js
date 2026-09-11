@@ -113,16 +113,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         function closeModal() {
-            if (currentActiveTab === "terms") {
-                unlockTermsCheckboxes();
-            }
             modal.classList.remove("active");
             document.body.style.overflow = "";
         }
 
         function unlockTermsCheckboxes() {
             const checkboxes = document.querySelectorAll(
-                '#modalTerms, #homeEnquiryTerms, #contactTerms, #signupTerms, .terms-checkbox, input[data-terms-checkbox]'
+                '#modalTerms, #homeEnquiryTerms, #contactTerms, #signupTerms, #careerTerms, .terms-checkbox, input[data-terms-checkbox]'
             );
             checkboxes.forEach(cb => {
                 cb.disabled = false;
@@ -138,6 +135,14 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             window.dispatchEvent(new CustomEvent("termsUnderstood"));
         }
+
+        function enableAllTermsCheckboxes() {
+            document.querySelectorAll('#modalTerms, #homeEnquiryTerms, #contactTerms, #signupTerms, #careerTerms, .terms-checkbox').forEach(cb => {
+                cb.disabled = false;
+                cb.removeAttribute("disabled");
+            });
+        }
+        enableAllTermsCheckboxes();
 
         tabBtns.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -181,34 +186,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 openModal(tab);
                 return;
             }
-
-            // If user clicks a disabled terms checkbox or its container, open Terms & Conditions modal directly
-            const disabledTerms = e.target.closest('.terms-checkbox[disabled], .modal-terms input[disabled], .contact-terms-group input[disabled], .modal-terms, .contact-terms-group');
-            if (disabledTerms) {
-                const cb = disabledTerms.tagName === 'INPUT' ? disabledTerms : disabledTerms.querySelector('input[type="checkbox"]');
-                if (cb && cb.disabled) {
-                    e.preventDefault();
-                    openModal("terms");
-                }
-            }
         });
 
-        // Guard against form submission if terms checkbox is disabled / unaccepted
+        // Guard against form submission if terms checkbox is unaccepted
         document.addEventListener("submit", (e) => {
             const form = e.target;
-            const termsCb = form.querySelector('#modalTerms, #homeEnquiryTerms, #contactTerms, .terms-checkbox');
-            if (termsCb) {
-                if (termsCb.disabled) {
-                    e.preventDefault();
-                    openModal("terms");
-                    return false;
-                } else if (!termsCb.checked) {
-                    e.preventDefault();
-                    termsCb.focus();
-                    return false;
+            const termsCb = form.querySelector('#modalTerms, #homeEnquiryTerms, #contactTerms, #signupTerms, #careerTerms, .terms-checkbox');
+            if (termsCb && !termsCb.checked) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                termsCb.focus();
+                termsCb.classList.add("input-invalid");
+                if (typeof window.showNotification === "function") {
+                    window.showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+                } else {
+                    alert("Please agree to the Terms & Conditions to proceed.");
                 }
+                return false;
             }
-        });
+        }, true);
 
         window.openLegalModal = openModal;
         window.closeLegalModal = closeModal;

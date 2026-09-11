@@ -411,18 +411,23 @@ a {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 4px 0;
+    padding: 6px 0;
+    cursor: pointer;
+    user-select: none;
 }
 
 .drawer-theme-icon {
     font-size: 16px;
     color: #f5a623;
+    transition: color 0.3s ease;
 }
 
 .drawer-theme-label {
     font-size: 14px;
-    color: #444;
+    font-weight: 500;
+    color: #334155;
     flex: 1;
+    transition: color 0.3s ease;
 }
 
 /* Toggle switch */
@@ -443,9 +448,9 @@ a {
 .drawer-slider {
     position: absolute;
     inset: 0;
-    background: #0b1b66;
+    background: #cbd5e1;
     border-radius: 26px;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
 
 .drawer-slider::before {
@@ -457,15 +462,28 @@ a {
     top: 3px;
     background: white;
     border-radius: 50%;
-    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .drawer-toggle-switch input:checked + .drawer-slider {
-    background: #0b1b66;
+    background: #2563eb;
 }
 
 .drawer-toggle-switch input:checked + .drawer-slider::before {
     transform: translateX(20px);
+}
+
+body.dark-mode .drawer-theme-label {
+    color: #ffffff !important;
+}
+
+body.dark-mode .drawer-theme-icon {
+    color: #ffd700 !important;
+}
+
+body.dark-mode .drawer-slider {
+    background: #2563eb !important;
 }
 
 /* ===== Drawer Nested Accordion (Services) ===== */
