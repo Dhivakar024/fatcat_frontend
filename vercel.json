@@ -1,16 +1,76 @@
 {
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/", "dest": "/home/index.html" },
-    { "src": "/about", "dest": "/about/about.html" },
-    { "src": "/services", "dest": "/services/service.html" },
-    { "src": "/academy", "dest": "/academy/academy.html" },
-    { "src": "/business", "dest": "/business/business.html" },
-    { "src": "/career", "dest": "/career/career.html" },
-    { "src": "/contact", "dest": "/contact/contact.html" },
-    { "src": "/privacy-center", "dest": "/privacy-center/index.html" },
-    { "src": "/privacy-centre", "dest": "/privacy-center/index.html" },
-    { "src": "/privacy_centre", "dest": "/privacy-center/index.html" },
+
+    { "src": "^/home\\.css$", "dest": "/home/home.css" },
+    { "src": "^/home\\.js$", "dest": "/home/home.js" },
+    { "src": "^/about\\.css$", "dest": "/about/about.css" },
+    { "src": "^/about\\.js$", "dest": "/about/about.js" },
+    { "src": "^/service\\.css$", "dest": "/services/service.css" },
+    { "src": "^/service\\.js$", "dest": "/services/service.js" },
+    { "src": "^/services\\.css$", "dest": "/services/service.css" },
+    { "src": "^/services\\.js$", "dest": "/services/service.js" },
+    { "src": "^/career\\.css$", "dest": "/career/career.css" },
+    { "src": "^/career\\.js$", "dest": "/career/career.js" },
+    { "src": "^/contact\\.css$", "dest": "/contact/contact.css" },
+    { "src": "^/contact\\.js$", "dest": "/contact/contact.js" },
+    { "src": "^/academy\\.css$", "dest": "/academy/academy.css" },
+    { "src": "^/academy\\.js$", "dest": "/academy/academy.js" },
+    { "src": "^/business\\.css$", "dest": "/business/business.css" },
+    { "src": "^/business\\.js$", "dest": "/business/business.js" },
+    { "src": "^/privacy-center\\.css$", "dest": "/privacy-center/privacy-center.css" },
+    { "src": "^/privacy-center\\.js$", "dest": "/privacy-center/privacy-center.js" },
+    { "src": "^/zoho\\.css$", "dest": "/zoho/zoho.css" },
+    { "src": "^/zoho\\.js$", "dest": "/zoho/zoho.js" },
+    { "src": "^/login\\.css$", "dest": "/login/login.css" },
+    { "src": "^/login\\.js$", "dest": "/login/login.js" },
+    { "src": "^/signup\\.css$", "dest": "/signup/signup.css" },
+    { "src": "^/signup\\.js$", "dest": "/signup/signup.js" },
+    { "src": "^/dashboard\\.css$", "dest": "/dashboard/dashboard.css" },
+    { "src": "^/dashboard\\.js$", "dest": "/dashboard/dashboard.js" },
+
+    { "src": "^/services/services\\.html$", "dest": "/services/service.html" },
+    { "src": "^/service/service\\.html$", "dest": "/services/service.html" },
+
+    { "src": "^/$", "dest": "/index.html" },
+
+    { "src": "^/about$", "status": 308, "headers": { "Location": "/about/" } },
+    { "src": "^/about/$", "dest": "/about/about.html" },
+
+    { "src": "^/services$", "status": 308, "headers": { "Location": "/services/" } },
+    { "src": "^/services/$", "dest": "/services/service.html" },
+
+    { "src": "^/academy$", "status": 308, "headers": { "Location": "/academy/" } },
+    { "src": "^/academy/$", "dest": "/academy/academy.html" },
+
+    { "src": "^/business$", "status": 308, "headers": { "Location": "/business/" } },
+    { "src": "^/business/$", "dest": "/business/business.html" },
+
+    { "src": "^/career$", "status": 308, "headers": { "Location": "/career/" } },
+    { "src": "^/career/$", "dest": "/career/career.html" },
+
+    { "src": "^/contact$", "status": 308, "headers": { "Location": "/contact/" } },
+    { "src": "^/contact/$", "dest": "/contact/contact.html" },
+
+    { "src": "^/privacy-center$", "status": 308, "headers": { "Location": "/privacy-center/" } },
+    { "src": "^/privacy-center/$", "dest": "/privacy-center/index.html" },
+    { "src": "^/privacy-centre$", "status": 308, "headers": { "Location": "/privacy-center/" } },
+    { "src": "^/privacy-centre/$", "dest": "/privacy-center/index.html" },
+    { "src": "^/privacy_centre$", "status": 308, "headers": { "Location": "/privacy-center/" } },
+    { "src": "^/privacy_centre/$", "dest": "/privacy-center/index.html" },
+
+    { "src": "^/zoho$", "status": 308, "headers": { "Location": "/zoho/" } },
+    { "src": "^/zoho/$", "dest": "/zoho/zoho.html" },
+
+    { "src": "^/login$", "status": 308, "headers": { "Location": "/login/" } },
+    { "src": "^/login/$", "dest": "/login/login.html" },
+
+    { "src": "^/signup$", "status": 308, "headers": { "Location": "/signup/" } },
+    { "src": "^/signup/$", "dest": "/signup/signup.html" },
+
+    { "src": "^/dashboard$", "status": 308, "headers": { "Location": "/dashboard/" } },
+    { "src": "^/dashboard/$", "dest": "/dashboard/dashboard.html" },
+
     { "src": "^/admin$", "status": 308, "headers": { "Location": "/admin/" } },
     { "src": "^/admin/$", "dest": "/admin/index.html" },
     { "src": "^/admin/(?!.*\\.[a-zA-Z0-9]+$).*", "dest": "/admin/index.html" }

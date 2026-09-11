@@ -207,10 +207,26 @@
     <script src="mf-returns.js"></script>
 
     <script>
-        AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
-            once: true
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof AOS !== "undefined") {
+                try {
+                    AOS.init({
+                        duration: 1000,
+                        once: true
+                    });
+                } catch (e) {
+                    console.warn("AOS init skipped:", e);
+                }
+            }
+        });
+        window.addEventListener("load", function () {
+            if (typeof AOS === "undefined") {
+                document.querySelectorAll("[data-aos]").forEach(function (el) {
+                    el.removeAttribute("data-aos");
+                    el.style.opacity = "1";
+                    el.style.transform = "none";
+                });
+            }
         });
     </script>
 

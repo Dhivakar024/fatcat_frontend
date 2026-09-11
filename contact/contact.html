@@ -144,6 +144,15 @@
                 once: true
             });
         }
+        window.addEventListener("load", function () {
+            if (typeof AOS === "undefined") {
+                document.querySelectorAll("[data-aos]").forEach(function (el) {
+                    el.removeAttribute("data-aos");
+                    el.style.opacity = "1";
+                    el.style.transform = "none";
+                });
+            }
+        });
     </script>
 
 </body>

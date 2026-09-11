@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../theme.js" defer></script>
+    <title>Home | Fatcat Wealthy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="/home/home.css">
+    <link rel="stylesheet" href="../common-components/header.css">
+    <link rel="stylesheet" href="../common-components/footer.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script src="../common-components/header.js" defer></script>
+    <script src="../common-components/footer.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Enquiry Modal -->
+    <div id="enquiryModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h2>Enquiry Form</h2>
+            </div>
+            <form>
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email address" required>
+
+                <label>Mobile No</label>
+                <input type="tel" placeholder="Enter your mobile number" required>
+
+                <label>Address</label>
+                <input type="text" placeholder="Enter your city/address">
+
+                <label>Message</label>
+                <textarea rows="3" placeholder="Tell us how we can help you"></textarea>
+
+                <div class="modal-terms">
+                    <input type="checkbox" id="modalTerms" class="terms-checkbox" required>
+                    <label for="modalTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms & Conditions</a></label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-send">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" data-aos="fade-up">
+        <div class="hero">
+            <!-- Background Video -->
+            <video autoplay muted loop playsinline preload="auto" class="hero-video">
+                <source src="./assets/finance.mp4" type="video/mp4">
+            </video>
+
+            <!-- Overlay -->
+            <div class="hero-overlay"></div>
+
+            <!-- Content -->
+            <div class="hero-content">
+                <h1>Innovate. Invest. Increase.</h1>
+                <p>
+                    Empowering your financial journey with expert insights into AI investing,
+                    insurance, and cryptocurrency wealth creation.
+                </p>
+                <a href="../contact/contact.html" class="hero-btn">Get Started &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <!-- Left Image -->
+            <div class="about-image reveal-left">
+                <img src="./assets/mf.jpg" alt="About Fatcat Wealthy">
+            </div>
+
+            <!-- Right Content -->
+            <div class="about-content reveal-right">
+                <span class="about-tag">About Us</span>
+                <h2>
+                    Empowering Financial Futures,<br>
+                    One Smart Decision at a Time
+                </h2>
+                <p>
+                    We are a dedicated team of financial experts, educators, and
+                    technology enthusiasts committed to helping individuals and
+                    businesses achieve long-term financial success through
+                    smart investments and strategic planning.
+                </p>
+
+                <!-- Stats -->
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <h3><span class="counter" data-target="50">0</span>+</h3>
+                        <p>Clients Worldwide</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3><span class="counter" data-target="500">0</span>+</h3>
+                        <p>Team Members</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>10+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+
+                <a href="../about/about.html" class="about-btn">Learn More &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <h2 class="section-title">What We Offer</h2>
+            <p class="section-subtitle">
+                Comprehensive financial solutions designed to help you grow,
+                protect, and manage your wealth with confidence.
+            </p>
+
+            <!-- Service 1 -->
+            <div class="service-box reveal-left">
+                <div class="service-image">
+                    <img src="./assets/mff.jpg" alt="Mutual Funds">
+                </div>
+                <div class="service-content">
+                    <h3>Mutual Funds</h3>
+                    <p class="dance-text">
+                        Invest in diversified portfolios with flexible options like
+                        SIPs, SWPs, and STPs tailored to your financial goals.
+                    </p>
+                    <ul>
+                        <li>SIPs (Systematic Investment Plans)</li>
+                        <li>Goal-based Investment Planning</li>
+                        <li>STP & SWP Strategies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-box reverse reveal-right">
+                <div class="service-image">
+                    <img src="./assets/insurance.jpg" alt="Insurance Services">
+                </div>
+                <div class="service-content">
+                    <h3>Insurance Services</h3>
+                    <p class="dance-text">
+                        Protect yourself and your loved ones with our wide range of
+                        insurance solutions designed for financial security.
+                    </p>
+                    <ul>
+                        <li>Health Insurance</li>
+                        <li>Income Protection</li>
+                        <li>Home Protection</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-box reveal-left">
+                <div class="service-image">
+                    <img src="../assets/investment.png" alt="Investment Broking">
+                </div>
+                <div class="service-content">
+                    <h3>Investment Broking</h3>
+                    <p class="dance-text">
+                        Access global markets and trade confidently with expert
+                        guidance through platforms like Upstox and Binance.
+                    </p>
+                    <ul>
+                        <li>Stock Market Trading</li>
+                        <li>Crypto Trading</li>
+                        <li>Market Analysis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-box reverse reveal-right">
+                <div class="service-image">
+                    <img src="../assets/academy.png" alt="Financial Academy">
+                </div>
+                <div class="service-content">
+                    <h3>Financial Academy</h3>
+                    <p class="dance-text">
+                        Learn investing, trading, and financial management through
+                        structured courses and expert-led training.
+                    </p>
+                    <ul>
+                        <li>Stock Market Basics</li>
+                        <li>Investment Strategies</li>
+                        <li>NISM Preparation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academy Section -->
+    <section class="academy-section" id="academy">
+        <div class="academy-container">
+            <h2 class="academy-title">Our Financial Academy</h2>
+            <p class="academy-subtitle">
+                Learn investing, trading, and financial planning from industry experts.
+                Build the knowledge you need to grow your wealth confidently.
+            </p>
+
+            <div class="academy-grid">
+                <!-- Card 1 -->
+                <div class="academy-card reveal-up">
+                    <div class="academy-icon">📊</div>
+                    <h3>Stock Market Basics</h3>
+                    <p>
+                        Understand how the stock market works and start your investing journey.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="academy-card reveal-up">
+                    <div class="academy-icon">💰</div>
+                    <h3>Mutual Fund Investing</h3>
+                    <p>
+                        Learn how to invest smartly in mutual funds using SIPs and portfolio strategies.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="academy-card reveal-up">
+                    <div class="academy-icon">📈</div>
+                    <h3>Trading Strategies</h3>
+                    <p>
+                        Explore technical analysis and trading techniques used by professionals.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="academy-card reveal-up">
+                    <div class="academy-icon">🎓</div>
+                    <h3>Certification</h3>
+                    <p>
+                        Prepare for NISM certification exams with structured guidance and practice.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand / Partners Section -->
+    <section class="brand-section" data-aos="fade-up">
+        <div class="brand-slider">
+            <div class="brand-track">
+                <div class="brand-logo-set">
+                    <img src="./assets/aditya.jpeg" alt="Aditya Birla">
+                    <img src="./assets/upstox.png" alt="Upstox">
+                    <img src="./assets/newindia.jpeg" alt="New India">
+                    <img src="./assets/aditya.jpeg" alt="Aditya Birla">
+                    <img src="./assets/upstox.png" alt="Upstox">
+                    <img src="./assets/newindia.jpeg" alt="New India">
+                </div>
+                <div class="brand-logo-set" aria-hidden="true">
+                    <img src="./assets/aditya.jpeg" alt="">
+                    <img src="./assets/upstox.png" alt="">
+                    <img src="./assets/newindia.jpeg" alt="">
+                    <img src="./assets/aditya.jpeg" alt="">
+                    <img src="./assets/upstox.png" alt="">
+                    <img src="./assets/newindia.jpeg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-container">
+            <h3 class="brand-title">Best Free Stock Market Certification Course</h3>
+            <p class="brand-desc">
+                Training in the live market environment by top stock market trainers,
+                and it's absolutely free.
+            </p>
+            <a href="../academy/academy.html" class="brand-btn">Free Enrollment</a>
+        </div>
+    </section>
+
+    <!-- Learn Section -->
+    <section class="learn-section">
+        <div class="learn-container">
+            <h2 class="learn-title">Get Started For Free</h2>
+            <p class="learn-sub">Solving your learning for financial freedom</p>
+
+            <div class="learn-grid">
+                <!-- Left Menu -->
+                <div class="learn-menu">
+                    <button class="learn-btn active" data-tab="tab1">
+                        Understanding Mutual Funds
+                    </button>
+                    <button class="learn-btn" data-tab="tab2">
+                        Mastering Insurance Planning
+                    </button>
+                    <button class="learn-btn" data-tab="tab3">
+                        Navigating Investment Platforms
+                    </button>
+                    <button class="learn-btn" data-tab="tab4">
+                        Exploring Our Financial Academy
+                    </button>
+                </div>
+
+                <!-- Right Content -->
+                <div class="learn-content">
+                    <div class="learn-card active" id="tab1">
+                        <img src="./assets/mutualFund.jpg" alt="Mutual Funds">
+                        <div>
+                            <h3>Understanding Mutual Funds</h3>
+                            <p>
+                                Our mutual fund course helps you move beyond basic investing by building a deeper
+                                understanding of SIPs, SWPs, STPs, and asset allocation. You’ll learn how to select
+                                schemes aligned with your financial goals, risk profile, and investment horizon.
+                                Grasping the fundamentals of mutual fund types—equity, debt, hybrid—equips you to invest
+                                smartly and steadily grow your wealth over time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="learn-card" id="tab2">
+                        <img src="./assets/insurance.jpg" alt="Insurance Planning">
+                        <div>
+                            <h3>Mastering Insurance Planning</h3>
+                            <p>
+                                Insurance is more than just a safety net—it’s a vital part of your financial strategy.
+                                Learn to choose the right life, health, and term plans to protect yourself and your
+                                loved ones. Our modules help you avoid common pitfalls, decode policy structures, and
+                                make informed choices based on needs and premiums.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="learn-card" id="tab3">
+                        <img src="./assets/Invest.jpg" alt="Investment Platforms">
+                        <div>
+                            <h3>Navigating Investment Platforms</h3>
+                            <p>
+                                Online brokering platforms like Upstox, Groww, and Zerodha have changed how we invest.
+                                But using them wisely requires knowledge. We guide you through account setup, order
+                                types, margin use, and trade execution. Learn how to evaluate platforms based on
+                                charges, features, and security.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="learn-card" id="tab4">
+                        <img src="./assets/academy.jpg" alt="Financial Academy">
+                        <div>
+                            <h3>Exploring Our Financial Academy</h3>
+                            <p>
+                                Our financial academy bridges the gap between learning and action. With structured
+                                lessons in investing, trading, tax planning, and personal finance, we simplify complex
+                                topics through case studies and real-time examples. Whether you’re a beginner or looking
+                                to sharpen your skills, our curriculum offers clarity, confidence, and competence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <h2 class="testimonial-title">What Our Clients Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-track">
+                <!-- Card 1 -->
+                <article class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/15.jpg" alt="Shree Priya">
+                    <p>
+                        "Fatcat Wealthy helped me understand stock market investing
+                        with practical strategies and real market insights."
+                    </p>
+                    <h4>Shree Priya</h4>
+                    <span>Entrepreneur</span>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/69.jpg" alt="Michael Carter">
+                    <p>
+                        "The financial academy courses are structured perfectly
+                        for beginners and advanced learners."
+                    </p>
+                    <h4>Michael Carter</h4>
+                    <span>Investor</span>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/88.jpg" alt="Dhivya Devi">
+                    <p>
+                        "Learning about mutual funds and portfolio planning
+                        has completely changed my financial future."
+                    </p>
+                    <h4>Dhivya Devi</h4>
+                    <span>Financial Analyst</span>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/13.jpg" alt="Mayura">
+                    <p>
+                        "Analyzing market trends and investment opportunities has
+                        completely changed the way I see my financial future."
+                    </p>
+                    <h4>Mayura</h4>
+                    <span>Investment Analyst</span>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="Pallavi">
+                    <p>
+                        "Improving processes and turning complex operations into smarter workflows has
+                        completely changed the way I see my career future."
+                    </p>
+                    <h4>Pallavi</h4>
+                    <span>Operations Analyst</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Enquiry Section -->
+    <section class="contact-section" data-aos="fade-up">
+        <div class="contact-container">
+            <!-- Google Map -->
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps?q=salem&output=embed" width="100%" height="100%"
+                    style="border:0;" allowfullscreen="" loading="lazy" title="Office Location"></iframe>
+            </div>
+
+            <!-- Enquiry Form -->
+            <div class="form-box">
+                <h3>Enquiry Form</h3>
+                <form>
+                    <input type="text" placeholder="Full name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Mobile number" required>
+                    <textarea placeholder="Your message or enquiry"></textarea>
+
+                    <div class="modal-terms inpage-terms">
+                        <input type="checkbox" id="homeEnquiryTerms" class="terms-checkbox" required>
+                        <label for="homeEnquiryTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms & Conditions</a></label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" class="form-cancel-btn">Cancel</button>
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919566679958" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof AOS !== "undefined") {
+                try {
+                    AOS.init({
+                        duration: 1000,
+                        once: true
+                    });
+                } catch (e) {
+                    console.warn("AOS init skipped:", e);
+                }
+            }
+        });
+        window.addEventListener("load", function () {
+            if (typeof AOS === "undefined") {
+                document.querySelectorAll("[data-aos]").forEach(function (el) {
+                    el.removeAttribute("data-aos");
+                    el.style.opacity = "1";
+                    el.style.transform = "none";
+                });
+            }
+        });
+    </script>
+    <script src="../api-config.js"></script>
+    <script src="../common-components/notifications.js"></script>
+    <script src="./home.js"></script>
+</body>
+
+</html>
