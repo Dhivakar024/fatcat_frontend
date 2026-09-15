@@ -42,22 +42,9 @@
       }
     });
 
-    const drawerToggle = document.getElementById("drawerThemeToggle");
-    if (drawerToggle) {
-      drawerToggle.checked = isDark;
-    }
     const drawerHeaderBtn = document.getElementById("drawerHeaderThemeBtn");
     if (drawerHeaderBtn) {
       drawerHeaderBtn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-    }
-    const drawerLabel = document.querySelector(".drawer-theme-label");
-    if (drawerLabel) {
-      drawerLabel.textContent = isDark ? "Dark Mode" : "Light Mode";
-    }
-    const drawerIcon = document.querySelector(".drawer-theme-icon");
-    if (drawerIcon) {
-      drawerIcon.className = `fa-solid ${isDark ? "fa-moon" : "fa-sun"} drawer-theme-icon`;
-      drawerIcon.style.color = isDark ? "#ffd700" : "#f5a623";
     }
   };
 

@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const drawer      = document.querySelector('#mobileDrawer');
         const drawerClose = document.querySelector('#drawerClose');
         const overlay     = document.querySelector('#drawerOverlay');
-        const drawerTheme = document.querySelector('#drawerThemeToggle');
 
         function openDrawer() {
             if (!drawer || !overlay) return;
@@ -169,10 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // ── Inside Mobile Drawer clicks ──
             if (e.target.closest('#mobileDrawer')) {
-                // Never close drawer when clicking theme toggle, accordion headers or switches
+                // Never close drawer when clicking theme toggle, accordion headers or action buttons
                 if (e.target.closest('.drawer-header-theme-toggle') ||
-                    e.target.closest('.drawer-theme-row') ||
-                    e.target.closest('.drawer-toggle-switch') ||
+                    e.target.closest('#drawerHeaderThemeBtn') ||
                     e.target.closest('.drawer-header-actions')) {
                     return;
                 }
@@ -189,18 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        // Drawer dark/light-mode toggle
+        // Drawer dark/light-mode toggle (Top header toggle)
         const drawerHeaderTheme = document.querySelector('#drawerHeaderThemeBtn');
 
         function updateDrawerThemeUI(isDark) {
-            if (drawerTheme) drawerTheme.checked = isDark;
-            const drawerLabel = document.querySelector('.drawer-theme-label');
-            if (drawerLabel) drawerLabel.textContent = isDark ? "Dark Mode" : "Light Mode";
-            const drawerIcon = document.querySelector('.drawer-theme-icon');
-            if (drawerIcon) {
-                drawerIcon.className = `fa-solid ${isDark ? "fa-moon" : "fa-sun"} drawer-theme-icon`;
-                drawerIcon.style.color = isDark ? "#ffd700" : "#f5a623";
-            }
             if (drawerHeaderTheme) {
                 drawerHeaderTheme.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
             }
@@ -232,35 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 updateDrawerThemeUI(nextTheme === 'dark');
             });
-        }
-
-        if (drawerTheme) {
-            drawerTheme.addEventListener('change', (e) => {
-                e.stopPropagation();
-                const nextTheme = drawerTheme.checked ? 'dark' : 'light';
-                if (typeof window.applyTheme === 'function') {
-                    window.applyTheme(nextTheme, true);
-                } else {
-                    document.body.classList.toggle('dark-mode', drawerTheme.checked);
-                    document.documentElement.classList.toggle('dark-mode', drawerTheme.checked);
-                    localStorage.setItem('fatcat-theme', nextTheme);
-                }
-                updateDrawerThemeUI(drawerTheme.checked);
-            });
-
-            // Allow tapping anywhere on .drawer-theme-row to toggle
-            const drawerThemeRow = document.querySelector('.drawer-theme-row');
-            if (drawerThemeRow) {
-                drawerThemeRow.style.cursor = 'pointer';
-                drawerThemeRow.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (!e.target.closest('.drawer-toggle-switch')) {
-                        e.preventDefault();
-                        drawerTheme.checked = !drawerTheme.checked;
-                        drawerTheme.dispatchEvent(new Event('change'));
-                    }
-                });
-            }
         }
 
         // ── Active Page Navigation Highlighting ──

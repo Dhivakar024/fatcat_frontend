@@ -444,6 +444,9 @@ function initCookieConsent() {
     const prefAnalytics = document.getElementById("prefAnalytics");
     const prefMarketing = document.getElementById("prefMarketing");
 
+    const COOKIE_CONSENT_KEY = "fatcat_cookie_consent";
+    const COOKIE_PREFS_KEY = "fatcat_cookie_preferences";
+
     function hideBanner() {
         banner.classList.remove("active");
         if (prefPanel) {
@@ -458,42 +461,52 @@ function initCookieConsent() {
         }
     }
 
-    // Check if the current page load is a refresh / reload
-    let isReload = false;
-    try {
-        const perfEntries = performance.getEntriesByType && performance.getEntriesByType("navigation");
-        if (perfEntries && perfEntries.length > 0 && perfEntries[0].type === "reload") {
-            isReload = true;
-        } else if (window.performance && window.performance.navigation && window.performance.navigation.type === 1) {
-            isReload = true;
+    function hasUserConsented() {
+        try {
+            const consent = localStorage.getItem(COOKIE_CONSENT_KEY) || localStorage.getItem("cookieConsent");
+            return consent === "accepted";
+        } catch (e) {
+            return false;
         }
-    } catch (e) {
-        isReload = false;
     }
 
-    // If the user refreshed the page, clear any temporary accepted state so it displays freshly
-    if (isReload) {
-        sessionStorage.removeItem("cookieAcceptedInSession");
+    function applySavedPreferencesToUI() {
+        try {
+            const raw = localStorage.getItem(COOKIE_PREFS_KEY) || localStorage.getItem("cookiePreferences");
+            if (raw) {
+                const saved = JSON.parse(raw);
+                if (prefAnalytics && typeof saved.analytics === "boolean") {
+                    prefAnalytics.checked = saved.analytics;
+                }
+                if (prefMarketing && typeof saved.marketing === "boolean") {
+                    prefMarketing.checked = saved.marketing;
+                }
+            }
+        } catch (e) {}
     }
 
-    const isAcceptedInSession = sessionStorage.getItem("cookieAcceptedInSession");
-
-    // Display banner across all pages until user accepts
-    if (isAcceptedInSession === "true") {
+    // Check stored consent immediately:
+    // If already accepted, keep banner completely hidden (no flash, no banner on reload/navigation)
+    if (hasUserConsented()) {
         hideBanner();
+        applySavedPreferencesToUI();
     } else {
-        showBanner();
+        showBanner(false);
     }
 
     if (acceptBtn) {
         acceptBtn.addEventListener("click", () => {
-            sessionStorage.setItem("cookieAcceptedInSession", "true");
-            localStorage.setItem("cookieConsent", "accepted");
-            localStorage.setItem("cookiePreferences", JSON.stringify({
+            const prefs = {
                 necessary: true,
                 analytics: true,
                 marketing: true
-            }));
+            };
+            try {
+                localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+                localStorage.setItem("cookieConsent", "accepted");
+                localStorage.setItem(COOKIE_PREFS_KEY, JSON.stringify(prefs));
+                localStorage.setItem("cookiePreferences", JSON.stringify(prefs));
+            } catch (e) {}
             if (prefAnalytics) prefAnalytics.checked = true;
             if (prefMarketing) prefMarketing.checked = true;
             hideBanner();
@@ -502,14 +515,13 @@ function initCookieConsent() {
 
     if (declineBtn) {
         declineBtn.addEventListener("click", () => {
-            // Temporarily hide on the current page, but DO NOT mark accepted,
-            // so it continues to appear when navigating to other pages
             hideBanner();
         });
     }
 
     if (prefBtn && prefPanel) {
         prefBtn.addEventListener("click", () => {
+            applySavedPreferencesToUI();
             prefPanel.classList.toggle("active");
         });
     }
@@ -521,16 +533,23 @@ function initCookieConsent() {
                 analytics: prefAnalytics ? prefAnalytics.checked : true,
                 marketing: prefMarketing ? prefMarketing.checked : true
             };
-            sessionStorage.setItem("cookieAcceptedInSession", "true");
-            localStorage.setItem("cookieConsent", "accepted");
-            localStorage.setItem("cookiePreferences", JSON.stringify(prefs));
+            try {
+                localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+                localStorage.setItem("cookieConsent", "accepted");
+                localStorage.setItem(COOKIE_PREFS_KEY, JSON.stringify(prefs));
+                localStorage.setItem("cookiePreferences", JSON.stringify(prefs));
+            } catch (e) {}
             hideBanner();
         });
     }
 
     if (cancelPrefBtn && prefPanel) {
         cancelPrefBtn.addEventListener("click", () => {
-            prefPanel.classList.remove("active");
+            if (hasUserConsented()) {
+                hideBanner();
+            } else {
+                prefPanel.classList.remove("active");
+            }
         });
     }
 
@@ -539,10 +558,14 @@ function initCookieConsent() {
         const trigger = e.target.closest("#footerCookieSettingsLink, .open-cookie-settings, a[href*='cookie-settings'], a[href='#cookie-settings']");
         if (trigger) {
             e.preventDefault();
+            applySavedPreferencesToUI();
             showBanner(true);
         }
     });
 
-    window.openCookieConsent = showBanner;
+    window.openCookieConsent = function (openPreferences = false) {
+        applySavedPreferencesToUI();
+        showBanner(openPreferences);
+    };
     window.closeCookieConsent = hideBanner;
 }

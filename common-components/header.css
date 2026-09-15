@@ -449,7 +449,7 @@ body.dark-mode .drawer-header-theme-toggle .fa-moon {
     border-top: 1px solid #f0f0f0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 0;
     flex-shrink: 0;
     background: inherit;
 }
@@ -473,14 +473,14 @@ body.dark-mode .drawer-header-theme-toggle .fa-moon {
     background: #087f9b;
 }
 
-/* Light mode toggle row */
+/* Light mode toggle row (Hidden completely - keeping top toggle only) */
 .drawer-theme-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 0;
-    cursor: pointer;
-    user-select: none;
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
 }
 
 .drawer-theme-icon {
