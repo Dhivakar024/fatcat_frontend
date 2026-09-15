@@ -111,7 +111,14 @@ scroll-behavior:smooth;
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero {
-    padding-top: calc(var(--navbar-height, 70px) + 16px);
+    height: auto;
+    min-height: auto;
+    padding-top: calc(var(--navbar-height, 82px) + 24px);
+    padding-bottom: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .hero-title {

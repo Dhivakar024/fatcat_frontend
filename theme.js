@@ -18,12 +18,17 @@
     return;
   };
 
-  const applyTheme = (theme) => {
+  const applyTheme = (theme, persist = false) => {
     const isDark = theme === "dark";
-    body.classList.toggle("dark-mode", isDark);
+    const currentBody = document.body || body;
+    if (currentBody) {
+      currentBody.classList.toggle("dark-mode", isDark);
+    }
     document.documentElement.classList.toggle("dark-mode", isDark);
     document.documentElement.style.colorScheme = isDark ? "dark" : "light";
-    localStorage.setItem(storageKey, isDark ? "dark" : "light");
+    if (persist) {
+      localStorage.setItem(storageKey, isDark ? "dark" : "light");
+    }
 
     const toggles = document.querySelectorAll(".theme-toggle");
     toggles.forEach(toggle => {
@@ -67,7 +72,11 @@
     toggle.type = "button";
     toggle.className = "theme-toggle";
     toggle.innerHTML = '<i class="fa-solid fa-sun theme-toggle__icon" aria-hidden="true"></i>';
-    toggle.addEventListener("click", () => applyTheme(body.classList.contains("dark-mode") ? "light" : "dark"));
+    toggle.addEventListener("click", () => {
+      const currentBody = document.body || body;
+      const isDarkNow = currentBody ? currentBody.classList.contains("dark-mode") : false;
+      applyTheme(isDarkNow ? "light" : "dark", true);
+    });
 
     const login = Array.from(menu.querySelectorAll("a")).find((link) => /login/i.test(link.textContent));
     if (login) {
@@ -135,6 +144,8 @@
   };
   const style = document.createElement("style");
   style.textContent = `
+    :root { color-scheme: light; }
+    html.dark-mode, body.dark-mode { color-scheme: dark; }
     html { margin: 0; padding: 0; scrollbar-width: thin; scrollbar-color: #94a3b8 transparent; }
     html::-webkit-scrollbar { width: 5px; height: 5px; }
     html::-webkit-scrollbar-track { background: transparent; }
@@ -693,11 +704,11 @@
   setupHeaderNavigation();
 
   const savedTheme = localStorage.getItem(storageKey);
-  const preferredTheme = savedTheme || "light";
+  const preferredTheme = savedTheme === "dark" ? "dark" : "light";
   addThemeToggle();
   formatFooterContactDetails();
   standardizeFooter();
-  applyTheme(preferredTheme);
+  applyTheme(preferredTheme, false);
   document.documentElement.classList.add("site-chrome-ready");
 
   // Ensure global notifications system is loaded across all pages
