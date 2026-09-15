@@ -1025,21 +1025,411 @@ scroll-behavior:smooth;
     line-height: 1.7;
 }
 
-.inpat-portal {
+/* ACADEMY REGISTRATION COMPONENT */
+.academy-reg-wrapper {
     width: 100%;
-    max-width: 1400px;
+    max-width: 760px;
     margin: 0 auto;
-    background: #fff;
-    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.inpat-portal iframe {
-    display: block;
+.academy-reg-wrapper .branding-side {
+    flex: 1;
+    padding: 36px 24px;
+    background: linear-gradient(135deg, rgba(48, 92, 222, 0.09), rgba(48, 92, 222, 0.02));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid #e2e8f0;
+    box-sizing: border-box;
+}
+
+.academy-reg-wrapper .partner-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.academy-reg-wrapper .partner-logo {
+    max-width: 130px;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+}
+
+.academy-reg-wrapper .partner-details h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0b1b66;
+    line-height: 1.2;
+}
+
+.academy-reg-wrapper .welcome-msg {
+    margin-top: 18px;
+}
+
+.academy-reg-wrapper .welcome-msg p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.academy-reg-wrapper .form-side {
+    flex: 1.35;
+    padding: 34px 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+.academy-reg-wrapper .form-side h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.academy-reg-wrapper .form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.academy-reg-wrapper .field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.academy-reg-wrapper .field label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+}
+
+.academy-reg-wrapper .field input {
     width: 100%;
-    height: 800px;
+    box-sizing: border-box;
+    height: 42px;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #ffffff;
+    color: #0f172a;
+}
+
+.academy-reg-wrapper .field input:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+.academy-reg-wrapper .confirm-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.academy-reg-wrapper .confirm-input-wrap input {
+    flex: 1;
+}
+
+.academy-reg-wrapper .match-indicator {
+    display: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.academy-reg-wrapper .password-requirements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: -4px;
+    margin-bottom: 12px;
+    font-size: 11.5px;
+    color: #64748b;
+}
+
+.academy-reg-wrapper .requirement {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.academy-reg-wrapper .requirement .indicator {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    flex-shrink: 0;
+}
+
+.academy-reg-wrapper .contact-terms-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+.academy-reg-wrapper .contact-terms-group label {
+    font-size: 13px;
+    line-height: 1.45;
+    color: #475569;
+    cursor: pointer;
+}
+
+.academy-reg-wrapper .contact-terms-group a {
+    color: #2563eb;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.academy-reg-wrapper .academy-submit-btn {
+    width: 100%;
+    padding: 11px 20px;
+    background: #2563eb;
+    color: #ffffff;
     border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    font-family: inherit;
+}
+
+.academy-reg-wrapper .academy-submit-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.academy-reg-wrapper .form-error-msg {
+    color: #ef4444;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 0;
+    min-height: 1.2em;
+    font-size: 13px;
+}
+
+.academy-reg-wrapper .or-divider {
+    text-align: center;
+    position: relative;
+    margin: 16px 0;
+}
+
+.academy-reg-wrapper .or-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.academy-reg-wrapper .or-divider span {
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+    padding: 0 12px;
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.academy-reg-wrapper .btn-google {
+    width: 100%;
+    padding: 10px 18px;
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-family: inherit;
+}
+
+.academy-reg-wrapper .btn-google:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+.academy-reg-wrapper .btn-google .google-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.academy-reg-wrapper .login-redirect-text {
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 0;
+    font-size: 13.5px;
+    color: #64748b;
+}
+
+.academy-reg-wrapper .login-redirect-text a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.academy-reg-wrapper .login-redirect-text a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+    .inpat-section {
+        padding: 40px 16px;
+    }
+
+    .academy-reg-wrapper {
+        flex-direction: column;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    .academy-reg-wrapper .branding-side {
+        padding: 20px 16px;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .academy-reg-wrapper .welcome-msg {
+        display: none;
+    }
+
+    .academy-reg-wrapper .partner-info {
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .academy-reg-wrapper .partner-logo {
+        max-width: 90px;
+        max-height: 45px;
+    }
+
+    .academy-reg-wrapper .partner-details h3 {
+        font-size: 1.15rem;
+    }
+
+    .academy-reg-wrapper .form-side {
+        padding: 20px 16px;
+    }
+
+    .academy-reg-wrapper .form-side h2 {
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    .academy-reg-wrapper .form-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+/* DARK MODE FOR ACADEMY REGISTRATION */
+body.dark-mode .inpat-section {
+    background: #080c14 !important;
+}
+
+body.dark-mode .academy-reg-wrapper {
+    background: #0f172a !important;
+    border-color: #1e293b !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .academy-reg-wrapper .branding-side {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.03)) !important;
+    border-color: #1e293b !important;
+}
+
+body.dark-mode .academy-reg-wrapper .partner-details h3 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .academy-reg-wrapper .welcome-msg p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .academy-reg-wrapper .form-side {
+    background: #0f172a !important;
+}
+
+body.dark-mode .academy-reg-wrapper .form-side h2 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .academy-reg-wrapper .field label {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .academy-reg-wrapper .field input {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .academy-reg-wrapper .contact-terms-group label {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .academy-reg-wrapper .or-divider::before {
+    background: #1e293b !important;
+}
+
+body.dark-mode .academy-reg-wrapper .or-divider span {
+    background: #0f172a !important;
+    color: #64748b !important;
+}
+
+body.dark-mode .academy-reg-wrapper .btn-google {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .academy-reg-wrapper .btn-google:hover {
+    background: #334155 !important;
+}
+
+body.dark-mode .academy-reg-wrapper .login-redirect-text {
+    color: #94a3b8 !important;
 }
 
 /* Academy footer legal links */

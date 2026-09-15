@@ -100,7 +100,7 @@
         </div>
     </section>
 
-    <!-- INPAT ACADEMY PORTAL -->
+    <!-- ACADEMY REGISTRATION PORTAL -->
 
     <section class="inpat-section">
 
@@ -117,13 +117,86 @@
                 </p>
             </div>
 
-            <div class="inpat-portal">
+            <div class="academy-reg-wrapper" id="academySignupWrapper">
+                <div class="branding-side">
+                    <div class="partner-info">
+                        <img src="../assets/logo.png" alt="Fatcat Wealthy" class="partner-logo" id="academyFormLogo">
+                        <div class="partner-details">
+                            <h3>Fatcat Wealthy</h3>
+                        </div>
+                    </div>
+                    <div class="welcome-msg">
+                        <p>Join our learning community and start your journey today.</p>
+                    </div>
+                </div>
 
-                <iframe src="https://inpatpro.com/student/signup.html?branch=FCTSLM" width="100%" height="800px"
-                    style="border:none;" referrerpolicy="unsafe-url" title="InPAT Course Portal"
-                    allow="fullscreen; geolocation;">
-                </iframe>
+                <div class="form-side">
+                    <div class="panel">
+                        <h2>Create a Student Account</h2>
+                        <form id="academySignupForm" class="academy-form" novalidate>
+                            <div class="form-grid-2">
+                                <div class="field">
+                                    <label for="academyName">Full Name</label>
+                                    <input type="text" id="academyName" name="name" placeholder="John Doe" autocomplete="name" required>
+                                </div>
+                                <div class="field">
+                                    <label for="academyPhone">Phone Number</label>
+                                    <input type="tel" id="academyPhone" name="phone" placeholder="9876543210" maxlength="10" autocomplete="tel" required>
+                                </div>
+                            </div>
 
+                            <div class="field">
+                                <label for="academyEmail">Email Address</label>
+                                <input type="email" id="academyEmail" name="email" placeholder="john@example.com" autocomplete="email" required>
+                            </div>
+
+                            <div class="form-grid-2">
+                                <div class="field">
+                                    <label for="academyPassword">Password</label>
+                                    <input type="password" id="academyPassword" name="password" placeholder="Create password" autocomplete="new-password" required>
+                                </div>
+                                <div class="field">
+                                    <label for="academyConfirmPassword">Confirm Password</label>
+                                    <div class="confirm-input-wrap">
+                                        <input type="password" id="academyConfirmPassword" name="confirmPassword" placeholder="Confirm password" autocomplete="new-password" required>
+                                        <span id="academyPasswordMatchIndicator" class="match-indicator" title="Password match indicator"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="academyPasswordRequirements" class="password-requirements" style="display: none;">
+                                <div class="requirement" id="academyReqLetter">
+                                    <span class="indicator"></span> At least 1 letter
+                                </div>
+                                <div class="requirement" id="academyReqNumber">
+                                    <span class="indicator"></span> At least 1 number
+                                </div>
+                                <div class="requirement" id="academyReqSymbol">
+                                    <span class="indicator"></span> At least 1 symbol
+                                </div>
+                            </div>
+
+                            <div class="contact-terms-group form-terms">
+                                <input type="checkbox" id="academyTerms" class="terms-checkbox" disabled required>
+                                <label for="academyTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms &amp; Conditions</a></label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary academy-submit-btn" id="academySubmitBtn">Sign Up</button>
+                            <p id="academyErrorMessage" class="form-error-msg"></p>
+
+                            <div class="or-divider"><span>OR</span></div>
+
+                            <button type="button" id="academyGoogleSignIn" class="btn-google">
+                                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon" class="google-icon">
+                                Sign up with Google
+                            </button>
+
+                            <p class="login-redirect-text">
+                                Already have an account? <a href="https://inpatpro.com/student/login.html?branch=FCTSLM" target="_blank" rel="noopener noreferrer">Login</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>

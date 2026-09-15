@@ -30,16 +30,22 @@ function setupContactForm() {
         console.log("[FatCat Contact] SUBMIT EVENT FIRED");
         console.log("[FatCat Contact] defaultPrevented =", e.defaultPrevented);
 
-        const termsCb = contactForm.querySelector("#contactTerms, .terms-checkbox");
-        if (termsCb && !termsCb.checked) {
-            termsCb.focus();
-            termsCb.classList.add("input-invalid");
-            if (typeof showNotification === "function") {
-                showNotification("Please agree to the Terms & Conditions before submitting.", "warning");
-            } else {
-                alert("Please agree to the Terms & Conditions before submitting.");
+        if (window.TermsManager && typeof window.TermsManager.validate === "function") {
+            if (!window.TermsManager.validate(contactForm, true)) {
+                return;
             }
-            return;
+        } else {
+            const termsCb = contactForm.querySelector("#contactTerms, .terms-checkbox");
+            if (termsCb && !termsCb.checked) {
+                termsCb.focus();
+                termsCb.classList.add("input-invalid");
+                if (typeof showNotification === "function") {
+                    showNotification("Please accept the Terms & Conditions to continue.", "warning");
+                } else {
+                    alert("Please accept the Terms & Conditions to continue.");
+                }
+                return;
+            }
         }
 
         const submitBtn = contactForm.querySelector('button[type="submit"], .contact-btn');

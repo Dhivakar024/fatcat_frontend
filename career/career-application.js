@@ -66,20 +66,30 @@ function setupCareerForm() {
             const resumeInput = document.getElementById("resume");
             const file = resumeInput && resumeInput.files ? resumeInput.files[0] : null;
 
-            if (!fullName || !email || !phone || !qualification || !experience || !file) {
-                showNotification("Please fill in all required fields and upload your resume.", "warning");
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
+            if (window.TermsManager && typeof window.TermsManager.validate === "function") {
+                if (!window.TermsManager.validate(careerForm, true)) {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    }
+                    return;
                 }
-                return;
+            } else {
+                const termsCb = document.getElementById("careerTerms");
+                if (termsCb && !termsCb.checked) {
+                    termsCb.focus();
+                    termsCb.classList.add("input-invalid");
+                    showNotification("Please accept the Terms & Conditions to continue.", "warning");
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    }
+                    return;
+                }
             }
 
-            const termsCb = document.getElementById("careerTerms");
-            if (termsCb && !termsCb.checked) {
-                termsCb.focus();
-                termsCb.classList.add("input-invalid");
-                showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+            if (!fullName || !email || !phone || !qualification || !experience || !file) {
+                showNotification("Please fill in all required fields and upload your resume.", "warning");
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = originalText;

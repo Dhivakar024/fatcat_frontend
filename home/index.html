@@ -34,7 +34,7 @@
             <div class="modal-header">
                 <h2>Enquiry Form</h2>
             </div>
-            <form>
+            <form id="homeModalForm">
                 <label>Full Name</label>
                 <input type="text" placeholder="Enter your full name" required>
 
@@ -51,7 +51,7 @@
                 <textarea rows="3" placeholder="Tell us how we can help you"></textarea>
 
                 <div class="modal-terms">
-                    <input type="checkbox" id="modalTerms" class="terms-checkbox" required>
+                    <input type="checkbox" id="modalTerms" class="terms-checkbox" disabled required>
                     <label for="modalTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms & Conditions</a></label>
                 </div>
 
@@ -457,14 +457,14 @@
             <!-- Enquiry Form -->
             <div class="form-box">
                 <h3>Enquiry Form</h3>
-                <form>
+                <form id="homeEnquiryForm">
                     <input type="text" placeholder="Full name" required>
                     <input type="email" placeholder="Email" required>
                     <input type="tel" placeholder="Mobile number" required>
                     <textarea placeholder="Your message or enquiry"></textarea>
 
                     <div class="modal-terms inpage-terms">
-                        <input type="checkbox" id="homeEnquiryTerms" class="terms-checkbox" required>
+                        <input type="checkbox" id="homeEnquiryTerms" class="terms-checkbox" disabled required>
                         <label for="homeEnquiryTerms">I agree to the <a href="javascript:void(0)" class="open-legal-tab" data-legal="terms">Terms & Conditions</a></label>
                     </div>
 

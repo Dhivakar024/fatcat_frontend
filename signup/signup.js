@@ -82,11 +82,27 @@ function validateConfirmPassword() {
     return setError(confirmPassword, el, "");
 }
 
-function validateTerms() {
+function validateTerms(showToast = true) {
+    const shouldShow = (showToast === true);
     const el = document.getElementById("termsError");
-    if (!signupTerms || !signupTerms.checked) {
-        if (el) el.textContent = "You must agree to the Terms & Conditions.";
-        return false;
+    if (window.TermsManager && typeof window.TermsManager.validate === "function") {
+        const isValid = window.TermsManager.validate(form, shouldShow);
+        if (!isValid) {
+            const state = window.TermsManager.getState(form);
+            if (!state.opened) {
+                if (el) el.textContent = "Please review the Terms & Conditions before submitting.";
+            } else if (!state.scrolledToBottom) {
+                if (el) el.textContent = "Please read the Terms & Conditions completely before accepting.";
+            } else {
+                if (el) el.textContent = "Please accept the Terms & Conditions to continue.";
+            }
+            return false;
+        }
+    } else {
+        if (!signupTerms || !signupTerms.checked) {
+            if (el) el.textContent = "Please accept the Terms & Conditions to continue.";
+            return false;
+        }
     }
     if (el) el.textContent = "";
     return true;
@@ -175,7 +191,7 @@ password.addEventListener("input", () => {
 });
 confirmPassword.addEventListener("input", validateConfirmPassword);
 if (signupTerms) {
-    signupTerms.addEventListener("change", validateTerms);
+    signupTerms.addEventListener("change", () => validateTerms(false));
 }
 
 // ===== SUBMIT =====
@@ -188,14 +204,11 @@ form.addEventListener("submit", (e) => {
         validateEmail(),
         validatePassword(),
         validateConfirmPassword(),
-        validateTerms()
+        validateTerms(true)
     ];
 
     const isValid = validations.every(Boolean);
     if (!isValid) {
-        if (!validateTerms() && typeof showNotification === "function") {
-            showNotification("Please agree to the Terms & Conditions.", "error");
-        }
         return;
     }
 

@@ -139,14 +139,20 @@ document.addEventListener("DOMContentLoaded", () => {
       modalForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const terms = modalForm.querySelector('#modalTerms, .terms-checkbox');
-        if (terms && !terms.checked) {
-          terms.focus();
-          terms.classList.add("input-invalid");
-          if (typeof showNotification === "function") {
-            showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+        if (window.TermsManager && typeof window.TermsManager.validate === "function") {
+          if (!window.TermsManager.validate(modalForm, true)) {
+            return;
           }
-          return;
+        } else {
+          const terms = modalForm.querySelector('#modalTerms, .terms-checkbox');
+          if (terms && !terms.checked) {
+            terms.focus();
+            terms.classList.add("input-invalid");
+            if (typeof showNotification === "function") {
+              showNotification("Please accept the Terms & Conditions to continue.", "warning");
+            }
+            return;
+          }
         }
 
         const inputs = modalForm.querySelectorAll("input, textarea");
@@ -193,14 +199,20 @@ document.addEventListener("DOMContentLoaded", () => {
     inpageForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const terms = inpageForm.querySelector('#homeEnquiryTerms, .terms-checkbox');
-      if (terms && !terms.checked) {
-        terms.focus();
-        terms.classList.add("input-invalid");
-        if (typeof showNotification === "function") {
-          showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
+      if (window.TermsManager && typeof window.TermsManager.validate === "function") {
+        if (!window.TermsManager.validate(inpageForm, true)) {
+          return;
         }
-        return;
+      } else {
+        const terms = inpageForm.querySelector('#homeEnquiryTerms, .terms-checkbox');
+        if (terms && !terms.checked) {
+          terms.focus();
+          terms.classList.add("input-invalid");
+          if (typeof showNotification === "function") {
+            showNotification("Please accept the Terms & Conditions to continue.", "warning");
+          }
+          return;
+        }
       }
 
       const payload = {

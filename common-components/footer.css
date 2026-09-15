@@ -553,7 +553,7 @@ word-break:break-word;
     background: #ffffff;
     width: 100%;
     max-width: 640px;
-    max-height: 86vh;
+    max-height: min(560px, 86vh);
     border-radius: 18px;
     display: flex;
     flex-direction: column;
@@ -667,6 +667,7 @@ word-break:break-word;
     padding: 20px 24px;
     overflow-y: auto;
     flex: 1;
+    max-height: 380px;
     font-size: 13.5px;
     line-height: 1.65;
     color: #334155;
@@ -818,6 +819,92 @@ body.dark-mode .legal-btn-accept {
 body.dark-mode .legal-btn-accept:hover {
     background: #3b82f6 !important;
 }
+
+/* =========================================================
+   TERMS & CONDITIONS CHECKBOX & INTERACTION STYLES
+========================================================= */
+.terms-checkbox:disabled,
+input[type="checkbox"].terms-checkbox:disabled,
+.terms-disabled,
+input[type="checkbox"].terms-disabled {
+    cursor: not-allowed !important;
+    opacity: 0.55 !important;
+    filter: grayscale(1);
+    accent-color: #94a3b8 !important;
+}
+
+.terms-checkbox:not(:disabled),
+input[type="checkbox"].terms-checkbox:not(:disabled),
+.terms-unlocked,
+.terms-ready {
+    cursor: pointer !important;
+    opacity: 1 !important;
+    filter: none;
+    accent-color: #0b1b66;
+}
+
+.terms-checkbox.terms-unlocked,
+.terms-checkbox.terms-ready {
+    box-shadow: 0 0 0 3px rgba(30, 142, 163, 0.35);
+    border-color: #1e8ea3;
+    animation: termsPulse 1s ease-in-out;
+}
+
+/* Ensure Terms & Conditions link is always clickable even if checkbox is disabled */
+.open-legal-tab,
+[data-legal="terms"],
+.modal-terms a,
+.contact-terms-group a,
+.form-terms a,
+.terms-group a {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    text-decoration: underline;
+}
+
+.terms-highlight-pulse {
+    outline: 2px solid #ef4444 !important;
+    outline-offset: 3px !important;
+    border-radius: 4px;
+    animation: termsAttention 0.8s ease-in-out 3;
+}
+
+.terms-group-highlight {
+    background: rgba(239, 68, 68, 0.08) !important;
+    border-radius: 6px;
+    padding: 4px 6px;
+    transition: background 0.3s ease;
+}
+
+@keyframes termsAttention {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.legal-btn-accept.terms-completed {
+    background: #16a34a !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .terms-checkbox:disabled,
+body.dark-mode input[type="checkbox"].terms-checkbox:disabled {
+    opacity: 0.4 !important;
+    accent-color: #475569 !important;
+}
+
+body.dark-mode .terms-checkbox:not(:disabled),
+body.dark-mode input[type="checkbox"].terms-checkbox:not(:disabled) {
+    opacity: 1 !important;
+    accent-color: #2563eb !important;
+}
+
 
 /* =========================================================
    FULL-WIDTH EDGE-TO-EDGE FLOATING COOKIE CONSENT BANNER
