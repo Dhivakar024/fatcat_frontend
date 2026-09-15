@@ -7,7 +7,7 @@ font-family:'Poppins',sans-serif;
 
 html {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     scroll-behavior: smooth;
 }
 
@@ -38,6 +38,7 @@ body {
     position:absolute;
     inset:0;
     background:rgba(0,0,0,0.5);
+    pointer-events:none;
 }
 
 /* content */

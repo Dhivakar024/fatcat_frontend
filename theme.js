@@ -135,7 +135,7 @@
   };
   const style = document.createElement("style");
   style.textContent = `
-    html { margin: 0; padding: 0; overscroll-behavior-y: none; scrollbar-width: thin; scrollbar-color: #94a3b8 transparent; }
+    html { margin: 0; padding: 0; scrollbar-width: thin; scrollbar-color: #94a3b8 transparent; }
     html::-webkit-scrollbar { width: 5px; height: 5px; }
     html::-webkit-scrollbar-track { background: transparent; }
     html::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
@@ -144,7 +144,7 @@
     html.dark-mode::-webkit-scrollbar-track { background: transparent; }
     html.dark-mode::-webkit-scrollbar-thumb { background: #475569; }
     html.dark-mode::-webkit-scrollbar-thumb:hover { background: #64748b; }
-    body { margin: 0; padding: 0 !important; overscroll-behavior-y: none; }
+    body { margin: 0; padding: 0 !important; }
     footer:last-of-type { margin-bottom: 0 !important; }
     .nav-account-controls { display: inline-flex; align-items: center; gap: 8px; }
     .theme-toggle { position: relative; width: 38px; height: 38px; flex: 0 0 38px; padding: 0; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; background: #0f172a; color: #facc15; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; transition: background .2s ease, color .2s ease; }
