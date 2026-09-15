@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+function initHeaderComponent() {
     const header = document.getElementById("header");
 
     if (!header) return;
@@ -355,5 +355,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeaderComponent);
+} else {
+    initHeaderComponent();
+}
 

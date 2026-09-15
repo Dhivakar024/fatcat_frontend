@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-
+function initFooterComponent() {
     const footer = document.getElementById("footer");
     if (!footer) return;
 
@@ -428,8 +427,13 @@ document.addEventListener("DOMContentLoaded", function () {
         window.openLegalModal = openModal;
         window.closeLegalModal = closeModal;
     }
+}
 
-});
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFooterComponent);
+} else {
+    initFooterComponent();
+}
 
 function initCookieConsent() {
     const banner = document.getElementById("cookieConsent");
@@ -447,32 +451,30 @@ function initCookieConsent() {
     const COOKIE_CONSENT_KEY = "fatcat_cookie_consent";
     const COOKIE_PREFS_KEY = "fatcat_cookie_preferences";
 
-    function hideBanner() {
+    // Clean up any obsolete/competing legacy keys so there is ONLY ONE source of truth
+    try {
+        localStorage.removeItem("cookieConsent");
+        sessionStorage.removeItem("cookieAcceptedInSession");
+        sessionStorage.removeItem("cookieConsent");
+    } catch (e) {}
+
+    function hideCookieBanner() {
         banner.classList.remove("active");
         if (prefPanel) {
             prefPanel.classList.remove("active");
         }
     }
 
-    function showBanner(openPreferences = false) {
+    function showCookieBanner(openPreferences = false) {
         banner.classList.add("active");
         if (openPreferences && prefPanel) {
             prefPanel.classList.add("active");
         }
     }
 
-    function hasUserConsented() {
-        try {
-            const consent = localStorage.getItem(COOKIE_CONSENT_KEY) || localStorage.getItem("cookieConsent");
-            return consent === "accepted";
-        } catch (e) {
-            return false;
-        }
-    }
-
     function applySavedPreferencesToUI() {
         try {
-            const raw = localStorage.getItem(COOKIE_PREFS_KEY) || localStorage.getItem("cookiePreferences");
+            const raw = localStorage.getItem(COOKIE_PREFS_KEY);
             if (raw) {
                 const saved = JSON.parse(raw);
                 if (prefAnalytics && typeof saved.analytics === "boolean") {
@@ -481,41 +483,60 @@ function initCookieConsent() {
                 if (prefMarketing && typeof saved.marketing === "boolean") {
                     prefMarketing.checked = saved.marketing;
                 }
+            } else {
+                const currentConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+                const isDeclined = currentConsent === "declined";
+                if (prefAnalytics) prefAnalytics.checked = !isDeclined;
+                if (prefMarketing) prefMarketing.checked = !isDeclined;
             }
         } catch (e) {}
     }
 
-    // Check stored consent immediately:
-    // If already accepted, keep banner completely hidden (no flash, no banner on reload/navigation)
-    if (hasUserConsented()) {
-        hideBanner();
+    // STATE 1 vs STATE 2/3 CHECK:
+    // If user has accepted or declined, hide the banner.
+    // If no stored consent exists (new visitor), show the banner automatically!
+    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+    if (consent === "accepted" || consent === "declined") {
+        hideCookieBanner();
         applySavedPreferencesToUI();
     } else {
-        showBanner(false);
+        showCookieBanner(false);
     }
 
+    // STATE 2: User clicks "I Agree"
     if (acceptBtn) {
         acceptBtn.addEventListener("click", () => {
+            localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
             const prefs = {
                 necessary: true,
                 analytics: true,
                 marketing: true
             };
             try {
-                localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
-                localStorage.setItem("cookieConsent", "accepted");
                 localStorage.setItem(COOKIE_PREFS_KEY, JSON.stringify(prefs));
-                localStorage.setItem("cookiePreferences", JSON.stringify(prefs));
             } catch (e) {}
             if (prefAnalytics) prefAnalytics.checked = true;
             if (prefMarketing) prefMarketing.checked = true;
-            hideBanner();
+            hideCookieBanner();
         });
     }
 
+    // STATE 3: User clicks "Decline"
     if (declineBtn) {
         declineBtn.addEventListener("click", () => {
-            hideBanner();
+            localStorage.setItem(COOKIE_CONSENT_KEY, "declined");
+            const prefs = {
+                necessary: true,
+                analytics: false,
+                marketing: false
+            };
+            try {
+                localStorage.setItem(COOKIE_PREFS_KEY, JSON.stringify(prefs));
+            } catch (e) {}
+            if (prefAnalytics) prefAnalytics.checked = false;
+            if (prefMarketing) prefMarketing.checked = false;
+            hideCookieBanner();
         });
     }
 
@@ -526,27 +547,28 @@ function initCookieConsent() {
         });
     }
 
+    // Cookie Settings: User modifies preferences and saves
     if (savePrefBtn) {
         savePrefBtn.addEventListener("click", () => {
             const prefs = {
                 necessary: true,
-                analytics: prefAnalytics ? prefAnalytics.checked : true,
-                marketing: prefMarketing ? prefMarketing.checked : true
+                analytics: prefAnalytics ? prefAnalytics.checked : false,
+                marketing: prefMarketing ? prefMarketing.checked : false
             };
             try {
-                localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
-                localStorage.setItem("cookieConsent", "accepted");
                 localStorage.setItem(COOKIE_PREFS_KEY, JSON.stringify(prefs));
-                localStorage.setItem("cookiePreferences", JSON.stringify(prefs));
             } catch (e) {}
-            hideBanner();
+            localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+            hideCookieBanner();
         });
     }
 
+    // Cookie Settings: User clicks close
     if (cancelPrefBtn && prefPanel) {
         cancelPrefBtn.addEventListener("click", () => {
-            if (hasUserConsented()) {
-                hideBanner();
+            const currentConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+            if (currentConsent === "accepted" || currentConsent === "declined") {
+                hideCookieBanner();
             } else {
                 prefPanel.classList.remove("active");
             }
@@ -559,13 +581,13 @@ function initCookieConsent() {
         if (trigger) {
             e.preventDefault();
             applySavedPreferencesToUI();
-            showBanner(true);
+            showCookieBanner(true);
         }
     });
 
     window.openCookieConsent = function (openPreferences = false) {
         applySavedPreferencesToUI();
-        showBanner(openPreferences);
+        showCookieBanner(openPreferences);
     };
-    window.closeCookieConsent = hideBanner;
+    window.closeCookieConsent = hideCookieBanner;
 }
