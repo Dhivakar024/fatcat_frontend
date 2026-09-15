@@ -28,7 +28,7 @@ body {
     position: relative;
     width: 100%;
     min-height: 60vh;
-    padding-top: 82px; /* Navbar offset */
+    padding-top: calc(var(--navbar-height, 82px) + 20px); /* Navbar offset */
     background: url("../assets/cont5.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -362,6 +362,10 @@ body.dark-mode .map-label span {
 }
 
 @media (max-width: 768px) {
+    .contact-hero {
+        padding-top: calc(var(--navbar-height, 70px) + 20px);
+    }
+
     .contact-section {
         padding: 60px 5%;
     }

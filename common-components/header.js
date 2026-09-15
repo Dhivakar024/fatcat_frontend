@@ -165,6 +165,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // ── Inside Mobile Drawer clicks ──
             if (e.target.closest('#mobileDrawer')) {
+                // Never close drawer when clicking theme toggle, accordion headers or switches
+                if (e.target.closest('.drawer-header-theme-toggle') ||
+                    e.target.closest('.drawer-theme-row') ||
+                    e.target.closest('.drawer-toggle-switch') ||
+                    e.target.closest('.drawer-header-actions')) {
+                    return;
+                }
+
                 const isRealLink = e.target.closest('.drawer-link:not(.drawer-toggle-row)')
                                 || e.target.closest('.drawer-sub-link:not(.drawer-toggle-row2)')
                                 || e.target.closest('.drawer-sub2-link')
@@ -178,6 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // Drawer dark/light-mode toggle
+        const drawerHeaderTheme = document.querySelector('#drawerHeaderThemeBtn');
+
         function updateDrawerThemeUI(isDark) {
             if (drawerTheme) drawerTheme.checked = isDark;
             const drawerLabel = document.querySelector('.drawer-theme-label');
@@ -187,20 +197,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 drawerIcon.className = `fa-solid ${isDark ? "fa-moon" : "fa-sun"} drawer-theme-icon`;
                 drawerIcon.style.color = isDark ? "#ffd700" : "#f5a623";
             }
+            if (drawerHeaderTheme) {
+                drawerHeaderTheme.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            }
+        }
+
+        const isInitialDark = document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode');
+        updateDrawerThemeUI(isInitialDark);
+
+        if (drawerHeaderTheme) {
+            drawerHeaderTheme.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const currentlyDark = document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode');
+                const nextTheme = currentlyDark ? 'light' : 'dark';
+                if (typeof window.applyTheme === 'function') {
+                    window.applyTheme(nextTheme);
+                } else {
+                    document.body.classList.toggle('dark-mode', !currentlyDark);
+                    document.documentElement.classList.toggle('dark-mode', !currentlyDark);
+                }
+                updateDrawerThemeUI(!currentlyDark);
+            });
         }
 
         if (drawerTheme) {
-            const isDark = document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode');
-            updateDrawerThemeUI(isDark);
-
-            drawerTheme.addEventListener('change', () => {
+            drawerTheme.addEventListener('change', (e) => {
+                e.stopPropagation();
                 const nextTheme = drawerTheme.checked ? 'dark' : 'light';
                 if (typeof window.applyTheme === 'function') {
                     window.applyTheme(nextTheme);
                 } else {
                     document.body.classList.toggle('dark-mode', drawerTheme.checked);
-                    updateDrawerThemeUI(drawerTheme.checked);
+                    document.documentElement.classList.toggle('dark-mode', drawerTheme.checked);
                 }
+                updateDrawerThemeUI(drawerTheme.checked);
             });
 
             // Allow tapping anywhere on .drawer-theme-row to toggle
@@ -208,6 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (drawerThemeRow) {
                 drawerThemeRow.style.cursor = 'pointer';
                 drawerThemeRow.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     if (!e.target.closest('.drawer-toggle-switch')) {
                         e.preventDefault();
                         drawerTheme.checked = !drawerTheme.checked;

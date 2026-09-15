@@ -18,7 +18,7 @@ body{
 
 .application-page{
     min-height:100vh;
-    padding:70px 20px;
+    padding: calc(var(--navbar-height, 82px) + 24px) 20px 80px;
     background:
         radial-gradient(
             circle at top left,
@@ -309,7 +309,7 @@ input[type="file"]{
 @media(max-width:700px){
 
     .application-page{
-        padding:40px 15px;
+        padding: calc(var(--navbar-height, 70px) + 20px) 15px 50px;
     }
 
     .application-header h1{
@@ -409,6 +409,33 @@ body.dark-mode input[type="file"] {
     background: #1e293b !important;
     border: 1px solid #334155 !important;
     color: #e2e8f0 !important;
+}
+
+body.dark-mode input[type="file"]::-webkit-file-upload-button {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    margin-right: 12px !important;
+}
+
+body.dark-mode input[type="file"]::file-selector-button {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    margin-right: 12px !important;
+}
+
+body.dark-mode .form-group select option {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
 }
 
 body.dark-mode .form-group small {

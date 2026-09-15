@@ -248,12 +248,12 @@ body.dark-mode .form-box .inpage-terms label {
 /* HERO SECTION */
 .hero-section {
     width: 100%;
-    padding-top: 82px; /* Header offset */
+    padding-top: var(--navbar-height, 82px);
 }
 
 .hero {
     position: relative;
-    min-height: calc(90vh - 82px);
+    min-height: calc(90vh - var(--navbar-height, 82px));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1588,8 +1588,22 @@ body.dark-mode .form-cancel-btn {
 
     .map-box {
         width: 100% !important;
-        min-height: 300px !important;
-        height: 320px !important;
+        max-width: 100% !important;
+        height: 290px !important;
+        min-height: 260px !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    .map-box iframe {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        border: 0 !important;
+        display: block !important;
     }
 
     .form-box {

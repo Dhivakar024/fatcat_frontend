@@ -16,7 +16,8 @@ scroll-behavior:smooth;
 
 
 .stock-hero{
-height:320px;
+min-height:340px;
+height:auto;
 background:url("../../assets/sbHero.png") center/cover no-repeat;
 position:relative;
 display:flex;
@@ -26,14 +27,15 @@ justify-content:center;
 
 .stock-hero-overlay{
 position:absolute;
-top:0;
-left:0;
+inset:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.45);
 display:flex;
 align-items:center;
 justify-content:center;
+padding-top: calc(var(--navbar-height, 82px) + 16px);
+padding-bottom: 16px;
 }
 
 .stock-hero-content{
@@ -52,7 +54,13 @@ letter-spacing:1px;
 @media (max-width:768px){
 
 .stock-hero{
-height:240px;
+min-height:260px;
+height:auto;
+}
+
+.stock-hero-overlay{
+padding-top: calc(var(--navbar-height, 70px) + 16px);
+padding-bottom: 16px;
 }
 
 .stock-hero-content h1{

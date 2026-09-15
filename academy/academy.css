@@ -29,7 +29,7 @@ scroll-behavior:smooth;
   position: relative;
   height: 60vh; /* ✅ reduced from 100vh */
   min-height: 450px;
-  padding-top: 90px; /* Offset for fixed top navbar header */
+  padding-top: calc(var(--navbar-height, 82px) + 16px);
   background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -110,6 +110,10 @@ scroll-behavior:smooth;
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--navbar-height, 70px) + 16px);
+  }
+
   .hero-title {
     font-size: 1.8rem;
   }

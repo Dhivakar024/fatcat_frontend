@@ -22,7 +22,7 @@ scroll-behavior:smooth;
 
 background: linear-gradient(135deg,#0c8aa3,#6f7edb);
 
-padding:100px 8%;
+padding: calc(var(--navbar-height, 82px) + 24px) 8% 80px;
 color:white;
 
 display:flex;
@@ -227,7 +227,7 @@ width:320px;
 
 .mf-hero{
 
-padding:80px 5%;
+padding: calc(var(--navbar-height, 70px) + 20px) 5% 50px;
 
 }
 
@@ -1123,11 +1123,16 @@ body.dark-mode .mf-sidebar {
 
 body.dark-mode .mf-sidebar h4 {
     color: #ffffff !important;
+    border-bottom: 1px solid #1e293b !important;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
 }
 
 body.dark-mode .mf-category {
     color: #e2e8f0 !important;
     background: transparent !important;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 body.dark-mode .mf-category:hover {
@@ -1138,6 +1143,8 @@ body.dark-mode .mf-category:hover {
 body.dark-mode .mf-category.active {
     background: #2563eb !important;
     color: #ffffff !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
 }
 
 body.dark-mode .table-wrapper {
@@ -1145,17 +1152,28 @@ body.dark-mode .table-wrapper {
     border: 1px solid #1e293b !important;
 }
 
+body.dark-mode .mf-table {
+    background: #111827 !important;
+}
+
+body.dark-mode .mf-table thead,
 body.dark-mode .mf-table thead tr {
     background: #1e293b !important;
 }
 
 body.dark-mode .mf-table th {
     color: #ffffff !important;
-    border-bottom: 1px solid #334155 !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #334155 !important;
 }
 
 body.dark-mode .mf-table tbody tr {
+    background: #111827 !important;
     border-bottom: 1px solid #1e293b !important;
+}
+
+body.dark-mode .mf-table tbody tr:nth-child(even) {
+    background: #0d1527 !important;
 }
 
 body.dark-mode .mf-table tbody tr:hover {
@@ -1164,6 +1182,20 @@ body.dark-mode .mf-table tbody tr:hover {
 
 body.dark-mode .mf-table td {
     color: #f8fafc !important;
+}
+
+body.dark-mode .mf-table td:first-child {
+    color: #38bdf8 !important;
+    font-weight: 500 !important;
+}
+
+body.dark-mode .mf-table td:nth-child(2) {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .mf-table td:nth-child(n+3) {
+    color: #4ade80 !important;
+    font-weight: 600 !important;
 }
 
 body.dark-mode .mf-benefits {

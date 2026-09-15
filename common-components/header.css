@@ -1,3 +1,13 @@
+:root {
+    --navbar-height: 82px;
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --navbar-height: 70px;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -254,13 +264,14 @@ a {
     right: 0;
     width: 280px;
     height: 100vh;
+    height: 100dvh;
     background: #ffffff;
     z-index: 2000;
     flex-direction: column;
     box-shadow: -4px 0 24px rgba(0,0,0,0.18);
     transform: translateX(110%);
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-    overflow-y: auto;
+    overflow: hidden;
     border-radius: 16px 0 0 16px;
     visibility: hidden;
     pointer-events: none;
@@ -294,8 +305,11 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 14px 18px;
     border-bottom: 1px solid #f0f0f0;
+    flex-shrink: 0;
+    background: inherit;
+    z-index: 10;
 }
 
 .drawer-logo {
@@ -311,6 +325,54 @@ a {
     width: 110px;
     height: auto;
     display: block;
+}
+
+.drawer-header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawer-header-theme-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #f59e0b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.drawer-header-theme-toggle:hover {
+    background: #f1f5f9;
+    transform: scale(1.05);
+}
+
+.drawer-header-theme-toggle .fa-moon {
+    display: none;
+}
+
+.drawer-header-theme-toggle .fa-sun {
+    display: inline-block;
+}
+
+body.dark-mode .drawer-header-theme-toggle {
+    background: #1e293b;
+    border-color: #334155;
+    color: #38bdf8;
+}
+
+body.dark-mode .drawer-header-theme-toggle .fa-sun {
+    display: none;
+}
+
+body.dark-mode .drawer-header-theme-toggle .fa-moon {
+    display: inline-block;
 }
 
 .drawer-close {
@@ -334,7 +396,9 @@ a {
     display: flex;
     flex-direction: column;
     padding: 8px 0;
-    flex: 1;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .drawer-link {
@@ -380,11 +444,13 @@ a {
 
 /* Drawer footer */
 .drawer-footer {
-    padding: 20px;
+    padding: 16px 20px;
     border-top: 1px solid #f0f0f0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
+    flex-shrink: 0;
+    background: inherit;
 }
 
 .drawer-login-btn {

@@ -41,6 +41,10 @@
     if (drawerToggle) {
       drawerToggle.checked = isDark;
     }
+    const drawerHeaderBtn = document.getElementById("drawerHeaderThemeBtn");
+    if (drawerHeaderBtn) {
+      drawerHeaderBtn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    }
     const drawerLabel = document.querySelector(".drawer-theme-label");
     if (drawerLabel) {
       drawerLabel.textContent = isDark ? "Dark Mode" : "Light Mode";
@@ -640,22 +644,21 @@
         submitBtn.removeAttribute("aria-disabled");
       }
 
-      // Universal Terms & Conditions validation guard on form submission
+      // Terms & Conditions validation is handled by TermsManager in common-components/footer.js
+      // Fallback only if TermsManager is not present on the page
       form.addEventListener("submit", (e) => {
+        if (window.TermsManager) return;
         const termsCb = form.querySelector('.terms-checkbox, #modalTerms, #homeEnquiryTerms, #contactTerms, #signupTerms, #careerTerms');
         if (termsCb && !termsCb.checked) {
           e.preventDefault();
-          e.stopImmediatePropagation();
           termsCb.focus();
           termsCb.classList.add("input-invalid");
           if (typeof window.showNotification === "function") {
-            window.showNotification("Please agree to the Terms & Conditions to proceed.", "warning");
-          } else {
-            alert("Please agree to the Terms & Conditions to proceed.");
+            window.showNotification("Please review and accept the Terms & Conditions to proceed.", "warning");
           }
           return false;
         }
-      }, true);
+      });
 
       const allInputs = form.querySelectorAll("input, select, textarea");
       allInputs.forEach(input => {

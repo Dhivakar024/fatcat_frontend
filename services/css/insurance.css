@@ -18,7 +18,7 @@ scroll-behavior:smooth;
 
 
 .insurance-hero{
-  padding:100px 20px 140px;
+  padding: calc(var(--navbar-height, 82px) + 24px) 20px 100px;
   background:linear-gradient(135deg,#1f9db5,#7a77d9);
   color:white;
   overflow:hidden;
@@ -271,7 +271,7 @@ transform:translateY(0);
 @media (max-width: 768px) {
 
     .insurance-hero {
-        padding: 70px 20px 100px;
+        padding: calc(var(--navbar-height, 70px) + 24px) 20px 60px;
     }
 
     .hero-left h1 {
@@ -1116,11 +1116,14 @@ body.dark-mode .why-card p {
 }
 
 body.dark-mode .why-icon {
-  background: rgba(56, 189, 248, 0.15) !important;
-  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  background: #0e3040 !important;
+  border: 1.5px solid #148a9a !important;
   color: #38bdf8 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
 body.dark-mode .why-icon svg {
   stroke: #38bdf8 !important;
+  stroke-width: 2.2px !important;
+  color: #38bdf8 !important;
 }

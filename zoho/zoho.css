@@ -24,12 +24,11 @@ a {
 
 .zoho-hero {
     min-height: 690px;
-    padding: 100px 6%;
+    padding: calc(var(--navbar-height, 82px) + 30px) 6% 80px;
     background: linear-gradient(135deg, #071f31, #084d65, #087f9b);
     color: white;
     position: relative;
     overflow: hidden;
-    background-color: red;
 }
 
 .zoho-hero:before {
@@ -342,13 +341,24 @@ a {
     width: 55px;
     height: 55px;
     border-radius: 12px;
-    background: #eaf7f8;
-    color: #087f9b;
+    background: #e0f2f6;
+    border: 1.5px solid #84ccdb;
+    color: #04586d;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
+    font-size: 20px;
     margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(8, 127, 155, 0.1);
+    transition: all 0.3s ease;
+}
+
+.partnership-card:hover .card-icon {
+    background: #087f9b;
+    border-color: #087f9b;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
 .partnership-card h3 {
@@ -573,11 +583,21 @@ a {
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    background: #eaf7f8;
-    color: #087f9b;
-    font-size: 14px;
+    background: #e0f2f6;
+    border: 1.5px solid #84ccdb;
+    color: #04586d;
+    font-size: 16px;
     font-weight: 800;
     margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(8, 127, 155, 0.1);
+    transition: all 0.3s ease;
+}
+
+.solution-card:hover .solution-icon {
+    background: #087f9b;
+    border-color: #087f9b;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
 .solution-card h3 {
@@ -788,7 +808,7 @@ a {
 
    
     .zoho-hero {
-        padding: 75px 6%;
+        padding: calc(var(--navbar-height, 70px) + 24px) 6% 60px;
     }
 
     .zoho-hero-container {
@@ -1069,21 +1089,25 @@ a {
     justify-content: center;
     font-size: 23px;
     font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .finance-icon.blue {
-    background: #eff8fc;
-    color: #1976b8;
+    background: #e0f2fe;
+    border: 1.5px solid #93c5fd;
+    color: #0284c7;
 }
 
 .finance-icon.red {
-    background: #fff2f3;
-    color: #df2d3e;
+    background: #fee2e2;
+    border: 1.5px solid #fca5a5;
+    color: #dc2626;
 }
 
 .finance-icon.green {
-    background: #effaf5;
-    color: #08a66a;
+    background: #dcfce7;
+    border: 1.5px solid #86efac;
+    color: #16a34a;
 }
 
 .finance-product-info h3 {
@@ -1317,4 +1341,201 @@ a {
         margin-left: 0;
     }
 
+}
+
+/* =========================================================
+   ZOHO PARTNER – DARK MODE ACCESSIBILITY & CONTRAST
+   ========================================================= */
+body.dark-mode {
+    background-color: #080c14 !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .partnership-section,
+body.dark-mode .zoho-services,
+body.dark-mode .creator-section,
+body.dark-mode .why-zoho,
+body.dark-mode .video-section {
+    background-color: #080c14 !important;
+}
+
+body.dark-mode .section-heading h2,
+body.dark-mode .section-heading h3,
+body.dark-mode .partnership-card h3,
+body.dark-mode .solution-card h3,
+body.dark-mode .why-card h3,
+body.dark-mode .creator-content h2,
+body.dark-mode .creator-feature h4,
+body.dark-mode .finance-product-info h3,
+body.dark-mode .finance-header h3,
+body.dark-mode .finance-help-text h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .section-heading p,
+body.dark-mode .partnership-card p,
+body.dark-mode .solution-card p,
+body.dark-mode .why-card p,
+body.dark-mode .creator-content p,
+body.dark-mode .creator-feature p,
+body.dark-mode .finance-product-info p,
+body.dark-mode .finance-header p,
+body.dark-mode .finance-help-text p {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .partnership-card,
+body.dark-mode .solution-card {
+    background: #111827 !important;
+    border-color: #1e293b !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .partnership-card:hover,
+body.dark-mode .solution-card:hover {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 16px 40px rgba(56, 189, 248, 0.15) !important;
+}
+
+body.dark-mode .why-card {
+    background: #111827 !important;
+    border-left: 3px solid #38bdf8 !important;
+    border-top: 1px solid #1e293b !important;
+    border-right: 1px solid #1e293b !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+body.dark-mode .card-icon,
+body.dark-mode .solution-icon {
+    background: #0e3040 !important;
+    border: 1.5px solid #148a9a !important;
+    color: #38bdf8 !important;
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.15) !important;
+}
+
+body.dark-mode .partnership-card:hover .card-icon,
+body.dark-mode .solution-card:hover .solution-icon {
+    background: #0284c7 !important;
+    border-color: #38bdf8 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .dashboard-cards div {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+body.dark-mode .dashboard-cards small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .dashboard-cards strong {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .creator-window {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.dark-mode .window-header {
+    background: #0f172a !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+body.dark-mode .dashboard-sidebar {
+    background: #0b0f19 !important;
+    border-right: 1px solid #1e293b !important;
+}
+
+body.dark-mode .sidebar-item {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .sidebar-item.active {
+    background: rgba(56, 189, 248, 0.15) !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .dashboard-main {
+    background: #111827 !important;
+}
+
+body.dark-mode .chart-box {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+body.dark-mode .chart-title {
+    color: #e2e8f0 !important;
+}
+
+/* Zoho Finance Modal Dark Mode */
+body.dark-mode .finance-modal-content {
+    background: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7) !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .finance-product {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+body.dark-mode .finance-product:hover {
+    border-color: #38bdf8 !important;
+}
+
+body.dark-mode .finance-icon.blue {
+    background: #0c2d48 !important;
+    border: 1.5px solid #1d4ed8 !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .finance-icon.red {
+    background: #3b1219 !important;
+    border: 1.5px solid #991b1b !important;
+    color: #f87171 !important;
+}
+
+body.dark-mode .finance-icon.green {
+    background: #0a2e1d !important;
+    border: 1.5px solid #166534 !important;
+    color: #4ade80 !important;
+}
+
+body.dark-mode .finance-plus-card {
+    background: linear-gradient(135deg, #09261d, #0c3629) !important;
+    border-color: #14532d !important;
+}
+
+body.dark-mode .finance-plus-card .finance-product-info h3 {
+    color: #86efac !important;
+}
+
+body.dark-mode .finance-plus-card .finance-product-info p {
+    color: #bbf7d0 !important;
+}
+
+body.dark-mode .finance-help {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+body.dark-mode .finance-help-icon {
+    background: #0c2d48 !important;
+    border: 1px solid #1d4ed8 !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .finance-close {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .finance-close:hover {
+    background: #334155 !important;
+    color: #ffffff !important;
 }

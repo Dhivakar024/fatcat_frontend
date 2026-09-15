@@ -120,7 +120,7 @@ button:focus-visible {
    display: flex;
    align-items: center;
    justify-content: center;
-   padding-top: 90px;
+   padding-top: calc(var(--navbar-height, 82px) + 20px);
    padding-bottom: 20px;
    z-index: 1;
 }
